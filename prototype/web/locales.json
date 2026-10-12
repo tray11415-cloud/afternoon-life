@@ -4328,5 +4328,10 @@
     "en": "Display settings do not change collision, items or memories.",
     "ja": "画面設定は衝突判定、持ち物、記憶を変更しません。",
     "zh-CN": "画面设置不改变碰撞、物品或人物记忆。"
+  },
+  "最新進度": {
+    "en": "Latest progress",
+    "ja": "最新の進捗",
+    "zh-CN": "最新进度"
   }
 }

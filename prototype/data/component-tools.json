@@ -1,0 +1,213 @@
+{
+  "contract": "lifebox.components.v1",
+  "endpoint": "/api/components",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_get",
+        "description": "讀取指定部件，不讀取角色記憶",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 180
+            }
+          },
+          "required": [
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_plan",
+        "description": "依指示準備替換，只預覽",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "instruction": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "targets": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180
+              },
+              "minItems": 1,
+              "maxItems": 8
+            }
+          },
+          "required": [
+            "instruction",
+            "targets"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_prepare",
+        "description": "验证部件包，產生差異預覽",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "instruction": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "changes": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 40,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 180
+                      },
+                      "value": {}
+                    },
+                    "required": [
+                      "target",
+                      "value"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 180
+                      },
+                      "png": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "target",
+                      "png"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 180
+                      },
+                      "reset": {
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "target",
+                      "reset"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "instruction",
+            "changes"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_apply",
+        "description": "套用已驗證且未過期的方案",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "proposal": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          },
+          "required": [
+            "proposal"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_rollback",
+        "description": "準備還原方案，仍需套用",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "history": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          },
+          "required": [
+            "history"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "lifebox_component_export",
+        "description": "匯出指定部件包",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "targets": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 180
+              },
+              "minItems": 1,
+              "maxItems": 8
+            }
+          },
+          "required": [
+            "targets"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "dispatch": "移除 lifebox_component_ 前綴作為 operation，函數參數作為 params。GET /api/state 取得本機 token；不得把 token／API 金鑰放入模型上下文。"
+}

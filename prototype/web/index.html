@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>午後共居 · 像素生活</title><link rel="stylesheet" href="/style.css?v=16"><script src="/engine.js?v=16" defer></script><script src="/app.js?v=16" defer></script><script src="/art-settings.js?v=16" defer></script><script src="/social-settings.js?v=14" defer></script><script src="/speech-settings.js?v=16" defer></script></head>
+<body><p id="demo-note" class="demo-note" hidden>離線示範：日程與對話使用本機規則，沒有呼叫 AI 模型。</p>
+<header class="topbar"><div class="brand"><span class="brand-mark">✳</span><div><h1>午後共居</h1><p>A LITTLE LIFE, TOGETHER.</p></div></div><div class="top-actions"><span id="clock">DAY 01 · 14:00</span><button id="pause" aria-label="暫停生活時間">Ⅱ 暫停</button><button id="town-open">小鎮活動</button><button id="illustration-open">CG 插圖</button><button id="components-open">部件工坊</button><button id="assets-open">美術素材</button><button id="social-open">共同活動</button><button id="creation-open">人物設定</button><button id="preferences-open">遊戲設定</button><button id="speech-open">語音設定</button><button id="art-open">⚙ 生圖設定</button><button id="save">存檔</button><button id="load">讀檔</button></div></header>
+<main class="layout">
+<section class="world-column" aria-label="像素生活遊戲"><div class="scene-heading"><div><span class="eyebrow">YOUR NEIGHBOURHOOD</span><h2 id="place">午後小聚落</h2></div><span class="live-indicator"><i></i><span id="life-status">生活進行中</span></span></div>
+<nav id="places" class="places" aria-label="公共場所"></nav>
+<div class="stage"><canvas id="world" width="1024" height="704" tabindex="0" aria-label="俯視角像素地圖，方向鍵或 WASD 走動，E 與身邊的人或物互動"></canvas><div class="map-note" id="map-note">走近一個人，故事從這裡開始。</div><div class="stage-tag">✦ 共居小鎮</div><div class="dpad" aria-label="觸控方向鍵"><button data-dir="up" aria-label="向上走">↑</button><button data-dir="left" aria-label="向左走">←</button><button data-dir="down" aria-label="向下走">↓</button><button data-dir="right" aria-label="向右走">→</button></div><button id="interact" class="interact-button">E　互動</button></div>
+<div class="controls"><span><kbd>W A S D</kbd> / <kbd>↑ ↓ ← →</kbd> 走動</span><span><kbd>E</kbd> 互動 · 點地面走過去</span><span>走到門口即可進屋</span></div>
+<section id="facility-panel" class="facility-panel" hidden aria-label="場所互動"><div class="facility-heading"><div><span class="eyebrow">A LITTLE TIME OUTSIDE</span><h3 id="facility-name"></h3></div><button id="facility-close" aria-label="關閉場所選單">×</button></div><p id="facility-note"></p><div class="facility-toolbar"><input id="catalog-search" type="search" placeholder="找一本書、一杯咖啡…" aria-label="搜尋場所內容"><span id="wallet"></span><button id="rest">過十分鐘 · 不扣 API</button></div><div id="catalog" class="catalog"></div><div id="catalog-more"></div><p id="facility-progress" role="status"></p><div id="outing-log" class="outing-log"></div></section>
+<section class="daily-life" aria-label="自己的收入與物品"><div id="job-progress" role="status"></div><div id="life-actions" class="life-actions"></div><details id="pocket"><summary id="pocket-title">口袋與日常</summary><p id="needs-note"></p><p id="income-note"></p><div id="inventory" class="inventory"></div></details><div id="market-trades" class="market-trades" hidden></div></section>
+<details id="wardrobe-panel" class="daily-life wardrobe-panel"><summary id="wardrobe-title">衣櫃</summary><p id="wardrobe-note"></p><div id="wardrobe-items"></div></details>
+<div class="conversation" id="conversation"><div class="portrait-wrap"><img id="portrait" src="/assets/lpc-member-01-original-portrait.png" alt="角色像素立繪"><span class="portrait-caption" id="portrait-caption">25 歲 · 成年成員</span></div><div class="dialogue-main"><div class="dialogue-heading"><div><span class="eyebrow">A MOMENT TOGETHER</span><h3 id="speaker">在庭院逛逛</h3></div><button id="close-dialogue" aria-label="結束交談">×</button></div><div id="messages" class="messages" role="log" aria-live="polite"><p class="empty">每個人都有自己的日子。<br>靠近她，按 E 聊聊。</p></div><form id="talk-form"><label for="message" class="sr-only">想對她說的話</label><input id="message" maxlength="800" autocomplete="off" placeholder="走近她之後，說點什麼…" disabled><button id="send" type="submit" disabled>說話 ↗</button></form><div class="dialogue-actions"><button id="invite" disabled>一起坐坐</button><button id="cg" disabled>一般 CG</button><button id="speech-stop" disabled>停止語音</button><span id="speech-now" role="status"></span><span id="chat-status">聊天使用 Grok 4.3</span></div></div></div>
+<div id="notice" class="notice" role="status" aria-live="polite"></div>
+</section>
+<aside class="sidebar"><div class="roster-heading"><span class="eyebrow">THE PEOPLE HERE</span><h2>共居與街坊 <span id="roster-count">16</span></h2><p>點選視野中的人，走近再聊。</p></div><div id="roster" class="roster"></div><div class="small-card"><span class="eyebrow">LET THE DAY UNFOLD</span><p>她們會工作、散步，也可能拒絕邀約。<br>你離開時，生活仍會往前。</p><button id="wait">等一會兒 · 讓角色做決定</button></div><details class="settings"><summary>用量與遊戲資訊</summary><p id="usage"></p><p id="memory-info"></p><p>H 已封印。一般 CG 需連接本機 Stable Diffusion。</p><p>美術：<a href="https://opengameart.org/content/lpc-victorian-buildings" target="_blank" rel="noreferrer">LPC 建築與街景 ↗</a> · <a href="https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator" target="_blank" rel="noreferrer">LPC 人物 ↗</a><br>場景編排與遊戲引擎：本專案製作。</p><details class="art-credits"><summary>完整素材署名與授權</summary><pre>LPC art used in 午後共居 v0.10
+
+World artwork: original tiles from the four sources below, composed/cropped/recolored by this project. Map compositions are distributed under CC BY-SA 4.0.
+Character layers: selected OGA-BY 3.0 / CC0 alternatives where offered; CC BY-SA 4.0 for layers without OGA-BY. Composite edits are distributed under CC BY-SA 4.0. No authors endorse this game.
+Changes: native 32px tile composition, recoloring, atlas cropping, eleven character identities and outfit previews. Zoo animal icons, rugs and engine are project-authored.
+https://creativecommons.org/licenses/by-sa/4.0/
+https://static.opengameart.org/OGA-BY-3.0.txt
+
+
+=== base/LPC Base Assets/CREDITS.TXT ===
+Lanea Zimmerman (AKA Sharm)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NOTE: These assets by Leana Zimmerman are also available under the OGA-BY 3.0 License. -Medicine Storm 4/12/2022
+
+Base tileset
+ - barrel.png
+ - brackish.png
+ - buckets.png
+ - bridges.png
+ - cabinets.png
+ - cement.png
+ - cementstair.png
+ - chests.png
+ - country.png
+ - cup.png
+ - dirt2.png
+ - dirt.png
+ - dungeon.png
+ - grassalt.png
+ - grass.png
+ - holek.png
+ - holemid.png
+ - hole.png
+ - house.png
+ - inside.png
+ - kitchen.png
+ - lava.png
+ - lavarock.png
+ - mountains.png
+ - rock.png
+ - shadow.png
+ - signs.png
+ - stairs.png
+ - treetop.png
+ - trunk.png
+ - waterfall.png
+ - watergrass.png
+ - water.png
+ - princess.png and princess.xcf
+
+Much style guide work
+
+co-author of LPC background cup image
+
+Stephen Challener (AKA Redshrike)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NOTE: These assets by Stephen Challener are also available under the OGA-BY 3.0 License. -Medicine Storm 4/12/2022
+
+Character templates
+ - female_walkcycle.png
+ - female_hurt.png
+ - female_slash.png
+ - female_spellcast.png
+ - male_walkcycle.png
+ - male_hurt.png
+ - male_slash.png
+ - male_spellcast.png
+ - male_pants.png
+ - male_hurt_pants.png
+ - male_fall_down_pants.png
+ - male_slash_pants.png
+
+Much style guide work
+
+
+Charles Sanchez (AKA CharlesGabriel)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Monsters
+ - bat.png
+ - bee.png
+ - big_worm.png
+ - eyeball.png
+ - ghost.png
+ - man_eater_flower.png
+ - pumpking.png
+ - slime.png
+ - small_worm.png
+ - snake.png
+
+Manuel Riecke (AKA MrBeast)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ - hairfemale.png and hairfemale.xcf
+ - hairmale.png and hairmale.xcf
+ - soldier.png
+ - soldier_altcolor.png
+
+The 60 degree perspective render in the style guide
+
+
+Daniel Armstrong (AKA HughSpectrum)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Castle work:
+
+ - castlewalls.png
+ - castlefloors.png
+ - castle_outside.png
+ - castlefloors_outside.png
+ - castle_lightsources.png
+
+=== interior/LPC_house_interior/credits.txt ===
+= Wooden floor(CC-BY-SA) =
+ * Horizontal wooden floor by Lanea Zimmerman (AKA Sharm)
+ * Horizontal wooden floor with hole by Lanea Zimmerman (AKA Sharm) and Tuomo Untinen
+ * Vertical wooden floor by Tuomo Untinen
+ * Vertical wooden floor with hole by Tuomo Untinen
+= Wooden wall topping (CC-BY-SA) =
+ * Tuomo Untinen
+= Pile of barrels =
+ * Based LPC base tiles by Lanea Zimmerman (AKA Sharm)
+= Decorational stuff (CC-BY-SA) =
+ * Green bottle
+ * Wine glass and bottle
+ * Hanging sacks
+ * Wall mounted rope and ropes
+ * Wall mounted swords
+ * Wall mounted kite shield
+ * Wall hole
+ By Tuomo Untinen
+ * Small sack from LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+ * Purple bottles and gray lantern from Hyptosis Mage city
+ * Green and blue bottle by Tuomo Untinen
+= Wall clock (CC-BY-SA) =
+ * Lanea Zimmerman AKA Sharm
+ * Tuomo Untinen (Scaled down and animation)
+= Stone floor (CC-BY-SA)= 
+ * Tuomo Untinen 
+= Cobble stone floor (CC-BY-SA)= 
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+= Cabinets and kitchen stuff including metal stove(CC-BY-SA) =
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Cutboard is made by Hyptosis
+ * Sacks based on LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+ * Spears by Tuomo Untinen
+ * Vertical chest by Tuomo Untinen based on LPC base tiles Lanea Zimmerman (AKA Sharm)
+Manuel Riecke (AKA MrBeast)
+= Skull (CC-BY-SA) =
+ * http://opengameart.org/content/lpc-dungeon-elements
+ * Graphical artist Lanea Zimmerman AKA Sharm
+ * Contributor William Thompson
+= pile sacks =
+ * LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+= Pile of papers(CC-BY-SA) = 
+ * Based on caeles papers
+= Armor shelves(CC-BY-SA) =
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Armors by: Adapted by Matthew Krohn from art created by Johannes Sjölund
+= Table lamp =
+  * Tuomo Untinen
+= Distiller =
+ * Table is from LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Distiller by Tuomo Untinen
+= Fireplace =
+ * Tuomo Untinen
+ * Inspired by Lanea Zimmerman (AKA Sharm) Fireplace
+
+
+
+=== buildings/lpc-victorian-buildings/CREDITS-victorian.txt ===
+&quot;LPC Victorian Buildings,&quot; by bluecarrot16, Lanea Zimmerman (Sharm), Casper Nilsson, Lyndsay Takacs (cyanowl), and Redshrike. 
+
+CC-BY-SA 3.0 / GPL 3.0
+
+
+Liberated Pixel Cup (LPC) Base Assets 
+Lanea Zimmerman (Sharm)
+CC-BY-SA 3.0 / CC-BY 3.0 / GPL 3.0
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+LPC: Interior Castle Tiles
+Sharm
+CC-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-interior-castle-tiles
+
+
+LPC C.Nilsson
+Casper Nilsson
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-cnilsson
+
+
+Shabby Chic Cabin Remix
+Lyndsay Takacs (cyanowl) 
+CC0
+https://opengameart.org/content/shabby-chic-cabin-remix
+
+RPG Indoor Tileset: Expansion 1
+Redshrike
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/rpg-indoor-tileset-expansion-1
+
+=== decoration/lpc-victorian-decoration/CREDITS-decorations-victorian.txt ===
+[LPC] Victorian Town Decorations by bluecarrot16, Casper Nilsson, Lanea Zimmerman (Sharm), William Thompson, mold, AntumDeluge, Curt, Daniel Eddeland (daneeklu), caeles, George Bailey, Jetrel, Yar, Guido Bos, Ivan Voirol (Silver IV), Stephen Challener (Redshrike), the Open Surge team, Arthur Carvalho, Guilherme Vieira (n2liquid), NaRNeRZz, Diarandor, Armando Montero (ArMM1998), Tuomo Untinen (Reemax), Buch.
+
+License: CC-BY-SA 4.0
+
+## Based on: 
+
+LPC C.Nilsson
+Casper Nilsson
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-cnilsson
+
+LPC Base Assets
+Lanea Zimmerman (AKA Sharm)
+CC-BY 3.0 / GPL 3.0
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+[LPC] Signposts, graves, line cloths and scare crow
+Reemax
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-signposts-graves-line-cloths-and-scare-crow
+
+LPC: Modified base tiles
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 3.0 / GPL 3.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-modified-base-tiles
+
+[LPC] Misc
+Lanea Zimmerman, William Thompson
+https://opengameart.org/content/lpc-misc
+
+LPC Lamp Posts Rework
+Curt, Lanea Zimmerman (Sharm), William.Thompsonj, &amp; mold, reworked by AntumDeluge
+CC-BY 3.0 /GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-lamp-posts-rework
+
+[LPC] Farming tilesets, magic animations and UI elements
+Daniel Eddeland (daneeklu)
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
+
+[LPC] Adobe Building Set
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-adobe-building-set
+
+[LPC] caeles&#x27; art
+caeles
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-caeles-art
+
+[LPC] Arabic Elements
+Lanea Zimmerman, William Thompson
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-arabic-elements
+
+[LPC] Water Fountain
+Curt, Sharm, William.Thompsonj
+CC-BY 3.0
+https://opengameart.org/content/lpc-water-fountain
+
+LPC: Interior Castle Tiles
+Lanea Zimmerman
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-interior-castle-tiles
+
+16x16 Game Assets
+George Bailey
+CC-BY 4.0
+https://opengameart.org/content/16x16-game-assets
+
+RPG item set
+Jetrel
+CC0
+https://opengameart.org/content/rpg-item-set
+
+Isometric 64x64 Outside Tileset
+Yar
+CC-BY 3.0
+https://opengameart.org/content/isometric-64x64-outside-tileset
+
+[LPC] Guido Bos entries cut up
+Guido Bos
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-guido-bos-entries-cut-up
+
+Basic map 32x32 by Silver IV
+Ivan Voirol (Silver IV)
+CC-BY 3.0 / GPL 3.0 / GPL 2.0
+https://opengameart.org/content/basic-map-32x32-by-silver-iv
+
+32x32 (and 16x16) RPG Tiles--Forest and some Interior Tiles
+Stephen Challener (Redshrike) and the Open Surge team (http://opensnc.sourceforge.net)commissioned by Gaurav Munjal
+CC-BY 3.0
+https://opengameart.org/content/32x32-and-16x16-rpg-tiles-forest-and-some-interior-tiles
+
+Exterior 32x32 Town tileset
+Arthur Carvalho; Copyright Guilherme Vieira (n2liquid), https://fb.com/sonettocommons
+CC-BY-SA 4.0
+https://opengameart.org/content/town-tileset-exterior-32x32
+
+
+
+
+Tileset and Characters - Unfinished
+NaRNeRZz
+CC0
+https://opengameart.org/content/tileset-and-characters-unfinished
+
+Solarus Fountain
+Diarandor for Children of Solarus (https://github.com/solarus-games/children-of-solarus), a game for the Solarus game engine (http://www.solarus-games.org/).
+CC-BY-SA 4.0
+https://opengameart.org/content/solarus-fountain
+
+Zelda-like tilesets and sprites
+Armando Montero (ArMM1998)
+CC0
+https://opengameart.org/content/zelda-like-tilesets-and-sprites
+
+[LPC] Dungeon Elements
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 4.0 / CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-dungeon-elements
+
+[LPC] Guido Bos entries cut up
+Guido Bos
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-guido-bos-entries-cut-up
+
+[LPC] Hanging signs
+Reemax
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-hanging-signs
+
+Tuxemon tileset
+Buch
+CC-BY-SA 3.0
+https://opengameart.org/content/tuxemon-tileset
+
+=== Selected character layers ===
+https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+
+filename: body/bodies/female/walk.png
+notes: see details at https://opengameart.org/content/lpc-character-bases 
+authors: Benjamin K. Smith (BenCreating),bluecarrot16,TheraHedwig,Evert,MuffinElZangano,Durrani,Pierre Vigier (pvigier),ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-ladies,https://opengameart.org/content/lpc-7-womens-shirts,https://opengameart.org/content/lpc-jump-expanded,https://opengameart.org/content/lpc-be-seated,https://opengameart.org/content/lpc-revised-character-basics,https://gitlab.com/vagabondgame/lpc-characters,https://opengameart.org/content/lpc-male-jumping-animation-by-durrani,https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle 
+
+filename: head/heads/human/female/walk.png
+notes: original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16 
+authors: bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/,https://opengameart.org/content/lpc-character-bases 
+
+filename: hair/curly_long/adult/walk.png
+notes:  
+authors: ElizaWy 
+licenses: OGA-BY 3.0 
+urls: https://opengameart.org/content/lpc-hair 
+
+filename: hair/bangsshort/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/pixie/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/bob_side_part/adult/walk.png
+notes: Original by Thecilekli. Touchups by BlueCarrot16. Edited and animated by ElizaWy. 
+authors: thecilekli,bluecarrot16,ElizaWy 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-pink-short-hair,https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/bob/adult/walk.png
+notes: Original by bluecarrot16. Edited and animated by ElizaWy. 
+authors: ElizaWy,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/bangs_bun/adult/walk.png
+notes: Original by bluecarrot16, animated by ElizaWy. 
+authors: ElizaWy,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/ponytail/adult/fg/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/ponytail/adult/bg/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/long_straight/adult/walk.png
+notes:  
+authors: JaidynReiman,thecilekli,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-long-straight-hair-with-12-colors,https://opengameart.org/content/lpc-hair,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/long/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: torso/clothes/longsleeve/longsleeve2_buttoned/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: torso/clothes/longsleeve/longsleeve2_cardigan/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: torso/clothes/longsleeve/longsleeve2/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: https://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: legs/pants/thin/walk.png
+notes: original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy&#x27;s LPC Revised 
+authors: bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,http://opengameart.org/content/lpc-clothing-updates,https://opengameart.org/content/lpc-expanded-pants 
+
+filename: legs/skirts/plain/thin/walk.png
+notes: original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16, idle &amp; sit by Ahmad3366, color reduced &amp; female sit/emote by JaidynReiman 
+authors: bluecarrot16,Pierre Vigier (pvigier),Johannes Sjölund (wulax),Ahmad3366,JaidynReiman 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/lpc-medieval-fantasy-character-sprites 
+
+filename: feet/shoes/revised/thin/walk.png
+notes: original by ElizaWy, remaining frames by JaidynReiman 
+authors: ElizaWy,JaidynReiman 
+licenses: OGA-BY 3.0 
+urls: https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-socks-shoes 
+
+=== v0.16 Male player and scripted adult NPC layers ===
+Source: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+Male layers use the offered OGA-BY 3.0 option. Existing female/hair/background layer credits remain above. Pool composition and character layer edits: CC BY-SA 4.0.
+{&quot;filename&quot;: &quot;body/bodies/male/walk.png&quot;, &quot;notes&quot;: &quot;see details at https://opengameart.org/content/lpc-character-bases; &#x27;Thick&#x27; Male Revised Run/Climb by JaidynReiman (based on ElizaWy&#x27;s LPC Revised) &quot;, &quot;authors&quot;: &quot;bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 &quot;, &quot;urls&quot;: &quot;https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-male-jumping-animation-by-durrani,https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle,https://opengameart.org/content/lpc-revised-character-basics,https://opengameart.org/content/lpc-be-seated,https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads,https://opengameart.org/content/lpc-jump-expanded,https://opengameart.org/content/lpc-character-bases &quot;}
+{&quot;filename&quot;: &quot;head/heads/human/male/walk.png&quot;, &quot;notes&quot;: &quot;original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16 &quot;, &quot;authors&quot;: &quot;bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 &quot;, &quot;urls&quot;: &quot;https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-character-bases &quot;}
+{&quot;filename&quot;: &quot;torso/clothes/longsleeve/longsleeve2_buttoned/male/walk.png&quot;, &quot;notes&quot;: &quot;original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman &quot;, &quot;authors&quot;: &quot;ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0 &quot;, &quot;urls&quot;: &quot;http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts &quot;}
+{&quot;filename&quot;: &quot;torso/clothes/longsleeve/longsleeve2_cardigan/male/walk.png&quot;, &quot;notes&quot;: &quot;original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman &quot;, &quot;authors&quot;: &quot;ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0 &quot;, &quot;urls&quot;: &quot;http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts &quot;}
+{&quot;filename&quot;: &quot;torso/clothes/longsleeve/longsleeve2/male/walk.png&quot;, &quot;notes&quot;: &quot;original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman &quot;, &quot;authors&quot;: &quot;ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0 &quot;, &quot;urls&quot;: &quot;https://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts &quot;}
+{&quot;filename&quot;: &quot;legs/pants/male/walk.png&quot;, &quot;notes&quot;: &quot;original male pants by wulax, recolors and edits to v3 base by bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy&#x27;s LPC Revised &quot;, &quot;authors&quot;: &quot;bluecarrot16,JaidynReiman,ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0 &quot;, &quot;urls&quot;: &quot;https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-expanded-pants &quot;}
+{&quot;filename&quot;: &quot;feet/shoes/revised/male/walk.png&quot;, &quot;notes&quot;: &quot;original overalls and shoes by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shoes by JaidynReiman &quot;, &quot;authors&quot;: &quot;JaidynReiman,ElizaWy,Bluecarrot16,Stephen Challener (Redshrike),Johannes Sjölund (wulax) &quot;, &quot;licenses&quot;: &quot;OGA-BY 3.0,GPL 3.0 &quot;, &quot;urls&quot;: &quot;https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-socks-shoes &quot;}
+</pre></details><button id="reset">重新開始</button></details></aside>
+</main><footer><span>慢一點，也有事情正在發生。</span><span>PIXEL LIFE / LOCAL WORLD / SEPARATE AGENTS</span></footer>
+<div id="cg-modal" class="cg-modal" hidden><button id="cg-close" aria-label="關閉 CG">×</button><img id="cg-image" alt="一般生活 CG"></div>
+<div id="movie-modal" class="movie-modal" hidden><div class="movie-heading"><strong id="movie-name"></strong><button id="movie-close" aria-label="關閉電影">×</button></div><iframe id="movie-frame" title="官方免費電影" allow="fullscreen" referrerpolicy="no-referrer"></iframe><p>© Blender Foundation · 官方開放電影，保留完整片尾署名。角色以文字資料理解劇情。</p></div>
+<dialog id="art-modal" class="art-modal" aria-labelledby="art-title">
+ <div class="art-heading"><div><span class="eyebrow">LOCAL CHARACTER STUDIO</span><h2 id="art-title">角色生圖設定</h2><p id="art-summary"></p></div><button id="art-close" aria-label="關閉生圖設定">×</button></div>
+ <nav class="art-tabs" role="tablist" aria-label="生圖設定頁籤"><button role="tab" aria-selected="true" data-art-tab="connection">SD 連線</button><button role="tab" aria-selected="false" data-art-tab="character">角色與 LoRA</button><button role="tab" aria-selected="false" data-art-tab="templates">固定生成模板</button><button role="tab" aria-selected="false" data-art-tab="native">完整 SD／原生模板</button><button role="tab" aria-selected="false" data-art-tab="resources">所有本機資源</button><button role="tab" aria-selected="false" data-art-tab="jobs">生成與差分預覽</button></nav>
+ <p id="art-status" role="status" class="art-status"></p>
+ <section data-art-panel="connection" role="tabpanel">
+  <h3>直接連接 SD 資料夾</h3><p>選單來自這台電腦的實際安裝。模型保留在原資料夾，遊戲透過本機 API 使用它們，不複製大型權重。</p>
+  <label class="art-full">SD 所在資料夾<select id="art-installation"></select></label><div class="art-toolbar"><button id="art-folder-open">在檔案總管開啟</button><button id="art-scan">重新掃描本機資源</button><span id="art-backend"></span></div>
+  <details><summary>找不到我的 SD 資料夾</summary><div class="art-toolbar"><input id="art-folder-path" type="text" placeholder="D:\我的SD\ComfyUI" aria-label="其他 SD 安裝資料夾路徑"><button id="art-folder-add">加入資料夾</button></div><p>需包含 WebUI 的 webui.py 或 ComfyUI 的 main.py 與 comfy 資料夾。會讀取 models、embeddings、共用模型目錄及已安裝的擴充。</p></details>
+  <div class="art-grid"><label>本機 API 位址<input id="art-url" type="url" placeholder="http://127.0.0.1:7861"></label><label>底模 Checkpoint<select id="art-checkpoint"></select></label><label>VAE<select id="art-vae"></select></label><label>Sampler 取樣器<select id="art-sampler"></select></label><label>Scheduler 排程<select id="art-scheduler"><option>Automatic</option><option>Karras</option><option>normal</option><option>exponential</option><option>sgm_uniform</option></select></label></div>
+  <div class="art-toolbar"><button id="art-start">啟動所選本機 SD</button><button id="art-probe">保存並測試 SD 連線</button><strong id="art-connection"></strong></div>
+  <div class="art-help"><p><strong>資料夾和服務分開：</strong>找到權重不代表 SD API 正在執行。測試連線會讀取服務實際提供的底模、LoRA、VAE 和取樣器；生成時再次核對檔案，避免向錯誤服務送出未安裝的 LoRA。</p><p><strong>WebUI / reForge：</strong>使用 --api 或 --nowebui，指定 --server-name 127.0.0.1。此專案提供獨立的本機啟動腳本，保留你的原始啟動設定。</p><p><strong>ComfyUI：</strong>預設 8188。使用 CheckpointLoaderSimple → LoraLoader → CLIPTextEncode → KSampler → VAEDecode → SaveImage；差分改以 LoadImage → VAEEncode 重繪。此工作流需要完整 SD / SDXL checkpoint，UNet、Flux 或影片模型只列入資源清單，不能當成此底模。</p><p><strong>角色一致性：</strong>底模架構需符合 LoRA，SDXL／SD1.5 已知不相容時會拒絕生成。同一架構中的 Pony／Illustrious 等訓練差異仍需自行確認；同一 Seed 並不保證差分完全一致。</p></div>
+ </section>
+ <section data-art-panel="character" role="tabpanel" hidden>
+  <h3>每個角色獨立的外觀配方</h3><label class="art-full">角色<select id="art-character"></select></label><p id="art-character-description"></p>
+  <div class="art-grid"><label>角色 LoRA<select id="art-lora"></select></label><label>角色 LoRA 權重<input id="art-weight" type="number" min="0" max="1.5" step="0.05"></label><label>角色觸發詞<input id="art-trigger" type="text" maxlength="1600" placeholder="填寫 LoRA 作者提供的角色觸發詞"></label><label>固定 Seed<input id="art-seed" type="number" min="0" max="4294967295" step="1"></label><label class="art-full">身份補充描述<textarea id="art-identity" rows="3" maxlength="1600" placeholder="髮型、髮色、眼睛、身形等固定特徵"></textarea></label><label>額外 SFW 服装 LoRA（可選）<select id="art-clothes-lora"></select></label><label>服裝 LoRA 權重<input id="art-clothes-weight" type="number" min="0" max="1.5" step="0.05"></label><label>預設預覽表情<select id="art-expression"><option value="neutral">平常</option><option value="happy">開心</option><option value="shy">害羞</option><option value="sad">難過</option><option value="surprised">驚訝</option><option value="angry">生氣</option></select></label></div>
+  <pre id="art-lora-info" class="art-help"></pre>
+  <label class="art-check"><input id="art-character-auto" type="checkbox">此角色可自動生成</label><label class="art-check"><input id="art-auto" type="checkbox">啟用自動生成：已綁定角色首次生成；實際換裝後補齊新素材</label>
+  <p>自動生成預設開啟；保存已選 LoRA 的角色後，就會排入生成。需要兩個開關都開啟，且已連線、已選底模和角色 LoRA。工作在背景排隊，一次使用一個 GPU 任務；完成後仍由你預覽、套用。LoRA 與衣服不能代替角色的人格或私有記憶。</p>
+  <p>生成讀取角色目前穿著，買了但沒穿的衣服不會出現在圖中。額外服裝 LoRA 是此角色的造型疊加，建議留空，避免覆蓋不同衣服的實際細節。穿回同一套衣服會使用已套用的快取。</p>
+  <div class="art-toolbar"><button id="art-generate-portrait">生成此角色立繪與差分</button><button id="art-generate-pixel">生成此角色像素行走圖</button><button id="art-generate-both">生成此角色全部素材</button><button id="art-generate-all">生成所有已綁定角色</button></div>
+ </section>
+ <section data-art-panel="templates" role="tabpanel" hidden><details class="art-template"><summary>泳池服裝 LoRA（下水生成必須綁定）</summary><div class="art-grid"><label>女性運動連身泳裝 LoRA<select id="art-swim-onepiece"></select></label><label>男性運動泳裝 LoRA<select id="art-swim-trunks"></select></label><label>連身泳裝觸發詞<input id="art-swim-onepiece-trigger" maxlength="300"></label><label>男性泳裝觸發詞<input id="art-swim-trunks-trigger" maxlength="300"></label><label>連身泳裝權重<input id="art-swim-onepiece-weight" type="number" min="0.1" max="1.5" step="0.05"></label><label>男性泳裝權重<input id="art-swim-trunks-weight" type="number" min="0.1" max="1.5" step="0.05"></label></div><p>泳装依實際穿著自動疊加，角色 LoRA 保留。未選泳裝 LoRA 時仍可游泳，但 SD 不會冒充已綁定或生成泳裝素材。男性主角需選男性角色 LoRA。</p></details>
+  <h3>固定模板與差分</h3><p>可用變數：{identity} 角色身份、{outfit} 當下穿著、{expression} 表情、{direction} 方向、{pose} 姿勢、{scene} 一般 CG 公開場景。LoRA 標籤由選單自動加入，請勿手寫。</p>
+  <fieldset class="art-expressions"><legend>立繪差分（平常為身份參考）</legend><label><input type="checkbox" data-art-expression="neutral" checked disabled>平常</label><label><input type="checkbox" data-art-expression="happy">開心</label><label><input type="checkbox" data-art-expression="shy">害羞</label><label><input type="checkbox" data-art-expression="sad">難過</label><label><input type="checkbox" data-art-expression="surprised">驚訝</label><label><input type="checkbox" data-art-expression="angry">生氣</label></fieldset>
+  <details class="art-template" open><summary>立繪模板</summary><div class="art-grid"><label class="art-full">正向 Prompt<textarea id="art-portrait-prompt" rows="4" maxlength="6000"></textarea></label><label class="art-full">負向 Prompt<textarea id="art-portrait-negative" rows="4" maxlength="6000"></textarea></label><label>寬度<input id="art-portrait-width" type="number" min="256" max="1536" step="64"></label><label>高度<input id="art-portrait-height" type="number" min="256" max="1536" step="64"></label><label>Steps 步數<input id="art-portrait-steps" type="number" min="1" max="60" step="1"></label><label>CFG 引導<input id="art-portrait-cfg" type="number" min="1" max="15" step="0.5"></label><label>差分重繪幅度<input id="art-portrait-denoise" type="number" min="0.05" max="0.95" step="0.05"></label></div></details><details class="art-template" open><summary>像素行走模板</summary><div class="art-grid"><label class="art-full">正向 Prompt<textarea id="art-pixel-prompt" rows="4" maxlength="6000"></textarea></label><label class="art-full">負向 Prompt<textarea id="art-pixel-negative" rows="4" maxlength="6000"></textarea></label><label>寬度<input id="art-pixel-width" type="number" min="256" max="1536" step="64"></label><label>高度<input id="art-pixel-height" type="number" min="256" max="1536" step="64"></label><label>Steps 步數<input id="art-pixel-steps" type="number" min="1" max="60" step="1"></label><label>CFG 引導<input id="art-pixel-cfg" type="number" min="1" max="15" step="0.5"></label><label>差分重繪幅度<input id="art-pixel-denoise" type="number" min="0.05" max="0.95" step="0.05"></label></div></details>
+  <details class="art-template"><summary>一般 CG 模板（對話區的一般 CG 使用此設定）</summary><div class="art-grid"><label class="art-full">正向 Prompt<textarea id="art-cg-prompt" rows="4" maxlength="6000"></textarea></label><label class="art-full">負向 Prompt<textarea id="art-cg-negative" rows="4" maxlength="6000"></textarea></label><label>寬度<input id="art-cg-width" type="number" min="256" max="1536" step="64"></label><label>高度<input id="art-cg-height" type="number" min="256" max="1536" step="64"></label><label>Steps 步數<input id="art-cg-steps" type="number" min="1" max="60"></label><label>CFG<input id="art-cg-cfg" type="number" min="1" max="15" step="0.5"></label><label>場景重繪幅度<input id="art-cg-denoise" type="number" min="0.05" max="0.95" step="0.05"></label></div><p>{scene} 使用玩家當下所在場所的公開環境。角色 LoRA、身份立繪及當下穿著共同作為生成配方；CG 保留場景背景。先生成一張身份參考，再生成一張 CG，共兩張。需要走近角色，且先為她綁定 LoRA；H 入口保持封印。</p></details><h3>像素姿勢與後製</h3><details><summary>本機去背執行環境</summary><pre id="art-rmbg-runtime" class="art-help"></pre><p>優先使用現有 WebUI Python，其次 ComfyUI Python；只使用現有套件和本機權重。CPU 已实機驗證，CUDA 選項未做另一次去背實機測試。</p></details><div class="art-grid"><label>姿勢 ControlNet 模型<select id="art-control-model"></select></label><label>姿勢控制權重<input id="art-control-weight" type="number" min="0.1" max="1.5" step="0.05"></label></div><label class="art-full">方向與步伐參考<select id="art-pixel-guide"><option value="controlnet">角色立繪＋純骨架 ControlNet（建議）</option><option value="lpc">LPC 方向／步伐重繪（舊模式）</option><option value="identity">第一張 SD 像素圖 → SD img2img</option></select></label><div class="art-grid"><label>像素色盤上限<select id="art-palette"><option>16</option><option>32</option><option>48</option><option>64</option><option>128</option><option>256</option></select></label><label>白背景去除容差<input id="art-tolerance" type="number" min="1" max="80"></label></div><label class="art-check"><input id="art-palette-reference" type="checkbox">像素衣服主色對齊身份立繪（適合單一主色，可關閉）</label><label class="art-check"><input id="art-background" type="checkbox">啟用人物去背</label>
+  <div class="art-grid"><label>去背方式<select id="art-background-method"><option value="rmbg">RMBG-2.0 神經去背 · 已安裝權重</option><option value="edge">近白連通背景 · 無模型</option></select></label><label>去背設備<select id="art-background-device"><option value="cpu">CPU · 避免佔用 SD 顯存</option><option value="cuda">CUDA GPU</option></select></label><label class="art-full">本機 RMBG 模型<select id="art-background-model"></select></label><label>去背推論解析度<select id="art-background-resolution"><option>512</option><option>768</option><option>1024</option></select></label></div><div class="art-help"><p><strong>立繪：</strong>先生成平常表情，其餘差分使用同一張身份參考做 img2img。建議重繪幅度 0.20–0.40；太高會換臉，太低可能沒有表情差異。尺寸依底模調整，Steps 影響生成時間，CFG 太高可能造成顏色過飽和。</p><p><strong>像素圖：</strong>先以同一角色 LoRA、身份與實際穿著生成平常立繪，作為像素外觀參考；ControlNet 僅輸入無髮型、無衣服的 OpenPose 骨架。每個方向先獨立轉身，再使用該方向的圖生成左右步伐，避免沿用 LPC 衣服。像素基礎重繪建議 0.75–0.85，背面與側面自動增加 0.12（最多 0.95），步伐使用 0.60。只生成像素時另生成一張身份立繪，總共 13 張；完整表情＋像素是 18 張。</p><p><strong>去背：</strong>RMBG 使用現有 SD 的 Python 和本機 RMBG-2.0 完整權重，禁止連網下載；一批原圖完成後才去背，不與 SD 搶同時的生成任務，預設 CPU。可提高至 1024 解析度改善細邊；模型用途依其原作者授權。近白連通去背仍可選，容差只適用該模式。<a href="https://huggingface.co/briaai/RMBG-2.0" target="_blank" rel="noopener noreferrer">RMBG 模型與來源授權 ↗</a></p><p><strong>行走表：</strong>12 張生成圖統一到 64×64 格子，腳底 y=60，再組為 192×256 RGBA；每格記錄方向、步伐、實際透明邊界與腳底。每個方向都獨立生成，不以左右鏡像替代。仍須預覽身份、衣服與步伐細節再套用；不保證任意 LoRA 能一次完全一致。</p><p><strong>可重現：</strong>原圖、底模／LoRA 路徑、大小與修改時間、Seed、模板、衣服 render_key 和 API 模型名稱一起保存。相同配方命中快取；失敗／取消可以重試，已完成單張可續用。</p><p><strong>SFW：</strong>固定加入成年、完整日常服裝及排除裸露的提示。H 入口維持封印，H 類 LoRA 不可選；生圖仍需預覽確認品質。</p></div>
+ </section>
+
+ <section data-art-panel="native" role="tabpanel" hidden>
+  <h3>直接使用本機完整 SD</h3><p>原生介面保留已載入的擴充、節點、放大、局部重繪與其他工具。可在此視窗操作，也可以另開大視窗。</p>
+  <div class="art-grid"><label>SD 安裝資料夾<select id="art-native-installation"></select></label><label>完整介面位址<input id="art-native-url" type="url" spellcheck="false"></label></div>
+  <div class="art-toolbar"><button id="art-native-start">啟動完整 SD</button><button id="art-native-open">在遊戲內開啟 SD 視窗</button><a id="art-native-link" target="_blank" rel="noopener noreferrer">另開完整 SD ↗</a><button id="art-native-hide" hidden>收起 SD 視窗</button></div>
+  <p id="art-native-location"></p><iframe id="art-native-frame" title="本機完整 Stable Diffusion 介面" hidden referrerpolicy="no-referrer"></iframe>
+  <h3>選定遊戲的固定模板</h3><p>立繪、像素與一般 CG 可各自選不同模板。只保存模板不會開始生圖；角色 LoRA 仍需在「角色與 LoRA」逐一選擇。</p>
+  <div class="art-grid"><label>立繪差分<select id="art-native-portrait"></select></label><label>像素行走<select id="art-native-pixel"></select></label><label>一般 CG<select id="art-native-cg"></select></label></div>
+  <div class="art-toolbar"><button id="art-native-use">保存三種用途的模板選擇</button></div>
+  <details class="art-template" open><summary>從原生 SD 保存新模板</summary>
+   <p>WebUI：匯入原生輸出的 PNG、PNG Info 文字或完整 API payload JSON。ComfyUI：匯入 Export (API) JSON、含節點圖的原始 PNG，或擷取已完成的生成紀錄。普通畫布 JSON 請先在 ComfyUI 轉為 API 格式。</p>
+   <div class="art-toolbar"><label class="art-import-label">匯入 JSON／PNG／文字<input id="art-native-import" type="file" accept=".json,.png,.txt,application/json,image/png,text/plain"></label><select id="art-native-resource" aria-label="本機既有 ComfyUI 工作流"></select><button id="art-native-load-resource">讀取既有工作流</button><button id="art-native-history-load">讀取 ComfyUI 生成紀錄</button><select id="art-native-history" aria-label="ComfyUI 已完成生成紀錄"></select><button id="art-native-capture">擷取所選紀錄</button></div>
+   <label>模板名稱<input id="art-native-title" maxlength="100" value="我的原生 SD 模板"></label><label>貼上原生參數／工作流<textarea id="art-native-document" rows="6" spellcheck="false" placeholder="可貼上 PNG Info 生成參數、完整 API payload 或 ComfyUI API JSON"></textarea></label>
+   <div class="art-toolbar"><button id="art-native-prepare">解析模板與可綁定欄位</button></div>
+   <details><summary>遊戲變數綁定與完整參數</summary><p>WebUI 自動注入當下 prompt、負向、Seed、底模、已選 LoRA 與參考圖，其餘原生參數保留。ComfyUI 保留完整節點圖，用下拉選單指定遊戲要替換的輸入欄位；沒有改動的節點維持原設定。</p><div id="art-native-bind-fields" class="art-grid"></div><label>完整綁定 JSON（同一變數可綁多個欄位）<textarea id="art-native-bindings" rows="6" spellcheck="false">{}</textarea></label><label>圖片輸出節點<select id="art-native-output"></select></label><p>ComfyUI 差分需 reference（LoadImage）與 denoise；像素骨架模式另需 control 圖片。中性立繪使用白底參考＋denoise 1，其餘差分注入同一人物參考圖。工作流的連線、放大及後製節點不會被刪除。</p></details>
+   <div class="art-toolbar"><button id="art-native-save">保存為固定模板</button></div>
+  </details>
+  <details class="art-template"><summary>管理已保存的原生模板</summary><div class="art-toolbar"><select id="art-native-library" aria-label="已保存原生模板"></select><button id="art-native-edit">讀取並編輯</button><button id="art-native-export">匯出完整模板</button><button id="art-native-delete">刪除未使用模板</button></div></details>
+  <p class="art-help">PNG Info 只還原 SD 寫進圖片的參數；未寫入的擴充參數請改匯入完整 API payload。原生視窗可使用本機現有功能，遊戲模板仍限 SFW、本機執行與單張 PNG 輸出；雲端付費節點需在原生 SD 手動操作。模板匯入與保存不呼叫聊天模型。</p>
+ </section>
+ <section data-art-panel="resources" role="tabpanel" hidden><h3>本機所有資源</h3><p>模型權重只讀取檔案資訊及 safetensors 內嵌標籤，不在遊戲中載入或執行。列出資源不代表此生成模板支援它。</p><div class="art-toolbar"><input id="art-resource-search" type="search" placeholder="搜尋檔名、路徑或底模架構" aria-label="搜尋本機 SD 資源"><select id="art-resource-kind" aria-label="資源類型"></select><button id="art-export-resources">下載完整資源清單</button></div><p id="art-resource-count"></p><div class="art-resource-table"><table><thead><tr><th>資源</th><th>類型</th><th>架構</th><th>大小</th><th>狀態</th><th>實際路徑</th></tr></thead><tbody id="art-resource-list"></tbody></table></div></section>
+ <section data-art-panel="jobs" role="tabpanel" hidden><h3>生成紀錄與差分預覽</h3><p>生成不會停止生活世界。取消會等待目前單張完成，避免打斷 SD 裡其他人的任務。預覽使用透明棋盤；套用只影響這個角色和這套穿著。</p><div id="art-jobs"></div></section>
+ <div class="art-footer"><button id="art-save">保存生圖設定</button><button id="art-export">匯出設定模板</button><label class="art-import-label">匯入設定模板<input id="art-import" type="file" accept="application/json,.json"></label><span>本機 SD · SFW · 不扣聊天 API</span></div>
+</dialog>
+
+
+<dialog id="social-modal" class="art-modal" aria-labelledby="social-heading"><div class="art-heading"><div><span class="eyebrow">A DAY WITH FRIENDS</span><h2 id="social-heading">共同活動</h2><p>各自答應、真的到場，才一起開始。</p></div><button id="social-close" aria-label="關閉共同活動">×</button></div>
+<p id="social-status" role="status" class="art-status"></p>
+<details class="social-invite" open><summary>發起多人邀約</summary><form id="social-create-form"><div class="art-grid"><label>活動名稱<input id="social-title" type="text" maxlength="100" placeholder="一起到公園走走"></label><label>場所<select id="social-venue"></select></label><label class="art-full">共同品項<select id="social-item"></select></label><label>多久後集合<select id="social-delay"><option value="10">十分鐘後</option><option value="20" selected>二十分鐘後</option><option value="40">四十分鐘後</option><option value="60">一小時後</option></select></label><label>自由活動時間（品項有自己的時長）<input id="social-duration" type="number" min="3" max="60" value="10"></label></div><fieldset class="art-expressions"><legend>邀請同伴（1–10 位）</legend><div id="social-people" class="social-people"></div></fieldset><div class="art-toolbar"><button type="submit">發出邀約 · 不扣 API</button><span>每人自行付款。原則上等待最多十分鐘；邀請者與至少一位同伴到場才開始。</span></div></form></details>
+<div class="art-toolbar"><button id="social-speech-stop" disabled>停止群聊語音</button><span id="social-speech-status" role="status"></span></div><h3>邀約與共同回憶</h3><p>角色可以婉拒、遲到或退出；缺席者沒有付款，也沒有活動內容或群聊記憶。取消尚未開始的活動不收費。途中離開不會自動退還已购买的品項費用。免費散步完成後會減輕疲勞與好奇需要。</p><div id="social-groups"></div></dialog>
+<dialog id="creation-modal" class="art-modal" aria-labelledby="creation-heading"><div class="art-heading"><div><span class="eyebrow">YOUR CHARACTERS</span><h2 id="creation-heading">人物設定</h2><p>玩家與共居角色，各自設定。背景故事可不填。</p></div><button id="creation-close" aria-label="關閉人物設定">×</button></div><p id="creation-status" role="status" class="art-status"></p>
+<div class="art-grid"><label>編輯範圍<select id="creation-mode"><option value="current">目前人物 · 保留進度</option><option value="template">新遊戲模板</option></select></label><label>選擇人物<select id="creation-person"></select></label><label>名字<input id="creation-name" type="text" maxlength="32"></label><label>成年年齡<input id="creation-age" type="number" min="18" max="120"></label><label>性別<select id="creation-gender"><option value="male">男性</option><option value="female">女性</option></select></label><label class="art-full">語氣與性格<textarea id="creation-voice" rows="3" maxlength="500"></textarea></label><label class="art-full">自己的目標<input id="creation-goal" type="text" maxlength="100"></label></div>
+<details><summary>外觀與聲音</summary><label class="art-full">外觀描述（加入 SD 身份提示）<textarea id="creation-appearance" rows="3" maxlength="1000" placeholder="例如髮型、髮色、眼睛、配件。SD 提示可用英文，留白則沿用原本身份設定。"></textarea></label><p>名字、年齡與性別立即套用到人物資料；外觀描述用於後續生圖，不會直接重繪現有圖片。原本 LoRA、衣櫃與聲線保留。</p><div class="art-toolbar"><button id="creation-art">LoRA 與 SD 生圖</button><button id="creation-assets">匯入像素圖與立繪</button><button id="creation-speech">聲線與語言</button></div></details>
+<label class="art-check"><input id="creation-background-enabled" type="checkbox">啟用自訂背景故事（可選）</label><label id="creation-background-field" class="art-full" hidden>來到共居生活之前的故事<textarea id="creation-background" rows="6" maxlength="2000" placeholder="工作經歷、朋友、喜好，或一直想完成的事。可以留白。"></textarea></label>
+<div class="art-help"><p>每人的性格與背景只進入自己的模型上下文。玩家仍由你控制；設定不會創造過去的對話、關係、收入或物品。</p></div>
+<div id="creation-live"><div class="art-toolbar"><button id="creation-prepare">預覽人物修改</button><button id="creation-apply" disabled>套用人物修改</button></div><pre id="creation-preview" class="art-help" style="white-space:pre-wrap"></pre><p>只套用所選人物；保留原記憶、關係、錢包、位置與進度。部件工坊的替換紀錄可還原。</p></div>
+<div class="art-toolbar"><button id="creation-save" hidden>保存創角模板</button></div><details id="creation-new" hidden><summary>依模板建立新存檔</summary><p>現在的自動／手動存檔先保留；API 用量不會重置。</p><label class="art-check"><input id="creation-new-confirm" type="checkbox">建立新的存檔，並保留現在的存檔</label><button id="creation-start">建立角色並開始新存檔</button></details><details><summary>恢復創角之前的原存檔</summary><div class="art-toolbar"><select id="creation-archive" aria-label="原存檔"></select><button id="creation-restore">恢復原存檔（也保留現在進度）</button></div></details>
+</dialog>
+<dialog id="speech-modal" class="art-modal" aria-labelledby="speech-heading"><div class="art-heading"><div><span class="eyebrow">VOICE / OPTIONAL</span><h2 id="speech-heading">語音與 TTS 模型</h2><p>角色自己說的話，使用各自選定的聲線。預設關閉，可隨時停止。</p></div><button id="speech-close" aria-label="關閉語音設定">×</button></div>
+<p id="speech-status" role="status" class="art-status"></p><div class="art-grid">
+<label class="art-check"><input id="speech-enabled" type="checkbox">啟用對話語音</label><label class="art-check"><input id="speech-auto" type="checkbox">自動朗讀新收到的角色台詞</label>
+<label class="art-full">TTS 類型／模型服務<select id="speech-provider"><option value="windows">Windows 本機語音 · 可直接用</option><option value="browser">瀏覽器提供的本機語音</option><option value="kokoro">Kokoro · 本機模型服務</option><option value="local">其他本機 TTS · OpenAI 相容介面</option></select></label>
+<label>朗讀語言<select id="speech-language"></select></label><label id='speech-language-mode-field'>本機模型語言參數<select id="speech-language-mode"><option value="voice">由聲線決定（相容預設）</option><option value="language">language（服務需支援）</option><option value="lang_code">lang_code（服務需支援）</option></select></label><label>語速（0.5–2）<input id="speech-speed" type="number" min="0.5" max="2" step="0.05"></label><label>音量（0–1）<input id="speech-volume" type="number" min="0" max="1" step="0.05"></label><label id="speech-pitch-field">音高（僅瀏覽器聲線）<input id="speech-pitch" type="number" min="0.5" max="2" step="0.05"></label>
+<label class="art-full">設定這位角色的聲線<select id="speech-person"></select></label>
+<label id="speech-windows-field" class="art-full">Windows 已安裝聲線<select id="speech-windows"></select></label><label id="speech-browser-field" class="art-full" hidden>瀏覽器本機聲線<select id="speech-browser"></select><span id="speech-browser-count"></span></label>
+</div><div id="speech-local-fields" hidden><div class="art-grid"><label class="art-full">本機服務地址<input id="speech-endpoint" placeholder="http://127.0.0.1:8880"></label><label>服务回報／目前指定的模型<select id="speech-model"></select></label><label>模型 ID（依服務實際名稱）<input id="speech-model-id" maxlength="200"></label><label>服務回報的聲線<select id="speech-local-voice"></select></label><label>此角色的聲線 ID<input id="speech-local-id" maxlength="200" placeholder="依服務目錄選擇或填入"></label></div><div class="art-toolbar"><button id="speech-probe">保存地址並檢查模型／聲線</button><span id="speech-service"></span></div><p>服務需已啟動，支援 /v1/audio/speech 並輸出 WAV。/v1/models 與 /v1/audio/voices 若沒有提供，可手動填實際 ID。選 Kokoro 不會自動安裝模型。其他模型需先提供相容服務，不能直接把權重路徑當服務。</p></div>
+<p id="speech-resource-count"></p><div class="art-help"><p>語言控制聲線與發音，不會自動翻譯台詞。Windows／瀏覽器需安裝對應語言的聲線。Kokoro 使用原生語言碼；其他本機模型可依服務選 language／lang_code 參數。</p><p>手動朗讀與試聽不會觸發 Grok。只朗讀玩家實際聽到的台詞，包括共同活動群聊；初次載入與讀檔不會重播整段歷史。Windows、瀏覽器與本機模型的聲線分開保存。瀏覽器聲線僅使用標記為本機的聲音。</p><p>語音生成在背景處理；停止按鈕停止播放並丟棄尚未播出的內容，本機服務可能繼續完成正在生成的單句。相同模型、聲線、語速與台詞可重用音訊快取，最多 128 份／256 MB。神經 TTS 與 SD 同時使用 GPU 時可能互相占用資源。</p></div>
+<div class="art-footer"><button id="speech-save">保存語音設定</button><button id="speech-preview">保存並試聽此角色</button><button id="speech-modal-stop" disabled>停止試聽／語音</button><button id="speech-refresh">重新讀取本機聲線</button><span>本機語音 · 不扣聊天 API</span></div></dialog>
+
+<dialog id="town-modal" class="art-modal" aria-labelledby="town-heading"><div class="art-heading"><div><h2 id="town-heading">小鎮的日子</h2><p>祭典、展覽與市集按遊戲日循環。一般 NPC 有自己的固定工作日程。</p></div><button data-life-close="town-modal" aria-label="關閉小鎮活動">×</button></div><div id="town-calendar"></div><h3>讓在場的人交流</h3><div class="art-grid"><label>先開口的 AI 成員<select id="town-speaker"></select></label><label>交談對象<select id="town-target"></select></label></div><button id="town-chat">開始公共交流 · Grok 4.3</button><p>兩人與玩家需靠近；AI 對 AI 最多各一次回應，一般 NPC 使用固定台詞。</p><details><summary>自主 AI 交流（使用聊天額度）</summary><label class="art-check"><input id="town-auto" type="checkbox">啟用自主 Grok 4.3 交流</label><div class="art-grid"><label>間隔（遊戲分鐘）<input id="town-interval" type="number" min="30" max="240" value="60"></label><label>每天最多模型回應<input id="town-limit" type="number" min="1" max="4" value="2"></label></div><button id="town-policy">保存自主交流設定</button><p>預設關閉；開啟後一次只呼叫一位角色，沿用全遊戲用量上限。</p></details><h3>泳池</h3><div id="pool-actions"></div><div id="town-conversation" class="messages" role="log"></div><p id="town-status" role="status"></p></dialog>
+<dialog id="illustration-modal" class="art-modal" aria-labelledby="illustration-heading"><div class="art-heading"><div><h2 id="illustration-heading">CG 場景插圖</h2><p>使用當下場景、角色 LoRA 與實際穿著；身份立繪可重用，場景插圖每次重新生成。</p></div><button data-life-close="illustration-modal" aria-label="關閉 CG 插圖">×</button></div><div class="art-grid"><label>畫面中的角色<select id="illustration-character"></select></label><label>目前场景<input id="illustration-scene" readonly></label><label class="art-full">補充場景描述（可留白）<textarea id="illustration-description" rows="3" maxlength="700" placeholder="例如：在泳池邊休息，午後陽光灑在水面上。"></textarea></label></div><button id="illustration-generate">用本機 SD 生成 CG 插圖</button><p id="illustration-status" role="status"></p><div id="illustration-jobs" class="art-previews"></div></dialog>
+<dialog id="assets-modal" class="art-modal" aria-labelledby="assets-heading"><div class="art-heading"><div><h2 id="assets-heading">美術素材與立繪差分庫</h2><p>替換圖片，保留地圖碰撞、角色記憶與玩法。</p></div><button data-life-close="assets-modal" aria-label="關閉美術素材">×</button></div><details open><summary>替換美術 PNG</summary><div class="art-grid"><label>類型<select id="asset-kind"><option value="portrait">角色立繪差分</option><option value="sprite">四方向行走圖</option><option value="background">場景背景</option></select></label><label>角色／場景<select id="asset-target"></select></label><label>表情<select id="asset-expression"></select></label><label>每方向幀數<select id="asset-frames"><option value="9">9 幀 · 576×256</option><option value="3">3 幀 · 192×256</option></select></label></div><label class="art-check"><input id="asset-outfit" type="checkbox" checked>只套用目前穿著</label><label class="art-check"><input id="asset-hide-decor" type="checkbox" checked>完整地圖背景已包含物件，隱藏原物件美術</label><label>PNG 檔案<input id="asset-file" type="file" accept="image/png,.png"></label><p id="asset-size"></p><button id="asset-upload">匯入並套用 PNG</button><div id="asset-installed"></div></details><details open><summary>累積的可複用立繪差分</summary><p>只收立繪與表情差分，按角色、身份設定、穿著和生成配方區分。其他人的立繪不會借用；CG 和行走表不收進此庫。</p><div id="portrait-library" class="art-previews"></div></details><p id="asset-status" role="status"></p></dialog>
+<script src="/life-settings.js?v=16" defer></script><dialog id="components-modal" class="art-modal" aria-labelledby="components-heading"><div class="art-heading"><div><h2 id="components-heading">部件工坊</h2><p>替換圖片、地圖、互動規則與 AI 工具。先預覽驗證，再套用；舊記憶和交易紀錄保留。</p></div><button id="components-close" aria-label="關閉部件工坊">×</button></div><div class="art-grid"><label>部件類型<select id="components-kind"></select></label><label>尋找部件<input id="components-search" placeholder="場景、物件或工具 ID"></label><label class="art-full">替換目標<select id="components-target"></select></label></div><p id="components-info"></p><label>替換指示<input id="components-instruction" maxlength="400" placeholder="例如：說明改成這裡可以更衣"></label><div class="art-toolbar"><button id="components-plan">依指示準備替換</button><button id="components-read">重新讀取</button><button id="components-export">匯出此部件包</button></div><details><summary>完整部件定義／匯入部件包</summary><p>可編輯目前定義，或貼上帶 instruction、changes 的部件包。固定 ID 會保留，碰撞、門口、物件行為可修改。</p><textarea id="components-json" rows="14" spellcheck="false"></textarea><button id="components-preview">預覽 JSON 替換</button><label>PNG 圖片（art 類型）<input id="components-png" type="file" accept="image/png,.png"></label><button id="components-upload">預覽 PNG 替換</button></details><h3>替換預覽</h3><pre id="components-preview-text">尚未準備替換。</pre><button id="components-apply" disabled>套用已驗證的替換</button><details><summary>替換紀錄與還原</summary><div id="components-history"></div></details><p id="components-status" role="status"></p><p>內建支援「說明／名稱／價格改成…」「互動改為休息」「尋路改為astar」。複雜指示可接 service:replacement 的本機 AI 接口；動作、對話、記憶、SD、TTS 與物件工具各自可換。</p></dialog><script src="/component-settings.js?v=17"></script><dialog id="preferences-modal" class="art-modal" aria-labelledby="preferences-heading"><div class="art-heading"><div><h2 id="preferences-heading">遊戲設定</h2><p>切換介面與新 AI 台詞的語言；原人物設定與歷史台詞保留。</p></div><button id="preferences-close" aria-label="關閉遊戲設定">×</button></div><label>介面與新台詞語言<select id="preferences-language"><option value="zh-TW">繁體中文</option><option value="ja">日本語</option><option value="en">English</option></select></label><p>TTS 聲線與朗讀語言在語音設定另行選擇。來源文章、使用者文字及原生 SD 介面保留原文。</p><p id="preferences-status" role="status"></p></dialog><script src="/i18n.js?v=19"></script></body></html>

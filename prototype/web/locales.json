@@ -1,0 +1,2894 @@
+{
+  "午後共居": {
+    "en": "Afternoon Life",
+    "ja": "午後の共同生活"
+  },
+  "午後共居 · 像素生活": {
+    "en": "Afternoon Life · Pixel sandbox",
+    "ja": "午後の共同生活 · ピクセル生活"
+  },
+  "午後小聚落": {
+    "en": "Afternoon neighbourhood",
+    "ja": "午後の街"
+  },
+  "✦ 共居小鎮": {
+    "en": "✦ Our neighbourhood",
+    "ja": "✦ 共同生活の街"
+  },
+  "遊戲設定": {
+    "en": "Game settings",
+    "ja": "ゲーム設定"
+  },
+  "關閉遊戲設定": {
+    "en": "Close game settings",
+    "ja": "ゲーム設定を閉じる"
+  },
+  "介面與新台詞語言": {
+    "en": "Interface and new dialogue language",
+    "ja": "画面と新しい台詞の言語"
+  },
+  "切換介面與新 AI 台詞的語言；原人物設定與歷史台詞保留。": {
+    "en": "Change the interface and future AI dialogue language. Character settings and past dialogue stay intact.",
+    "ja": "画面と今後のAI台詞の言語を変更します。人物設定と過去の台詞は保持されます。"
+  },
+  "TTS 聲線與朗讀語言在語音設定另行選擇。來源文章、使用者文字及原生 SD 介面保留原文。": {
+    "en": "Choose TTS voices and speech language separately in Voice settings. Source articles, user text and the native SD interface keep their original language.",
+    "ja": "TTSの声と言語は音声設定で別途選択します。出典の記事、入力した文章、SDの原生画面は原文のままです。"
+  },
+  "語言設定已保存。": {
+    "en": "Language saved.",
+    "ja": "言語設定を保存しました。"
+  },
+  "離線示範：日程與對話使用本機規則，沒有呼叫 AI 模型。": {
+    "en": "Offline demo: schedules and dialogue use local rules. No AI model is called.",
+    "ja": "オフライン体験版：日程と会話はローカルのルールで動作します。AIモデルは呼び出しません。"
+  },
+  "離線示範 · 不扣 API": {
+    "en": "Offline demo · no API calls",
+    "ja": "オフライン体験版 · API利用なし"
+  },
+  "離線示範回應中…": {
+    "en": "Preparing a demo reply…",
+    "ja": "体験版の返答を準備中…"
+  },
+  "人物設定": {
+    "en": "Character settings",
+    "ja": "人物設定"
+  },
+  "美術素材": {
+    "en": "Art assets",
+    "ja": "画像素材"
+  },
+  "部件工坊": {
+    "en": "Component workshop",
+    "ja": "部品工房"
+  },
+  "共同活動": {
+    "en": "Shared activities",
+    "ja": "共同活動"
+  },
+  "小鎮活動": {
+    "en": "Town events",
+    "ja": "街のイベント"
+  },
+  "CG 插圖": {
+    "en": "CG illustrations",
+    "ja": "CGイラスト"
+  },
+  "語音設定": {
+    "en": "Voice settings",
+    "ja": "音声設定"
+  },
+  "⚙ 生圖設定": {
+    "en": "⚙ Image generation",
+    "ja": "⚙ 画像生成設定"
+  },
+  "存檔": {
+    "en": "Save",
+    "ja": "セーブ"
+  },
+  "讀檔": {
+    "en": "Load",
+    "ja": "ロード"
+  },
+  "重新開始": {
+    "en": "Start over",
+    "ja": "最初から"
+  },
+  "Ⅱ 暫停": {
+    "en": "Ⅱ Pause",
+    "ja": "Ⅱ 一時停止"
+  },
+  "▶ 繼續": {
+    "en": "▶ Resume",
+    "ja": "▶ 再開"
+  },
+  "暫停生活時間": {
+    "en": "Pause world time",
+    "ja": "生活時間を止める"
+  },
+  "生活進行中": {
+    "en": "Life goes on",
+    "ja": "生活は進んでいます"
+  },
+  "時間暫停": {
+    "en": "Time paused",
+    "ja": "時間停止中"
+  },
+  "她正在思考": {
+    "en": "Thinking…",
+    "ja": "考え中…"
+  },
+  "E　互動": {
+    "en": "E  Interact",
+    "ja": "E  交流"
+  },
+  "走動": {
+    "en": "Move",
+    "ja": "移動"
+  },
+  "互動 · 點地面走過去": {
+    "en": "Interact · click the ground to walk",
+    "ja": "交流 · 地面をクリックして移動"
+  },
+  "走到門口即可進屋": {
+    "en": "Walk through a doorway to enter",
+    "ja": "入口まで歩くと入れます"
+  },
+  "公共場所": {
+    "en": "Public places",
+    "ja": "公共施設"
+  },
+  "共居與街坊": {
+    "en": "Residents & neighbours",
+    "ja": "同居人と街の人々"
+  },
+  "在庭院逛逛": {
+    "en": "A walk in the courtyard",
+    "ja": "庭を散歩"
+  },
+  "走近一個人，故事從這裡開始。": {
+    "en": "Walk up to someone. A story starts here.",
+    "ja": "誰かに近づく。物語はそこから始まります。"
+  },
+  "每個人都有自己的日子。": {
+    "en": "Everyone has a life of their own.",
+    "ja": "みんな、それぞれの毎日があります。"
+  },
+  "靠近她，按 E 聊聊。": {
+    "en": "Walk up and press E to chat.",
+    "ja": "近づいてEを押すと話せます。"
+  },
+  "每個人都有自己的日子。靠近她，按 E 聊聊。": {
+    "en": "Everyone has a life of their own. Walk up and press E to chat.",
+    "ja": "みんな自分の毎日があります。近づいてEで話しかけましょう。"
+  },
+  "她們會工作、散步，也可能拒絕邀約。": {
+    "en": "They work, take walks, and may decline an invitation.",
+    "ja": "仕事や散歩をし、誘いを断ることもあります。"
+  },
+  "你離開時，生活仍會往前。": {
+    "en": "Life continues while you are away.",
+    "ja": "あなたが離れていても、生活は続きます。"
+  },
+  "點選視野中的人，走近再聊。": {
+    "en": "Select someone in view and walk up to chat.",
+    "ja": "見える人を選び、近づいて話しましょう。"
+  },
+  "慢一點，也有事情正在發生。": {
+    "en": "Take your time. Things are happening.",
+    "ja": "ゆっくりでも、何かは起きています。"
+  },
+  "結束交談": {
+    "en": "End conversation",
+    "ja": "会話を終える"
+  },
+  "想對她說的話": {
+    "en": "What would you like to say?",
+    "ja": "何を話しますか？"
+  },
+  "說話 ↗": {
+    "en": "Speak ↗",
+    "ja": "話す ↗"
+  },
+  "送出": {
+    "en": "Send",
+    "ja": "送信"
+  },
+  "一起坐坐": {
+    "en": "Sit together",
+    "ja": "一緒に座る"
+  },
+  "一般 CG": {
+    "en": "SFW CG",
+    "ja": "通常CG"
+  },
+  "停止語音": {
+    "en": "Stop speech",
+    "ja": "読み上げ停止"
+  },
+  "停止群聊語音": {
+    "en": "Stop group speech",
+    "ja": "グループ読み上げ停止"
+  },
+  "聊天使用 Grok 4.3": {
+    "en": "Dialogue uses Grok 4.3",
+    "ja": "会話にはGrok 4.3を使用"
+  },
+  "Grok 4.3 回應中…": {
+    "en": "Grok 4.3 is replying…",
+    "ja": "Grok 4.3が返答中…"
+  },
+  "等一會兒 · 讓角色做決定": {
+    "en": "Wait · let characters decide",
+    "ja": "少し待つ · キャラクターに任せる"
+  },
+  "過十分鐘 · 不扣 API": {
+    "en": "Wait 10 minutes · no API call",
+    "ja": "10分待つ · API利用なし"
+  },
+  "用量與遊戲資訊": {
+    "en": "Usage & game information",
+    "ja": "利用状況とゲーム情報"
+  },
+  "完整素材署名與授權": {
+    "en": "Asset credits & licences",
+    "ja": "素材のクレジットとライセンス"
+  },
+  "場景編排與遊戲引擎：本專案製作。": {
+    "en": "Scene layouts and game engine by this project.",
+    "ja": "場面構成とゲームエンジンは本プロジェクト制作です。"
+  },
+  "H 已封印。一般 CG 需連接本機 Stable Diffusion。": {
+    "en": "Explicit content is disabled. SFW CG needs a local Stable Diffusion service.",
+    "ja": "成人向け生成は無効です。通常CGにはローカルSDサービスが必要です。"
+  },
+  "口袋與日常": {
+    "en": "Pocket & everyday life",
+    "ja": "持ち物と日常"
+  },
+  "自己的收入與物品": {
+    "en": "Your income & items",
+    "ja": "自分の収入と持ち物"
+  },
+  "衣櫃": {
+    "en": "Wardrobe",
+    "ja": "衣装棚"
+  },
+  "場所互動": {
+    "en": "Venue activities",
+    "ja": "施設での活動"
+  },
+  "搜尋場所內容": {
+    "en": "Search this venue",
+    "ja": "施設の内容を検索"
+  },
+  "找一本書、一杯咖啡…": {
+    "en": "Find a book, a coffee…",
+    "ja": "本やコーヒーを探す…"
+  },
+  "關閉場所選單": {
+    "en": "Close venue menu",
+    "ja": "施設メニューを閉じる"
+  },
+  "官方完整目錄 ↗": {
+    "en": "Official catalogue ↗",
+    "ja": "公式カタログ ↗"
+  },
+  "完整原文 ↗": {
+    "en": "Full source text ↗",
+    "ja": "全文の出典 ↗"
+  },
+  "來源 ↗": {
+    "en": "Source ↗",
+    "ja": "出典 ↗"
+  },
+  "官方免費電影": {
+    "en": "Official free movie",
+    "ja": "公式の無料映画"
+  },
+  "播放免費電影": {
+    "en": "Play free movie",
+    "ja": "無料映画を再生"
+  },
+  "關閉電影": {
+    "en": "Close movie",
+    "ja": "映画を閉じる"
+  },
+  "玩家": {
+    "en": "Player",
+    "ja": "プレイヤー"
+  },
+  "共居角色": {
+    "en": "Resident",
+    "ja": "同居人"
+  },
+  "成年成員": {
+    "en": "Adult resident",
+    "ja": "成人の同居人"
+  },
+  "一般 NPC": {
+    "en": "Scripted NPC",
+    "ja": "通常NPC"
+  },
+  "一般 NPC · 固定台詞 · 不扣聊天 API": {
+    "en": "Scripted NPC · fixed dialogue · no chat API call",
+    "ja": "通常NPC · 固定台詞 · 会話API利用なし"
+  },
+  "你": {
+    "en": "You",
+    "ja": "あなた"
+  },
+  "25 歲 · 成年成員": {
+    "en": "Age 25 · adult resident",
+    "ja": "25歳 · 成人の同居人"
+  },
+  "你 · 男性主角": {
+    "en": "You · male protagonist",
+    "ja": "あなた · 男性主人公"
+  },
+  "你 · 成年男性主角": {
+    "en": "You · adult male protagonist",
+    "ja": "あなた · 成人男性の主人公"
+  },
+  "角色": {
+    "en": "Character",
+    "ja": "キャラクター"
+  },
+  "角色像素立繪": {
+    "en": "Character pixel portrait",
+    "ja": "ピクセル立ち絵"
+  },
+  "休息中": {
+    "en": "Resting",
+    "ja": "休憩中"
+  },
+  "處理自己的事": {
+    "en": "Working on a personal goal",
+    "ja": "自分の用事を進めています"
+  },
+  "交談中": {
+    "en": "Talking",
+    "ja": "会話中"
+  },
+  "散步中": {
+    "en": "Walking",
+    "ja": "散歩中"
+  },
+  "赴約中": {
+    "en": "On the way to a meeting",
+    "ja": "待ち合わせへ移動中"
+  },
+  "打工中": {
+    "en": "Working a shift",
+    "ja": "アルバイト中"
+  },
+  "創作中": {
+    "en": "Crafting",
+    "ja": "制作中"
+  },
+  "活動中": {
+    "en": "Visiting",
+    "ja": "活動中"
+  },
+  "共同活動中": {
+    "en": "Together",
+    "ja": "共同活動中"
+  },
+  "視野中 · ": {
+    "en": "In view · ",
+    "ja": "見える範囲 · "
+  },
+  "就在身邊 · ": {
+    "en": "Nearby · ",
+    "ja": "すぐそば · "
+  },
+  "目前不在視野內": {
+    "en": "Currently out of view",
+    "ja": "現在は見えません"
+  },
+  " · 請先走近": {
+    "en": " · walk closer first",
+    "ja": " · 先に近づいてください"
+  },
+  "走近對方之後，說點什麼…": {
+    "en": "Walk closer, then say something…",
+    "ja": "近づいてから話しかけてください…"
+  },
+  "走近她之後，說點什麼…": {
+    "en": "Walk closer, then say something…",
+    "ja": "近づいてから話しかけてください…"
+  },
+  "附近沒有可互動的人或物。再走近一點。": {
+    "en": "Nothing to interact with nearby. Walk a little closer.",
+    "ja": "近くに交流できる人や物がありません。もう少し近づいてください。"
+  },
+  "她目前不在視野內。可以到她家附近看看。": {
+    "en": "She is out of view. Try looking near her home.",
+    "ja": "今は見えません。家の近くを見てみましょう。"
+  },
+  "她有自己的安排。試著問問她今天想做什麼。": {
+    "en": "She has her own plans. Ask what she'd like to do today.",
+    "ja": "彼女には自分の予定があります。今日は何をしたいか聞いてみましょう。"
+  },
+  "關閉人物設定": {
+    "en": "Close character settings",
+    "ja": "人物設定を閉じる"
+  },
+  "玩家與共居角色，各自設定。背景故事可不填。": {
+    "en": "Customise the player and each resident separately. Backstories are optional.",
+    "ja": "プレイヤーと同居人を個別に設定します。背景物語は任意です。"
+  },
+  "保存模板只影響新存檔；目前人物可另外預覽並套用，保留舊記憶與進度。": {
+    "en": "Templates apply to new saves. Preview and apply current-character edits separately, keeping memories and progress.",
+    "ja": "テンプレートは新規セーブ用です。現在の人物は別途プレビューして適用でき、記憶と進行を保持します。"
+  },
+  "編輯範圍": {
+    "en": "Edit scope",
+    "ja": "編集範囲"
+  },
+  "目前人物 · 保留進度": {
+    "en": "Current characters · keep progress",
+    "ja": "現在の人物 · 進行を保持"
+  },
+  "新遊戲模板": {
+    "en": "New-game template",
+    "ja": "新規ゲームのテンプレート"
+  },
+  "選擇人物": {
+    "en": "Select character",
+    "ja": "人物を選択"
+  },
+  "名字": {
+    "en": "Name",
+    "ja": "名前"
+  },
+  "成年年齡": {
+    "en": "Adult age",
+    "ja": "成人年齢"
+  },
+  "性別": {
+    "en": "Gender",
+    "ja": "性別"
+  },
+  "男性": {
+    "en": "Male",
+    "ja": "男性"
+  },
+  "女性": {
+    "en": "Female",
+    "ja": "女性"
+  },
+  "語氣與性格": {
+    "en": "Voice & personality",
+    "ja": "口調と性格"
+  },
+  "自己的目標": {
+    "en": "Personal goal",
+    "ja": "自分の目標"
+  },
+  "目前自己的目標": {
+    "en": "Current personal goal",
+    "ja": "現在の自分の目標"
+  },
+  "外觀與聲音": {
+    "en": "Appearance & voice",
+    "ja": "外見と声"
+  },
+  "外觀描述（加入 SD 身份提示）": {
+    "en": "Appearance description (added to SD identity)",
+    "ja": "外見の説明（SDの人物提示に追加）"
+  },
+  "例如髮型、髮色、眼睛、配件。SD 提示可用英文，留白則沿用原本身份設定。": {
+    "en": "Hair, eyes, accessories, etc. English works well for SD. Leave blank to keep the existing identity prompt.",
+    "ja": "髪型、髪色、目、アクセサリーなど。SDには英語も使えます。空欄なら既存の人物提示を使います。"
+  },
+  "名字、年齡與性別立即套用到人物資料；外觀描述用於後續生圖，不會直接重繪現有圖片。原本 LoRA、衣櫃與聲線保留。": {
+    "en": "Name, age and gender update character data. Appearance descriptions affect future generation, not existing images. LoRA, wardrobe and voices stay intact.",
+    "ja": "名前、年齢、性別は人物データに反映されます。外見の説明は今後の生成に使い、既存画像は描き直しません。LoRA、衣装棚、声は保持します。"
+  },
+  "LoRA 與 SD 生圖": {
+    "en": "LoRA & SD generation",
+    "ja": "LoRAとSD画像生成"
+  },
+  "匯入像素圖與立繪": {
+    "en": "Import sprites & portraits",
+    "ja": "歩行画像と立ち絵を取り込む"
+  },
+  "聲線與語言": {
+    "en": "Voices & languages",
+    "ja": "声と言語"
+  },
+  "啟用自訂背景故事（可選）": {
+    "en": "Use a custom backstory (optional)",
+    "ja": "独自の背景物語を使う（任意）"
+  },
+  "來到共居生活之前的故事": {
+    "en": "Life before moving here",
+    "ja": "ここに来る前の物語"
+  },
+  "工作經歷、朋友、喜好，或一直想完成的事。可以留白。": {
+    "en": "Work, friends, interests or an unfinished dream. You can leave this blank.",
+    "ja": "仕事、友人、好み、叶えたい夢など。空欄でも構いません。"
+  },
+  "每人的性格與背景只進入自己的模型上下文。玩家仍由你控制；設定不會創造過去的對話、關係、收入或物品。": {
+    "en": "Each character's personality and backstory enter only their own model context. You control the player. Settings do not invent past dialogue, relationships, income or items.",
+    "ja": "性格と背景は本人のモデル文脈にだけ入ります。プレイヤーはあなたが操作します。設定で過去の会話、関係、収入、持ち物は作りません。"
+  },
+  "預覽人物修改": {
+    "en": "Preview character changes",
+    "ja": "人物の変更をプレビュー"
+  },
+  "套用人物修改": {
+    "en": "Apply character changes",
+    "ja": "人物の変更を適用"
+  },
+  "只套用所選人物；保留原記憶、關係、錢包、位置與進度。部件工坊的替換紀錄可還原。": {
+    "en": "Apply only to the selected character. Memories, relationships, wallet, position and progress remain. Undo through workshop history.",
+    "ja": "選択した人物だけに適用します。記憶、関係、所持金、位置、進行は保持します。部品工房の履歴から復元できます。"
+  },
+  "保存創角模板": {
+    "en": "Save character template",
+    "ja": "人物テンプレートを保存"
+  },
+  "依模板建立新存檔": {
+    "en": "Start a new save from templates",
+    "ja": "テンプレートから新規セーブを作成"
+  },
+  "現在的自動／手動存檔先保留；API 用量不會重置。": {
+    "en": "Current autosaves and manual saves are archived first. API usage is not reset.",
+    "ja": "現在の自動・手動セーブを先に保存します。API利用量はリセットしません。"
+  },
+  "建立新的存檔，並保留現在的存檔": {
+    "en": "Create a new save and archive the current save",
+    "ja": "現在のセーブを残して新規セーブを作る"
+  },
+  "建立角色並開始新存檔": {
+    "en": "Create characters & start new save",
+    "ja": "人物を作成して新規セーブを開始"
+  },
+  "恢復創角之前的原存檔": {
+    "en": "Restore a previous save",
+    "ja": "人物作成前のセーブを復元"
+  },
+  "恢復原存檔（也保留現在進度）": {
+    "en": "Restore old save (archive current progress)",
+    "ja": "以前のセーブを復元（現在の進行も保持）"
+  },
+  "原存檔": {
+    "en": "Archived save",
+    "ja": "以前のセーブ"
+  },
+  "選擇原存檔": {
+    "en": "Select archived save",
+    "ja": "以前のセーブを選択"
+  },
+  "設定沒有差異。": {
+    "en": "No changes.",
+    "ja": "変更はありません。"
+  },
+  "修改目前人物：先預覽，再套用；保留記憶、錢包與進度。": {
+    "en": "Edit current characters: preview, then apply. Memories, wallet and progress stay intact.",
+    "ja": "現在の人物を編集：プレビュー後に適用します。記憶、所持金、進行は保持します。"
+  },
+  "新遊戲模板：保存後只在建立新存檔時採用。": {
+    "en": "New-game template: used only when starting a new save.",
+    "ja": "新規ゲームのテンプレート：新しいセーブ作成時だけ使います。"
+  },
+  "人物設定已套用；原記憶與進度保留。可在部件工坊的替換紀錄中還原。": {
+    "en": "Character changes applied. Memories and progress remain. Undo through workshop history.",
+    "ja": "人物設定を適用しました。記憶と進行を保持しています。部品工房の履歴から復元できます。"
+  },
+  "創角模板已保存；現有世界與人物記憶保持原狀。": {
+    "en": "Template saved. Current world and memories are unchanged.",
+    "ja": "テンプレートを保存しました。現在の世界と記憶は変更しません。"
+  },
+  "小鎮的日子": {
+    "en": "Days in town",
+    "ja": "街の日々"
+  },
+  "祭典、展覽與市集按遊戲日循環。一般 NPC 有自己的固定工作日程。": {
+    "en": "Festivals, exhibitions and markets follow the game calendar. Scripted NPCs keep their own work schedules.",
+    "ja": "祭り、展示、市場はゲーム内の日程で巡ります。通常NPCには固定の仕事日程があります。"
+  },
+  "正在舉行": {
+    "en": "Happening now",
+    "ja": "開催中"
+  },
+  "即將到來": {
+    "en": "Coming soon",
+    "ja": "近日開催"
+  },
+  "公告與一般 NPC 的日程不使用聊天 API。": {
+    "en": "Announcements and scripted NPC schedules do not use the chat API.",
+    "ja": "お知らせと通常NPCの日程には会話APIを使いません。"
+  },
+  "讓在場的人交流": {
+    "en": "Let nearby people talk",
+    "ja": "その場の人々に交流してもらう"
+  },
+  "先開口的 AI 成員": {
+    "en": "First AI speaker",
+    "ja": "最初に話すAI人物"
+  },
+  "交談對象": {
+    "en": "Conversation partner",
+    "ja": "話し相手"
+  },
+  "開始公共交流 · Grok 4.3": {
+    "en": "Start public conversation · Grok 4.3",
+    "ja": "公開会話を開始 · Grok 4.3"
+  },
+  "两人與玩家需靠近；AI 對 AI 最多各一次回應，一般 NPC 使用固定台詞。": {
+    "en": "Both people and the player must be nearby. Each AI replies at most once; scripted NPCs use fixed lines.",
+    "ja": "二人とプレイヤーが近くにいる必要があります。AIは各一回まで返答し、通常NPCは固定台詞を使います。"
+  },
+  "兩人與玩家需靠近；AI 對 AI 最多各一次回應，一般 NPC 使用固定台詞。": {
+    "en": "Both people and the player must be nearby. Each AI replies at most once; scripted NPCs use fixed lines.",
+    "ja": "二人とプレイヤーが近くにいる必要があります。AIは各一回まで返答し、通常NPCは固定台詞を使います。"
+  },
+  "自主 AI 交流（使用聊天額度）": {
+    "en": "Autonomous AI conversations (uses chat budget)",
+    "ja": "AIの自主会話（会話利用枠を使用）"
+  },
+  "啟用自主 Grok 4.3 交流": {
+    "en": "Enable autonomous Grok 4.3 conversations",
+    "ja": "Grok 4.3の自主会話を有効化"
+  },
+  "間隔（遊戲分鐘）": {
+    "en": "Interval (game minutes)",
+    "ja": "間隔（ゲーム内分）"
+  },
+  "每天最多模型回應": {
+    "en": "Maximum model replies per day",
+    "ja": "一日あたりの最大モデル返答数"
+  },
+  "保存自主交流設定": {
+    "en": "Save conversation settings",
+    "ja": "自主会話設定を保存"
+  },
+  "預設關閉；開啟後一次只呼叫一位角色，沿用全遊戲用量上限。": {
+    "en": "Off by default. One character per call, within the game's overall budget.",
+    "ja": "初期状態では無効。一回につき一人だけ呼び出し、ゲーム全体の利用上限に従います。"
+  },
+  "泳池": {
+    "en": "Swimming pool",
+    "ja": "プール"
+  },
+  "前往晴水游泳池": {
+    "en": "Walk to the pool",
+    "ja": "プールへ向かう"
+  },
+  "走到更衣櫃": {
+    "en": "Walk to the lockers",
+    "ja": "ロッカーへ向かう"
+  },
+  "游泳": {
+    "en": "Swim",
+    "ja": "泳ぐ"
+  },
+  "下水必須先換泳裝。更衣櫃位於泳池左下方。": {
+    "en": "Put on swimwear before entering the water. Lockers are at the lower left.",
+    "ja": "水に入る前に水着へ着替えてください。ロッカーはプールの左下です。"
+  },
+  "已穿泳裝。走到藍色水域後可以游泳。": {
+    "en": "Swimwear on. Walk into the blue water to swim.",
+    "ja": "水着を着ています。青い水域に入ると泳げます。"
+  },
+  "各自答應、真的到場，才一起開始。": {
+    "en": "Everyone decides individually. Start together after arriving.",
+    "ja": "一人ずつ返答し、実際に集まってから始めます。"
+  },
+  "多久後集合": {
+    "en": "Meet in",
+    "ja": "集合までの時間"
+  },
+  "十分鐘後": {
+    "en": "In 10 minutes",
+    "ja": "10分後"
+  },
+  "二十分鐘後": {
+    "en": "In 20 minutes",
+    "ja": "20分後"
+  },
+  "四十分鐘後": {
+    "en": "In 40 minutes",
+    "ja": "40分後"
+  },
+  "一小時後": {
+    "en": "In one hour",
+    "ja": "一時間後"
+  },
+  "活動名稱": {
+    "en": "Activity name",
+    "ja": "活動名"
+  },
+  "一起到公園走走": {
+    "en": "A walk in the park together",
+    "ja": "一緒に公園を散歩"
+  },
+  "共同品項": {
+    "en": "Shared activity item",
+    "ja": "共同活動の内容"
+  },
+  "邀請同伴（1–10 位）": {
+    "en": "Invite companions (1–10)",
+    "ja": "仲間を招待（1〜10人）"
+  },
+  "自由活動時間（品項有自己的時長）": {
+    "en": "Free activity duration (items have their own durations)",
+    "ja": "自由活動の時間（各内容には個別の時間があります）"
+  },
+  "發出邀約 · 不扣 API": {
+    "en": "Send invitation · no API call",
+    "ja": "招待を送る · API利用なし"
+  },
+  "邀約與共同回憶": {
+    "en": "Invitations & shared memories",
+    "ja": "招待と共同の思い出"
+  },
+  "關閉共同活動": {
+    "en": "Close shared activities",
+    "ja": "共同活動を閉じる"
+  },
+  "每人自行付款。原則上等待最多十分鐘；邀請者與至少一位同伴到場才開始。": {
+    "en": "Each pays separately. Wait up to 10 minutes; the host and at least one companion must arrive.",
+    "ja": "各自で支払います。原則10分まで待ち、主催者と仲間一人以上が到着してから開始します。"
+  },
+  "自由散步／聊天 · 每人 0 代幣": {
+    "en": "Free walk / chat · 0 coins each",
+    "ja": "自由な散歩・会話 · 一人0コイン"
+  },
+  "等待集合": {
+    "en": "Waiting to meet",
+    "ja": "集合待ち"
+  },
+  "待回覆": {
+    "en": "Awaiting reply",
+    "ja": "返答待ち"
+  },
+  "接受": {
+    "en": "Accept",
+    "ja": "承諾"
+  },
+  "接受邀約": {
+    "en": "Accept invitation",
+    "ja": "招待を承諾"
+  },
+  "婉拒": {
+    "en": "Decline",
+    "ja": "辞退"
+  },
+  "已接受": {
+    "en": "Accepted",
+    "ja": "承諾済み"
+  },
+  "已到場": {
+    "en": "Arrived",
+    "ja": "到着済み"
+  },
+  "已完成": {
+    "en": "Completed",
+    "ja": "完了"
+  },
+  "已取消": {
+    "en": "Cancelled",
+    "ja": "取消済み"
+  },
+  "未成行": {
+    "en": "Did not happen",
+    "ja": "未開催"
+  },
+  "沒趕上": {
+    "en": "Missed",
+    "ja": "間に合わず"
+  },
+  "已過期": {
+    "en": "Expired",
+    "ja": "期限切れ"
+  },
+  "已退出": {
+    "en": "Left",
+    "ja": "退出済み"
+  },
+  "活動進行中": {
+    "en": "Activity underway",
+    "ja": "活動中"
+  },
+  "前往集合點": {
+    "en": "Walk to meeting point",
+    "ja": "集合場所へ向かう"
+  },
+  "走到活動場所": {
+    "en": "Walk to activity venue",
+    "ja": "活動場所へ向かう"
+  },
+  "退出活動": {
+    "en": "Withdraw from activity",
+    "ja": "活動を辞退"
+  },
+  "離開活動": {
+    "en": "Leave activity",
+    "ja": "活動から退出"
+  },
+  "取消活動": {
+    "en": "Cancel activity",
+    "ja": "活動を中止"
+  },
+  "只送出訊息 · 不扣 API": {
+    "en": "Send only · no API call",
+    "ja": "メッセージのみ送信 · API利用なし"
+  },
+  "請所選成員接話 · 1 次 API": {
+    "en": "Ask selected participant to reply · 1 API call",
+    "ja": "選択した参加者に返答を頼む · API一回"
+  },
+  "對這次活動的成員說些什麼…": {
+    "en": "Say something to the participants…",
+    "ja": "活動の参加者に話しかける…"
+  },
+  "還沒有共同活動。選好地點和成員，發出第一個邀約。": {
+    "en": "No shared activities yet. Choose a place and companions, then send an invitation.",
+    "ja": "まだ共同活動はありません。場所と仲間を選び、最初の招待を送りましょう。"
+  },
+  "至少選一位同伴。": {
+    "en": "Select at least one companion.",
+    "ja": "仲間を一人以上選んでください。"
+  },
+  "場所": {
+    "en": "Venue",
+    "ja": "場所"
+  },
+  "等待回應": {
+    "en": "Awaiting response",
+    "ja": "返答待ち"
+  },
+  "已赴約": {
+    "en": "Attended",
+    "ja": "参加済み"
+  },
+  "錯過了": {
+    "en": "Missed",
+    "ja": "参加できず"
+  },
+  "角色生圖設定": {
+    "en": "Character image settings",
+    "ja": "人物の画像生成設定"
+  },
+  "每個角色獨立的外觀配方": {
+    "en": "Independent appearance recipe per character",
+    "ja": "人物ごとに独立した外見レシピ"
+  },
+  "角色與 LoRA": {
+    "en": "Character & LoRA",
+    "ja": "人物とLoRA"
+  },
+  "固定模板與差分": {
+    "en": "Templates & variations",
+    "ja": "固定テンプレートと差分"
+  },
+  "完整 SD／原生模板": {
+    "en": "Full SD / native templates",
+    "ja": "SD全機能・原生テンプレート"
+  },
+  "所有本機資源": {
+    "en": "All local resources",
+    "ja": "すべてのローカル素材"
+  },
+  "生成與差分預覽": {
+    "en": "Generation & variations",
+    "ja": "生成と差分プレビュー"
+  },
+  "關閉生圖設定": {
+    "en": "Close image settings",
+    "ja": "画像生成設定を閉じる"
+  },
+  "生圖設定頁籤": {
+    "en": "Image settings tabs",
+    "ja": "画像生成設定のタブ"
+  },
+  "SD 安裝資料夾": {
+    "en": "SD installation folder",
+    "ja": "SDのインストールフォルダ"
+  },
+  "SD 所在資料夾": {
+    "en": "SD folder",
+    "ja": "SDのフォルダ"
+  },
+  "直接連接 SD 資料夾": {
+    "en": "Connect an SD folder",
+    "ja": "SDフォルダを直接指定"
+  },
+  "其他 SD 安裝資料夾路徑": {
+    "en": "Another SD installation path",
+    "ja": "別のSDインストール先"
+  },
+  "加入資料夾": {
+    "en": "Add folder",
+    "ja": "フォルダを追加"
+  },
+  "找不到我的 SD 資料夾": {
+    "en": "My SD folder is not listed",
+    "ja": "SDフォルダが見つからない"
+  },
+  "重新掃描本機資源": {
+    "en": "Rescan local resources",
+    "ja": "ローカル素材を再検索"
+  },
+  "本機 API 位址": {
+    "en": "Local API address",
+    "ja": "ローカルAPIのアドレス"
+  },
+  "啟動所選本機 SD": {
+    "en": "Start selected local SD",
+    "ja": "選択したローカルSDを起動"
+  },
+  "保存並測試 SD 連線": {
+    "en": "Save & test SD connection",
+    "ja": "保存してSD接続を確認"
+  },
+  "底模 Checkpoint": {
+    "en": "Base checkpoint",
+    "ja": "ベースモデル"
+  },
+  "底模": {
+    "en": "Base model",
+    "ja": "ベースモデル"
+  },
+  "Sampler 取樣器": {
+    "en": "Sampler",
+    "ja": "サンプラー"
+  },
+  "Scheduler 排程": {
+    "en": "Scheduler",
+    "ja": "スケジューラー"
+  },
+  "身份補充描述": {
+    "en": "Identity details",
+    "ja": "人物の外見補足"
+  },
+  "髮型、髮色、眼睛、身形等固定特徵": {
+    "en": "Hair, eyes, build and other stable features",
+    "ja": "髪型、髪色、目、体格などの固定的な特徴"
+  },
+  "角色觸發詞": {
+    "en": "Character trigger words",
+    "ja": "人物のトリガーワード"
+  },
+  "填寫 LoRA 作者提供的角色觸發詞": {
+    "en": "Trigger words supplied by the LoRA author",
+    "ja": "LoRA作者が指定したトリガーワード"
+  },
+  "角色 LoRA": {
+    "en": "Character LoRA",
+    "ja": "人物LoRA"
+  },
+  "角色 LoRA 權重": {
+    "en": "Character LoRA weight",
+    "ja": "人物LoRAの重み"
+  },
+  "服裝 LoRA 權重": {
+    "en": "Clothing LoRA weight",
+    "ja": "服装LoRAの重み"
+  },
+  "額外 SFW 服装 LoRA（可選）": {
+    "en": "Extra SFW clothing LoRA (optional)",
+    "ja": "追加の通常服LoRA（任意）"
+  },
+  "服裝 LoRA（可選）": {
+    "en": "Clothing LoRA (optional)",
+    "ja": "服装LoRA（任意）"
+  },
+  "固定 Seed": {
+    "en": "Fixed seed",
+    "ja": "固定シード"
+  },
+  "預設預覽表情": {
+    "en": "Default preview expression",
+    "ja": "初期プレビュー表情"
+  },
+  "此角色可自動生成": {
+    "en": "Allow automatic generation for this character",
+    "ja": "この人物の自動生成を許可"
+  },
+  "保存生圖設定": {
+    "en": "Save image settings",
+    "ja": "画像生成設定を保存"
+  },
+  "生成此角色全部素材": {
+    "en": "Generate all character assets",
+    "ja": "この人物の全画像を生成"
+  },
+  "生成此角色立繪與差分": {
+    "en": "Generate portraits & expressions",
+    "ja": "立ち絵と表情差分を生成"
+  },
+  "生成此角色像素行走圖": {
+    "en": "Generate walking sprites",
+    "ja": "歩行スプライトを生成"
+  },
+  "生成所有已綁定角色": {
+    "en": "Generate all bound characters",
+    "ja": "LoRA設定済み人物をすべて生成"
+  },
+  "匯出設定模板": {
+    "en": "Export settings template",
+    "ja": "設定テンプレートを出力"
+  },
+  "匯入設定模板": {
+    "en": "Import settings template",
+    "ja": "設定テンプレートを取り込む"
+  },
+  "啟用自動生成：已綁定角色首次生成；實際換裝後補齊新素材": {
+    "en": "Auto-generate bound characters initially and add assets after actual outfit changes",
+    "ja": "設定済み人物の初回画像と、実際の着替え後の画像を自動生成"
+  },
+  "泳池服裝 LoRA（下水生成必須綁定）": {
+    "en": "Swimwear LoRA (required for swimming art)",
+    "ja": "水着LoRA（水泳画像の生成には設定必須）"
+  },
+  "女性運動連身泳裝 LoRA": {
+    "en": "Women's athletic one-piece LoRA",
+    "ja": "女性用スポーツ水着LoRA"
+  },
+  "連身泳裝權重": {
+    "en": "One-piece weight",
+    "ja": "ワンピース水着の重み"
+  },
+  "連身泳裝觸發詞": {
+    "en": "One-piece trigger words",
+    "ja": "ワンピース水着のトリガー"
+  },
+  "男性運動泳裝 LoRA": {
+    "en": "Men's athletic swimwear LoRA",
+    "ja": "男性用スポーツ水着LoRA"
+  },
+  "男性泳裝權重": {
+    "en": "Men's swimwear weight",
+    "ja": "男性用水着の重み"
+  },
+  "男性泳裝觸發詞": {
+    "en": "Men's swimwear trigger words",
+    "ja": "男性用水着のトリガー"
+  },
+  "SD 連線": {
+    "en": "SD connection",
+    "ja": "SD接続"
+  },
+  "固定生成模板": {
+    "en": "Fixed generation templates",
+    "ja": "固定生成テンプレート"
+  },
+  "立繪模板": {
+    "en": "Portrait template",
+    "ja": "立ち絵テンプレート"
+  },
+  "像素行走模板": {
+    "en": "Walking sprite template",
+    "ja": "歩行画像テンプレート"
+  },
+  "立繪差分（平常為身份參考）": {
+    "en": "Expression variations (neutral is the identity reference)",
+    "ja": "表情差分（通常表情を人物参照に使用）"
+  },
+  "平常": {
+    "en": "Neutral",
+    "ja": "通常"
+  },
+  "開心": {
+    "en": "Happy",
+    "ja": "喜び"
+  },
+  "害羞": {
+    "en": "Shy",
+    "ja": "照れ"
+  },
+  "難過": {
+    "en": "Sad",
+    "ja": "悲しみ"
+  },
+  "驚訝": {
+    "en": "Surprised",
+    "ja": "驚き"
+  },
+  "生氣": {
+    "en": "Angry",
+    "ja": "怒り"
+  },
+  "正向 Prompt": {
+    "en": "Positive prompt",
+    "ja": "正のプロンプト"
+  },
+  "負向 Prompt": {
+    "en": "Negative prompt",
+    "ja": "負のプロンプト"
+  },
+  "寬度": {
+    "en": "Width",
+    "ja": "幅"
+  },
+  "高度": {
+    "en": "Height",
+    "ja": "高さ"
+  },
+  "Steps 步數": {
+    "en": "Steps",
+    "ja": "ステップ数"
+  },
+  "CFG 引導": {
+    "en": "CFG scale",
+    "ja": "CFGスケール"
+  },
+  "差分重繪幅度": {
+    "en": "Variation denoise strength",
+    "ja": "差分の変更強度"
+  },
+  "場景重繪幅度": {
+    "en": "Scene denoise strength",
+    "ja": "場面の変更強度"
+  },
+  "一般 CG 模板（對話區的一般 CG 使用此設定）": {
+    "en": "SFW CG template (used by the conversation CG button)",
+    "ja": "通常CGテンプレート（会話画面のCGボタンで使用）"
+  },
+  "像素姿勢與後製": {
+    "en": "Sprite poses & post-processing",
+    "ja": "歩行画像のポーズと後処理"
+  },
+  "本機去背執行環境": {
+    "en": "Local background-removal runtime",
+    "ja": "背景除去のローカル実行環境"
+  },
+  "姿勢 ControlNet 模型": {
+    "en": "Pose ControlNet model",
+    "ja": "ポーズControlNetモデル"
+  },
+  "姿勢控制權重": {
+    "en": "Pose control weight",
+    "ja": "ポーズ制御の重み"
+  },
+  "方向與步伐參考": {
+    "en": "Direction & walking reference",
+    "ja": "向きと歩行の参照"
+  },
+  "角色立繪＋純骨架 ControlNet（建議）": {
+    "en": "Character portrait + skeleton-only ControlNet (recommended)",
+    "ja": "人物立ち絵＋骨格のみのControlNet（推奨）"
+  },
+  "LPC 方向／步伐重繪（舊模式）": {
+    "en": "LPC direction / step repaint (legacy)",
+    "ja": "LPCの向き・歩行を描き直す（旧方式）"
+  },
+  "第一張 SD 像素圖 → SD img2img": {
+    "en": "First SD sprite → SD img2img",
+    "ja": "最初のSD歩行画像 → SD img2img"
+  },
+  "像素色盤上限": {
+    "en": "Maximum sprite palette colours",
+    "ja": "歩行画像の最大色数"
+  },
+  "白背景去除容差": {
+    "en": "White-background tolerance",
+    "ja": "白背景除去の許容差"
+  },
+  "像素衣服主色對齊身份立繪（適合單一主色，可關閉）": {
+    "en": "Match sprite clothing colour to identity portrait (optional)",
+    "ja": "歩行画像の服の主色を人物立ち絵に合わせる（任意）"
+  },
+  "啟用人物去背": {
+    "en": "Remove character background",
+    "ja": "人物の背景を除去"
+  },
+  "去背方式": {
+    "en": "Background removal method",
+    "ja": "背景除去の方法"
+  },
+  "RMBG-2.0 神經去背 · 已安裝權重": {
+    "en": "RMBG-2.0 neural removal · installed weights",
+    "ja": "RMBG-2.0背景除去 · 重み導入済み"
+  },
+  "近白連通背景 · 無模型": {
+    "en": "Connected near-white background · no model",
+    "ja": "つながった白系背景を除去 · モデル不要"
+  },
+  "去背設備": {
+    "en": "Removal device",
+    "ja": "背景除去に使う機器"
+  },
+  "CPU · 避免佔用 SD 顯存": {
+    "en": "CPU · leave GPU memory for SD",
+    "ja": "CPU · SDのGPUメモリを節約"
+  },
+  "本機 RMBG 模型": {
+    "en": "Local RMBG model",
+    "ja": "ローカルRMBGモデル"
+  },
+  "去背推論解析度": {
+    "en": "Removal inference resolution",
+    "ja": "背景除去の推論解像度"
+  },
+  "立繪：": {
+    "en": "Portraits:",
+    "ja": "立ち絵："
+  },
+  "像素圖：": {
+    "en": "Sprites:",
+    "ja": "歩行画像："
+  },
+  "去背：": {
+    "en": "Background removal:",
+    "ja": "背景除去："
+  },
+  "行走表：": {
+    "en": "Sprite sheet:",
+    "ja": "歩行シート："
+  },
+  "可重現：": {
+    "en": "Reproducibility:",
+    "ja": "再現性："
+  },
+  "角色一致性：": {
+    "en": "Character consistency:",
+    "ja": "人物の一貫性："
+  },
+  "RMBG 模型與來源授權 ↗": {
+    "en": "RMBG model & licence ↗",
+    "ja": "RMBGモデルとライセンス ↗"
+  },
+  "本機完整 Stable Diffusion 介面": {
+    "en": "Full local Stable Diffusion interface",
+    "ja": "ローカルSDの全機能画面"
+  },
+  "直接使用本機完整 SD": {
+    "en": "Open full local SD",
+    "ja": "ローカルSD全機能を開く"
+  },
+  "完整介面位址": {
+    "en": "Full interface address",
+    "ja": "全機能画面のアドレス"
+  },
+  "啟動完整 SD": {
+    "en": "Start full SD",
+    "ja": "SD全機能を起動"
+  },
+  "在遊戲內開啟 SD 視窗": {
+    "en": "Open SD inside game",
+    "ja": "ゲーム内でSDを開く"
+  },
+  "另開完整 SD ↗": {
+    "en": "Open full SD separately ↗",
+    "ja": "別画面でSD全機能を開く ↗"
+  },
+  "在檔案總管開啟": {
+    "en": "Open in file explorer",
+    "ja": "エクスプローラーで開く"
+  },
+  "收起 SD 視窗": {
+    "en": "Hide SD window",
+    "ja": "SD画面を閉じる"
+  },
+  "從原生 SD 保存新模板": {
+    "en": "Save a new template from native SD",
+    "ja": "SD原生画面から新規テンプレートを保存"
+  },
+  "模板名稱": {
+    "en": "Template name",
+    "ja": "テンプレート名"
+  },
+  "貼上原生參數／工作流": {
+    "en": "Paste native parameters / workflow",
+    "ja": "原生パラメータ・ワークフローを貼り付け"
+  },
+  "匯入 JSON／PNG／文字": {
+    "en": "Import JSON / PNG / text",
+    "ja": "JSON・PNG・テキストを取り込む"
+  },
+  "解析模板與可綁定欄位": {
+    "en": "Parse template & bindable fields",
+    "ja": "テンプレートと変数項目を解析"
+  },
+  "本機既有 ComfyUI 工作流": {
+    "en": "Existing local ComfyUI workflow",
+    "ja": "既存のローカルComfyUIワークフロー"
+  },
+  "讀取既有工作流": {
+    "en": "Read existing workflow",
+    "ja": "既存ワークフローを読み込む"
+  },
+  "ComfyUI 已完成生成紀錄": {
+    "en": "Completed ComfyUI generations",
+    "ja": "完了したComfyUI生成履歴"
+  },
+  "讀取 ComfyUI 生成紀錄": {
+    "en": "Read ComfyUI history",
+    "ja": "ComfyUIの生成履歴を読み込む"
+  },
+  "擷取所選紀錄": {
+    "en": "Capture selected record",
+    "ja": "選択した履歴を取得"
+  },
+  "遊戲變數綁定與完整參數": {
+    "en": "Game variables & full parameters",
+    "ja": "ゲーム変数と全パラメータ"
+  },
+  "圖片輸出節點": {
+    "en": "Image output node",
+    "ja": "画像出力ノード"
+  },
+  "完整綁定 JSON（同一變數可綁多個欄位）": {
+    "en": "Full binding JSON (one variable may bind multiple fields)",
+    "ja": "変数設定JSON（同じ変数を複数項目に設定可能）"
+  },
+  "保存為固定模板": {
+    "en": "Save as fixed template",
+    "ja": "固定テンプレートとして保存"
+  },
+  "管理已保存的原生模板": {
+    "en": "Manage saved native templates",
+    "ja": "保存した原生テンプレートを管理"
+  },
+  "已保存原生模板": {
+    "en": "Saved native templates",
+    "ja": "保存済み原生テンプレート"
+  },
+  "讀取並編輯": {
+    "en": "Read & edit",
+    "ja": "読み込み・編集"
+  },
+  "匯出完整模板": {
+    "en": "Export full template",
+    "ja": "完全なテンプレートを出力"
+  },
+  "刪除未使用模板": {
+    "en": "Delete unused template",
+    "ja": "未使用テンプレートを削除"
+  },
+  "選定遊戲的固定模板": {
+    "en": "Choose game templates",
+    "ja": "ゲーム用の固定テンプレートを選ぶ"
+  },
+  "保存三種用途的模板選擇": {
+    "en": "Save templates for all three uses",
+    "ja": "三種類の用途のテンプレートを保存"
+  },
+  "本機所有資源": {
+    "en": "All local resources",
+    "ja": "すべてのローカル素材"
+  },
+  "資源": {
+    "en": "Resource",
+    "ja": "リソース"
+  },
+  "類型": {
+    "en": "Type",
+    "ja": "種類"
+  },
+  "架構": {
+    "en": "Architecture",
+    "ja": "モデル構造"
+  },
+  "大小": {
+    "en": "Size",
+    "ja": "サイズ"
+  },
+  "狀態": {
+    "en": "Status",
+    "ja": "状態"
+  },
+  "實際路徑": {
+    "en": "Actual path",
+    "ja": "実際のパス"
+  },
+  "資源類型": {
+    "en": "Resource type",
+    "ja": "リソースの種類"
+  },
+  "搜尋本機 SD 資源": {
+    "en": "Search local SD resources",
+    "ja": "ローカルSD素材を検索"
+  },
+  "搜尋檔名、路徑或底模架構": {
+    "en": "Search filename, path or model architecture",
+    "ja": "ファイル名、パス、モデル構造を検索"
+  },
+  "下載完整資源清單": {
+    "en": "Download full resource list",
+    "ja": "リソース一覧をダウンロード"
+  },
+  "所有類型": {
+    "en": "All types",
+    "ja": "すべての種類"
+  },
+  "生成紀錄與差分預覽": {
+    "en": "Generation history & variations",
+    "ja": "生成履歴と差分プレビュー"
+  },
+  "已完成的本機實機樣本（未綁定遊戲角色）": {
+    "en": "Local generation samples (not bound to game characters)",
+    "ja": "ローカル生成の実機例（ゲーム人物には未設定）"
+  },
+  "SD 實際四方向行走預覽": {
+    "en": "SD four-direction walking preview",
+    "ja": "SDの四方向歩行プレビュー"
+  },
+  "一般 CG 實機樣本": {
+    "en": "SFW CG generation sample",
+    "ja": "通常CGの実機例"
+  },
+  "本機 SD 立繪與像素人物實機對照": {
+    "en": "Local SD portrait and sprite comparison",
+    "ja": "ローカルSD立ち絵と歩行画像の比較"
+  },
+  "同一角色 LoRA 與外套的公園 SFW CG": {
+    "en": "SFW park CG with the same character LoRA and coat",
+    "ja": "同じ人物LoRAと上着を使った公園の通常CG"
+  },
+  "語音與 TTS 模型": {
+    "en": "Speech & TTS models",
+    "ja": "音声とTTSモデル"
+  },
+  "角色自己說的話，使用各自選定的聲線。預設關閉，可隨時停止。": {
+    "en": "Each character speaks in their selected voice. Off by default; stop at any time.",
+    "ja": "人物ごとに選んだ声で話します。初期状態では無効で、いつでも停止できます。"
+  },
+  "關閉語音設定": {
+    "en": "Close voice settings",
+    "ja": "音声設定を閉じる"
+  },
+  "TTS 類型／模型服務": {
+    "en": "TTS type / model service",
+    "ja": "TTSの種類・モデルサービス"
+  },
+  "Windows 本機語音 · 可直接用": {
+    "en": "Windows local speech · ready to use",
+    "ja": "Windowsローカル音声 · すぐ利用可能"
+  },
+  "Windows 已安裝聲線": {
+    "en": "Installed Windows voices",
+    "ja": "インストール済みWindows音声"
+  },
+  "瀏覽器提供的本機語音": {
+    "en": "Browser local speech",
+    "ja": "ブラウザのローカル音声"
+  },
+  "Kokoro · 本機模型服務": {
+    "en": "Kokoro · local model service",
+    "ja": "Kokoro · ローカルモデルサービス"
+  },
+  "其他本機 TTS · OpenAI 相容介面": {
+    "en": "Other local TTS · OpenAI-compatible API",
+    "ja": "他のローカルTTS · OpenAI互換API"
+  },
+  "朗讀語言": {
+    "en": "Speech language",
+    "ja": "読み上げ言語"
+  },
+  "本機模型語言參數": {
+    "en": "Local model language parameter",
+    "ja": "ローカルモデルの言語パラメータ"
+  },
+  "由聲線決定（相容預設）": {
+    "en": "Determined by voice (compatible default)",
+    "ja": "声で決定（互換性のある既定値）"
+  },
+  "language（服務需支援）": {
+    "en": "language (requires service support)",
+    "ja": "language（サービスの対応が必要）"
+  },
+  "lang_code（服務需支援）": {
+    "en": "lang_code (requires service support)",
+    "ja": "lang_code（サービスの対応が必要）"
+  },
+  "啟用對話語音": {
+    "en": "Enable dialogue speech",
+    "ja": "会話の読み上げを有効化"
+  },
+  "自動朗讀新收到的角色台詞": {
+    "en": "Automatically read new character lines",
+    "ja": "新しい人物の台詞を自動で読み上げ"
+  },
+  "語速（0.5–2）": {
+    "en": "Speed (0.5–2)",
+    "ja": "速度（0.5〜2）"
+  },
+  "音量（0–1）": {
+    "en": "Volume (0–1)",
+    "ja": "音量（0〜1）"
+  },
+  "音高（僅瀏覽器聲線）": {
+    "en": "Pitch (browser voices only)",
+    "ja": "声の高さ（ブラウザ音声のみ）"
+  },
+  "本機服務地址": {
+    "en": "Local service address",
+    "ja": "ローカルサービスのアドレス"
+  },
+  "保存地址並檢查模型／聲線": {
+    "en": "Save address & check models / voices",
+    "ja": "アドレスを保存してモデル・声を確認"
+  },
+  "模型 ID（依服務實際名稱）": {
+    "en": "Model ID (use the service's exact name)",
+    "ja": "モデルID（サービスの実際の名前）"
+  },
+  "服务回報／目前指定的模型": {
+    "en": "Reported / currently selected model",
+    "ja": "サービス報告・現在指定のモデル"
+  },
+  "依服務目錄選擇或填入": {
+    "en": "Choose from service catalogue or enter manually",
+    "ja": "サービス一覧から選択、または手入力"
+  },
+  "設定這位角色的聲線": {
+    "en": "Set this character's voice",
+    "ja": "この人物の声を設定"
+  },
+  "瀏覽器本機聲線": {
+    "en": "Browser local voices",
+    "ja": "ブラウザのローカル音声"
+  },
+  "服務回報的聲線": {
+    "en": "Voices reported by service",
+    "ja": "サービスが報告した声"
+  },
+  "此角色的聲線 ID": {
+    "en": "Voice ID for this character",
+    "ja": "この人物の音声ID"
+  },
+  "保存語音設定": {
+    "en": "Save voice settings",
+    "ja": "音声設定を保存"
+  },
+  "保存並試聽此角色": {
+    "en": "Save & preview this voice",
+    "ja": "保存してこの人物の声を試聴"
+  },
+  "停止試聽／語音": {
+    "en": "Stop preview / speech",
+    "ja": "試聴・読み上げ停止"
+  },
+  "重新讀取本機聲線": {
+    "en": "Refresh local voices",
+    "ja": "ローカル音声を再読み込み"
+  },
+  "本機語音 · 不扣聊天 API": {
+    "en": "Local speech · no chat API call",
+    "ja": "ローカル音声 · 会話API利用なし"
+  },
+  "語音設定 · 已啟用": {
+    "en": "Voice settings · enabled",
+    "ja": "音声設定 · 有効"
+  },
+  "跟隨聲線": {
+    "en": "Follow voice",
+    "ja": "声に合わせる"
+  },
+  "普通話": {
+    "en": "Mandarin",
+    "ja": "中国語（普通話）"
+  },
+  "日語": {
+    "en": "Japanese",
+    "ja": "日本語"
+  },
+  "韓語": {
+    "en": "Korean",
+    "ja": "韓国語"
+  },
+  "英語（美國）": {
+    "en": "English (US)",
+    "ja": "英語（米国）"
+  },
+  "英語（英國）": {
+    "en": "English (UK)",
+    "ja": "英語（英国）"
+  },
+  "朗讀語言已選擇；保存後生效，不會翻譯台詞。": {
+    "en": "Speech language selected. Save to apply. Existing lines are not translated.",
+    "ja": "読み上げ言語を選択しました。保存後に反映されます。既存台詞は翻訳しません。"
+  },
+  "語音設定已保存；不扣聊天 API。": {
+    "en": "Voice settings saved. No chat API call.",
+    "ja": "音声設定を保存しました。会話API利用なし。"
+  },
+  "語音準備中…": {
+    "en": "Preparing speech…",
+    "ja": "音声を準備中…"
+  },
+  "已停止播放": {
+    "en": "Playback stopped",
+    "ja": "再生停止"
+  },
+  "播放完成": {
+    "en": "Playback finished",
+    "ja": "再生完了"
+  },
+  "▶ 朗讀": {
+    "en": "▶ Read aloud",
+    "ja": "▶ 読み上げ"
+  },
+  "設定暫時無法讀取": {
+    "en": "Settings could not be loaded",
+    "ja": "設定を読み込めません"
+  },
+  "素材操作失敗": {
+    "en": "Asset operation failed",
+    "ja": "素材操作に失敗"
+  },
+  "美術素材與立繪差分庫": {
+    "en": "Art assets & portrait variation library",
+    "ja": "画像素材と立ち絵差分ライブラリ"
+  },
+  "替換圖片，保留地圖碰撞、角色記憶與玩法。": {
+    "en": "Replace pictures while keeping collisions, memories and gameplay.",
+    "ja": "画像を置き換え、衝突判定、記憶、遊び方は保持します。"
+  },
+  "關閉美術素材": {
+    "en": "Close art assets",
+    "ja": "画像素材を閉じる"
+  },
+  "替換美術 PNG": {
+    "en": "Replace art PNG",
+    "ja": "画像PNGを置き換え"
+  },
+  "角色立繪差分": {
+    "en": "Portrait expression variation",
+    "ja": "立ち絵の表情差分"
+  },
+  "四方向行走圖": {
+    "en": "Four-direction sprite sheet",
+    "ja": "四方向の歩行画像"
+  },
+  "場景背景": {
+    "en": "Scene background",
+    "ja": "場面の背景"
+  },
+  "角色／場景": {
+    "en": "Character / scene",
+    "ja": "人物・場面"
+  },
+  "表情": {
+    "en": "Expression",
+    "ja": "表情"
+  },
+  "每方向幀數": {
+    "en": "Frames per direction",
+    "ja": "各方向のコマ数"
+  },
+  "3 幀 · 192×256": {
+    "en": "3 frames · 192×256",
+    "ja": "3コマ · 192×256"
+  },
+  "9 幀 · 576×256": {
+    "en": "9 frames · 576×256",
+    "ja": "9コマ · 576×256"
+  },
+  "只套用目前穿著": {
+    "en": "Apply only to current outfit",
+    "ja": "現在の服装だけに適用"
+  },
+  "完整地圖背景已包含物件，隱藏原物件美術": {
+    "en": "Hide original decorations when the full background includes them",
+    "ja": "背景に物が含まれる場合、元の物の画像を非表示"
+  },
+  "PNG 檔案": {
+    "en": "PNG file",
+    "ja": "PNGファイル"
+  },
+  "匯入並套用 PNG": {
+    "en": "Import & apply PNG",
+    "ja": "PNGを取り込み、適用"
+  },
+  "累積的可複用立繪差分": {
+    "en": "Reusable portrait variations",
+    "ja": "再利用できる立ち絵差分"
+  },
+  "完成 SD 立繪後，差分會自動累積在這裡。": {
+    "en": "Completed SD portrait variations are collected here.",
+    "ja": "完成したSD立ち絵の差分がここに蓄積されます。"
+  },
+  "恢復原美術": {
+    "en": "Restore original art",
+    "ja": "元の画像に戻す"
+  },
+  "套用此差分": {
+    "en": "Apply variation",
+    "ja": "この差分を適用"
+  },
+  "CG 場景插圖": {
+    "en": "Scene CG illustration",
+    "ja": "場面のCGイラスト"
+  },
+  "關閉 CG 插圖": {
+    "en": "Close CG illustrations",
+    "ja": "CGイラストを閉じる"
+  },
+  "使用當下場景、角色 LoRA 與實際穿著；身份立繪可重用，場景插圖每次重新生成。": {
+    "en": "Use the current scene, character LoRA and worn outfit. Identity portraits may be reused; each scene illustration is generated anew.",
+    "ja": "現在の場面、人物LoRA、実際の服装を使います。人物立ち絵は再利用できますが、場面CGは毎回新しく生成します。"
+  },
+  "畫面中的角色": {
+    "en": "Character in the scene",
+    "ja": "場面の人物"
+  },
+  "補充場景描述（可留白）": {
+    "en": "Extra scene description (optional)",
+    "ja": "場面の補足説明（任意）"
+  },
+  "例如：在泳池邊休息，午後陽光灑在水面上。": {
+    "en": "For example: resting by the pool, afternoon light on the water.",
+    "ja": "例：プールサイドで休憩し、午後の光が水面に降り注ぐ。"
+  },
+  "用本機 SD 生成 CG 插圖": {
+    "en": "Generate CG with local SD",
+    "ja": "ローカルSDでCGを生成"
+  },
+  "本機 SD · SFW · 不扣聊天 API": {
+    "en": "Local SD · SFW · no chat API call",
+    "ja": "ローカルSD · 通常画像 · 会話API利用なし"
+  },
+  "下載插圖": {
+    "en": "Download illustration",
+    "ja": "イラストをダウンロード"
+  },
+  "當下場景": {
+    "en": "Current scene",
+    "ja": "現在の場面"
+  },
+  "目前场景": {
+    "en": "Current scene",
+    "ja": "現在の場面"
+  },
+  "部件類型": {
+    "en": "Component type",
+    "ja": "部品の種類"
+  },
+  "尋找部件": {
+    "en": "Find component",
+    "ja": "部品を探す"
+  },
+  "替換目標": {
+    "en": "Replacement target",
+    "ja": "置き換え対象"
+  },
+  "替換指示": {
+    "en": "Replacement instruction",
+    "ja": "置き換えの指示"
+  },
+  "場景、物件或工具 ID": {
+    "en": "Scene, object or tool ID",
+    "ja": "場面・物・ツールのID"
+  },
+  "例如：說明改成這裡可以更衣": {
+    "en": "Example: description: A changing room",
+    "ja": "例：説明：更衣室"
+  },
+  "依指示準備替換": {
+    "en": "Prepare replacement from instruction",
+    "ja": "指示から置き換えを準備"
+  },
+  "重新讀取": {
+    "en": "Reload",
+    "ja": "再読み込み"
+  },
+  "匯出此部件包": {
+    "en": "Export component package",
+    "ja": "部品パッケージを出力"
+  },
+  "完整部件定義／匯入部件包": {
+    "en": "Full definition / import package",
+    "ja": "完全な定義・部品パッケージの取り込み"
+  },
+  "預覽 JSON 替換": {
+    "en": "Preview JSON replacement",
+    "ja": "JSONの置き換えをプレビュー"
+  },
+  "PNG 圖片（art 類型）": {
+    "en": "PNG image (art type)",
+    "ja": "PNG画像（artタイプ）"
+  },
+  "預覽 PNG 替換": {
+    "en": "Preview PNG replacement",
+    "ja": "PNGの置き換えをプレビュー"
+  },
+  "替換預覽": {
+    "en": "Replacement preview",
+    "ja": "置き換えプレビュー"
+  },
+  "套用已驗證的替換": {
+    "en": "Apply validated replacement",
+    "ja": "検証済みの置き換えを適用"
+  },
+  "替換紀錄與還原": {
+    "en": "History & undo",
+    "ja": "置き換え履歴と復元"
+  },
+  "關閉部件工坊": {
+    "en": "Close workshop",
+    "ja": "部品工房を閉じる"
+  },
+  "地圖與碰撞": {
+    "en": "Maps & collisions",
+    "ja": "マップと衝突判定"
+  },
+  "互動物件": {
+    "en": "Interactive objects",
+    "ja": "交流できる物"
+  },
+  "場景美術與圖塊": {
+    "en": "Scene art & tiles",
+    "ja": "場面画像とタイル"
+  },
+  "單一美術物件": {
+    "en": "Individual decoration",
+    "ja": "個別の装飾画像"
+  },
+  "所有 PNG 素材": {
+    "en": "All PNG assets",
+    "ja": "すべてのPNG素材"
+  },
+  "場所完整目錄": {
+    "en": "Full venue catalogue",
+    "ja": "施設の全カタログ"
+  },
+  "單一品項": {
+    "en": "Individual catalogue item",
+    "ja": "個別の商品・内容"
+  },
+  "服裝配方": {
+    "en": "Clothing recipes",
+    "ja": "服装のレシピ"
+  },
+  "人物公開設定": {
+    "en": "Character settings",
+    "ja": "人物設定"
+  },
+  "一般 NPC 腳本": {
+    "en": "Scripted NPCs",
+    "ja": "通常NPCのスクリプト"
+  },
+  "公共活動": {
+    "en": "Public events",
+    "ja": "公共イベント"
+  },
+  "底層規則": {
+    "en": "Engine rules",
+    "ja": "エンジンのルール"
+  },
+  "AI 與服務": {
+    "en": "AI & services",
+    "ja": "AIとサービス"
+  },
+  "自訂 AI 工具": {
+    "en": "Custom AI tools",
+    "ja": "独自AIツール"
+  },
+  "介面配色": {
+    "en": "Interface colours",
+    "ja": "画面の配色"
+  },
+  "替換圖片、地圖、互動規則與 AI 工具。先預覽驗證，再套用；舊記憶和交易紀錄保留。": {
+    "en": "Replace art, maps, interactions and AI tools. Preview and validate before applying; memories and transaction records remain.",
+    "ja": "画像、マップ、交流ルール、AIツールを置き換えます。検証とプレビュー後に適用し、記憶と取引記録は保持します。"
+  },
+  "驗證通過，尚未套用。": {
+    "en": "Validation passed. Not applied yet.",
+    "ja": "検証済み。まだ適用していません。"
+  },
+  "修改後需重新預覽。": {
+    "en": "Preview again after editing.",
+    "ja": "編集後は再度プレビューしてください。"
+  },
+  "尚未準備替換。": {
+    "en": "No replacement prepared.",
+    "ja": "置き換えは未準備です。"
+  },
+  "準備還原": {
+    "en": "Prepare undo",
+    "ja": "復元を準備"
+  },
+  "已讀取部件；原記憶與物品不包含在這份定義。": {
+    "en": "Component loaded. Memories and owned items are not part of this definition.",
+    "ja": "部品を読み込みました。この定義には記憶や所持品は含まれません。"
+  },
+  "等待 GPU": {
+    "en": "Waiting for GPU",
+    "ja": "GPU待ち"
+  },
+  "生成中": {
+    "en": "Generating",
+    "ja": "生成中"
+  },
+  "失敗": {
+    "en": "Failed",
+    "ja": "失敗"
+  },
+  "已中斷": {
+    "en": "Interrupted",
+    "ja": "中断"
+  },
+  "完成": {
+    "en": "Done",
+    "ja": "完了"
+  },
+  "取消此任務": {
+    "en": "Cancel this job",
+    "ja": "この生成を中止"
+  },
+  "套用這套素材": {
+    "en": "Apply these assets",
+    "ja": "この画像一式を適用"
+  },
+  "原圖": {
+    "en": "Original image",
+    "ja": "元画像"
+  },
+  "立繪": {
+    "en": "Portrait",
+    "ja": "立ち絵"
+  },
+  "像素行走": {
+    "en": "Walking sprites",
+    "ja": "歩行スプライト"
+  },
+  "立繪差分": {
+    "en": "Portrait variations",
+    "ja": "立ち絵差分"
+  },
+  "行走圖": {
+    "en": "Sprite sheet",
+    "ja": "歩行画像"
+  },
+  "一般生活 CG": {
+    "en": "Everyday SFW CG",
+    "ja": "日常の通常CG"
+  },
+  "立繪＋像素": {
+    "en": "Portraits + sprites",
+    "ja": "立ち絵＋歩行画像"
+  },
+  "寬度（可選）": {
+    "en": "Width (optional)",
+    "ja": "幅（任意）"
+  },
+  "高度（可選）": {
+    "en": "Height (optional)",
+    "ja": "高さ（任意）"
+  },
+  "重繪幅度": {
+    "en": "Denoise strength",
+    "ja": "変更強度"
+  },
+  "身份參考圖": {
+    "en": "Identity reference image",
+    "ja": "人物参照画像"
+  },
+  "姿勢骨架圖（像素）": {
+    "en": "Pose skeleton (sprites)",
+    "ja": "ポーズ骨格（歩行画像）"
+  },
+  "保留原生值／不綁定": {
+    "en": "Keep native value / no binding",
+    "ja": "原生値を保持・変数なし"
+  },
+  "選擇輸出節點": {
+    "en": "Choose output node",
+    "ja": "出力ノードを選択"
+  },
+  "選擇已保存模板": {
+    "en": "Choose saved template",
+    "ja": "保存したテンプレートを選択"
+  },
+  "使用遊戲內建模板": {
+    "en": "Use built-in game template",
+    "ja": "ゲーム内蔵テンプレートを使用"
+  },
+  "選擇已完成的生成": {
+    "en": "Choose completed generation",
+    "ja": "完了した生成を選択"
+  },
+  "既有工作流": {
+    "en": "Existing workflow",
+    "ja": "既存のワークフロー"
+  },
+  "可複用立繪差分": {
+    "en": "Reusable portrait variations",
+    "ja": "再利用できる立ち絵差分"
+  },
+  "僅列出": {
+    "en": "Listed only",
+    "ja": "一覧表示のみ"
+  },
+  "本機檔案已找到；API 可用性以連線結果為準": {
+    "en": "Local files found. API availability depends on the connection check.",
+    "ja": "ローカルファイルが見つかりました。APIの利用可否は接続確認の結果で判断します。"
+  },
+  "無內嵌資料": {
+    "en": "No embedded metadata",
+    "ja": "埋め込み情報なし"
+  },
+  "文字編碼器": {
+    "en": "Text encoder",
+    "ja": "テキストエンコーダー"
+  },
+  "視覺編碼器": {
+    "en": "Vision encoder",
+    "ja": "画像エンコーダー"
+  },
+  "去背模型": {
+    "en": "Background removal model",
+    "ja": "背景除去モデル"
+  },
+  "放大模型": {
+    "en": "Upscaler",
+    "ja": "拡大モデル"
+  },
+  "其他資源": {
+    "en": "Other resources",
+    "ja": "その他のリソース"
+  },
+  "擴充節點": {
+    "en": "Extension nodes",
+    "ja": "拡張ノード"
+  },
+  "選擇已安裝底模": {
+    "en": "Choose an installed base model",
+    "ja": "インストール済みのモデルを選択"
+  },
+  "選擇角色 LoRA（尚未綁定）": {
+    "en": "Choose character LoRA (not bound)",
+    "ja": "人物LoRAを選択（未設定）"
+  },
+  "選擇本機泳装 LoRA（尚未綁定）": {
+    "en": "Choose local swimwear LoRA (not bound)",
+    "ja": "ローカル水着LoRAを選択（未設定）"
+  },
+  "選擇本機姿勢 ControlNet": {
+    "en": "Choose local pose ControlNet",
+    "ja": "ローカルのポーズControlNetを選択"
+  },
+  "選擇本機 RMBG-2.0": {
+    "en": "Choose local RMBG-2.0",
+    "ja": "ローカルRMBG-2.0を選択"
+  },
+  "不使用 / 由底模內建": {
+    "en": "None / built into checkpoint",
+    "ja": "なし・モデル内蔵"
+  },
+  "不疊加服裝 LoRA；使用實際穿著 prompt": {
+    "en": "No clothing LoRA; use the worn-outfit prompt",
+    "ja": "服装LoRAなし。実際の服装提示を使用"
+  },
+  "選擇目前 SD 安裝中的既有工作流": {
+    "en": "Choose a workflow from this SD installation",
+    "ja": "現在のSDにあるワークフローを選択"
+  },
+  "本機聲線已重新讀取。": {
+    "en": "Local voices refreshed.",
+    "ja": "ローカル音声を更新しました。"
+  },
+  "選擇服務聲線或手動填入": {
+    "en": "Choose a service voice or enter manually",
+    "ja": "サービスの声を選択、または手入力"
+  },
+  "自動選本機聲線（依朗讀語言）": {
+    "en": "Auto-select a local voice for the speech language",
+    "ja": "読み上げ言語に合うローカル音声を自動選択"
+  },
+  "音訊無法播放": {
+    "en": "Unable to play audio",
+    "ja": "音声を再生できません"
+  },
+  "語音暫時無法使用": {
+    "en": "Speech unavailable",
+    "ja": "音声を利用できません"
+  },
+  "無法讀取語音設定": {
+    "en": "Unable to load voice settings",
+    "ja": "音声設定を読み込めません"
+  },
+  "想吃點東西": {
+    "en": "Hungry",
+    "ja": "何か食べたい"
+  },
+  "想喝水": {
+    "en": "Thirsty",
+    "ja": "水が飲みたい"
+  },
+  "想找個地方休息": {
+    "en": "Needs rest",
+    "ja": "休める場所がほしい"
+  },
+  "想找點新鮮事": {
+    "en": "Curious",
+    "ja": "新しいことを探したい"
+  },
+  "目前狀態還不錯。": {
+    "en": "Feeling fine.",
+    "ja": "今は調子が良いです。"
+  },
+  "口袋裡還沒有物品。": {
+    "en": "Your pocket is empty.",
+    "ja": "持ち物はまだありません。"
+  },
+  "使用一份": {
+    "en": "Use one",
+    "ja": "一つ使う"
+  },
+  "買一份": {
+    "en": "Buy one",
+    "ja": "一つ買う"
+  },
+  "買來帶走": {
+    "en": "Buy to take away",
+    "ja": "持ち帰り用に買う"
+  },
+  "打工": {
+    "en": "Work a shift",
+    "ja": "アルバイト"
+  },
+  "創作": {
+    "en": "Craft",
+    "ja": "制作"
+  },
+  "收攤取回": {
+    "en": "Withdraw listing",
+    "ja": "出品を取り下げる"
+  },
+  "她們的市集": {
+    "en": "Their market",
+    "ja": "みんなの市場"
+  },
+  "目前還沒有作品上架。她們需要先回家創作，或者你也可以帶作品來。": {
+    "en": "No works are listed yet. Residents need to craft at home first, or you can bring your own work.",
+    "ja": "まだ作品は出品されていません。住人が家で制作するか、あなたが作品を持ってきましょう。"
+  },
+  "作品寄售中；賣家可離開攤位，成交後收到代幣。": {
+    "en": "Work is on consignment. Sellers can leave and receive coins after a sale.",
+    "ja": "作品を委託販売中です。売り手はその場を離れ、売れたらコインを受け取ります。"
+  },
+  "換上這套": {
+    "en": "Wear this",
+    "ja": "これを着る"
+  },
+  "穿著中": {
+    "en": "Wearing",
+    "ja": "着用中"
+  },
+  "已入衣櫃": {
+    "en": "In wardrobe",
+    "ja": "衣装棚に追加済み"
+  },
+  "日常服裝": {
+    "en": "Everyday outfit",
+    "ja": "普段着"
+  },
+  "在房間裡，可以換裝。": {
+    "en": "You can change clothes in your room.",
+    "ja": "自分の部屋で着替えられます。"
+  },
+  "買好衣服後回房間換裝。": {
+    "en": "Buy clothes, then change in your room.",
+    "ja": "服を買い、部屋に戻って着替えましょう。"
+  },
+  "人物行走圖顯示當下穿著；SD 素材可在生圖設定生成、預覽並套用。": {
+    "en": "Walking sprites reflect the current outfit. Generate, preview and apply SD assets in Image settings.",
+    "ja": "歩行画像は現在の服装を表示します。SD画像は画像生成設定で生成、確認、適用できます。"
+  },
+  "服裝描述 · 日後出圖使用": {
+    "en": "Clothing description · used for future generation",
+    "ja": "服装の説明 · 今後の画像生成に使用"
+  },
+  "Civitai 服裝參考 ↗": {
+    "en": "Civitai clothing reference ↗",
+    "ja": "Civitaiの服装参照 ↗"
+  },
+  "本場 · 讀劇情": {
+    "en": "Now showing · read plot",
+    "ja": "今回の上映 · あらすじを読む"
+  },
+  "本作原創": {
+    "en": "Original to this project",
+    "ja": "本作品のオリジナル"
+  },
+  "已同步": {
+    "en": "Synced",
+    "ja": "同期済み"
+  },
+  "快取待更新": {
+    "en": "Cache update needed",
+    "ja": "キャッシュ更新待ち"
+  },
+  "下一輪候選": {
+    "en": "Next rotation",
+    "ja": "次の候補"
+  },
+  "選一個活動或品項；結果會留下自己的記憶。": {
+    "en": "Choose an activity or item. The result becomes your own memory.",
+    "ja": "活動や内容を選びます。結果は自分の記憶になります。"
+  },
+  "走近服務桌再選；活動會留下自己的記憶。": {
+    "en": "Walk to the service desk first. Activities leave your own memories.",
+    "ja": "受付に近づいて選んでください。活動は自分の記憶に残ります。"
+  },
+  "操作已送出": {
+    "en": "Action sent",
+    "ja": "操作を送信しました"
+  },
+  "行動暫時無法執行。": {
+    "en": "Action unavailable right now.",
+    "ja": "今はこの行動を実行できません。"
+  },
+  "已更新活動安排。": {
+    "en": "Activity plan updated.",
+    "ja": "活動の予定を更新しました。"
+  },
+  "訊息已送給實際參與的成員。": {
+    "en": "Message sent to actual participants.",
+    "ja": "実際の参加者にメッセージを送りました。"
+  },
+  "PNG 已套用；下一次畫面更新即可看到。": {
+    "en": "PNG applied. It appears on the next screen update.",
+    "ja": "PNGを適用しました。次の画面更新で表示されます。"
+  },
+  "已恢復原美術；上傳原圖仍保留在本機。": {
+    "en": "Original art restored. Uploaded files remain locally.",
+    "ja": "元の画像に戻しました。取り込んだ画像はローカルに残ります。"
+  },
+  "已套用立繪差分，沒有再生圖。": {
+    "en": "Portrait variation applied without generating again.",
+    "ja": "再生成せず、立ち絵差分を適用しました。"
+  },
+  "正在整理街景…": {
+    "en": "Preparing the neighbourhood…",
+    "ja": "街の風景を準備中…"
+  },
+  "立繪使用 PNG，可含透明背景。": {
+    "en": "Portraits use PNG and may have transparency.",
+    "ja": "立ち絵には透明背景対応のPNGを使用します。"
+  },
+  "只改圖片；不會改角色記憶、碰撞、門口或錢包。": {
+    "en": "Only pictures change. Memories, collisions, doors and wallets remain.",
+    "ja": "画像だけを変更します。記憶、衝突判定、入口、所持金は変えません。"
+  },
+  "關閉小鎮活動": {
+    "en": "Close town events",
+    "ja": "街のイベントを閉じる"
+  },
+  "關閉 CG": {
+    "en": "Close CG",
+    "ja": "CGを閉じる"
+  },
+  "目前人物": {
+    "en": "Current characters",
+    "ja": "現在の人物"
+  },
+  "向上走": {
+    "en": "Move up",
+    "ja": "上へ移動"
+  },
+  "向下走": {
+    "en": "Move down",
+    "ja": "下へ移動"
+  },
+  "向右走": {
+    "en": "Move right",
+    "ja": "右へ移動"
+  },
+  "向左走": {
+    "en": "Move left",
+    "ja": "左へ移動"
+  },
+  "觸控方向鍵": {
+    "en": "Touch controls",
+    "ja": "タッチ移動ボタン"
+  },
+  "像素生活遊戲": {
+    "en": "Pixel life game",
+    "ja": "ピクセル生活ゲーム"
+  },
+  "發起多人邀約": {
+    "en": "Invite a group",
+    "ja": "グループを招待"
+  },
+  "LPC 人物 ↗": {
+    "en": "LPC characters ↗",
+    "ja": "LPC人物素材 ↗"
+  },
+  "LPC 建築與街景 ↗": {
+    "en": "LPC buildings & scenery ↗",
+    "ja": "LPC建物と街の素材 ↗"
+  },
+  "美術：": {
+    "en": "Art:",
+    "ja": "画像："
+  },
+  "資料夾和服務分開：": {
+    "en": "Folders and services are separate:",
+    "ja": "フォルダとサービスは別です："
+  },
+  "D:\\我的SD\\ComfyUI": {
+    "en": "D:\\MySD\\ComfyUI",
+    "ja": "D:\\MySD\\ComfyUI"
+  },
+  "背面　／　向左　／　正面　／　向右 · 待機與左右步伐循環": {
+    "en": "Back / left / front / right · idle and alternating steps",
+    "ja": "背面・左・正面・右 · 待機と左右の歩行ループ"
+  },
+  "俯視角像素地圖，方向鍵或 WASD 走動，E 與身邊的人或物互動": {
+    "en": "Top-down pixel map. Move with arrows or WASD; press E to interact nearby.",
+    "ja": "見下ろし型ピクセルマップ。方向キーかWASDで移動、Eで近くの人や物と交流。"
+  },
+  "原生介面保留已載入的擴充、節點、放大、局部重繪與其他工具。可在此視窗操作，也可以另開大視窗。": {
+    "en": "The native interface keeps installed extensions, nodes, upscaling, inpainting and other tools. Use it here or open a larger window.",
+    "ja": "原生画面では導入済みの拡張、ノード、拡大、部分修正などを利用できます。ここで操作するか、大きな別画面を開けます。"
+  },
+  "選單來自這台電腦的實際安裝。模型保留在原資料夾，遊戲透過本機 API 使用它們，不複製大型權重。": {
+    "en": "Menus reflect actual installations on this computer. Models stay in their original folders and are used through local APIs; large weights are not copied.",
+    "ja": "このPCの実際のインストールから一覧を作ります。モデルは元のフォルダに残し、ローカルAPIで利用します。大きな重みファイルはコピーしません。"
+  },
+  "© Blender Foundation · 官方開放電影，保留完整片尾署名。角色以文字資料理解劇情。": {
+    "en": "© Blender Foundation · official open movies with full end credits. Characters understand plots through text sources.",
+    "ja": "© Blender Foundation · 公式公開映画。完全なエンドクレジットを保持します。人物は文章資料から物語を理解します。"
+  },
+  "可貼上 PNG Info 生成參數、完整 API payload 或 ComfyUI API JSON": {
+    "en": "Paste PNG Info parameters, a full API payload or ComfyUI API JSON.",
+    "ja": "PNG Infoの生成パラメータ、完全なAPI payload、ComfyUI API JSONを貼り付けられます。"
+  },
+  "同一人物的髮型、服裝細節仍需按所選 LoRA 預覽確認；此流程提升一致性，沒有保證任意模型都能完全重現。": {
+    "en": "Preview hair and clothing details for the selected LoRA. This improves consistency but cannot guarantee exact reproduction with every model.",
+    "ja": "選んだLoRAで髪型や服の細部を確認してください。一貫性を高める処理ですが、すべてのモデルで完全な再現を保証するものではありません。"
+  },
+  "只收立繪與表情差分，按角色、身份設定、穿著和生成配方區分。其他人的立繪不會借用；CG 和行走表不收進此庫。": {
+    "en": "Only portraits and expression variations are collected, separated by character, identity, outfit and recipe. Other characters' portraits are never borrowed; CG and sprite sheets are excluded.",
+    "ja": "人物、外見設定、服装、生成レシピごとに立ち絵と表情差分だけを保存します。他の人物の立ち絵は使いません。CGと歩行シートは含めません。"
+  },
+  "固定加入成年、完整日常服裝及排除裸露的提示。H 入口維持封印，H 類 LoRA 不可選；生圖仍需預覽確認品質。": {
+    "en": "Adult, fully dressed and no-nudity guidance is fixed. Explicit generation stays disabled and explicit LoRAs cannot be selected. Preview generated images for quality.",
+    "ja": "成人・通常の服装・露出除外の提示を固定で加えます。成人向け生成は無効で、該当LoRAは選択できません。生成品質はプレビューで確認してください。"
+  },
+  "模型權重只讀取檔案資訊及 safetensors 內嵌標籤，不在遊戲中載入或執行。列出資源不代表此生成模板支援它。": {
+    "en": "Only file information and safetensors metadata are read. Weights are not loaded or executed in the game. Listing a resource does not imply template compatibility.",
+    "ja": "ファイル情報とsafetensorsのメタデータだけを読み取ります。ゲーム内で重みを実行しません。一覧にあってもテンプレート対応を意味しません。"
+  },
+  "立繪、像素與一般 CG 可各自選不同模板。只保存模板不會開始生圖；角色 LoRA 仍需在「角色與 LoRA」逐一選擇。": {
+    "en": "Portraits, sprites and SFW CG may use different templates. Saving does not generate images. Select character LoRAs individually under Character & LoRA.",
+    "ja": "立ち絵、歩行画像、通常CGには別のテンプレートを選べます。保存だけでは生成しません。「人物とLoRA」で個別に人物LoRAを選んでください。"
+  },
+  "可編輯目前定義，或貼上帶 instruction、changes 的部件包。固定 ID 會保留，碰撞、門口、物件行為可修改。": {
+    "en": "Edit the current definition or paste a package with instruction and changes. IDs remain stable; collisions, doors and object behaviour can change.",
+    "ja": "現在の定義を編集するか、instructionとchangesを含む部品パッケージを貼り付けます。IDを保持し、衝突判定、入口、物の動作を変更できます。"
+  },
+  "生成不會停止生活世界。取消會等待目前單張完成，避免打斷 SD 裡其他人的任務。預覽使用透明棋盤；套用只影響這個角色和這套穿著。": {
+    "en": "Generation does not stop the world. Cancellation waits for the current image to finish, avoiding interruption of other SD jobs. Previews use a transparency checkerboard; applying affects only this character and outfit.",
+    "ja": "生成中も生活世界は動きます。中止は現在の一枚が終わるまで待ち、他のSD作業を妨げません。プレビューは透明背景を表示し、適用はこの人物と服装だけに影響します。"
+  },
+  "使用 --api 或 --nowebui，指定 --server-name 127.0.0.1。此專案提供獨立的本機啟動腳本，保留你的原始啟動設定。": {
+    "en": "Use --api or --nowebui with --server-name 127.0.0.1. A separate local launch script keeps your original startup settings.",
+    "ja": "--apiまたは--nowebuiと、--server-name 127.0.0.1を指定します。独立した起動スクリプトを使い、元の起動設定は保持します。"
+  },
+  "泳装依實際穿著自動疊加，角色 LoRA 保留。未選泳裝 LoRA 時仍可游泳，但 SD 不會冒充已綁定或生成泳裝素材。男性主角需選男性角色 LoRA。": {
+    "en": "Swimwear follows the actual worn outfit and retains character LoRA. Swimming works without a swimwear LoRA, but swimwear art requires one. Use a male character LoRA for a male protagonist.",
+    "ja": "実際の服装に合わせて水着を重ね、人物LoRAを保持します。水着LoRAなしでも泳げますが、水着画像には設定が必要です。男性主人公には男性の人物LoRAを選びます。"
+  },
+  "優先使用現有 WebUI Python，其次 ComfyUI Python；只使用現有套件和本機權重。CPU 已实機驗證，CUDA 選項未做另一次去背實機測試。": {
+    "en": "Prefer the existing WebUI Python, then ComfyUI Python, with installed packages and local weights only. CPU removal was tested; the CUDA option has not had a separate device test.",
+    "ja": "既存WebUIのPythonを優先し、次にComfyUIを使用します。導入済みパッケージとローカル重みだけを使います。CPUは実機確認済み、CUDAでの別途背景除去テストは未実施です。"
+  },
+  "找到權重不代表 SD API 正在執行。測試連線會讀取服務實際提供的底模、LoRA、VAE 和取樣器；生成時再次核對檔案，避免向錯誤服務送出未安裝的 LoRA。": {
+    "en": "Finding weights does not mean the SD API is running. Connection checks read the service's actual models, LoRAs, VAEs and samplers. Files are checked again before generation.",
+    "ja": "重みが見つかってもSD APIが動作中とは限りません。接続確認で実際のモデル、LoRA、VAE、サンプラーを取得し、生成前に再確認します。"
+  },
+  "生成讀取角色目前穿著，買了但沒穿的衣服不會出現在圖中。額外服裝 LoRA 是此角色的造型疊加，建議留空，避免覆蓋不同衣服的實際細節。穿回同一套衣服會使用已套用的快取。": {
+    "en": "Generation uses the worn outfit, not unworn purchases. Extra clothing LoRA overlays this character's style; leaving it blank avoids overriding outfit details. Previously worn outfits may reuse activated cached art.",
+    "ja": "生成では今着ている服を使い、未着用の購入品は表示しません。追加服LoRAは人物の装いを重ねるため、通常は空欄が適切です。同じ服に戻ると適用済み画像を再利用できます。"
+  },
+  "角色可以婉拒、遲到或退出；缺席者沒有付款，也沒有活動內容或群聊記憶。取消尚未開始的活動不收費。途中離開不會自動退還已购买的品項費用。免費散步完成後會減輕疲勞與好奇需要。": {
+    "en": "Characters may decline, arrive late or leave. Absentees neither pay nor receive activity content or chat memories. Cancelling before start is free; leaving does not refund purchased items. Completed free walks reduce fatigue and curiosity needs.",
+    "ja": "人物は辞退、遅刻、退出できます。欠席者は支払わず、活動内容や会話の記憶も得ません。開始前の中止は無料で、途中退出では購入品を返金しません。無料散歩の完了で疲労と好奇心の欲求が軽減します。"
+  },
+  "同一個成年 SFW 測試人物：六種表情、四方向三幀、純骨架 ControlNet 與 RMBG CPU 去背；這些圖不會套用到現有十位人物。角色 LoRA 仍由你逐一選擇。": {
+    "en": "One adult SFW test character: six expressions, four directions with three frames, skeleton ControlNet and RMBG CPU removal. These samples are not applied to the ten residents. Select their LoRAs yourself.",
+    "ja": "成人の通常テスト人物一人で、六表情、四方向三コマ、骨格ControlNetとRMBGのCPU背景除去を確認しました。既存十人には適用しません。人物LoRAは個別に選びます。"
+  },
+  "原圖、底模／LoRA 路徑、大小與修改時間、Seed、模板、衣服 render_key 和 API 模型名稱一起保存。相同配方命中快取；失敗／取消可以重試，已完成單張可續用。": {
+    "en": "Originals, model/LoRA paths and versions, seed, template, outfit render_key and API model names are captured together. Identical recipes use cache; failed or cancelled jobs can retry and reuse completed images.",
+    "ja": "元画像、モデル・LoRAのパスと版情報、シード、テンプレート、服装のrender_key、APIモデル名を一緒に保存します。同一レシピはキャッシュを使い、失敗や中止後も完了分を再利用して再試行できます。"
+  },
+  "需包含 WebUI 的 webui.py 或 ComfyUI 的 main.py 與 comfy 資料夾。會讀取 models、embeddings、共用模型目錄及已安裝的擴充。": {
+    "en": "The folder must contain WebUI webui.py, or ComfyUI main.py and comfy. Models, embeddings, shared model folders and installed extensions are inventoried.",
+    "ja": "WebUIのwebui.py、またはComfyUIのmain.pyとcomfyフォルダが必要です。モデル、埋め込み、共有モデル先、拡張の一覧を取得します。"
+  },
+  "語言控制聲線與發音，不會自動翻譯台詞。Windows／瀏覽器需安裝對應語言的聲線。Kokoro 使用原生語言碼；其他本機模型可依服務選 language／lang_code 參數。": {
+    "en": "Language controls voice and pronunciation; it does not translate lines. Install matching Windows/browser voices. Kokoro uses native language codes; other local services may support language or lang_code.",
+    "ja": "言語は声と発音を指定し、台詞を翻訳しません。対応するWindows・ブラウザ音声が必要です。Kokoroは独自言語コード、他のサービスはlanguageやlang_codeを使えます。"
+  },
+  "底模架構需符合 LoRA，SDXL／SD1.5 已知不相容時會拒絕生成。同一架構中的 Pony／Illustrious 等訓練差異仍需自行確認；同一 Seed 並不保證差分完全一致。": {
+    "en": "Checkpoint and LoRA architectures must match. Known SDXL/SD1.5 mismatches are rejected. Training differences such as Pony/Illustrious still need checking; the same seed does not guarantee identical variations.",
+    "ja": "モデルとLoRAの構造を合わせます。SDXL・SD1.5の明らかな不一致は拒否します。PonyやIllustriousなどの学習差は別途確認が必要で、同じシードでも完全な差分一致は保証しません。"
+  },
+  "手動朗讀與試聽不會觸發 Grok。只朗讀玩家實際聽到的台詞，包括共同活動群聊；初次載入與讀檔不會重播整段歷史。Windows、瀏覽器與本機模型的聲線分開保存。瀏覽器聲線僅使用標記為本機的聲音。": {
+    "en": "Reading and previews do not call Grok. Only lines the player actually heard can be read, including group chat. Loading never replays all history. Windows, browser and model voices are stored separately; browser voices must be local.",
+    "ja": "読み上げと試聴でGrokは呼びません。共同活動を含め、プレイヤーが実際に聞いた台詞だけを読みます。ロードで全履歴を再生しません。各種の声は別々に保存し、ブラウザはローカル音声だけを使います。"
+  },
+  "WebUI 自動注入當下 prompt、負向、Seed、底模、已選 LoRA 與參考圖，其餘原生參數保留。ComfyUI 保留完整節點圖，用下拉選單指定遊戲要替換的輸入欄位；沒有改動的節點維持原設定。": {
+    "en": "WebUI injects current prompts, seed, checkpoint, selected LoRA and reference images, preserving other native parameters. ComfyUI keeps the full graph; dropdowns bind inputs the game may replace. Other nodes stay intact.",
+    "ja": "WebUIは現在の提示、負の提示、シード、モデル、選択LoRA、参照画像を設定し、他の原生値を保持します。ComfyUIは完全なノード図を保持し、変更する入力だけを選択します。他のノードはそのままです。"
+  },
+  "內建支援「說明／名稱／價格改成…」「互動改為休息」「尋路改為astar」。複雜指示可接 service:replacement 的本機 AI 接口；動作、對話、記憶、SD、TTS 與物件工具各自可換。": {
+    "en": "Built-in commands: 說明／名稱／價格改成… (description/name/price), 互動改為休息 (rest interaction), 尋路改為astar (pathfinding). Complex instructions can use a local service:replacement adapter. Actions, dialogue, memory, SD, TTS and object tools are independently replaceable.",
+    "ja": "内蔵コマンド：說明／名稱／價格改成…（説明・名前・価格）、互動改為休息（休憩）、尋路改為astar（経路探索）。複雑な指示はローカルservice:replacementに接続できます。行動、会話、記憶、SD、TTS、物のツールは個別に交換可能です。"
+  },
+  "先生成平常表情，其餘差分使用同一張身份參考做 img2img。建議重繪幅度 0.20–0.40；太高會換臉，太低可能沒有表情差異。尺寸依底模調整，Steps 影響生成時間，CFG 太高可能造成顏色過飽和。": {
+    "en": "Generate neutral first, then use it as the img2img identity reference for other expressions. Denoise 0.20–0.40 is a starting point: high may change faces, low may not change expressions. Match dimensions to the checkpoint; steps affect time and high CFG may oversaturate colours.",
+    "ja": "まず通常表情を生成し、他の差分は同じ人物参照でimg2imgします。変更強度0.20〜0.40が目安です。高すぎると顔が変わり、低すぎると表情差が出ません。寸法はモデルに合わせ、ステップ数とCFGも調整します。"
+  },
+  "{scene} 使用玩家當下所在場所的公開環境。角色 LoRA、身份立繪及當下穿著共同作為生成配方；CG 保留場景背景。先生成一張身份參考，再生成一張 CG，共兩張。需要走近角色，且先為她綁定 LoRA；H 入口保持封印。": {
+    "en": "{scene} uses the current public environment. Character LoRA, identity portrait and worn outfit define the recipe; CG keeps the background. Generate one identity image, then one CG. Walk close and bind the character LoRA first. Explicit generation remains disabled.",
+    "ja": "{scene}には現在の場所の公開環境を使います。人物LoRA、立ち絵、実際の服装をレシピとし、背景を残します。人物参照一枚とCG一枚を生成します。先に近づき、人物LoRAを設定してください。成人向け生成は無効です。"
+  },
+  "可用變數：{identity} 角色身份、{outfit} 當下穿著、{expression} 表情、{direction} 方向、{pose} 姿勢、{scene} 一般 CG 公開場景。LoRA 標籤由選單自動加入，請勿手寫。": {
+    "en": "Variables: {identity}, {outfit}, {expression}, {direction}, {pose}, {scene} for public CG scenery. LoRA tags are added from selections; do not enter them manually.",
+    "ja": "変数：{identity}人物、{outfit}現在の服装、{expression}表情、{direction}方向、{pose}ポーズ、{scene}公開のCG場面。LoRAタグは選択から自動追加します。手入力は不要です。"
+  },
+  "語音生成在背景處理；停止按鈕停止播放並丟棄尚未播出的內容，本機服務可能繼續完成正在生成的單句。相同模型、聲線、語速與台詞可重用音訊快取，最多 128 份／256 MB。神經 TTS 與 SD 同時使用 GPU 時可能互相占用資源。": {
+    "en": "Speech is generated in the background. Stop ends playback and clears pending audio; the service may finish its current line. Matching model, voice, speed and text reuse cache (128 files / 256 MB). Neural TTS and SD may compete for GPU resources.",
+    "ja": "音声生成はバックグラウンドで行います。停止で再生と未再生分を消しますが、サービスは現在の一文を完成する場合があります。同じモデル、声、速度、台詞はキャッシュを利用（128件・256MB）。TTSとSDはGPU資源を競合する場合があります。"
+  },
+  "自動生成預設開啟；保存已選 LoRA 的角色後，就會排入生成。需要兩個開關都開啟，且已連線、已選底模和角色 LoRA。工作在背景排隊，一次使用一個 GPU 任務；完成後仍由你預覽、套用。LoRA 與衣服不能代替角色的人格或私有記憶。": {
+    "en": "Automatic generation is enabled initially for new settings. Saving a bound character queues generation when both switches are on, with a connected service and selected checkpoint/LoRA. One GPU job runs at a time; preview and apply results yourself. LoRA and outfits do not replace personality or private memory.",
+    "ja": "新しい設定では自動生成が初期有効です。二つのスイッチ、接続、モデル、人物LoRAが揃うと保存時に予約します。GPU作業は一つずつ実行し、完成後は確認して適用します。LoRAや服装は人格と私有記憶の代わりではありません。"
+  },
+  "ComfyUI 差分需 reference（LoadImage）與 denoise；像素骨架模式另需 control 圖片。中性立繪使用白底參考＋denoise 1，其餘差分注入同一人物參考圖。工作流的連線、放大及後製節點不會被刪除。": {
+    "en": "ComfyUI variations need reference (LoadImage) and denoise; skeleton sprites also need a control image. Neutral portraits use a white reference with denoise 1; variations use the same identity reference. Connections and post-processing nodes are retained.",
+    "ja": "ComfyUI差分にはreference（LoadImage）とdenoise、骨格歩行画像にはcontrol画像も必要です。通常立ち絵は白参照とdenoise 1、差分は同じ人物参照を使います。接続や後処理ノードは削除しません。"
+  },
+  "12 張生成圖統一到 64×64 格子，腳底 y=60，再組為 192×256 RGBA；每格記錄方向、步伐、實際透明邊界與腳底。每個方向都獨立生成，不以左右鏡像替代。仍須預覽身份、衣服與步伐細節再套用；不保證任意 LoRA 能一次完全一致。": {
+    "en": "Twelve images are aligned to 64×64 cells with feet at y=60, then assembled as 192×256 RGBA. Each cell records direction, step and transparent bounds. Every direction is generated separately. Preview identity, clothing and walking details; perfect first-pass consistency is not guaranteed.",
+    "ja": "十二枚を64×64の枠、足元y=60に合わせ、192×256のRGBAにまとめます。各枠の方向、歩幅、透明境界を記録し、左右反転で代用せず個別に生成します。人物、服装、歩行を確認して適用してください。初回の完全一致は保証しません。"
+  },
+  "PNG Info 只還原 SD 寫進圖片的參數；未寫入的擴充參數請改匯入完整 API payload。原生視窗可使用本機現有功能，遊戲模板仍限 SFW、本機執行與單張 PNG 輸出；雲端付費節點需在原生 SD 手動操作。模板匯入與保存不呼叫聊天模型。": {
+    "en": "PNG Info restores only parameters embedded by SD. Use a full API payload for unembedded extension settings. Native UI retains local features; game templates require SFW local single-PNG output. Paid cloud nodes must be operated manually in native SD. Template import/save makes no chat call.",
+    "ja": "PNG InfoはSDが画像に記録した項目だけを復元します。未記録の拡張項目には完全なAPI payloadを使います。ゲームのテンプレートは通常画像・ローカル実行・単一PNG出力に限定し、有料クラウドノードは原生SDで手動操作します。テンプレート保存で会話モデルは呼びません。"
+  },
+  "服務需已啟動，支援 /v1/audio/speech 並輸出 WAV。/v1/models 與 /v1/audio/voices 若沒有提供，可手動填實際 ID。選 Kokoro 不會自動安裝模型。其他模型需先提供相容服務，不能直接把權重路徑當服務。": {
+    "en": "Start a service supporting /v1/audio/speech with WAV output. Enter IDs manually if model/voice catalogue endpoints are unavailable. Selecting Kokoro does not install a model. Other models need a compatible service, not a weights path.",
+    "ja": "/v1/audio/speechでWAVを返すサービスを起動してください。モデル・声一覧がなければIDを手入力できます。Kokoro選択だけではモデルを導入しません。他のモデルも互換サービスが必要で、重みのパスをサービスにはできません。"
+  },
+  "RMBG 使用現有 SD 的 Python 和本機 RMBG-2.0 完整權重，禁止連網下載；一批原圖完成後才去背，不與 SD 搶同時的生成任務，預設 CPU。可提高至 1024 解析度改善細邊；模型用途依其原作者授權。近白連通去背仍可選，容差只適用該模式。": {
+    "en": "RMBG uses existing SD Python and complete local RMBG-2.0 weights, without downloads. Removal follows image generation and defaults to CPU. Resolution up to 1024 may improve edges. Model use follows its licence. Near-white removal remains available; tolerance affects that mode only.",
+    "ja": "既存SDのPythonとローカルRMBG-2.0重みを使い、ダウンロードしません。画像生成後に背景除去し、初期はCPUです。1024までの解像度で輪郭を改善できます。モデルのライセンスに従って利用してください。白系背景除去も選べ、許容差はその方式だけに適用します。"
+  },
+  "WebUI：匯入原生輸出的 PNG、PNG Info 文字或完整 API payload JSON。ComfyUI：匯入 Export (API) JSON、含節點圖的原始 PNG，或擷取已完成的生成紀錄。普通畫布 JSON 請先在 ComfyUI 轉為 API 格式。": {
+    "en": "WebUI: import native PNG, PNG Info text or full API payload JSON. ComfyUI: import Export (API) JSON, an original PNG containing the graph, or completed history. Convert ordinary canvas JSON to API format first.",
+    "ja": "WebUIは原生PNG、PNG Info、完全なAPI payload JSONを取り込めます。ComfyUIはExport (API) JSON、ノード図を含むPNG、完了履歴を使います。通常の画布JSONは先にAPI形式へ変換してください。"
+  },
+  "預設 8188。使用 CheckpointLoaderSimple → LoraLoader → CLIPTextEncode → KSampler → VAEDecode → SaveImage；差分改以 LoadImage → VAEEncode 重繪。此工作流需要完整 SD / SDXL checkpoint，UNet、Flux 或影片模型只列入資源清單，不能當成此底模。": {
+    "en": "Default port 8188. The built-in chain uses CheckpointLoaderSimple → LoraLoader → CLIPTextEncode → KSampler → VAEDecode → SaveImage; variations add LoadImage → VAEEncode. It requires a full SD/SDXL checkpoint. Listed UNet, Flux or video models cannot be used as that checkpoint.",
+    "ja": "既定ポートは8188。内蔵処理はCheckpointLoaderSimple → LoraLoader → CLIPTextEncode → KSampler → VAEDecode → SaveImageで、差分はLoadImage → VAEEncodeを追加します。完全なSD・SDXLモデルが必要です。UNet、Flux、動画モデルは一覧表示のみで、このベースには使えません。"
+  },
+  "先以同一角色 LoRA、身份與實際穿著生成平常立繪，作為像素外觀參考；ControlNet 僅輸入無髮型、無衣服的 OpenPose 骨架。每個方向先獨立轉身，再使用該方向的圖生成左右步伐，避免沿用 LPC 衣服。像素基礎重繪建議 0.75–0.85，背面與側面自動增加 0.12（最多 0.95），步伐使用 0.60。只生成像素時另生成一張身份立繪，總共 13 張；完整表情＋像素是 18 張。": {
+    "en": "Create a neutral portrait using the same character LoRA and worn outfit as the sprite reference. ControlNet receives only an OpenPose skeleton, without hair or clothes. Generate each direction first, then its steps. Suggested denoise is 0.75–0.85, with +0.12 for back/side (max 0.95); steps use 0.60. Sprites alone need 13 images including identity; the full set needs 18.",
+    "ja": "同じ人物LoRAと実際の服装で通常立ち絵を作り、歩行画像の参照にします。ControlNetには髪や服のないOpenPose骨格だけを渡します。各方向を先に作り、その向きの歩行を生成します。変更強度の目安は0.75〜0.85、背面・側面は+0.12（最大0.95）、歩行は0.60です。歩行のみは人物参照込み13枚、全体は18枚です。"
+  },
+  "場景": {
+    "en": "Scene",
+    "ja": "場面"
+  },
+  "成員": {
+    "en": "Resident",
+    "ja": "同居人"
+  },
+  "替換 ": {
+    "en": "Replace ",
+    "ja": "置き換え "
+  },
+  "綁定 ": {
+    "en": "Bind ",
+    "ja": "設定 "
+  },
+  "替換圖片 ": {
+    "en": "Replace image ",
+    "ja": "画像を置き換え "
+  },
+  "一起出門走走": {
+    "en": "Go for a walk together",
+    "ja": "一緒に出かける"
+  },
+  "地圖讀取失敗": {
+    "en": "Unable to load map",
+    "ja": "マップを読み込めません"
+  },
+  "沿路步行前往": {
+    "en": "Walk there along the streets",
+    "ja": "道を歩いて向かう"
+  },
+  "SD 場景插圖": {
+    "en": "SD scene illustration",
+    "ja": "SDの場面イラスト"
+  },
+  "世界尚未啟動。": {
+    "en": "The world has not started yet.",
+    "ja": "世界はまだ起動していません。"
+  },
+  "先選擇原存檔。": {
+    "en": "Select an archived save first.",
+    "ja": "先に以前のセーブを選んでください。"
+  },
+  "再看 30 項": {
+    "en": "Show 30 more",
+    "ja": "さらに30件表示"
+  },
+  "已建立新角色。": {
+    "en": "New characters created.",
+    "ja": "新しい人物を作成しました。"
+  },
+  "服裝詞彙已匯入": {
+    "en": "Clothing prompts imported",
+    "ja": "服装の提示を取り込み済み"
+  },
+  "遊戲載入失敗：": {
+    "en": "Game failed to load: ",
+    "ja": "ゲームの読み込みに失敗："
+  },
+  "四方向三幀行走圖": {
+    "en": "Four directions, three walking frames",
+    "ja": "四方向三コマの歩行画像"
+  },
+  "美術素材讀取失敗": {
+    "en": "Unable to load art assets",
+    "ja": "画像素材を読み込めません"
+  },
+  "請選擇已安裝底模": {
+    "en": "Please choose an installed checkpoint",
+    "ja": "導入済みモデルを選んでください"
+  },
+  "部件操作無法完成": {
+    "en": "Component operation could not be completed",
+    "ja": "部品操作を完了できません"
+  },
+  "音訊暫時無法讀取": {
+    "en": "Unable to read audio",
+    "ja": "音声を読み込めません"
+  },
+  "先選一位到場成員。": {
+    "en": "Choose a participant who has arrived.",
+    "ja": "到着した参加者を選んでください。"
+  },
+  "瀏覽器朗讀未完成：": {
+    "en": "Browser speech did not finish: ",
+    "ja": "ブラウザ読み上げが未完了："
+  },
+  "角色正在各自回應…": {
+    "en": "Characters are deciding individually…",
+    "ja": "人物がそれぞれ返答しています…"
+  },
+  "她已做出自己的回應。": {
+    "en": "She has made her own response.",
+    "ja": "彼女自身の返答をしました。"
+  },
+  "已更新本機資源清單。": {
+    "en": "Local resource inventory updated.",
+    "ja": "ローカル素材の一覧を更新しました。"
+  },
+  "掃描已安裝模型與資源…": {
+    "en": "Scanning installed models and resources…",
+    "ja": "導入済みモデルと素材を検索中…"
+  },
+  "讀取本機 SD 設定…": {
+    "en": "Loading local SD settings…",
+    "ja": "ローカルSD設定を読み込み中…"
+  },
+  "過十分鐘 · 生活繼續": {
+    "en": "Wait 10 minutes · life continues",
+    "ja": "10分待つ · 生活は続く"
+  },
+  "測試本機 SD API…": {
+    "en": "Checking the local SD API…",
+    "ja": "ローカルSD APIを確認中…"
+  },
+  "設定檔需小於 64 KB": {
+    "en": "Settings file must be below 64 KB",
+    "ja": "設定ファイルは64KB未満にしてください"
+  },
+  "先解析模板或匯入原生檔案。": {
+    "en": "Parse a template or import a native file first.",
+    "ja": "先にテンプレートを解析するか原生ファイルを取り込んでください。"
+  },
+  "已到集合點 · 可再次定位": {
+    "en": "At meeting point · locate again",
+    "ja": "集合場所に到着 · 再度位置確認可能"
+  },
+  "請先選擇並讀取要替換的部件": {
+    "en": "Choose and load a component first",
+    "ja": "先に部品を選んで読み込んでください"
+  },
+  "先在語音設定中啟用 TTS。": {
+    "en": "Enable TTS in Voice settings first.",
+    "ja": "先に音声設定でTTSを有効にしてください。"
+  },
+  "已找到安裝資料夾並更新清單。": {
+    "en": "Installation found and inventory updated.",
+    "ja": "インストール先を確認し、一覧を更新しました。"
+  },
+  "請貼上 SD 安裝資料夾路徑。": {
+    "en": "Paste the SD installation folder path.",
+    "ja": "SDのインストール先を貼り付けてください。"
+  },
+  "已讀入原生模板，尚未保存或執行。": {
+    "en": "Native template loaded; not saved or executed yet.",
+    "ja": "原生テンプレートを読み込みました。まだ保存・実行していません。"
+  },
+  "請選擇 3 MB 以內的 PNG": {
+    "en": "Choose a PNG of at most 3 MB",
+    "ja": "3MB以下のPNGを選んでください"
+  },
+  "選擇 3 MB 以內的 PNG。": {
+    "en": "Choose a PNG of at most 3 MB.",
+    "ja": "3MB以下のPNGを選んでください。"
+  },
+  "ComfyUI · 固定節點工作流": {
+    "en": "ComfyUI · fixed node workflow",
+    "ja": "ComfyUI · 固定ノードワークフロー"
+  },
+  "已匯出完整原生模板與遊戲變數綁定。": {
+    "en": "Full native template and game bindings exported.",
+    "ja": "原生テンプレートとゲーム変数の設定を出力しました。"
+  },
+  "原存檔已恢復，API 用量不會回退。": {
+    "en": "Archived save restored. API usage is not rolled back.",
+    "ja": "以前のセーブを復元しました。API利用量は戻りません。"
+  },
+  "已刪除未使用模板；既有角色素材保留。": {
+    "en": "Unused template deleted. Existing character art remains.",
+    "ja": "未使用テンプレートを削除しました。既存の人物画像は保持します。"
+  },
+  "已在檔案總管開啟所選 SD 資料夾。": {
+    "en": "Selected SD folder opened in file explorer.",
+    "ja": "選んだSDフォルダをエクスプローラーで開きました。"
+  },
+  "瀏覽器需要你再按一次播放，才能發聲。": {
+    "en": "Press play once more to allow browser audio.",
+    "ja": "ブラウザ音声を許可するため、もう一度再生を押してください。"
+  },
+  "生圖設定暫時無法讀取，請重新整理遊戲。": {
+    "en": "Image settings could not be loaded. Refresh the game.",
+    "ja": "画像生成設定を読み込めません。ゲームを再読み込みしてください。"
+  },
+  "聲線語言不符，請在語音設定重新選擇聲線": {
+    "en": "Voice language mismatch. Select another voice in Voice settings.",
+    "ja": "声の言語が一致しません。音声設定で別の声を選んでください。"
+  },
+  "綁定 JSON 尚未完成，請先修正格式。": {
+    "en": "Binding JSON is incomplete. Correct its format first.",
+    "ja": "変数設定JSONが不完全です。先に形式を修正してください。"
+  },
+  "已匯入並保存設定；模型必須存在於這台電腦。": {
+    "en": "Settings imported and saved. Required models must exist locally.",
+    "ja": "設定を取り込み、保存しました。必要なモデルはこのPCに存在する必要があります。"
+  },
+  "已解析。確認遊戲變數綁定後，保存為固定模板。": {
+    "en": "Parsed. Check game variable bindings, then save as a fixed template.",
+    "ja": "解析しました。ゲーム変数の設定を確認し、固定テンプレートとして保存してください。"
+  },
+  "記憶：每人獨立，使用本機語意向量與事件檢索。": {
+    "en": "Memory: independent per character, with local semantic and event retrieval.",
+    "ja": "記憶：人物ごとに独立し、ローカルの意味・イベント検索を利用します。"
+  },
+  "勾選「建立新的存檔」後才能創角；原存檔將保留。": {
+    "en": "Check the new-save box before creating characters. The current save will be archived.",
+    "ja": "新規セーブに同意するチェックを入れてください。現在のセーブは残します。"
+  },
+  "已切換資料夾。請重新選擇底模，保存後測試連線。": {
+    "en": "Folder changed. Select a checkpoint again, save and check the connection.",
+    "ja": "フォルダを変更しました。モデルを選び直し、保存後に接続確認してください。"
+  },
+  "已讀取模板；重新保存會保留舊版模板和既有素材。": {
+    "en": "Template loaded. Saving keeps previous templates and existing art.",
+    "ja": "テンプレートを読み込みました。保存しても以前の版と既存画像は保持します。"
+  },
+  "已匯出設定模板；不包含模型權重、私有記憶或金鑰。": {
+    "en": "Template exported without weights, private memories or credentials.",
+    "ja": "重み、私有記憶、認証情報を含めずテンプレートを出力しました。"
+  },
+  "三種生成用途已保存，下次角色生圖使用所選完整模板。": {
+    "en": "Templates saved for all three uses. Future generation uses these complete templates.",
+    "ja": "三種類の用途を保存しました。今後の生成で選択した完全なテンプレートを使います。"
+  },
+  "四方向 × 待機／左步／右步（12 張 SD 圖）": {
+    "en": "Four directions × idle / left step / right step (12 SD images)",
+    "ja": "四方向 × 待機・左足・右足（SD画像12枚）"
+  },
+  "先選類型與聲線，保存後可朗讀對話；試聽使用固定句子。": {
+    "en": "Choose type and voice, then save for dialogue speech. Previews use a fixed sample sentence.",
+    "ja": "種類と声を選び、保存すると会話を読み上げます。試聴は固定の例文を使います。"
+  },
+  "已切換角色，其他角色的編輯暫存保留；完成後按保存設定。": {
+    "en": "Character changed. Other character drafts are retained; save when finished.",
+    "ja": "人物を切り替えました。他の人物の編集中データは保持します。完了後に保存してください。"
+  },
+  "已開啟原生 SD；若尚未啟動，先按「啟動完整 SD」。": {
+    "en": "Native SD opened. If it is not running, start full SD first.",
+    "ja": "SD原生画面を開きました。動作していない場合は先にSD全機能を起動してください。"
+  },
+  "此瀏覽器沒有所選本機聲線；請改用 Windows 語音。": {
+    "en": "This browser lacks the chosen local voice. Try Windows speech.",
+    "ja": "このブラウザには選んだローカル音声がありません。Windows音声をお試しください。"
+  },
+  "設定只保存在本機；生成不呼叫 xAI，也不使用雲端生圖。": {
+    "en": "Settings stay local. Image generation does not call xAI or cloud image services.",
+    "ja": "設定はローカルに保存します。画像生成でxAIやクラウド画像サービスを呼びません。"
+  },
+  "已擷取實際執行的完整節點圖；請確認身份、參考圖與輸出綁定。": {
+    "en": "Captured the complete executed graph. Check identity, reference and output bindings.",
+    "ja": "実行した完全なノード図を取得しました。人物、参照、出力の設定を確認してください。"
+  },
+  "部件包已顯示，可複製給替換 AI 或保存；圖片包含 PNG。": {
+    "en": "Package shown. Copy it to a replacement AI or save it; image packages contain PNG data.",
+    "ja": "部品パッケージを表示しました。置き換えAIへ渡すか保存できます。画像はPNGデータを含みます。"
+  },
+  "已套用。只在這位角色穿著同一套衣服時使用；換裝時保留其他素材。": {
+    "en": "Applied for this character wearing this outfit only. Other outfits retain their assets.",
+    "ja": "この人物がこの服装の時だけ適用します。他の服装の画像は保持します。"
+  },
+  "沒有找到既有 SD Python；RMBG 不會自動安裝環境。": {
+    "en": "No existing SD Python found. RMBG will not install an environment automatically.",
+    "ja": "既存のSD Pythonが見つかりません。RMBGは実行環境を自動導入しません。"
+  },
+  "固定模板已保存。上方選定生成用途後按「保存三種用途的模板選擇」。": {
+    "en": "Template saved. Choose its generation use above and save all three selections.",
+    "ja": "固定テンプレートを保存しました。上で用途を選び、三種類のテンプレート選択を保存してください。"
+  },
+  "已排入所有綁定角色 LoRA 的角色；未綁定者保留 LPC 圖。": {
+    "en": "Bound characters queued. Unbound characters keep LPC art.",
+    "ja": "LoRA設定済み人物を予約しました。未設定の人物はLPC画像を保持します。"
+  },
+  "已排入本機生成佇列。生活世界仍可正常走動，請在生成紀錄查看進度。": {
+    "en": "Queued for local generation. The world keeps running; see Generation history for progress.",
+    "ja": "ローカル生成を予約しました。生活世界は動き続けます。生成履歴で進行を確認してください。"
+  },
+  "目前未綁定角色 LoRA。系統不會猜測哪個本機模型屬於這個角色。": {
+    "en": "No character LoRA is bound. The system does not guess which local model belongs to this character.",
+    "ja": "人物LoRAが未設定です。この人物に使うモデルを自動で推測しません。"
+  },
+  "還沒有角色生成任務。選好 LoRA 後，可先只生成立繪確認角色身份。": {
+    "en": "No character generation jobs yet. Choose a LoRA and generate a portrait first to check identity.",
+    "ja": "人物生成の作業はまだありません。LoRAを選び、立ち絵から人物の外見を確認できます。"
+  },
+  "先在生圖設定綁定所選人物的 LoRA。泳池穿著另需綁定泳裝 LoRA。": {
+    "en": "Bind the selected character's LoRA in Image settings first. Pool outfits also need a swimwear LoRA.",
+    "ja": "先に画像生成設定で人物LoRAを指定してください。水着画像には水着LoRAも必要です。"
+  },
+  "匯入檔案請小於 2 MB；較大 PNG 可改貼 PNG Info 文字。": {
+    "en": "Import files below 2 MB. For larger PNGs, paste PNG Info text.",
+    "ja": "取り込みファイルは2MB未満にしてください。大きいPNGはPNG Infoの文字を貼り付けられます。"
+  },
+  "行走表：從上到下為背面、向左、正面、向右；64px 一格，PNG 透明背景。": {
+    "en": "Sprite sheet rows: back, left, front, right. Each cell is 64px with PNG transparency.",
+    "ja": "歩行シートは上から背面、左、正面、右。各枠64px、PNG透明背景です。"
+  },
+  "設定已保存。LoRA、底模、模板與 Seed 會一起記錄，換裝素材各自保留。": {
+    "en": "Settings saved. LoRA, checkpoint, templates and seeds are captured; outfit assets remain separate.",
+    "ja": "設定を保存しました。LoRA、モデル、テンプレート、シードを一緒に記録し、各服装の画像を分けて保持します。"
+  },
+  "驗證通過，尚未套用。背景與性格只進入這位人物自己的設定；圖片需生成或匯入後套用。": {
+    "en": "Validation passed, not applied. Backstory and personality belong only to this character; images need generation or import before applying.",
+    "ja": "検証済みで未適用です。背景と性格はこの人物だけの設定です。画像は生成・取り込み後に適用してください。"
+  },
+  "已讀取工作流；若為畫布 JSON，請先在原生 ComfyUI 匯出 API 格式。": {
+    "en": "Workflow loaded. Export canvas JSON as API format in ComfyUI first.",
+    "ja": "ワークフローを読み込みました。画布JSONの場合はComfyUIでAPI形式に出力してください。"
+  },
+  "記憶：每人獨立，按話題、重要性、時間和場所想起舊事；原始紀錄保留。尚未接語意模型。": {
+    "en": "Memory: independent per character, retrieved by topic, importance, time and place. Original events remain; no semantic model is connected.",
+    "ja": "記憶は人物ごとに独立し、話題、重要度、時間、場所で過去を検索します。原記録を保持し、意味モデルは未接続です。"
+  },
+  "完整 SD 只接受本機 HTTP 位址，例如 http://127.0.0.1:7861": {
+    "en": "Full SD accepts local HTTP addresses only, e.g. http://127.0.0.1:7861",
+    "ja": "SD全機能にはローカルHTTPだけを指定できます。例：http://127.0.0.1:7861"
+  },
+  "拾光公共街區": {
+    "en": "Shiguang public district",
+    "ja": "拾光の公共街区"
+  },
+  "拾光圖書館": {
+    "en": "Shiguang Library",
+    "ja": "拾光図書館"
+  },
+  "街角咖啡廳": {
+    "en": "Corner Café",
+    "ja": "街角カフェ"
+  },
+  "木柵動物園": {
+    "en": "Taipei Zoo",
+    "ja": "台北動物園"
+  },
+  "光影美術館": {
+    "en": "Light & Shadow Gallery",
+    "ja": "光影美術館"
+  },
+  "小星電影院": {
+    "en": "Little Star Cinema",
+    "ja": "小星映画館"
+  },
+  "暖桌餐廳": {
+    "en": "Warm Table Restaurant",
+    "ja": "暖卓レストラン"
+  },
+  "河畔公園": {
+    "en": "Riverside Park",
+    "ja": "川辺の公園"
+  },
+  "共居市集": {
+    "en": "Residents' Market",
+    "ja": "共同生活の市場"
+  },
+  "日常衣間": {
+    "en": "Everyday Boutique",
+    "ja": "日常の服屋"
+  },
+  "晴水游泳池": {
+    "en": "Qingshui Pool",
+    "ja": "晴水プール"
+  },
+  "用餐": {
+    "en": "Eat / drink",
+    "ja": "飲食"
+  },
+  "休息與伸展": {
+    "en": "Rest & stretch",
+    "ja": "休憩とストレッチ"
+  },
+  "坐一會兒": {
+    "en": "Sit for a while",
+    "ja": "少し座る"
+  },
+  "觀察": {
+    "en": "Observe",
+    "ja": "観察する"
+  },
+  "讀一段": {
+    "en": "Read a passage",
+    "ja": "一節を読む"
+  },
+  "讀動物解說": {
+    "en": "Read animal information",
+    "ja": "動物の説明を読む"
+  },
+  "讀完整劇情": {
+    "en": "Read the full plot",
+    "ja": "全体のあらすじを読む"
+  },
+  "讀展覽導覽": {
+    "en": "Read exhibition guide",
+    "ja": "展示ガイドを読む"
+  },
+  "讀線上導覽": {
+    "en": "Read online guide",
+    "ja": "オンラインガイドを読む"
+  },
+  "買下這套": {
+    "en": "Buy this outfit",
+    "ja": "この服を買う"
+  },
+  "買材料": {
+    "en": "Buy materials",
+    "ja": "材料を買う"
+  },
+  "逛一會兒": {
+    "en": "Browse for a while",
+    "ja": "少し見て回る"
+  },
+  "重新開始；API 用量不會回退。": {
+    "en": "Started over; API usage was not reset.",
+    "ja": "最初から開始しました。API利用量はリセットしません。"
+  },
+  "已買好，收入口袋。": {
+    "en": "Purchased and placed in your pocket.",
+    "ja": "購入して持ち物に入れました。"
+  },
+  "正走向集合點。": {
+    "en": "Walking to the meeting point.",
+    "ja": "集合場所へ向かっています。"
+  }
+}

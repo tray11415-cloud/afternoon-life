@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+work/
+outputs/
+art-sources/
+*.dpapi
+*.sqlite3
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.gguf

@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "mode": "prompt_only",
+  "checked_at": "2026-10-11T20:08:57.572831+00:00",
+  "items": [
+    {
+      "id": "cream-cardigan",
+      "title": "奶油針織外套",
+      "style": "relaxed",
+      "price": 64,
+      "sfw": true,
+      "prompt": "cream crochet cardigan, long sleeves, sleeves past wrists, opaque white shirt, full-length brown trousers",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#d9c7a2",
+        "bottom": "#735c4d"
+      },
+      "shape": "cardigan",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/2033210",
+        "model_id": 2033210,
+        "model_name": "Crochet Cardigan",
+        "creator": "freckledvixon",
+        "version_id": 2301112,
+        "base_model": "Illustrious",
+        "trained_words": [
+          "crochet cardigan, sleeves past wrists,"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:35.629837+00:00",
+        "license_metadata": {
+          "allowNoCredit": true,
+          "allowCommercialUse": [
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": true
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "Illustrious",
+        "model_id": 2033210,
+        "version_id": 2301112
+      }
+    },
+    {
+      "id": "sage-cardigan",
+      "title": "鼠尾草針織外套",
+      "style": "relaxed",
+      "price": 68,
+      "sfw": true,
+      "prompt": "sage green crochet cardigan, long sleeves, sleeves past wrists, opaque white shirt, full-length dark trousers",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#78977b",
+        "bottom": "#4a5959"
+      },
+      "shape": "cardigan",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/2033210",
+        "model_id": 2033210,
+        "model_name": "Crochet Cardigan",
+        "creator": "freckledvixon",
+        "version_id": 2301112,
+        "base_model": "Illustrious",
+        "trained_words": [
+          "crochet cardigan, sleeves past wrists,"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:35.629837+00:00",
+        "license_metadata": {
+          "allowNoCredit": true,
+          "allowCommercialUse": [
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": true
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "Illustrious",
+        "model_id": 2033210,
+        "version_id": 2301112
+      }
+    },
+    {
+      "id": "navy-blazer",
+      "title": "墨藍襯衫西裝",
+      "style": "neat",
+      "price": 88,
+      "sfw": true,
+      "prompt": "navy blazer, white shirt, bowtie, ankle-length pleated skirt, long sleeves, opaque fabric",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#526781",
+        "bottom": "#39495d"
+      },
+      "shape": "blazer",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/204828",
+        "model_id": 204828,
+        "model_name": "Bowtie Blazer Dress By Stable Yogi",
+        "creator": "Stable_Yogi",
+        "version_id": 230605,
+        "base_model": "SD 1.5",
+        "trained_words": [
+          "blazer, bowtie, shirt, pleated skirt"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:36.848465+00:00",
+        "license_metadata": {
+          "allowNoCredit": false,
+          "allowCommercialUse": [
+            "Image",
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": false
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "SD 1.5",
+        "model_id": 204828,
+        "version_id": 230605
+      }
+    },
+    {
+      "id": "rose-knit",
+      "title": "玫瑰長袖針織裙",
+      "style": "romantic",
+      "price": 76,
+      "sfw": true,
+      "prompt": "dusty rose knit sweater, matching knit skirt, long sleeves, long skirt, opaque fabric",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#b17d86",
+        "bottom": "#96626f"
+      },
+      "shape": "dress",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/246891",
+        "model_id": 246891,
+        "model_name": "Sweater Dress",
+        "creator": "freckledvixon",
+        "version_id": 1453051,
+        "base_model": "Illustrious",
+        "trained_words": [
+          "knit sweater, knit skirt, long sleeves, long skirt"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:36.235619+00:00",
+        "license_metadata": {
+          "allowNoCredit": true,
+          "allowCommercialUse": [
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": true
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "Illustrious",
+        "model_id": 246891,
+        "version_id": 1453051
+      }
+    },
+    {
+      "id": "lavender-knit",
+      "title": "柔紫長袖針織裙",
+      "style": "romantic",
+      "price": 78,
+      "sfw": true,
+      "prompt": "lavender knit sweater, matching knit skirt, long sleeves, long skirt, opaque fabric",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#9d8aac",
+        "bottom": "#84738f"
+      },
+      "shape": "dress",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/246891",
+        "model_id": 246891,
+        "model_name": "Sweater Dress",
+        "creator": "freckledvixon",
+        "version_id": 1453051,
+        "base_model": "Illustrious",
+        "trained_words": [
+          "knit sweater, knit skirt, long sleeves, long skirt"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:36.235619+00:00",
+        "license_metadata": {
+          "allowNoCredit": true,
+          "allowCommercialUse": [
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": true
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "Illustrious",
+        "model_id": 246891,
+        "version_id": 1453051
+      }
+    },
+    {
+      "id": "black-pinafore",
+      "title": "白襯衫黑洋裝",
+      "style": "street",
+      "price": 72,
+      "sfw": true,
+      "prompt": "white long-sleeved shirt under black ankle-length dress, black pinafore dress, opaque fabric",
+      "negative_prompt": "nudity, nsfw, explicit content, underwear, see-through clothing, body paint, child, teen, text, watermark",
+      "palette": {
+        "top": "#e7dfcb",
+        "bottom": "#43484f"
+      },
+      "shape": "dress",
+      "source": {
+        "site": "Civitai",
+        "url": "https://civitai.com/models/918173",
+        "model_id": 918173,
+        "model_name": "Casual shirt with spaghetti dress",
+        "creator": "Miyuki_maho",
+        "version_id": 1027688,
+        "base_model": "Pony",
+        "trained_words": [
+          "cshwsp, shirt under dress, withe shirt, black dress"
+        ],
+        "nsfw": false,
+        "checked_at": "2026-10-11T20:06:37.399015+00:00",
+        "license_metadata": {
+          "allowNoCredit": true,
+          "allowCommercialUse": [
+            "RentCivit"
+          ],
+          "allowDerivatives": false,
+          "allowDifferentLicense": false
+        },
+        "weights_downloaded": false,
+        "status": "prompt_reference_only"
+      },
+      "lora": {
+        "status": "not_installed",
+        "file": null,
+        "base_model": "Pony",
+        "model_id": 918173,
+        "version_id": 1027688
+      }
+    }
+  ],
+  "note": "Civitai 公開 SFW 模型的服裝詞彙作參考，本作只匯入審選後的日常衣服 prompt；無圖片、無權重。LoRA 版本與原作者限制保留供日後核對。"
+}

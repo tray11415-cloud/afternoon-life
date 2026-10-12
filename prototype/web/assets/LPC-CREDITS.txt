@@ -1,0 +1,463 @@
+LPC art used in 午後共居 v0.10
+
+World artwork: original tiles from the four sources below, composed/cropped/recolored by this project. Map compositions are distributed under CC BY-SA 4.0.
+Character layers: selected OGA-BY 3.0 / CC0 alternatives where offered; CC BY-SA 4.0 for layers without OGA-BY. Composite edits are distributed under CC BY-SA 4.0. No authors endorse this game.
+Changes: native 32px tile composition, recoloring, atlas cropping, eleven character identities and outfit previews. Zoo animal icons, rugs and engine are project-authored.
+https://creativecommons.org/licenses/by-sa/4.0/
+https://static.opengameart.org/OGA-BY-3.0.txt
+
+
+=== base/LPC Base Assets/CREDITS.TXT ===
+Lanea Zimmerman (AKA Sharm)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NOTE: These assets by Leana Zimmerman are also available under the OGA-BY 3.0 License. -Medicine Storm 4/12/2022
+
+Base tileset
+ - barrel.png
+ - brackish.png
+ - buckets.png
+ - bridges.png
+ - cabinets.png
+ - cement.png
+ - cementstair.png
+ - chests.png
+ - country.png
+ - cup.png
+ - dirt2.png
+ - dirt.png
+ - dungeon.png
+ - grassalt.png
+ - grass.png
+ - holek.png
+ - holemid.png
+ - hole.png
+ - house.png
+ - inside.png
+ - kitchen.png
+ - lava.png
+ - lavarock.png
+ - mountains.png
+ - rock.png
+ - shadow.png
+ - signs.png
+ - stairs.png
+ - treetop.png
+ - trunk.png
+ - waterfall.png
+ - watergrass.png
+ - water.png
+ - princess.png and princess.xcf
+
+Much style guide work
+
+co-author of LPC background cup image
+
+Stephen Challener (AKA Redshrike)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NOTE: These assets by Stephen Challener are also available under the OGA-BY 3.0 License. -Medicine Storm 4/12/2022
+
+Character templates
+ - female_walkcycle.png
+ - female_hurt.png
+ - female_slash.png
+ - female_spellcast.png
+ - male_walkcycle.png
+ - male_hurt.png
+ - male_slash.png
+ - male_spellcast.png
+ - male_pants.png
+ - male_hurt_pants.png
+ - male_fall_down_pants.png
+ - male_slash_pants.png
+
+Much style guide work
+
+
+Charles Sanchez (AKA CharlesGabriel)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Monsters
+ - bat.png
+ - bee.png
+ - big_worm.png
+ - eyeball.png
+ - ghost.png
+ - man_eater_flower.png
+ - pumpking.png
+ - slime.png
+ - small_worm.png
+ - snake.png
+
+Manuel Riecke (AKA MrBeast)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ - hairfemale.png and hairfemale.xcf
+ - hairmale.png and hairmale.xcf
+ - soldier.png
+ - soldier_altcolor.png
+
+The 60 degree perspective render in the style guide
+
+
+Daniel Armstrong (AKA HughSpectrum)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Castle work:
+
+ - castlewalls.png
+ - castlefloors.png
+ - castle_outside.png
+ - castlefloors_outside.png
+ - castle_lightsources.png
+
+=== interior/LPC_house_interior/credits.txt ===
+= Wooden floor(CC-BY-SA) =
+ * Horizontal wooden floor by Lanea Zimmerman (AKA Sharm)
+ * Horizontal wooden floor with hole by Lanea Zimmerman (AKA Sharm) and Tuomo Untinen
+ * Vertical wooden floor by Tuomo Untinen
+ * Vertical wooden floor with hole by Tuomo Untinen
+= Wooden wall topping (CC-BY-SA) =
+ * Tuomo Untinen
+= Pile of barrels =
+ * Based LPC base tiles by Lanea Zimmerman (AKA Sharm)
+= Decorational stuff (CC-BY-SA) =
+ * Green bottle
+ * Wine glass and bottle
+ * Hanging sacks
+ * Wall mounted rope and ropes
+ * Wall mounted swords
+ * Wall mounted kite shield
+ * Wall hole
+ By Tuomo Untinen
+ * Small sack from LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+ * Purple bottles and gray lantern from Hyptosis Mage city
+ * Green and blue bottle by Tuomo Untinen
+= Wall clock (CC-BY-SA) =
+ * Lanea Zimmerman AKA Sharm
+ * Tuomo Untinen (Scaled down and animation)
+= Stone floor (CC-BY-SA)= 
+ * Tuomo Untinen 
+= Cobble stone floor (CC-BY-SA)= 
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+= Cabinets and kitchen stuff including metal stove(CC-BY-SA) =
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Cutboard is made by Hyptosis
+ * Sacks based on LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+ * Spears by Tuomo Untinen
+ * Vertical chest by Tuomo Untinen based on LPC base tiles Lanea Zimmerman (AKA Sharm)
+Manuel Riecke (AKA MrBeast)
+= Skull (CC-BY-SA) =
+ * http://opengameart.org/content/lpc-dungeon-elements
+ * Graphical artist Lanea Zimmerman AKA Sharm
+ * Contributor William Thompson
+= pile sacks =
+ * LPC farming tileset by Daniel Eddeland (http://opengameart.org/content/lpc- farming-tilesets-magic-animations-and-ui-elements) 
+= Pile of papers(CC-BY-SA) = 
+ * Based on caeles papers
+= Armor shelves(CC-BY-SA) =
+ * Based on LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Armors by: Adapted by Matthew Krohn from art created by Johannes Sjölund
+= Table lamp =
+  * Tuomo Untinen
+= Distiller =
+ * Table is from LPC base tileset by Lanea Zimmerman (AKA Sharm)
+ * Distiller by Tuomo Untinen
+= Fireplace =
+ * Tuomo Untinen
+ * Inspired by Lanea Zimmerman (AKA Sharm) Fireplace
+
+
+
+=== buildings/lpc-victorian-buildings/CREDITS-victorian.txt ===
+"LPC Victorian Buildings," by bluecarrot16, Lanea Zimmerman (Sharm), Casper Nilsson, Lyndsay Takacs (cyanowl), and Redshrike. 
+
+CC-BY-SA 3.0 / GPL 3.0
+
+
+Liberated Pixel Cup (LPC) Base Assets 
+Lanea Zimmerman (Sharm)
+CC-BY-SA 3.0 / CC-BY 3.0 / GPL 3.0
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+LPC: Interior Castle Tiles
+Sharm
+CC-BY 3.0 / CC-BY-SA 3.0 / GPL 3.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-interior-castle-tiles
+
+
+LPC C.Nilsson
+Casper Nilsson
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-cnilsson
+
+
+Shabby Chic Cabin Remix
+Lyndsay Takacs (cyanowl) 
+CC0
+https://opengameart.org/content/shabby-chic-cabin-remix
+
+RPG Indoor Tileset: Expansion 1
+Redshrike
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/rpg-indoor-tileset-expansion-1
+
+=== decoration/lpc-victorian-decoration/CREDITS-decorations-victorian.txt ===
+[LPC] Victorian Town Decorations by bluecarrot16, Casper Nilsson, Lanea Zimmerman (Sharm), William Thompson, mold, AntumDeluge, Curt, Daniel Eddeland (daneeklu), caeles, George Bailey, Jetrel, Yar, Guido Bos, Ivan Voirol (Silver IV), Stephen Challener (Redshrike), the Open Surge team, Arthur Carvalho, Guilherme Vieira (n2liquid), NaRNeRZz, Diarandor, Armando Montero (ArMM1998), Tuomo Untinen (Reemax), Buch.
+
+License: CC-BY-SA 4.0
+
+## Based on: 
+
+LPC C.Nilsson
+Casper Nilsson
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-cnilsson
+
+LPC Base Assets
+Lanea Zimmerman (AKA Sharm)
+CC-BY 3.0 / GPL 3.0
+https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+
+[LPC] Signposts, graves, line cloths and scare crow
+Reemax
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-signposts-graves-line-cloths-and-scare-crow
+
+LPC: Modified base tiles
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 3.0 / GPL 3.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-modified-base-tiles
+
+[LPC] Misc
+Lanea Zimmerman, William Thompson
+https://opengameart.org/content/lpc-misc
+
+LPC Lamp Posts Rework
+Curt, Lanea Zimmerman (Sharm), William.Thompsonj, & mold, reworked by AntumDeluge
+CC-BY 3.0 /GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-lamp-posts-rework
+
+[LPC] Farming tilesets, magic animations and UI elements
+Daniel Eddeland (daneeklu)
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements
+
+[LPC] Adobe Building Set
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-adobe-building-set
+
+[LPC] caeles' art
+caeles
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-caeles-art
+
+[LPC] Arabic Elements
+Lanea Zimmerman, William Thompson
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-arabic-elements
+
+[LPC] Water Fountain
+Curt, Sharm, William.Thompsonj
+CC-BY 3.0
+https://opengameart.org/content/lpc-water-fountain
+
+LPC: Interior Castle Tiles
+Lanea Zimmerman
+CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-interior-castle-tiles
+
+16x16 Game Assets
+George Bailey
+CC-BY 4.0
+https://opengameart.org/content/16x16-game-assets
+
+RPG item set
+Jetrel
+CC0
+https://opengameart.org/content/rpg-item-set
+
+Isometric 64x64 Outside Tileset
+Yar
+CC-BY 3.0
+https://opengameart.org/content/isometric-64x64-outside-tileset
+
+[LPC] Guido Bos entries cut up
+Guido Bos
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-guido-bos-entries-cut-up
+
+Basic map 32x32 by Silver IV
+Ivan Voirol (Silver IV)
+CC-BY 3.0 / GPL 3.0 / GPL 2.0
+https://opengameart.org/content/basic-map-32x32-by-silver-iv
+
+32x32 (and 16x16) RPG Tiles--Forest and some Interior Tiles
+Stephen Challener (Redshrike) and the Open Surge team (http://opensnc.sourceforge.net)commissioned by Gaurav Munjal
+CC-BY 3.0
+https://opengameart.org/content/32x32-and-16x16-rpg-tiles-forest-and-some-interior-tiles
+
+Exterior 32x32 Town tileset
+Arthur Carvalho; Copyright Guilherme Vieira (n2liquid), https://fb.com/sonettocommons
+CC-BY-SA 4.0
+https://opengameart.org/content/town-tileset-exterior-32x32
+
+
+
+
+Tileset and Characters - Unfinished
+NaRNeRZz
+CC0
+https://opengameart.org/content/tileset-and-characters-unfinished
+
+Solarus Fountain
+Diarandor for Children of Solarus (https://github.com/solarus-games/children-of-solarus), a game for the Solarus game engine (http://www.solarus-games.org/).
+CC-BY-SA 4.0
+https://opengameart.org/content/solarus-fountain
+
+Zelda-like tilesets and sprites
+Armando Montero (ArMM1998)
+CC0
+https://opengameart.org/content/zelda-like-tilesets-and-sprites
+
+[LPC] Dungeon Elements
+Lanea Zimmerman (Sharm), William Thompson
+CC-BY 4.0 / CC-BY 3.0 / GPL 3.0 / GPL 2.0 / OGA-BY 3.0
+https://opengameart.org/content/lpc-dungeon-elements
+
+[LPC] Guido Bos entries cut up
+Guido Bos
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-guido-bos-entries-cut-up
+
+[LPC] Hanging signs
+Reemax
+CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-hanging-signs
+
+Tuxemon tileset
+Buch
+CC-BY-SA 3.0
+https://opengameart.org/content/tuxemon-tileset
+
+=== Selected character layers ===
+https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+
+filename: body/bodies/female/walk.png
+notes: see details at https://opengameart.org/content/lpc-character-bases 
+authors: Benjamin K. Smith (BenCreating),bluecarrot16,TheraHedwig,Evert,MuffinElZangano,Durrani,Pierre Vigier (pvigier),ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-ladies,https://opengameart.org/content/lpc-7-womens-shirts,https://opengameart.org/content/lpc-jump-expanded,https://opengameart.org/content/lpc-be-seated,https://opengameart.org/content/lpc-revised-character-basics,https://gitlab.com/vagabondgame/lpc-characters,https://opengameart.org/content/lpc-male-jumping-animation-by-durrani,https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle 
+
+filename: head/heads/human/female/walk.png
+notes: original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16 
+authors: bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/,https://opengameart.org/content/lpc-character-bases 
+
+filename: hair/curly_long/adult/walk.png
+notes:  
+authors: ElizaWy 
+licenses: OGA-BY 3.0 
+urls: https://opengameart.org/content/lpc-hair 
+
+filename: hair/bangsshort/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/pixie/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/bob_side_part/adult/walk.png
+notes: Original by Thecilekli. Touchups by BlueCarrot16. Edited and animated by ElizaWy. 
+authors: thecilekli,bluecarrot16,ElizaWy 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-pink-short-hair,https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/bob/adult/walk.png
+notes: Original by bluecarrot16. Edited and animated by ElizaWy. 
+authors: ElizaWy,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/bangs_bun/adult/walk.png
+notes: Original by bluecarrot16, animated by ElizaWy. 
+authors: ElizaWy,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-hair,https://github.com/ElizaWy/LPC/blob/main/Characters/Hair,https://opengameart.org/content/lpc-expanded-sit-run-jump-more 
+
+filename: hair/ponytail/adult/fg/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/ponytail/adult/bg/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/long_straight/adult/walk.png
+notes:  
+authors: JaidynReiman,thecilekli,bluecarrot16 
+licenses: CC0 
+urls: https://opengameart.org/content/lpc-long-straight-hair-with-12-colors,https://opengameart.org/content/lpc-hair,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: hair/long/adult/walk.png
+notes:  
+authors: JaidynReiman,Manuel Riecke (MrBeast) 
+licenses: CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-expanded-hair 
+
+filename: torso/clothes/longsleeve/longsleeve2_buttoned/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: torso/clothes/longsleeve/longsleeve2_cardigan/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: torso/clothes/longsleeve/longsleeve2/female/walk.png
+notes: original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman 
+authors: ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) 
+licenses: OGA-BY 3.0 
+urls: https://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts 
+
+filename: legs/pants/thin/walk.png
+notes: original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised 
+authors: bluecarrot16,JaidynReiman,ElizaWy,Joe White,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) 
+licenses: OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0 
+urls: https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,http://opengameart.org/content/lpc-clothing-updates,https://opengameart.org/content/lpc-expanded-pants 
+
+filename: legs/skirts/plain/thin/walk.png
+notes: original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16, idle & sit by Ahmad3366, color reduced & female sit/emote by JaidynReiman 
+authors: bluecarrot16,Pierre Vigier (pvigier),Johannes Sjölund (wulax),Ahmad3366,JaidynReiman 
+licenses: OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 
+urls: https://opengameart.org/content/lpc-medieval-fantasy-character-sprites 
+
+filename: feet/shoes/revised/thin/walk.png
+notes: original by ElizaWy, remaining frames by JaidynReiman 
+authors: ElizaWy,JaidynReiman 
+licenses: OGA-BY 3.0 
+urls: https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-socks-shoes 
+
+=== v0.16 Male player and scripted adult NPC layers ===
+Source: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
+Male layers use the offered OGA-BY 3.0 option. Existing female/hair/background layer credits remain above. Pool composition and character layer edits: CC BY-SA 4.0.
+{"filename": "body/bodies/male/walk.png", "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised) ", "authors": "bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike) ", "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 ", "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-male-jumping-animation-by-durrani,https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle,https://opengameart.org/content/lpc-revised-character-basics,https://opengameart.org/content/lpc-be-seated,https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads,https://opengameart.org/content/lpc-jump-expanded,https://opengameart.org/content/lpc-character-bases "}
+{"filename": "head/heads/human/male/walk.png", "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16 ", "authors": "bluecarrot16,Benjamin K. Smith (BenCreating),Stephen Challener (Redshrike) ", "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 ", "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-character-bases "}
+{"filename": "torso/clothes/longsleeve/longsleeve2_buttoned/male/walk.png", "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman ", "authors": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) ", "licenses": "OGA-BY 3.0 ", "urls": "http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts "}
+{"filename": "torso/clothes/longsleeve/longsleeve2_cardigan/male/walk.png", "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman ", "authors": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) ", "licenses": "OGA-BY 3.0 ", "urls": "http://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts "}
+{"filename": "torso/clothes/longsleeve/longsleeve2/male/walk.png", "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman ", "authors": "ElizaWy,JaidynReiman,Stephen Challener (Redshrike),Johannes Sjölund (wulax) ", "licenses": "OGA-BY 3.0 ", "urls": "https://opengameart.org/content/lpc-revised-character-basics,https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-sit-run-jump-more,https://opengameart.org/content/lpc-expanded-simple-shirts "}
+{"filename": "legs/pants/male/walk.png", "notes": "original male pants by wulax, recolors and edits to v3 base by bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised ", "authors": "bluecarrot16,JaidynReiman,ElizaWy,Matthew Krohn (makrohn),Johannes Sjölund (wulax),Stephen Challener (Redshrike) ", "licenses": "OGA-BY 3.0,GPL 3.0,CC-BY-SA 3.0 ", "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-expanded-pants "}
+{"filename": "feet/shoes/revised/male/walk.png", "notes": "original overalls and shoes by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shoes by JaidynReiman ", "authors": "JaidynReiman,ElizaWy,Bluecarrot16,Stephen Challener (Redshrike),Johannes Sjölund (wulax) ", "licenses": "OGA-BY 3.0,GPL 3.0 ", "urls": "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing,https://opengameart.org/content/lpc-expanded-socks-shoes "}

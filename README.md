@@ -6,9 +6,11 @@ A top-down pixel life sandbox with ten adult residents, a human-controlled playe
 
 **Status: playable alpha, v0.19.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
 
-![Gameplay preview](docs/media/showcase-preview.gif)
+[![Guided walkthrough](docs/media/guide.en.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[Watch the showcase](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-showcase.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+
+The new walkthroughs include synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
 
 ## Play
 

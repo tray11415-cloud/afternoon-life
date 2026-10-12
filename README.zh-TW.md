@@ -6,9 +6,11 @@
 
 **目前是可玩的 alpha：v0.19.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
 
-![遊戲實錄](docs/media/showcase-preview.gif)
+[![中文操作導覽](docs/media/guide.zh-TW.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4)
 
-[觀看展示影片](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-showcase.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+
+新版影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
 
 ## 開始玩
 

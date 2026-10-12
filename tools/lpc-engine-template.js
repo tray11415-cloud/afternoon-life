@@ -65,9 +65,9 @@ window.PixelLife=class PixelLife {
     if(changed){this.camera.x=p.x*this.tileSize+16-this.canvas.width/2;this.camera.y=p.y*this.tileSize+16-this.canvas.height/2;}
     this.canvas.dataset.playerX=String(p.x);this.canvas.dataset.playerY=String(p.y);this.canvas.dataset.scene=this.scene;this.canvas.dataset.artVersion='LPC-0.10';
   }
-  label(text,x,y,kind='normal'){
-    text=window.LifeI18n?.t(text)||text;
-    text=window.LifeI18n?.t(text)||text;
+  label(text,x,y,kind='normal',translate=true){
+    if(translate)text=window.LifeI18n?.t(text)||text;
+    if(translate)text=window.LifeI18n?.t(text)||text;
     const ctx=this.ctx;ctx.font='12px "Microsoft JhengHei",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
     const w=ctx.measureText(text).width+14;
     ctx.fillStyle=kind==='selected'?'#fff1caee':kind==='home'?'#33473fba':'#263a32b0';
@@ -113,7 +113,7 @@ window.PixelLife=class PixelLife {
     for(const e of this.entities.values()){
       const[x,y]=screen(e.drawX,e.drawY);if(x<0||x>w||y<30||y>h+60)continue;
       const name=e.id==='player'?'你':this.state.roster.find(p=>p.id===e.id)?.name||'';
-      this.label(name+(e.near?' · E':''),x,y-37,e.id===this.selected?'selected':'normal');
+      this.label(name+(e.near?' · E':''),x,y-37,e.id===this.selected?'selected':'normal',e.id==='player');
     }
     if(this.scene==='market'&&this.state.economy?.market){for(let i=0;i<10;i++){
       const seller=`member-${String(i+1).padStart(2,'0')}`,stock=this.state.economy.market.listings.filter(l=>l.seller===seller).reduce((sum,l)=>sum+l.quantity,0);

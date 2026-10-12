@@ -443,6 +443,9 @@ class CharacterStudio:
   authored=getattr(self,'actor_identities',{}).get(actor,{})
   if BLOCKED.search(authored.get('appearance','')):raise ValueError('外觀描述目前只支援成年 SFW 生圖')
   if authored.get('appearance'):p['identity']+=', '+authored['appearance']
+  from .looks import look_prompt
+  look_notes=look_prompt(authored.get('look'))
+  if look_notes:p['identity']+=', '+look_notes
   swim=outfit['id'] in {'swim-onepiece','swim-trunks'}
   if swim:
    binding=c['outfit_loras'].get(outfit['id'],{})
@@ -492,7 +495,7 @@ class CharacterStudio:
     if not native or native['installation']!=c['installation'] or native['backend']!=c['backend']:raise ValueError('使用中的原生模板與 SD 安裝不相同，請重新選擇')
     scoped['native_templates'][purpose]=copy.deepcopy(native)
   return {'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
-   'profile':p,'config':scoped,
+   'profile':p,'config':scoped,**({'look':copy.deepcopy(authored['look'])} if authored.get('look',{}).get('enabled') else {}),
    'checkpoint':checkpoint,'vae':self._resource(c['vae'],'vae') if c['vae'] else None,'loras':loras,
    'api_models':copy.deepcopy(model_list),'api_loras':copy.deepcopy(api_loras),
    'api_vaes':copy.deepcopy(self.services[c['url']].get('vaes',[])),
@@ -539,12 +542,16 @@ class CharacterStudio:
    scope=j['actor']+':'+j['outfit']['render_key'];active=copy.deepcopy(self.config['active'].get(scope,{}))
    if 'sprite' in j['files']:active['sprite']=j['files']['sprite'];active['frames']=3
    if 'portraits' in j['files']:active['portraits']=j['files']['portraits'];active['expression']=expression
+   if j.get('recipe',{}).get('look'):active['look_signature']=key(j['recipe']['look'])
+   else:active.pop('look_signature',None)
    active['job']=jid;self.config['active'][scope]=active;atomic(self.config_path,self.config)
   return self.state()
 
  def appearance(self,actor,outfit):
   with self.lock:
    active=self.config['active'].get(actor+':'+outfit['render_key'],{})
+   look=getattr(self,'actor_identities',{}).get(actor,{}).get('look')
+   if look and look.get('enabled') and active.get('look_signature')!=key(look):return {}
    result={}
    if active.get('sprite') and (self.assets/active['sprite']).is_file():result.update(sprite='/character-art/'+active['sprite'],frames=active.get('frames',3))
    portrait=active.get('portraits',{}).get(active.get('expression','neutral'))

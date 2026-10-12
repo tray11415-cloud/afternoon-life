@@ -4,21 +4,26 @@ from pathlib import Path
 from .play import PEOPLE,VOICES,GOALS,play_world
 from .model import digest
 
-PRIVATE_FIELDS=('voice','goal','background_enabled','background','appearance')
+PRIVATE_FIELDS=('voice','goal','background_enabled','background','appearance','look')
 
 def default_profile(actor,identity=None):
  p=PEOPLE.get(actor,{'name':'玩家','age':25,'profile':'由玩家親自決定言行。'})
  v={'name':p['name'],'age':p['age'],'gender':'male' if actor=='player' else 'female','voice':p['profile'],'goal':GOALS[list(PEOPLE).index(actor)] if actor in PEOPLE else '在共居生活中找到自己的日常','background_enabled':False,'background':'','appearance':''}
  if identity:v.update({k:identity[k] for k in ('name','age','gender') if k in identity})
+ from .looks import default_look
+ v['look']=default_look(actor)
  return v
 
 def validate_profile(p):
- if not isinstance(p,dict) or not {'name','age','voice','goal','background_enabled','background'}<=set(p) or set(p)-{'name','age','voice','goal','background_enabled','background','gender','appearance'}:raise ValueError('人物設定欄位不完整')
+ if not isinstance(p,dict) or not {'name','age','voice','goal','background_enabled','background'}<=set(p) or set(p)-{'name','age','voice','goal','background_enabled','background','gender','appearance','look'}:raise ValueError('人物設定欄位不完整')
  for field,limit in (('name',32),('voice',500),('goal',100),('background',2000)):
   if not isinstance(p[field],str) or len(p[field])>limit or (field in ('name','voice','goal') and not p[field].strip()):raise ValueError('人物名稱／語氣／目標／背景長度不合適')
  if type(p['age']) is not int or not 18<=p['age']<=120 or type(p['background_enabled']) is not bool:raise ValueError('所有人物必須為成年人；背景為可選項')
  if p.get('gender','female') not in {'male','female'}:raise ValueError('請選男性或女性')
  if not isinstance(p.get('appearance',''),str) or len(p.get('appearance',''))>1000:raise ValueError('外觀描述最多1000字')
+ if 'look' in p:
+  from .looks import validate_look
+  validate_look(p['look'])
  return copy.deepcopy(p)
 
 def validate_profiles(profiles):
@@ -56,6 +61,8 @@ class CharacterSetup:
    try:
     loaded=validate_profiles(json.loads(self.path.read_text(encoding='utf-8'))['profiles'])
     self.profiles={a:{**defaults[a],**loaded.get(a,{})} for a in defaults}
+    from .looks import validate_look
+    for a,p in self.profiles.items():p['look']=validate_look(p.get('look'),a)
    except (OSError,ValueError,KeyError,TypeError):pass
  def state(self,session=None):
   archive_root=self.path.parent/'archives';archives=[]
@@ -66,22 +73,32 @@ class CharacterSetup:
    with session.lock:
     result['current']={a:self.current(session,a) for a in self.profiles}
     result['fingerprints']={a:digest(p) for a,p in result['current'].items()}
+  from .looks import HAIRS,BUILDS,FACES
+  result['look_options']={'hair':HAIRS,'build':BUILDS,'face':FACES}
   return result
  def current(self,session,actor):
   if actor not in self.profiles:raise ValueError('請選玩家或共居角色')
   a=session.engine._state['actors'][actor]
-  return {**default_profile(actor,a),**a.get('character_profile',{}),**{k:a[k] for k in ('name','age','gender')},'goal':a['goal']['title'] or default_profile(actor)['goal']}
+  result={**default_profile(actor,a),**a.get('character_profile',{}),**{k:a[k] for k in ('name','age','gender')},'goal':a['goal']['title'] or default_profile(actor)['goal']}
+  from .looks import validate_look
+  result['look']=validate_look(result.get('look'),actor);return result
  def prepare_current(self,session,actor,profile,before):
   with session.lock:
    current=self.current(session,actor)
    if before!=digest(current):raise ValueError('這位人物的設定已改變，請重新開啟人物設定')
    p={**default_profile(actor),**validate_profile(profile)}
+   if 'look' not in profile:p['look']=copy.deepcopy(current['look'])
+   from .looks import validate_look
+   p['look']=validate_look(p.get('look'),actor)
    if any(a!=actor and self.current(session,a)['name'].strip()==p['name'].strip() for a in self.profiles):raise ValueError('人物名稱需不同')
    if not p['background_enabled']:p['background']=''
    value={k:p[k] for k in ('name','age','gender')};value['character_profile']={k:p[k] for k in PRIVATE_FIELDS}
    return session.components.prepare({'instruction':'人物設定：'+p['name'],'changes':[{'target':'actor:'+actor,'value':value}]})
  def configure(self,profiles):
-  data=validate_profiles(profiles);data={a:{**default_profile(a),**data.get(a,{})} for a in self.profiles};tmp=self.path.with_suffix('.tmp');tmp.write_text(json.dumps({'version':2,'profiles':data},ensure_ascii=False,indent=2),encoding='utf-8');os.replace(tmp,self.path);self.profiles=data;return self.state()
+  data=validate_profiles(profiles);data={a:{**default_profile(a),**data.get(a,{}),'look':data.get(a,{}).get('look',self.profiles[a].get('look',default_profile(a)['look']))} for a in self.profiles}
+  from .looks import validate_look
+  for a,p in data.items():p['look']=validate_look(p.get('look'),a)
+  tmp=self.path.with_suffix('.tmp');tmp.write_text(json.dumps({'version':3,'profiles':data},ensure_ascii=False,indent=2),encoding='utf-8');os.replace(tmp,self.path);self.profiles=data;return self.state()
  def world(self):
   world=play_world()
   for a in world['actors']:

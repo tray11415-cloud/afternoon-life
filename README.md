@@ -1,16 +1,19 @@
 # Afternoon Life
 
-[繁體中文](README.zh-TW.md) · **English**
+[繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md) · **English**
 
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
-**Status: playable alpha, v0.19.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
+**Status: playable alpha, v0.20.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
 
 [![Guided walkthrough](docs/media/guide.en.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.20.0)
 
-The new walkthroughs include synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
+The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
+
+
+[简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
 ## Play
 
@@ -31,6 +34,16 @@ Move with **WASD / arrows**, click the ground to walk, and press **E** near peop
 Open **Game settings** for **繁體中文 / 日本語 / English**. The choice is saved and guides future AI dialogue. Character names, authored profiles, historical speech, source articles and native SD interfaces keep their original text. TTS voices and speech language are selected separately.
 
 The offline demo is visibly labelled. It uses local schedules and fixed sample dialogue, **not an LLM**. It makes no paid model calls.
+
+## Start menu and character atelier (v0.20)
+
+The title screen offers Continue, New game, Character atelier, Game settings and manual-save loading. Continue keeps the latest position. New game opens templates first; explicit confirmation creates the world and archives the previous save for restoration.
+
+Edit the player and ten residents separately through identity, face/build, hair, clothing, personality, optional backstory, and AI/cards. Custom looks are opt-in, preserving existing artwork by default. Eight hairstyles, hair/skin/starter-clothing colours and bounded silhouette scaling have real four-direction walking previews. Face and eye settings guide SD identity; this is not a 3D morph editor. Purchased clothing keeps its own palette.
+
+Preview current-character changes before applying; new-game templates are separate. Manual AI drafting sends only the selected profile and brief, uses the existing action model and shared budget, and does not apply automatically. Offline mode gives an explicitly labelled local example. Portable JSON cards contain profile settings, without world memories, keys, LoRA weights or images. Import still requires preview and apply. The clothing category links to SD, where each character needs an explicit model binding.
+
+Settings group display, controls, speech, AI, language and saves. Persist zoom, names, minimap, larger text, reduced animation and pause while settings are open. The main menu always suspends this page's heartbeat; another open game page can still advance the shared world. TTS voices and reading language are separate. [Character cards and preview API](docs/CHARACTER_ATELIER.md).
 
 ## What you can do
 
@@ -74,6 +87,7 @@ Local tools use explicit project contracts: `lifebox.decide.v1`, `lifebox.intera
 cd prototype
 python -m unittest discover -s tests
 cd ..
+python tools/test_atelier.py
 python tools/test_release.py
 python tools/test_character_customization.py
 python tools/test_components.py ComponentsTests

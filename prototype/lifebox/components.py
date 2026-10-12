@@ -248,7 +248,7 @@ class Components:
     text(v['name'],32);number(v['age'],18,120)
     if 'character_profile' in v:
      from .characters import validate_profile,PRIVATE_FIELDS
-     if not isinstance(v['character_profile'],dict) or set(v['character_profile'])!=set(PRIVATE_FIELDS):raise ValueError('人物性格、目標、背景與外觀欄位不符')
+     if not isinstance(v['character_profile'],dict) or set(v['character_profile']) not in (set(PRIVATE_FIELDS),set(PRIVATE_FIELDS)-{'look'}):raise ValueError('人物性格、目標、背景與外觀欄位不符')
      validate_profile({**{f:v[f] for f in ('name','age','gender')},**v['character_profile']})
    elif k.startswith('clothing:'):
     from .wardrobe import Wardrobe
@@ -394,7 +394,7 @@ class Components:
    if changed:s.engine._emit('component_profile',a,value,[],remember=False)
   s.space.algorithm=self.get('rules:movement')['algorithm']
   s.studio.actor_genders={a:v.get('gender','female') for a,v in s.engine._state['actors'].items()}
-  s.studio.actor_identities={a:{'age':v['age'],'appearance':v.get('character_profile',{}).get('appearance','')} for a,v in s.engine._state['actors'].items()}
+  s.studio.actor_identities={a:{'age':v['age'],'appearance':v.get('character_profile',{}).get('appearance',''),**({'look':v['character_profile']['look']} if v.get('character_profile',{}).get('look',{}).get('enabled') else {})} for a,v in s.engine._state['actors'].items()}
   c=self.get('service:memory')
   if c['adapter']=='existing':s.memory=self.original_memory
   else:
@@ -423,7 +423,7 @@ class Components:
      if row['target'].startswith('actor:'):
       value=self.get(row['target'],p['candidate']);self.s.engine._emit('component_profile',row['target'][6:],value,[],remember=False)
     self.s.studio.actor_genders={a:v.get('gender','female') for a,v in self.s.engine._state['actors'].items()}
-    self.s.studio.actor_identities={a:{'age':v['age'],'appearance':v.get('character_profile',{}).get('appearance','')} for a,v in self.s.engine._state['actors'].items()}
+    self.s.studio.actor_identities={a:{'age':v['age'],'appearance':v.get('character_profile',{}).get('appearance',''),**({'look':v['character_profile']['look']} if v.get('character_profile',{}).get('look',{}).get('enabled') else {})} for a,v in self.s.engine._state['actors'].items()}
     self.s._save();self.proposals.clear()
    except Exception:
     self.registry=old;atomic(self.file,old);self.s.studio.config=sd;atomic(self.s.studio.config_path,sd);self.s.speech.config=tts;atomic(self.s.speech.root/'settings.json',tts)
@@ -497,14 +497,14 @@ class Components:
    if not isinstance(rows,list) or any(r.get('target') not in values for r in rows):raise ValueError('替換 AI 只能修改你選定的部件')
   else:
    if len(values)!=1:raise ValueError('內建指令一次選一個部件；多項可使用部件包或本機替換 AI')
-   target,value=next(iter(values.items()));m=re.fullmatch(r'(說明|名稱|價格|互動|尋路)(?:改成|改為|設為|=)(.+)',instruction.strip(),re.S)
+   target,value=next(iter(values.items()));m=re.fullmatch(r'(說明|名稱|價格|互動|尋路|说明|名称|价格|互动|寻路)(?:改成|改為|設為|改为|设为|=)(.+)',instruction.strip(),re.S)
    if not m:m=re.fullmatch(r'(description|name|price|interaction|pathfinding|説明|名前|価格|操作|経路)\s*[:：=]\s*(.+)',instruction.strip(),re.S|re.I)
    if not m:raise ValueError('可用指令：說明改成…／名稱改成…／價格改成數字／互動改為休息／尋路改為astar；複雜替換可編輯 JSON 或連接本機替換 AI')
-   field,data=m.groups();field={'說明':'description','名稱':'name','價格':'price','互動':'effect','尋路':'algorithm','description':'description','name':'name','price':'price','interaction':'effect','pathfinding':'algorithm','説明':'description','名前':'name','価格':'price','操作':'effect','経路':'algorithm'}[field.lower()]
+   field,data=m.groups();field={'說明':'description','名稱':'name','價格':'price','互動':'effect','尋路':'algorithm','说明':'description','名称':'name','价格':'price','互动':'effect','寻路':'algorithm','description':'description','name':'name','price':'price','interaction':'effect','pathfinding':'algorithm','説明':'description','名前':'name','価格':'price','操作':'effect','経路':'algorithm'}[field.lower()]
    if field=='name' and target.startswith(('item:','clothing:')):field='title'
    if field=='name' and target.startswith('object:') and 'name' not in value:value['name']=value['id']
    if not isinstance(value,dict) or field not in value:raise ValueError('這個部件沒有該欄位')
-   value[field]=int(data) if field=='price' else {'休息':'rest','澆水':'water','查看':'none','休憩':'rest','水やり':'water','確認':'none'}.get(data,data) if field=='effect' else data
+   value[field]=int(data) if field=='price' else {'休息':'rest','澆水':'water','浇水':'water','查看':'none','休憩':'rest','水やり':'water','確認':'none'}.get(data,data) if field=='effect' else data
    if field=='effect':value.pop('handler',None)
    rows=[{'target':target,'value':value}]
   return self.prepare({'instruction':instruction,'changes':rows})

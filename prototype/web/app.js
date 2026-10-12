@@ -13,7 +13,7 @@ function render(s) {
   const person=s.roster.find(p=>p.id===selected);const near=person&&entities.get(selected)?.near;
   $('place').textContent=s.location_name;let t=14*60+s.tick; $('clock').textContent=`DAY ${String(1+Math.floor(t/1440)).padStart(2,'0')} · ${String(Math.floor(t%1440/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;
   const thinking=busy&&['talk','invite','wait','town_chat'].includes(currentCommand);
-  $('life-status').textContent=paused?'時間暫停':thinking?'她正在思考':'生活進行中';
+  $('life-status').textContent=(paused||window.LifeMenu?.blocked())?'時間暫停':thinking?'她正在思考':'生活進行中';
   $('map-note').textContent=near?`按 E 與${person.name}互動。`:selected&&entities.has(selected)?`走近${person.name}再聊聊。`:'走近一個人，故事從這裡開始。';
   $('speaker').textContent=person?`${person.name}${near?'':' · 請先走近'}`:'在庭院逛逛';
   const currentPortrait=portraitURL(selected||'member-01',entities.get(selected||'member-01'));if($('portrait').getAttribute('src')!==currentPortrait)$('portrait').src=currentPortrait; $('portrait').alt=person?`${person.name}的像素立繪`:'角色像素立繪';
@@ -40,7 +40,7 @@ function render(s) {
   $('memory-info').textContent=s.memory.provider.startsWith('lexical')?'記憶：每人獨立，按話題、重要性、時間和場所想起舊事；原始紀錄保留。尚未接語意模型。':'記憶：每人獨立，使用本機語意向量與事件檢索。';
   $('load').disabled=!s.has_save||busy;$('save').disabled=busy;$('wait').disabled=busy;$('reset').disabled=busy;
   if(s.components)for(const [key,value] of Object.entries(s.components.theme))document.documentElement.style.setProperty('--'+(key==='accent'?'green':key),value);
-  renderFacilities(s);renderEconomy(s);renderWardrobe(s);window.renderSocial?.(s);window.renderSpeech?.(s);window.renderLife?.(s);game.paused=paused||busy;game.update(s,selected);
+  renderFacilities(s);renderEconomy(s);renderWardrobe(s);window.renderSocial?.(s);window.renderSpeech?.(s);window.renderLife?.(s);game.paused=paused||busy||!!window.LifeMenu?.blocked();window.LifeMenu?.update(s);game.update(s,selected);
   if(s.error)note(s.error.message,true);else if(s.notice)note(s.notice);
   const outfitKey=entities.get(selected)?.outfit?.render_key;
   if(!$('cg-modal').hidden&&window.shownCGOutfit!==outfitKey)$('cg-modal').hidden=true;
@@ -83,7 +83,7 @@ async function start(){
   try{await game.load();const response=await fetch('/api/state');if(!response.ok)throw new Error('世界尚未啟動。');render(await response.json());$('world').focus();}
   catch(e){note('遊戲載入失敗：'+e.message,true);}
 }
-setInterval(()=>{if(state&&!busy&&!polling&&!paused&&!document.hidden)send('pulse',{focus:selected&&state.space.entities.some(e=>e.id===selected&&e.near)?selected:null},true);},250);
+setInterval(()=>{if(state&&!busy&&!polling&&!paused&&!window.LifeMenu?.blocked()&&!document.hidden)send('pulse',{focus:selected&&state.space.entities.some(e=>e.id===selected&&e.near)?selected:null},true);},250);
 start();
 
 let facilityOpen=false,tripTarget=null,catalogSignature='',catalogLimit=30,lastFacility=null;

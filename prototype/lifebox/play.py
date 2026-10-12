@@ -275,6 +275,10 @@ def make_server(session, port=8765):
                 asset=session.speech.asset(path.removeprefix('/speech-audio/'))
                 if asset:return self._send(200,asset.read_bytes(),'audio/wav')
                 return self._send(404,{'error':'not_found'})
+            if path.startswith('/look-art/') and hasattr(session,'look_studio'):
+                asset=session.look_studio.asset(path.removeprefix('/look-art/'))
+                if asset:return self._send(200,asset.read_bytes(),'image/png')
+                return self._send(404,{'error':'not_found'})
             if path.startswith('/character-art/') and hasattr(session,'studio'):
                 asset=session.studio.asset(path.removeprefix('/character-art/'))
                 if asset:return self._send(200,asset.read_bytes(),'image/png')
@@ -289,7 +293,7 @@ def make_server(session, port=8765):
                      '/style.css': ('style.css', 'text/css; charset=utf-8'),
                      '/art-settings.js': ('art-settings.js','text/javascript; charset=utf-8'),
                      '/social-settings.js': ('social-settings.js','text/javascript; charset=utf-8'),
-                     '/speech-settings.js': ('speech-settings.js','text/javascript; charset=utf-8'),'/life-settings.js':('life-settings.js','text/javascript; charset=utf-8'),'/component-settings.js':('component-settings.js','text/javascript; charset=utf-8'),'/i18n.js':('i18n.js','text/javascript; charset=utf-8'),'/locales.json':('locales.json','application/json; charset=utf-8')}
+                     '/speech-settings.js': ('speech-settings.js','text/javascript; charset=utf-8'),'/life-settings.js':('life-settings.js','text/javascript; charset=utf-8'),'/component-settings.js':('component-settings.js','text/javascript; charset=utf-8'),'/i18n.js':('i18n.js','text/javascript; charset=utf-8'),'/locales.json':('locales.json','application/json; charset=utf-8'),'/simplified.json':('simplified.json','application/json; charset=utf-8'),'/menu.js':('menu.js','text/javascript; charset=utf-8'),'/maker.js':('maker.js','text/javascript; charset=utf-8'),'/studio.css':('studio.css','text/css; charset=utf-8')}
             # Public packaged art only. No arbitrary paths, private saves or keys.
             for asset in (static / 'assets').glob('*'):
                 if asset.name in {'maps.json','KENNEY-LICENSE.txt','LPC-CREDITS.txt','LPC-LICENSE.txt'} or asset.suffix == '.png':
@@ -321,6 +325,21 @@ def make_server(session, port=8765):
                     with session.lock:return self._send(200,session.preferences.configure(body))
                 if route=='/api/components':return self._send(200,session.components.operation(body))
                 if route=='/api/characters':
+                    if isinstance(body,dict) and body.get('operation') in {'preview_look','draft'}:
+                        from .characters import validate_profile,default_profile
+                        expected={'operation','actor','profile'}|({'brief'} if body['operation']=='draft' else set())
+                        if set(body)!=expected or body['actor'] not in session.character_setup.profiles:raise ValueError('無效人物草稿')
+                        profile={**default_profile(body['actor']),**validate_profile(body['profile'])}
+                        from .looks import validate_look
+                        profile['look']=validate_look(profile.get('look'),body['actor'])
+                        if body['operation']=='preview_look':
+                            with session.lock:return self._send(200,session.look_studio.preview(body['actor'],profile))
+                        if not isinstance(body['brief'],str) or not 1<=len(body['brief'].strip())<=800:raise ValueError('請用800字內描述人物方向')
+                        if hasattr(session.backend,'draft_character'):
+                            draft=session.backend.draft_character(profile,body['brief'],session.preferences.config['language']);source='model'
+                        else:
+                            draft={**profile,'goal':body['brief'].strip()[:100]};source='offline-example'
+                        return self._send(200,{'profile':draft,'source':source,'applied':False,'usage':session.backend.stats()})
                     if isinstance(body,dict) and set(body)=={'operation','actor','profile','before'} and body['operation']=='prepare_current':
                         return self._send(200,session.character_setup.prepare_current(session,body['actor'],body['profile'],body['before']))
                     if not isinstance(body,dict) or set(body)!={'profiles'}:raise ValueError('無效創角模板')
@@ -330,6 +349,8 @@ def make_server(session, port=8765):
                 if route=='/api/art':return self._send(200,session.art_action(body))
                 if route=='/api/speech':return self._send(200,session.speech_action(body))
                 return self._send(200, {**session.act(body), 'token': token})
+            except AIError as exc:
+                return self._send(400,{'error':str(exc),'message':ERRORS.get(str(exc),'AI 草稿暫時無法生成。')})
             except (ValueError, TypeError, KeyError, UnicodeError) as exc:
                 return self._send(400, {'error':'invalid_request','message':str(exc)[:250] if route in {'/api/art','/api/characters','/api/speech','/api/components'} else '請檢查這次行動的內容。'})
             except Exception:

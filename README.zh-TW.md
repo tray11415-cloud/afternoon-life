@@ -1,16 +1,19 @@
 # 午後共居 · Afternoon Life
 
-**繁體中文** · [English](README.md)
+**繁體中文** · [简体中文](README.zh-CN.md) · [English](README.md)
 
 俯視角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持續運作的小鎮。每位 AI 只取得自己的觀察、目標與記憶；可以共用模型服務，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.19.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
+**目前是可玩的 alpha：v0.20.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
 
 [![中文操作導覽](docs/media/guide.zh-TW.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4)
 
-[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.19.0)
+[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.20.0)
 
-新版影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
+上述繁中與英文影片記錄 v0.19；影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
+
+
+[简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
 ## 開始玩
 
@@ -28,9 +31,19 @@ python -m lifebox.play --demo
 
 **WASD／方向鍵**移動、點地面尋路、靠近人物或物件按 **E** 互動。走到門口即可進屋；場所按鈕會安排實際路線，不會瞬移。
 
-「遊戲設定」可選 **繁體中文／日本語／English**，保存後影響介面與新生成的 AI 台詞。人物名字、自訂背景、歷史台詞、来源文章和原生 SD 畫面保留原文。TTS 聲線與朗讀語言另行選擇。
+「遊戲設定」可選 **繁體中文／简体中文／日本語／English**，保存後影響介面與新生成的 AI 台詞。人物名字、自訂背景、歷史台詞、来源文章和原生 SD 畫面保留原文。TTS 聲線與朗讀語言另行選擇。
 
 離線示範有明確標示，使用本機日程及固定示範台詞，**沒有呼叫 LLM，也沒有付費模型請求**。
+
+## 開始選單與人物工坊（v0.20）
+
+開始畫面提供繼續、新遊戲、人物工坊、遊戲設定及手動讀檔。「繼續」保留最新位置；「新遊戲」先編輯模板，勾選建立存檔後才開始，原存檔會封存，可在工坊恢復。
+
+人物工坊按基本資料、臉與身形、髮型、服装、個性、背景及 AI／人物卡分類。男主與十位角色各自編輯；原人物未啟用自訂外觀時沿用原素材。啟用後可調整八種髮型、髮色、膚色、初始衣褲色和簡化身形，預覽四方向與行走。臉型與眼色供 SD 身份描述使用，沒有 3D 捏臉；身高在像素圖中是有界的輪廓縮放。已購買衣服繼續使用自己的配色。
+
+目前人物先預覽再套用；新遊戲模板另存。AI 草擬只在手動點擊時處理選定人物，使用既有行動模型與共用帳本上限，不傳整個世界。離線模式提供明示本機範例。JSON 人物卡只含設定，不含世界記憶、金鑰、LoRA 或圖片；匯入後仍需预覽套用。SD 可由服装分類進入，需另外逐人綁定模型。
+
+遊戲設定分為畫面、操作、聲音、AI、語言與存檔。可保存視野縮放、人物名稱、小地圖、較大文字、減少動畫及設定時暫停。主選單一律暫停這個遊戲頁的心跳；多開另一個頁面仍可推進同一個世界。TTS 聲線與朗讀語言獨立選擇。[人物卡與預覽接口](docs/CHARACTER_ATELIER.md)。
 
 ## 可以做什麼
 
@@ -74,6 +87,7 @@ SD 是可選功能。啟動本機服務，在「生圖設定」選安裝資料�
 cd prototype
 python -m unittest discover -s tests
 cd ..
+python tools/test_atelier.py
 python tools/test_release.py
 python tools/test_character_customization.py
 python tools/test_components.py ComponentsTests

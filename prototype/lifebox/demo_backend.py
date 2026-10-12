@@ -13,6 +13,7 @@ class DemoBackend:
   if target is None:target='player' if any(p['id']=='player' for p in context['nearby']) else None
   language=context.get('response_language','zh-TW')
   lines={'zh-TW':'我想先把手邊的事做好。有空的話，一起去公園走走吧。','en':"I'd like to finish what I'm working on first. Shall we walk in the park afterwards?",'ja':'まず今の作業を終わらせたいな。そのあと、一緒に公園を歩かない？'}
+  lines['zh-CN']='我想先把手边的事做好。有空的话，一起去公园走走吧。'
   return Action('say',{'target':target,'text':lines.get(language,lines['zh-TW'])})
  def express(self,context,profile,draft):return draft
  def stats(self):

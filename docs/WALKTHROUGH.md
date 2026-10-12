@@ -1,10 +1,36 @@
+# New Simplified Chinese guide / 新版简体导览
+
+[![简体导览](media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
+
+[影片 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [字幕](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.srt) · [解说稿](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.script.md)
+
+The v0.20 video shows the title menu, settings, pixel customisation, manual offline character drafting, physical travel, inventory purchase, shared invitations, local SD configuration, and component preview/apply/undo. It uses 1,023 timestamped actual browser screenshots, approximately 4 fps capture, encoded at 25 fps; some static end frames are held for narration. UI and subtitles are Simplified Chinese. Local Microsoft Hanhan synthetic Chinese narration; no paid model calls or live SD render. Captions are aligned within measured narration segments, with sentence timing estimated by length. Complete video decode and non-silent audio checks passed. Eight main chapters plus opening.
+
+繁中：新版簡體影片以隔離離線世界實拍，附合成解說、字幕、美編與章節。像素預覽是真實圖層合成，AI 草擬為明示的本機範例，SD 章節只展示配置。約 4fps 截圖取樣、25fps 編碼，部分畫面延長停留供解說。
+
+简中：新版展示开始菜单、分类设置、人物工坊、背包与公共活动。没有现场付费模型请求或 SD 出图。人物卡导出成功；当前自动化浏览器的本地文件上传权限受限，因此卡片导入仅完成后端验证，未完成该浏览器的文件选择实测。普通手动文件选择功能保留，无需游戏另加插件。
+
+| 章节 | 开始 |
+|---|---:|
+| 开场 | 0:00 |
+| 从开始选单出发 | 0:19 |
+| 按自己的步调设置 | 1:09 |
+| 看见自己的像素人物 | 2:00 |
+| 让 AI 草拟一位人物 | 2:51 |
+| 走到咖啡厅，带走一份日常 | 3:43 |
+| 一起出门，每人自己回应 | 4:42 |
+| 把像素与立绘接到本机生图 | 5:32 |
+| 替换部件，保留世界 | 6:26 |
+
+---
+
 # Narrated walkthroughs / 中英解說導覽
 
 [中文影片 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English video · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-Both versions were recorded separately in their respective interface language. They include eight chapters, synthetic narration, burned-in subtitles, chapter metadata, title cards and field notes. The public game source is unchanged by this video update.
+Both versions were recorded separately in their respective interface language. They include eight chapters, synthetic narration, burned-in subtitles, chapter metadata, title cards and field notes. These two earlier videos show v0.19.
 
-兩版分別以中文及英文介面重新錄製，附八個章節、合成解說、內嵌字幕、章節標記、封面與重點提示。本次更新影片與文件，遊戲程式未改動。
+兩版分別以中文及英文介面重新錄製，附八個章節、合成解說、內嵌字幕、章節標記、封面與重點提示。這兩版影片展示 v0.19；新的簡體影片展示 v0.20。
 
 ## Chapters / 章節
 

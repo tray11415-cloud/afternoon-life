@@ -66,6 +66,8 @@ class PixelSession(PlaySession):
         self.art_assets=ArtAssets(self.root/'replaceable-art')
         from .components import Components
         self.components=Components(self)
+        from .looks import LookStudio
+        self.look_studio=LookStudio(self)
         self._save()
 
     def _load_pixel(self,path):
@@ -306,6 +308,7 @@ class PixelSession(PlaySession):
         if self.components:result['components']=self.components.public()
         result['player']={k:self.engine._state['actors']['player'][k] for k in ('name','age','gender')}
         result['preferences']=self.preferences.state()
+        result['start_menu']={'ready':True,'has_progress':self.engine.tick>0 or self.manual_path.exists(),'manual_save':self.manual_path.exists(),'location':result['location_name'],'tick':self.engine.tick}
         result['events']=[e for e in self.engine.view('player',100)['memories'] if e['kind'] in {'message_spoken','city_spoken','actor_moved','work_started','work_completed','invitation_created','invitation_status'}]
         for scene_id in result['location_names']:
             if scene_id.startswith('room-'):
@@ -329,7 +332,9 @@ class PixelSession(PlaySession):
             result['wardrobe']=self.wardrobe.browse('player')
             for entity in result['space']['entities']:
                 entity['outfit']=self.wardrobe.appearance(entity['id'])
-                if hasattr(self,'studio'):entity['art']=self.studio.appearance(entity['id'],entity['outfit'])
+                if entity['id'] in self.character_setup.profiles:
+                    profile=self.character_setup.current(self,entity['id']);entity['art']=self.look_studio.render(entity['id'],profile,entity['outfit'])
+                if hasattr(self,'studio'):entity.setdefault('art',{}).update(self.studio.appearance(entity['id'],entity['outfit']))
                 if hasattr(self,'art_assets'):
                     active=self.studio.config['active'].get(entity['id']+':'+entity['outfit']['render_key'],{})
                     entity.setdefault('art',{}).update(self.art_assets.appearance(entity['id'],entity['outfit'],active.get('expression',self.studio.config['profiles'].get(entity['id'],{}).get('expression','neutral'))))
@@ -340,6 +345,10 @@ class PixelSession(PlaySession):
 
     def art_outfit_prompt(self,actor):
         # Only actual worn clothing, never another character's private closet.
+        from .looks import color_name
+        own=self.engine._state['actors'][actor];look=own.get('character_profile',{}).get('look')
+        if look and look.get('enabled') and own['wardrobe']['wearing']=='original':
+            return f"fully clothed, modest {color_name(look['top_color'])} long-sleeved jacket, {color_name(look['bottom_color'])} full-length trousers, everyday shoes"
         return self.wardrobe.render_prompt(actor,'shared','portrait').prompt.split('plain background, ',1)[-1]
 
     def speech_action(self,body):
@@ -427,8 +436,11 @@ class PixelSession(PlaySession):
         if not isinstance(body,dict) or set(body)!={'command','params'} or not isinstance(body['params'],dict): raise ValueError('invalid command')
         command,params=body['command'],body['params']
         with self.lock:
-            if command!='pulse': self.error,self.notice=None,None
-            if command=='pulse':
+            if command not in {'pulse','ui_hold'}: self.error,self.notice=None,None
+            if command=='ui_hold':
+                if params:raise ValueError('無效選單時間操作')
+                self.last_motion=self.clock();self.last_minute=self.clock()
+            elif command=='pulse':
                 if set(params)!={'focus'} or (params['focus'] is not None and params['focus'] not in self.engine._state['actors']): raise ValueError('invalid focus')
                 self._pulse(params['focus'])
                 # Write only on changes, at most one world checkpoint per native minute.

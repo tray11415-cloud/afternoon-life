@@ -52,6 +52,7 @@ window.PixelLife=class PixelLife {
     if(!this.ready||!state.space)return;
     for(const art of Object.values(state.art_backgrounds||{}))if(!this.images.has(art.background))this.image(art.background).catch(()=>{});
     const c=state.components;if(c){const mapping=Object.fromEntries(Object.entries(c.art).map(([name,url])=>['/assets/'+name,url]));const previous=this.assetOverrides||{};this.assetOverrides=mapping;for(const url of new Set([...Object.keys(mapping),...Object.keys(previous)]))if(mapping[url]!==previous[url]){this.images.delete(url);this.loading.delete(url);this.image(url).catch(()=>{});}this.assetOverrides=mapping;this.spec.maps[state.space.scene]=c.map;this.componentVisual=c.visual;for(const url of [c.visual.background,...c.visual.decor.map(d=>d.image),...(c.visual.tiles||[]).map(t=>t.image)])if(!this.images.has(url))this.image(url).catch(()=>{});}
+    this.zoom=state.preferences?.config.camera_zoom||1;this.prefs=state.preferences?.config||{};
     const changed=this.scene!==state.space.scene;this.scene=state.space.scene;this.map=this.spec.maps[this.scene];this.selected=selected;this.state=state;
     const present=new Set();
     for(const item of state.space.entities){
@@ -76,7 +77,7 @@ window.PixelLife=class PixelLife {
   drawEntity(e,now){
     const ctx=this.ctx,T=this.tileSize,px=Math.round(e.drawX*T+T/2),py=Math.round(e.drawY*T+28);
     const row={up:0,left:1,down:2,right:3}[e.direction]??2;
-    const active=e.animationUntil>now||Math.abs(e.drawX-e.x)+Math.abs(e.drawY-e.y)>.05;
+    const active=!this.prefs?.reduce_motion&&(e.animationUntil>now||Math.abs(e.drawX-e.x)+Math.abs(e.drawY-e.y)>.05);
     const sd=!!e.art?.sprite&&this.images.has(e.art.sprite),frames=sd?(e.art.frames||3):9;
     const frame=active?1+Math.floor(now/140)%(frames-1):0,sprite=this.images.get(this.spriteURL(e));
     ctx.fillStyle='#253b3745';ctx.beginPath();ctx.ellipse(px,py-3,11,4,0,0,Math.PI*2);ctx.fill();
@@ -88,7 +89,7 @@ window.PixelLife=class PixelLife {
     const ctx=this.ctx,w=this.canvas.width,h=this.canvas.height,T=this.tileSize;
     if(!this.ready||!this.map){ctx.fillStyle='#98a792';ctx.fillRect(0,0,w,h);ctx.fillStyle='#f8f3e3';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText(window.LifeI18n?.t('正在整理街景…')||'正在整理街景…',w/2,h/2);return;}
     const player=this.entities.get('player');if(!player)return;
-    for(const e of this.entities.values()){const k=Math.min(1,dt*.025);e.drawX+=(e.x-e.drawX)*k;e.drawY+=(e.y-e.drawY)*k;if(Math.abs(e.drawX-e.x)<.015)e.drawX=e.x;if(Math.abs(e.drawY-e.y)<.015)e.drawY=e.y;}
+    for(const e of this.entities.values()){if(this.prefs?.reduce_motion){e.drawX=e.x;e.drawY=e.y;}const k=Math.min(1,dt*.025);e.drawX+=(e.x-e.drawX)*k;e.drawY+=(e.y-e.drawY)*k;if(Math.abs(e.drawX-e.x)<.015)e.drawX=e.x;if(Math.abs(e.drawY-e.y)<.015)e.drawY=e.y;}
     const viewW=w/this.zoom,viewH=h/this.zoom,mapW=this.map.width*T,mapH=this.map.height*T;
     const cx=mapW<viewW?(mapW-viewW)/2:Math.max(0,Math.min(mapW-viewW,player.drawX*T+16-viewW/2));
     const cy=mapH<viewH?(mapH-viewH)/2:Math.max(0,Math.min(mapH-viewH,player.drawY*T+16-viewH/2));
@@ -109,7 +110,7 @@ window.PixelLife=class PixelLife {
     const hour=(14+Math.floor(this.state.tick/60))%24;
     if(['shared','district','zoo','park','market'].includes(this.scene)&&(hour>=18||hour<7)){ctx.fillStyle='rgba(37,52,73,.13)';ctx.fillRect(0,0,w,h);}
     for(const l of this.map.labels){const[x,y]=screen(l.x,l.y);if(x>0&&x<w&&y>12&&y<h-12)this.label(l.text,x,y-12,'home');}
-    for(const e of this.entities.values()){
+    if(this.prefs?.show_names!==false)for(const e of this.entities.values()){
       const[x,y]=screen(e.drawX,e.drawY);if(x<0||x>w||y<30||y>h+60)continue;
       const name=e.id==='player'?'你':this.state.roster.find(p=>p.id===e.id)?.name||'';
       this.label(name+(e.near?' · E':''),x,y-37,e.id===this.selected?'selected':'normal',e.id==='player');
@@ -118,7 +119,7 @@ window.PixelLife=class PixelLife {
       const seller=`member-${String(i+1).padStart(2,'0')}`,stock=this.state.economy.market.listings.filter(l=>l.seller===seller).reduce((sum,l)=>sum+l.quantity,0);
       if(stock){const[x,y]=screen(6+7*(i%5),5+8*Math.floor(i/5));this.label(`寄售 ${stock} 份`,x,y+43);}
     }}
-    if(['shared','district','park','market'].includes(this.scene)){
+    if(this.prefs?.show_minimap!==false&&['shared','district','park','market'].includes(this.scene)){
       const mw=120,mh=Math.round(mw*mapH/mapW),mx=15,my=h-mh-15;ctx.fillStyle='#f7f2dfdd';ctx.fillRect(mx-3,my-3,mw+6,mh+6);
       ctx.save();ctx.beginPath();ctx.rect(mx,my,mw,mh);ctx.clip();if(bg)ctx.drawImage(bg,mx,my,mw,mh);
       for(const p of art.decor)if(this.images.has(p.image))ctx.drawImage(this.images.get(p.image),mx+p.x*mw/mapW,my+p.y*mh/mapH,this.images.get(p.image).width*mw/mapW,this.images.get(p.image).height*mh/mapH);

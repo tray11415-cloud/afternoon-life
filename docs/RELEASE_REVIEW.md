@@ -17,3 +17,9 @@ Long-term story quality, large-scale performance and trained semantic memory are
 ## Publication scope
 
 Publish the source, packaged LPC/Kenney art, licences, bilingual README, tests and showcase. Exclude keys, work folders, private saves, local SD/TTS inventories, model weights and generated caches. The local SD sample gallery is omitted from the public checkout; optional generation features remain present. No provider or asset author is claimed to endorse the project.
+
+## v0.20 checks (2026-10-13)
+
+Title, grouped settings, pixel looks, single-profile manual drafting and four UI languages. Regression: 161 prototype tests, 8 release tests, 11 character-customisation tests, 11 atelier tests, 30 component tests, 26 SD-studio tests and 18 native-SD tests passed. API requests mocked in tests; no paid calls. Frontend JS syntax checked. Browser: preference save/reload, Simplified Chinese, per-character look preview/apply, local draft, card export, title/new game/archive restoration, shared invitation, inventory purchase, SD actor shortcut and Simplified replacement/apply/undo passed. Automated card-file upload was blocked by browser extension permissions; no extension access was expanded. Long-term story quality and arbitrary SD model compatibility are still unvalidated.
+
+Production files for auto/manual saves, SD settings/native templates, TTS settings and xAI ledger matched their pre-deployment SHA256 values. No private data or local model weights are packaged. Existing local SD proof samples stay on the machine, excluded from public distribution. Adapted pixel layers retain attribution.

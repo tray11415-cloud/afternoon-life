@@ -1,6 +1,6 @@
 /* SD-first character art workflow; explicit generation and display application. */
 (() => {
- const el=id=>document.getElementById(id),sdTabs=['sd-art','sd-portrait','sd-cg'];let data=null,tabName='sd-art',version=0,working=false,actor=null,bindingBefore=null;
+ const el=id=>document.getElementById(id),sdTabs=['sd-art','sd-portrait','sd-cg'];let data=null,tabName='sd-art',version=0,working=false,actor=null,bindingBefore=null,loadingForm=false;
  const context=()=>window.CharacterBridge.read(),active=()=>sdTabs.includes(tabName),status=text=>el('atelier-status').textContent=text;
  async function request(params){const r=await fetch('/api/art',{method:'POST',headers:{'Content-Type':'application/json','X-Play-Token':token},body:JSON.stringify({operation:'atelier',params})}),d=await r.json();if(!r.ok)throw Error(d.message||'美術操作無法完成。');return d;}
  function option(select,value,text){const o=document.createElement('option');o.value=value;o.textContent=text;select.append(o);}
@@ -36,7 +36,7 @@
    }box.append(card);
   }
  }
- async function load(forms=true){const turn=++version,who=context().actor;try{const d=await request({command:'state'});if(turn!==version||context().actor!==who)return;data=d;actor=who;if(forms)configureView();jobs();}catch(e){if(turn===version)status(e.message);}}
+ async function load(forms=true){if(forms)loadingForm=true;const turn=++version,who=context().actor;try{const d=await request({command:'state'});if(turn!==version||context().actor!==who)return;data=d;actor=who;if(forms)configureView();jobs();}catch(e){if(turn===version)status(e.message);}finally{if(forms&&turn===version)loadingForm=false;}}
  async function run(action){if(working)return;working=true;updateControls();try{await action();}catch(e){status(e.message);}finally{working=false;updateControls();}}
  async function generate(kind){const who=context().actor;await run(async()=>{data=await request({command:'generate',actor:who,kind,scene:kind==='cg'?el('atelier-scene').value:null,description:kind==='cg'?el('atelier-description').value:''});jobs();status('已排入本機 SD 生成，完成後請預覽並套用。');});}
  el('atelier-binding').onclick=()=>run(async()=>{if(!data)return;const who=context().actor,p={...data.config.profiles[who]};for(const field of ['lora','trigger','identity'])p[field]=el('atelier-'+field).value;p.weight=Number(el('atelier-weight').value);p.seed=Number(el('atelier-seed').value);data=await request({command:'binding',actor:who,profile:p,before:bindingBefore});configureView();jobs();status('這位人物的 SD 配方已保存。');});
@@ -47,5 +47,5 @@
  function tab(name){tabName=name;if(active())el('atelier-profile-nav').open=false;el('atelier-common').hidden=!active();el('atelier-results').hidden=!active();el('look-enabled').closest('label').hidden=active();el('creation-live').hidden=active()||context().mode!=='current';el('creation-save').hidden=active()||context().mode!=='template';if(active()){preview(null,'portrait');if(data){jobs();updateControls();if(name==='sd-cg'&&data.atelier.cg?.actor===actor)preview(data.atelier.cg.url,'cg');}}else{el('atelier-image').hidden=true;el('atelier-empty').hidden=true;el('maker-canvas').hidden=false;el('maker-canvas').closest('.maker-preview').classList.remove('sd-sprite');window.CharacterMaker.refresh();}}
  for(const field of ['lora','weight','seed','trigger','identity'])el('atelier-'+field).addEventListener('input',()=>{updateControls();status('SD 配方改動請先保存，再生成。');});
  window.SDAtelier={active,show(){actor=context().actor;tab(tabName);load();},tab};
- setInterval(()=>{if(el('creation-modal').open&&active()&&!working)load(false);},2500);
+ setInterval(()=>{if(el('creation-modal').open&&active()&&!working&&!loadingForm&&data)load(false);},2500);
 })();

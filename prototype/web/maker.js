@@ -6,6 +6,7 @@
  function readLook(previous){const p={...(previous||{})};p.enabled=el('look-enabled').checked;for(const [key,id] of Object.entries(fields))p[key]=key==='height'?Number(el(id).value):el(id).value;return p;}
  async function api(body){const response=await fetch('/api/characters',{method:'POST',headers:{'Content-Type':'application/json','X-Play-Token':token},body:JSON.stringify(body)});const result=await response.json();if(!response.ok)throw Error(result.message||'人物草稿無法處理。');return result;}
  async function refreshPreview(){
+  if(window.SDAtelier?.active())return;
   const version=++previewSerial,draft=window.CharacterBridge.read();note('maker-preview-status','正在更新像素預覽…');
   try{const result=await api({operation:'preview_look',actor:draft.actor,profile:draft.profile});if(version!==previewSerial)return;const image=new Image();image.onload=()=>{if(version===previewSerial){sprite=image;preview=result;note('maker-preview-status',result.look.enabled?'草稿預覽，尚未套用。':'原始素材；啟用自訂外觀後可調整。');}};image.onerror=()=>note('maker-preview-status','人物圖片載入失敗。');image.src=result.sprite;}catch(error){if(version===previewSerial)note('maker-preview-status',error.message);}
  }
@@ -13,10 +14,10 @@
  function show(profile,id,mode){
   actor=id;const p=profile.look;el('look-enabled').checked=!!p?.enabled;if(p)for(const [key,field] of Object.entries(fields))el(field).value=p[key];
   el('maker-name').textContent=profile.name;el('maker-mode-note').textContent=mode==='current'?'目前人物 · 草稿預覽':'新遊戲模板 · 草稿預覽';el('look-height-value').textContent=el('look-height').value+' cm';
-  el('maker-ai-source').textContent=state.usage.demo?'離線模式：產生本機範例草稿，不使用模型。':'手動呼叫目前行動模型一次；只傳這位人物草稿與描述，沿用現有用量上限。';el('maker-persona').value='';schedule();
+  el('maker-ai-source').textContent=state.usage.demo?'離線模式：產生本機範例草稿，不使用模型。':'手動呼叫目前行動模型一次；只傳這位人物草稿與描述，沿用現有用量上限。';el('maker-persona').value='';schedule();window.SDAtelier?.show();
  }
- window.CharacterMaker={readLook,show};
- for(const button of document.querySelectorAll('[data-maker-tab]'))button.onclick=()=>{for(const b of document.querySelectorAll('[data-maker-tab]'))b.setAttribute('aria-selected',String(b===button));for(const panel of document.querySelectorAll('[data-maker-panel]'))panel.hidden=panel.dataset.makerPanel!==button.dataset.makerTab;};
+ window.CharacterMaker={readLook,show,refresh:refreshPreview,generated(url,frames=3){const im=new Image();im.onload=()=>{sprite=im;preview={frames};};im.src=url;}};
+ for(const button of document.querySelectorAll('[data-maker-tab]'))button.onclick=()=>{for(const b of document.querySelectorAll('[data-maker-tab]'))b.setAttribute('aria-selected',String(b===button));for(const panel of document.querySelectorAll('[data-maker-panel]'))panel.hidden=panel.dataset.makerPanel!==button.dataset.makerTab;window.SDAtelier?.tab(button.dataset.makerTab);};
  for(const id of ['look-enabled',...Object.values(fields)])el(id).addEventListener('input',()=>{if(id!=='look-enabled')el('look-enabled').checked=true;window.CharacterBridge.invalidate();schedule();});
  for(const id of ['creation-name','creation-age','creation-gender','creation-appearance'])el(id).addEventListener('input',()=>{if(id==='creation-gender')el('look-enabled').checked=true;schedule();});
  for(const button of document.querySelectorAll('[data-preview-direction]'))button.onclick=()=>{direction=Number(button.dataset.previewDirection);};

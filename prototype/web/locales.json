@@ -4333,5 +4333,300 @@
     "en": "Latest progress",
     "ja": "最新の進捗",
     "zh-CN": "最新进度"
+  },
+  "用 Stable Diffusion 製作人物美術、立繪差分與 CG，再預覽套用。": {
+    "en": "Create character art, expression variants and CGs with Stable Diffusion, then preview and apply.",
+    "ja": "Stable Diffusionで人物素材、表情差分、CGを生成し、プレビューして適用。",
+    "zh-CN": "用 Stable Diffusion 制作人物美术、立绘差分与 CG，再预览套用。"
+  },
+  "SD 美術": {
+    "en": "SD artwork",
+    "ja": "SD素材",
+    "zh-CN": "SD 美术"
+  },
+  "立繪與差分": {
+    "en": "Portraits and expressions",
+    "ja": "立ち絵と表情差分",
+    "zh-CN": "立绘与差分"
+  },
+  "造型描述": {
+    "en": "Appearance notes",
+    "ja": "外見の説明",
+    "zh-CN": "造型描述"
+  },
+  "像素備援": {
+    "en": "Pixel fallback",
+    "ja": "ピクセル代替素材",
+    "zh-CN": "像素备援"
+  },
+  "衣服與描述": {
+    "en": "Clothing and notes",
+    "ja": "衣装と説明",
+    "zh-CN": "衣服与描述"
+  },
+  "使用自訂像素外觀（備援）": {
+    "en": "Use custom pixel fallback",
+    "ja": "カスタムピクセル代替素材を使用",
+    "zh-CN": "使用自订像素外观（备援）"
+  },
+  "尚未選擇 SD 素材": {
+    "en": "No SD artwork selected",
+    "ja": "SD素材が未選択",
+    "zh-CN": "尚未选择 SD 素材"
+  },
+  "SD 人物美術預覽": {
+    "en": "SD character art preview",
+    "ja": "SD人物素材プレビュー",
+    "zh-CN": "SD 人物美术预览"
+  },
+  "Stable Diffusion 人物工作室": {
+    "en": "Stable Diffusion character studio",
+    "ja": "Stable Diffusion人物スタジオ",
+    "zh-CN": "Stable Diffusion 人物工作室"
+  },
+  "正在讀取本機 SD…": {
+    "en": "Loading local SD settings…",
+    "ja": "ローカルSD設定を読み込み中…",
+    "zh-CN": "正在读取本机 SD…"
+  },
+  "角色 LoRA 與身份配方": {
+    "en": "Character LoRA and identity recipe",
+    "ja": "人物LoRAと識別レシピ",
+    "zh-CN": "角色 LoRA 与身份配方"
+  },
+  "保存這位人物的 SD 配方": {
+    "en": "Save this character's SD recipe",
+    "ja": "この人物のSDレシピを保存",
+    "zh-CN": "保存这位人物的 SD 配方"
+  },
+  "SD 身份補充": {
+    "en": "SD identity notes",
+    "ja": "SD識別の補足",
+    "zh-CN": "SD 身份补充"
+  },
+  "完整 SD 設定／固定模板": {
+    "en": "Full SD settings / fixed templates",
+    "ja": "完全なSD設定／固定テンプレート",
+    "zh-CN": "完整 SD 设置／固定模板"
+  },
+  "生成採用已套用的人物設定與當下穿著；尚未保存的角色草稿不會送去生圖。": {
+    "en": "Generation uses applied profiles and worn clothing; unsaved character drafts are excluded.",
+    "ja": "生成には適用済みの人物設定と現在の服装を使用。未保存の下書きは含みません。",
+    "zh-CN": "生成采用已套用的人物设置与当下穿着；尚未保存的角色草稿不会送去生图。"
+  },
+  "使用角色 LoRA 生成四方向像素圖；可和立繪差分一起排入本機佇列。": {
+    "en": "Generate four-direction sprites with the character LoRA, optionally together with portrait variants.",
+    "ja": "人物LoRAで四方向の歩行素材を生成。立ち絵差分と同時にキューへ追加できます。",
+    "zh-CN": "使用角色 LoRA 生成四方向像素图；可和立绘差分一起排入本机伫列。"
+  },
+  "生成像素行走圖": {
+    "en": "Generate walking sprites",
+    "ja": "歩行素材を生成",
+    "zh-CN": "生成像素行走图"
+  },
+  "生成立繪＋像素": {
+    "en": "Generate portraits and sprites",
+    "ja": "立ち絵と歩行素材を生成",
+    "zh-CN": "生成立绘＋像素"
+  },
+  "恢復備援美術": {
+    "en": "Restore fallback art",
+    "ja": "代替素材に戻す",
+    "zh-CN": "恢复备援美术"
+  },
+  "套用 SD 時優先顯示相同人物、相同穿著的生成圖；匯入 PNG 與原生像素素材保留，可恢復。": {
+    "en": "Applied SD art takes priority for the same character and outfit; imported PNGs and native sprites remain recoverable.",
+    "ja": "同じ人物と服装では適用したSD素材を優先。読み込んだPNGと原生ピクセル素材は保持されます。",
+    "zh-CN": "套用 SD 时优先显示相同人物、相同穿着的生成图；汇入 PNG 与原生像素素材保留，可恢复。"
+  },
+  "以同一份身份參考生成已勾選的表情差分，完成後在下方選表情並套用。": {
+    "en": "Generate selected expressions from one identity reference, then select and apply below.",
+    "ja": "同一の識別参照から選択した表情差分を生成し、下から選んで適用。",
+    "zh-CN": "以同一份身份参考生成已勾选的表情差分，完成后在下方选表情并套用。"
+  },
+  "生成立繪差分": {
+    "en": "Generate portrait expressions",
+    "ja": "立ち絵の表情差分を生成",
+    "zh-CN": "生成立绘差分"
+  },
+  "CG 公共場景": {
+    "en": "Public setting for CG",
+    "ja": "CGの公共背景",
+    "zh-CN": "CG 公共场景"
+  },
+  "構圖與動作描述": {
+    "en": "Composition and action notes",
+    "ja": "構図と動作の説明",
+    "zh-CN": "构图与动作描述"
+  },
+  "例如：傍晚坐在咖啡廳窗邊，手邊放著一杯咖啡。": {
+    "en": "For example: sitting by a cafe window at dusk, with coffee nearby.",
+    "ja": "例：夕暮れのカフェの窓際に座り、そばにコーヒーがある。",
+    "zh-CN": "例如：傍晚坐在咖啡厅窗边，手边放着一杯咖啡。"
+  },
+  "生成一般 CG": {
+    "en": "Generate a CG illustration",
+    "ja": "一般CGを生成",
+    "zh-CN": "生成一般 CG"
+  },
+  "開啟已套用 CG": {
+    "en": "Open selected CG",
+    "ja": "適用中のCGを開く",
+    "zh-CN": "开启已套用 CG"
+  },
+  "這是美術創作；不會移動人物、收費或讓角色取得未經歷的事件記憶。實際當下場景 CG 仍可由對話區生成。": {
+    "en": "Art creation does not move characters, spend game money or add unexperienced memories. In-world CGs remain available from dialogue.",
+    "ja": "素材制作は人物の移動、ゲーム内支払い、未経験の記憶を発生させません。現在の場面のCGは会話欄からも生成できます。",
+    "zh-CN": "这是美术创作；不会移动人物、收费或让角色取得未经历的事件记忆。实际当下场景 CG 仍可由对话区生成。"
+  },
+  "生成結果與套用": {
+    "en": "Results and application",
+    "ja": "生成結果と適用",
+    "zh-CN": "生成结果与套用"
+  },
+  "SD 素材預覽；按套用才更新遊戲。": {
+    "en": "SD preview; Apply updates the game.",
+    "ja": "SD素材のプレビュー。適用するとゲームに反映。",
+    "zh-CN": "SD 素材预览；按套用才更新游戏。"
+  },
+  "尚未生成或套用 SD 素材。": {
+    "en": "No SD art generated or applied yet.",
+    "ja": "SD素材はまだ生成・適用されていません。",
+    "zh-CN": "尚未生成或套用 SD 素材。"
+  },
+  "未選 SD 安裝": {
+    "en": "No SD installation selected",
+    "ja": "SDインストールが未選択",
+    "zh-CN": "未选 SD 安装"
+  },
+  "未選底模": {
+    "en": "No checkpoint selected",
+    "ja": "ベースモデルが未選択",
+    "zh-CN": "未选底模"
+  },
+  "SD 已連線": {
+    "en": "SD connected",
+    "ja": "SD接続済み",
+    "zh-CN": "SD 已连线"
+  },
+  "SD 尚未連線": {
+    "en": "SD disconnected",
+    "ja": "SD未接続",
+    "zh-CN": "SD 尚未连线"
+  },
+  "當下穿著：": {
+    "en": "Worn outfit: ",
+    "ja": "現在の服装：",
+    "zh-CN": "当下穿着："
+  },
+  "表情差分：": {
+    "en": "Expressions: ",
+    "ja": "表情差分：",
+    "zh-CN": "表情差分："
+  },
+  "新遊戲模板請先建立人物，再生成該人物目前穿著的 SD 美術。": {
+    "en": "Create the new-game characters first, then generate their worn-outfit artwork.",
+    "ja": "新規ゲームの人物を作成してから、現在の服装のSD素材を生成してください。",
+    "zh-CN": "新游戏模板请先建立人物，再生成该人物目前穿着的 SD 美术。"
+  },
+  "這位人物還沒有此用途的 SD 任務。": {
+    "en": "This character has no SD jobs for this purpose yet.",
+    "ja": "この人物にはこの用途のSDタスクがありません。",
+    "zh-CN": "这位人物还没有此用途的 SD 任务。"
+  },
+  "四方向行走表": {
+    "en": "Four-direction walking sheet",
+    "ja": "四方向歩行シート",
+    "zh-CN": "四方向行走表"
+  },
+  "CG 預覽": {
+    "en": "CG preview",
+    "ja": "CGプレビュー",
+    "zh-CN": "CG 预览"
+  },
+  "套用為目前 CG": {
+    "en": "Set as current CG",
+    "ja": "現在のCGとして適用",
+    "zh-CN": "套用为目前 CG"
+  },
+  "套用這套 SD 素材": {
+    "en": "Apply this SD art",
+    "ja": "このSD素材を適用",
+    "zh-CN": "套用这套 SD 素材"
+  },
+  "CG 已套用，可在 CG 插圖中查看。": {
+    "en": "CG selected; view it in CG illustrations.",
+    "ja": "CGを適用しました。CGイラストから確認できます。",
+    "zh-CN": "CG 已套用，可在 CG 插图中查看。"
+  },
+  "SD 素材已套用；原生與匯入美術保留作為備援。": {
+    "en": "SD art applied; native and imported art remain as fallbacks.",
+    "ja": "SD素材を適用。原生素材と読み込み素材は代替用に保持。",
+    "zh-CN": "SD 素材已套用；原生与汇入美术保留作为备援。"
+  },
+  "已排入本機 SD 生成，完成後請預覽並套用。": {
+    "en": "Queued for local SD generation. Preview and apply when ready.",
+    "ja": "ローカルSD生成キューに追加。完了後にプレビューして適用。",
+    "zh-CN": "已排入本机 SD 生成，完成后请预览并套用。"
+  },
+  "這位人物的 SD 配方已保存。": {
+    "en": "This character's SD recipe was saved.",
+    "ja": "この人物のSDレシピを保存しました。",
+    "zh-CN": "这位人物的 SD 配方已保存。"
+  },
+  "已恢復備援美術，SD 生成檔仍保留。": {
+    "en": "Fallback art restored; SD files are retained.",
+    "ja": "代替素材に戻しました。SD生成ファイルは保持。",
+    "zh-CN": "已恢复备援美术，SD 生成档仍保留。"
+  },
+  "目前套用的 CG · ": {
+    "en": "Current CG · ",
+    "ja": "適用中のCG · ",
+    "zh-CN": "目前套用的 CG · "
+  },
+  "目前套用的 SD CG": {
+    "en": "Current SD CG",
+    "ja": "適用中のSD CG",
+    "zh-CN": "目前套用的 SD CG"
+  },
+  "美術操作無法完成。": {
+    "en": "Art operation could not be completed.",
+    "ja": "素材操作を完了できませんでした。",
+    "zh-CN": "美术操作无法完成。"
+  },
+  "CG 草稿請選公共場景": {
+    "en": "Choose a public setting for the CG draft",
+    "ja": "CG下書きには公共背景を選択してください",
+    "zh-CN": "CG 草稿请选公共场景"
+  },
+  "只能套用這位人物已完成的素材": {
+    "en": "Only apply ready art belonging to this character",
+    "ja": "この人物の完成済み素材のみ適用できます",
+    "zh-CN": "只能套用这位人物已完成的素材"
+  },
+  "素材屬於其他穿著，請穿回同一套再套用": {
+    "en": "The art uses a different outfit; wear that outfit first",
+    "ja": "別の服装の素材です。同じ服装に着替えてから適用してください",
+    "zh-CN": "素材属於其他穿着，请穿回同一套再套用"
+  },
+  "外觀已修改，請重新生成相符的素材": {
+    "en": "Appearance changed; generate matching artwork",
+    "ja": "外見が変更されています。対応する素材を再生成してください",
+    "zh-CN": "外观已修改，请重新生成相符的素材"
+  },
+  "SD 人物設定已改變，請重新讀取": {
+    "en": "SD character settings changed; reload them",
+    "ja": "SD人物設定が変更されました。再読み込みしてください",
+    "zh-CN": "SD 人物设置已改变，请重新读取"
+  },
+  "人物與備援": {
+    "en": "Character and fallback",
+    "ja": "人物と代替素材",
+    "zh-CN": "人物与备援"
+  },
+  "SD 配方改動請先保存，再生成。": {
+    "en": "Save SD recipe changes before generating.",
+    "ja": "SDレシピの変更を保存してから生成してください。",
+    "zh-CN": "SD 配方改动请先保存，再生成。"
   }
 }

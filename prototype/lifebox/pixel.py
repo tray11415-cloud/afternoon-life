@@ -68,6 +68,8 @@ class PixelSession(PlaySession):
         self.components=Components(self)
         from .looks import LookStudio
         self.look_studio=LookStudio(self)
+        from .art_atelier import ArtAtelier
+        self.art_atelier=ArtAtelier(self)
         self._save()
 
     def _load_pixel(self,path):
@@ -316,7 +318,7 @@ class PixelSession(PlaySession):
                 if owner in self.engine._state['actors']:result['location_names'][scene_id]=self.engine._state['actors'][owner]['name']+'的家'
         result['location_name']=result['location_names'][scene]
         result['memory']={'provider':self.memory.embedding.name,'status':self.memory.error or 'ready'}
-        result['cg']={'connected':self.renderer is not None,'jobs':self.renderer.visible_jobs('player') if self.renderer else []}
+        result['cg']={'selected':self.art_atelier.selected_cg(),'connected':self.renderer is not None,'jobs':self.renderer.visible_jobs('player') if self.renderer else []}
         if hasattr(self,'studio'):
             result['cg']['connected']=result['cg']['connected'] or self.studio.services.get(self.studio.config['url'],{}).get('ready',False)
             with self.studio.lock:
@@ -338,6 +340,7 @@ class PixelSession(PlaySession):
                 if hasattr(self,'art_assets'):
                     active=self.studio.config['active'].get(entity['id']+':'+entity['outfit']['render_key'],{})
                     entity.setdefault('art',{}).update(self.art_assets.appearance(entity['id'],entity['outfit'],active.get('expression',self.studio.config['profiles'].get(entity['id'],{}).get('expression','neutral'))))
+                if self.art_atelier.prefers(entity['id'],entity['outfit']):entity.setdefault('art',{}).update(self.studio.appearance(entity['id'],entity['outfit']))
         if hasattr(self,'art_assets'):result['art_backgrounds']=self.art_assets.backgrounds()
         if hasattr(self,'studio') and self.studio.config['auto']:
             self.studio.maybe_auto([(actor,self.wardrobe.appearance(actor),self.art_outfit_prompt(actor)) for actor in self.studio.config['profiles']])
@@ -370,6 +373,7 @@ class PixelSession(PlaySession):
     def art_action(self,body):
         if not isinstance(body,dict) or set(body)!={'operation','params'} or not isinstance(body['params'],dict):raise ValueError('無效生圖操作')
         op,p=body['operation'],body['params']
+        if op=='atelier':return self.art_atelier.operation(p)
         if op=='asset_state' and not p:return self.art_assets.state()
         if op=='asset_upload':
             with self.lock:

@@ -4,13 +4,17 @@
 
 俯视角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持续运作的小镇。每位 AI 只取得自己的观察、目标与记忆；可以共用模型服务，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.20.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
+**目前是可玩的 alpha：v0.21.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
 
 [![简体中文操作导览](docs/media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.20.0)
+[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.21.0)
 
 简体影片展示 v0.20 开始菜单、设置、人物工坊和实际游戏操作；使用独立离线世界、合成配音与字幕，没有现场付费模型请求或 SD 生图。[其他语言及拍摄说明](docs/WALKTHROUGH.md)。
+
+## SD 人物工坊（v0.21）
+
+工坊首页改为 SD 美术、立绘与差分、CG 插图。先为选定人物保存 LoRA 与身份配方，再用现有本地 SD／原生固定模板生成，预览后直接应用。角色图片按人物与服装优先显示 SD，原生／导入美术保留，可恢复。CG 可选公共场景与构图，应用为当前插图，不移动角色或新增事件记忆。人物设置与像素备用素材收在折叠区，新绑定默认手动生成。现有影片展示较早版本。
 
 ## 开始玩
 

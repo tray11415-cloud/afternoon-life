@@ -37,3 +37,9 @@ Native derivatives use credited clothed LPC layers (see LPC-CREDITS.txt). Face/e
 Bundled layers are ready to use. To rebuild, obtain the attributed LPC source and run `python tools/build_look_layers.py --source /path/to/LPC/spritesheets --project .` after the existing LPC art builder. `CREDITS.csv` must be beside `spritesheets`. The builder checks coverage and appends every used author/licence; it publishes clothed composites and colour masks, not raw nude body layers. See LPC-CREDITS.txt. No automatic source/model download is performed.
 
 The title/menu/creator interface is original work. It adopts familiar game-category organisation; no AI Shoujo artwork or code is included. This is a pixel/SD atelier, not a 3D avatar editor.
+
+## SD workflow update (v0.21)
+
+The default tabs are SD artwork, portrait expressions and CG. They share the existing SD queue, models and templates. Binding saves only the selected actor with a stale-profile guard. New bindings are manual by default. Current-character generation snapshots the applied profile and actual worn outfit. Unapplied/new-game drafts are not rendered. Preview does not apply; actor art application checks owner, readiness, outfit, gender and enabled-look signature. Imported/native artwork is retained, with explicit SD priority and fallback restoration. Public-scene CG drafts never create world memories. Selecting a CG persists it in the illustration gallery. Complete SD settings can be opened and closed without losing character drafts.
+
+Protected POST /api/art: operation=atelier, params.command=state/binding/generate/apply/restore. SD settings and native workflows use the existing API. Preview caches and art selections remain under ignored work/, without rewriting world or ledger. New 9-test suite tools/test_sd_atelier.py uses mocked SD fixtures; browser fixture images are labelled as UI tests, not real renders.

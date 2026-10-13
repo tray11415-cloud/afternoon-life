@@ -12,8 +12,11 @@ class ArtAtelier:
    v=json.loads(self.path.read_text(encoding='utf-8'))
    if isinstance(v,dict) and set(v)==set(self.config) and isinstance(v['prefer_sd'],dict):self.config=v
   except (OSError,ValueError):pass
+  from .cg_timeline import CGTimeline
+  self.timeline=CGTimeline(self)
   from .character_pipeline import CharacterPipeline
   self.pipeline=CharacterPipeline(self)
+ def public_cg_scenes(self):return {k for k in PUBLIC_SCENES if k in self.s.map_spec['maps']}
  def scope(self,actor):return actor+':'+self.s.wardrobe.appearance(actor)['render_key']
  def prefers(self,actor,outfit):return self.config['prefer_sd'].get(actor+':'+outfit['render_key'],False)
  def selected_cg(self):
@@ -31,6 +34,7 @@ class ArtAtelier:
  def operation(self,p):
   if not isinstance(p,dict) or not isinstance(p.get('command'),str):raise ValueError('無效美術工坊操作')
   command=p['command']
+  if command in ('cg_gallery','cg_timeline_config','cg_select'):return self.timeline.operation(p)
   if command=='refresh_sd_capabilities':
    if set(p)!={'command'}:raise ValueError('無效的功能清單更新')
    self.s.studio.probe();return self.state()

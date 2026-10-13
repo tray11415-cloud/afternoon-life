@@ -131,3 +131,7 @@ python tools/test_components.py ComponentsTests
 本专案原始程式采 MIT；**美术另有授权**。LPC 人物／场景改作依 CC BY-SA 4.0 分享，完整上游授权选项与署名在 [LPC-CREDITS.txt](prototype/web/assets/LPC-CREDITS.txt) 及 [ASSET_LICENSES.md](ASSET_LICENSES.md)。Kenney 素材保留 CC0 标示。程式授权不涵盖模型权重或外部内容。
 
 对话风格参考 [Lieflat Less AI Tone](https://github.com/larashero3-dotcom/lieflat-less-ai-tone)（MIT）；记忆设计参考 [Spatial Memory Engine](https://github.com/jack66g/spatial-memory-engineagent)（Apache-2.0）。通知保留在 `docs/third-party/`；没有宣称完整整合两个上游系统。
+
+## 场景 CG 图集与对话追加
+
+每个场景可保留多张一般 CG，提供场景筛选、每页20张与手动选图。玩家听到的新日常对话可按间隔追加，默认每人物／场景六句；旧对话不补生成。本机 SD 必须已连接且人物配方有效。最新兼容图片随当前场景切换，任务与旧文件保留。本次未以实际 API 或生图操作验证。

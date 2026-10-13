@@ -5446,5 +5446,97 @@
   "例如 D:\\我的SD\\stable-diffusion-webui 或 D:\\ComfyUI\\ComfyUI": {
     "en": "For example D:\\MySD\\stable-diffusion-webui or D:\\ComfyUI\\ComfyUI",
     "ja": "例：D:\\MySD\\stable-diffusion-webui または D:\\ComfyUI\\ComfyUI"
+  },
+  "對話 CG 與場景圖集": {
+    "en": "Dialogue CG and scene albums",
+    "ja": "会話CGと場面アルバム"
+  },
+  "隨新對話追加一般 CG": {
+    "en": "Append SFW CG from new dialogue",
+    "ja": "新しい日常会話からCGを追加"
+  },
+  "每幾句追加一張": {
+    "en": "Spoken lines per new CG",
+    "ja": "CG追加までの台詞数"
+  },
+  "隨場景切換最新 CG": {
+    "en": "Show the latest CG for each scene",
+    "ja": "場面に合わせて最新CGを表示"
+  },
+  "保存對話 CG 設定": {
+    "en": "Save dialogue CG settings",
+    "ja": "会話CG設定を保存"
+  },
+  "只使用玩家聽到的日常對話、人物與實際穿著；本機 SD 已連線才排入生成。舊對話不補生成。": {
+    "en": "Uses only everyday dialogue the player heard, the character and actual outfit. Queues only when local SD is connected. Old dialogue is not replayed.",
+    "ja": "プレイヤーが聞いた日常会話、本人、実際の服装だけを使います。ローカルSD接続時だけ予約し、過去会話は再生成しません。"
+  },
+  "場景 CG 圖集": {
+    "en": "Scene CG album",
+    "ja": "場面CGアルバム"
+  },
+  "圖集場景": {
+    "en": "Album scene",
+    "ja": "アルバムの場面"
+  },
+  "上一頁": {
+    "en": "Previous page",
+    "ja": "前のページ"
+  },
+  "下一頁": {
+    "en": "Next page",
+    "ja": "次のページ"
+  },
+  "更新圖集": {
+    "en": "Refresh album",
+    "ja": "アルバム更新"
+  },
+  "全部場景": {
+    "en": "All scenes",
+    "ja": "すべての場面"
+  },
+  "顯示這張 CG": {
+    "en": "Show this CG",
+    "ja": "このCGを表示"
+  },
+  "已選用場景 CG。": {
+    "en": "Scene CG selected.",
+    "ja": "場面CGを選択しました。"
+  },
+  "同一場景的舊 CG 會保留。": {
+    "en": "Previous CGs for the scene are retained.",
+    "ja": "同じ場面の旧CGは保持します。"
+  },
+  "這個場景尚無 CG；可手動生成或等待新對話。": {
+    "en": "No CG for this scene yet. Generate manually or wait for new dialogue.",
+    "ja": "この場面のCGはまだありません。手動生成または新しい会話を待ってください。"
+  },
+  "對話 CG 設定已保存；只處理之後的新對話。": {
+    "en": "Dialogue CG settings saved; only future dialogue is processed.",
+    "ja": "会話CG設定を保存しました。以降の新しい会話だけを処理します。"
+  },
+  "CG 圖集無法讀取。": {
+    "en": "Could not load the CG album.",
+    "ja": "CGアルバムを読み込めません。"
+  },
+  "對話 CG 等待本機 SD 連線。": {
+    "en": "Dialogue CG is waiting for local SD.",
+    "ja": "会話CGはローカルSD接続待ちです。"
+  },
+  "請選公共 CG 場景與有效頁數。": {
+    "en": "Choose a public CG scene and valid page.",
+    "ja": "公共場面と有効なページを選んでください。"
+  },
+  "CG 對話間隔需為 1–30 句。": {
+    "en": "Dialogue interval must be 1–30 spoken lines.",
+    "ja": "会話間隔は1～30台詞にしてください。"
+  },
+  "請選已完成的 CG。": {
+    "en": "Choose a finished CG.",
+    "ja": "完成済みCGを選んでください。"
+  },
+  "無效場景 CG 操作": {
+    "en": "Invalid scene CG operation",
+    "ja": "場面CG操作が無効です"
   }
 }

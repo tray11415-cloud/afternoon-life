@@ -319,7 +319,7 @@ class PixelSession(PlaySession):
                 if owner in self.engine._state['actors']:result['location_names'][scene_id]=self.engine._state['actors'][owner]['name']+'的家'
         result['location_name']=result['location_names'][scene]
         result['memory']={'provider':self.memory.embedding.name,'status':self.memory.error or 'ready'}
-        result['cg']={'selected':self.art_atelier.selected_cg(),'connected':self.renderer is not None,'jobs':self.renderer.visible_jobs('player') if self.renderer else []}
+        result['cg']={'timeline':self.art_atelier.timeline.state(),'selected':self.art_atelier.selected_cg(),'connected':self.renderer is not None,'jobs':self.renderer.visible_jobs('player') if self.renderer else []}
         if hasattr(self,'studio'):
             result['cg']['connected']=result['cg']['connected'] or self.studio.services.get(self.studio.config['url'],{}).get('ready',False)
             with self.studio.lock:
@@ -618,6 +618,7 @@ class PixelSession(PlaySession):
                 self.memory.sync(self.engine)
                 return result
             else: raise ValueError('unknown command')
+            self.art_atelier.timeline.observe()
             self.engine.assert_consistent()
             return self.screen()
 

@@ -134,3 +134,7 @@ Tests use isolated worlds and fake/local services. They do not require a real AP
 Original project code is MIT licensed. **Art has separate licences**: LPC scene/character compositions are shared under CC BY-SA 4.0 with upstream options and attribution preserved in [LPC-CREDITS.txt](prototype/web/assets/LPC-CREDITS.txt) and [ASSET_LICENSES.md](ASSET_LICENSES.md). Kenney assets retain their CC0 notice. Do not assume the code licence covers model weights or external content.
 
 Dialogue guidance references [Lieflat Less AI Tone](https://github.com/larashero3-dotcom/lieflat-less-ai-tone) (MIT). Memory design references [Spatial Memory Engine](https://github.com/jack66g/spatial-memory-engineagent) (Apache-2.0). Their notices are retained in `docs/third-party/`. No claim is made that either entire upstream system is integrated.
+
+## Scene CG albums and dialogue progression
+
+Each scene can retain multiple SFW CGs. The CG panel provides scene filters, 20-item pages and manual image selection. New dialogue heard by the player can append a CG at a configurable interval (default six spoken lines per character/scene); old dialogue is not replayed. Local SD must be connected and the saved character recipe valid. The latest compatible image follows the current scene; generation jobs and old files remain available. This update was not exercised with live API calls or actual image generation.

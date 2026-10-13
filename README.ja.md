@@ -131,3 +131,7 @@ python tools/test_components.py ComponentsTests
 独自コードはMITです。美術は別ライセンスで、LPC構成は上流選択肢と署名を保持したCC BY-SA 4.0です。[LPC-CREDITS.txt](prototype/web/assets/LPC-CREDITS.txt) と [ASSET_LICENSES.md](ASSET_LICENSES.md) を参照してください。KenneyはCC0です。コードライセンスはモデル重みや外部作品に自動適用されません。
 
 会話指針は [Lieflat Less AI Tone](https://github.com/larashero3-dotcom/lieflat-less-ai-tone)（MIT）、記憶設計は [Spatial Memory Engine](https://github.com/jack66g/spatial-memory-engineagent)（Apache-2.0）を参考にしています。通知は `docs/third-party/` に保持し、上流システム全体の統合は主張しません。
+
+## 場面CGアルバムと新会話からの追加
+
+各場面に複数の日常CGを保持し、場面フィルター、20枚単位のページ、手動選択を提供します。プレイヤーが聞いた新会話を指定間隔（既定は人物／場面ごと六台詞）でCGに追加し、過去会話は再処理しません。ローカルSD接続と有効な人物設定が必要です。最新の適合画像は現在の場面に追従し、仕事と旧ファイルを保持します。この更新では実APIや画像生成による確認は行っていません。

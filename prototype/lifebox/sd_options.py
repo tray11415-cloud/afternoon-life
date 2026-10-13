@@ -61,7 +61,7 @@ def validate_options(value,blocked):
      elif typ==bool:
       if type(v) is not bool:raise ValueError('ADetailer 其他參數型別無效')
      else:
-      lo,hi=(-256,256) if k in ('ad_x_offset','ad_y_offset') else (64,2048) if k in ('ad_inpaint_width','ad_inpaint_height') else (0,12) if k=='ad_clip_skip' else (0,128) if k=='ad_mask_k' else (0,1.5)
+      lo,hi=(-256,256) if k in ('ad_x_offset','ad_y_offset') else (64,2048) if k in ('ad_inpaint_width','ad_inpaint_height') else (1,12) if k=='ad_clip_skip' else (0,128) if k=='ad_mask_k' else (.5,1.5) if k=='ad_noise_multiplier' else (0,1)
       number(v,lo,hi,typ==int)
     if extras.get('ad_mask_filter_method','Area') not in ('Area','Confidence') or extras.get('ad_mask_merge_invert','None') not in ('None','Merge','Merge and Invert'):raise ValueError('ADetailer 遮罩選项無效')
    if p['mode']=='on' and (not p['passes'] or any(not a['model'] for a in p['passes'])):raise ValueError('請選 ADetailer 偵測器')

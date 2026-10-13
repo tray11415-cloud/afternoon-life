@@ -44,7 +44,7 @@ class AdvancedTests(unittest.TestCase):
   for name in p['sd']['render_options']:p['sd']['render_options'][name]['mode']='inherit'
   r=self.recipe(p);t={**r['config']['templates']['portrait'],'_native':{'payload':{'enable_hr':True,'hr_scale':1.2,'refiner_checkpoint':'native model'},'bindings':{}}};calls,_=self.render(r,t=t);self.assertEqual(calls[0][1]['hr_scale'],1.2);self.assertEqual(calls[0][1]['refiner_checkpoint'],'native model')
  def test_bad_options_no_world_or_binding_write(self):
-  for name,key,value in [('refiner','switch',1.1),('hires','scale',3),('hires','denoise',float('nan')),('hires','steps',True),('refiner','targets',['secret']),('adetailer','passes',[{'model':'face.pt','parameters':{'api_key':'forbidden'}}])]:
+  for name,key,value in [('refiner','switch',1.1),('hires','scale',3),('hires','denoise',float('nan')),('hires','steps',True),('refiner','targets',['secret']),('adetailer','passes',[{'model':'face.pt','parameters':{'api_key':'forbidden'}}]),('adetailer','passes',[{'model':'face.pt','parameters':{'ad_clip_skip':0}}]),('adetailer','passes',[{'model':'face.pt','parameters':{'ad_noise_multiplier':.2}}]),('adetailer','passes',[{'model':'face.pt','parameters':{'ad_mask_max_ratio':1.2}}])]:
    p=self.advanced();p['sd']['render_options'][name][key]=value;old=copy.deepcopy(self.s.studio.config);world=self.s.engine.journal()
    with self.assertRaises(ValueError):self.save(p)
    self.assertEqual(old,self.s.studio.config);self.assertEqual(world,self.s.engine.journal())

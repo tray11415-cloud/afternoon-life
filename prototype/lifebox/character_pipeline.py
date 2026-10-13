@@ -49,6 +49,15 @@ class CharacterPipeline:
     if not resource:
      if rid!=previous.get(field):raise ValueError('LoRA 已不存在，請重新選擇。')
     elif resource['category']!=('checkpoint' if field=='checkpoint' else 'lora') or not resource['selectable'] or self.s.studio.config['installation'] not in resource['installations']:raise ValueError('請選此安裝內可用的底模或 LoRA。')
+  extra=[(e['lora'],'lora') for e in binding.get('style_loras',[]) if e['lora']]
+  ref=binding.get('render_options',{}).get('refiner',{}).get('checkpoint')
+  if ref:extra.append((ref,'checkpoint'))
+  old_ids={e['lora'] for e in previous.get('style_loras',[])}|{previous.get('render_options',{}).get('refiner',{}).get('checkpoint')}
+  for rid,category in extra:
+   r=self.s.studio.resources.get(rid)
+   if not r:
+    if rid not in old_ids:raise ValueError('進階配方的模型已不存在，請重新選擇')
+   elif r['category']!=category or not r['selectable'] or self.s.studio.config['installation'] not in r['installations']:raise ValueError('請選目前安裝內的進階配方模型')
   return p,binding
  def _matches(self,pack):
   return digest(self.s.character_setup.current(self.s,pack['actor']))==pack['profile_fingerprint'] and digest(self.s.studio.config['profiles'].get(pack['actor']))==pack['binding_fingerprint'] and self.a.scope(pack['actor'])==pack['scope']

@@ -31,6 +31,9 @@ class ArtAtelier:
  def operation(self,p):
   if not isinstance(p,dict) or not isinstance(p.get('command'),str):raise ValueError('無效美術工坊操作')
   command=p['command']
+  if command=='refresh_sd_capabilities':
+   if set(p)!={'command'}:raise ValueError('無效的功能清單更新')
+   self.s.studio.probe();return self.state()
   if command in ('save_character','retry_character','cancel_character','build_saved_character'):return self.pipeline.operation(p)
   if command=='state' and set(p)=={'command'}:return self.state()
   actor=p.get('actor')

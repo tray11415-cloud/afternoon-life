@@ -4,13 +4,23 @@
 
 俯视角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持续运作的小镇。每位 AI 只取得自己的观察、目标与记忆；可以共用模型服务，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.23.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
+**目前是可玩的 alpha：v0.24.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
 
 [![简体中文操作导览](docs/media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.23.0)
+[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
 简体影片展示 v0.20 开始菜单、设置、人物工坊和实际游戏操作；使用独立离线世界、合成配音与字幕，没有现场付费模型请求或 SD 生图。[其他语言及拍摄说明](docs/WALKTHROUGH.md)。
+
+## 多画风 LoRA 与精修设置（v0.24）
+
+人物工坊支持八个画风槽，各自保存权重、触发词、开关；额外画风可调整顺序。**Refiner／ADetailer／Hires.fix** 放在可折叠的进阶区，跟同一份人物配方保存。每项功能可“沿用原生模板”“使用此人物设置”或“明确关闭”，并各选立绘、行走图、CG 用途。
+
+WebUI／Forge 可选 Refiner 模型与切换比例；ADetailer 最多四个修补顺序（依本机实际容量），支持检测器、正负提示、遮罩、采样器及其他参数 JSON。Hires.fix 的文字生图用原生流程，图生图差分与 CG 会放大后二次重绘。放大器必须已在本机，输出上限 2048px。ComfyUI 支持多 LoRA，原生模板需编号绑定；三项 WebUI 专用面板须沿用 ComfyUI 原生工作流。
+
+![精修与高分辨率设置](prototype/web/assets/guide-v24-refiner.png)
+
+截图是明示模拟 SD 的隔离世界，使用已署名 LPC 素材。新增16项请求测试通过；本机 reForge 另成功产出两张小尺寸匿名成年 SFW 图，使用双画风、ADetailer、同一底模作 Refiner 及两种高分辨率流程。此实测确认 API 接受设置与返回 PNG，未评估脸部检测成功或长期身份质量。真实本机 SD 图片、模型清单及私人存档不公开。
 
 ## 角色底模与画风 LoRA（v0.23）
 

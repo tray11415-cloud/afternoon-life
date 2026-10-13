@@ -4,16 +4,26 @@
 
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
-**Status: playable alpha, v0.23.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
+**Status: playable alpha, v0.24.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
 
 [![Guided walkthrough](docs/media/guide.en.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.23.0)
+[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
 The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
+
+## Multiple LoRAs and refinement controls (v0.24)
+
+The character atelier now supports eight style slots, independent weights/triggers/switches, and ordering of additional styles. **Refiner / ADetailer / Hires.fix** are in a collapsible section and save with the same character recipe. Each feature can inherit its native template, use the character settings, or explicitly disable the native feature; purposes can be selected independently.
+
+WebUI/Forge supports Refiner checkpoint/switch ratio, up to four ADetailer passes (bounded by the running service), detector/prompt/mask/sampler controls and additional validated JSON parameters. Hires.fix handles native text-to-image; image-to-image differences and CG upscale then run a second diffusion pass. Upscalers must already be local; output is bounded to 2048px. ComfyUI stacks multiple LoRAs, with numbered bindings for native templates; these three WebUI-specific panels must inherit the native ComfyUI workflow.
+
+![Refinement settings](prototype/web/assets/guide-v24-refiner.png)
+
+Screenshots use a labelled isolated SD mock with licensed LPC art. Sixteen additional request tests passed. Two small anonymous SFW renders also succeeded on local reForge with two style LoRAs, ADetailer, a Refiner using the same installed checkpoint, and both high-resolution paths. This validates API acceptance and PNG output; face detection success and long-term identity quality were not assessed. Real local SD images, model inventory and private state are excluded from this repository.
 
 ## Character checkpoint and style LoRA (v0.23)
 

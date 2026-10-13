@@ -77,6 +77,7 @@
  function download(name,value){const blob=new Blob([JSON.stringify(value,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);}
  let nativeDraft=null;
  const nativeVariables={prompt:'正向 Prompt',negative:'負向 Prompt',seed:'Seed',checkpoint:'底模',lora:'角色 LoRA',lora_weight:'角色 LoRA 權重',clothes_lora:'服裝 LoRA（可選）',clothes_weight:'服裝 LoRA 權重',style_lora:'畫風 LoRA（可選）',style_weight:'畫風 LoRA 權重',reference:'身份參考圖',control:'姿勢骨架圖（像素）',denoise:'重繪幅度',width:'寬度（可選）',height:'高度（可選）'};
+ for(let i=2;i<=8;i++){nativeVariables['style_lora_'+i]='畫風 LoRA '+i;nativeVariables['style_weight_'+i]='畫風 LoRA '+i+' 權重';}
  function nativeUrl(){const u=new URL(el('art-native-url').value.trim());if(u.protocol!=='http:'||!['127.0.0.1','localhost'].includes(u.hostname)||!u.port||Number(u.port)<1024||u.username||u.password||u.pathname!=='/'||u.search||u.hash)throw Error('完整 SD 只接受本機 HTTP 位址，例如 http://127.0.0.1:7861');return u.origin;}
  function nativeLink(){try{el('art-native-link').href=nativeUrl()+'/';el('art-native-link').removeAttribute('aria-disabled');}catch{el('art-native-link').removeAttribute('href');el('art-native-link').setAttribute('aria-disabled','true');}}
  function paintNative(){const install=el('art-native-installation'),previous=install.value;install.replaceChildren();for(const f of studio.folders)option(install,f.id,`${f.label} — ${f.path}`);install.value=studio.folders.some(f=>f.id===previous)?previous:studio.config.installation;

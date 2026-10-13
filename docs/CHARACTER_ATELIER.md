@@ -1,4 +1,4 @@
-# Unified character atelier · v0.23
+# Unified character atelier · v0.24
 
 One form combines name, adult age/gender, one art prompt, optional LoRA, trigger, seed, appearance controls, personality, goals, optional background, manual AI drafts and cards. A character save validates and commits that actor's profile, then schedules portrait expressions + sprites and one CG with the same applied identity/outfit snapshot. Matching ready outputs are auto-applied. Internal component validation/history supports undo; no separate Apply click is required for this explicitly requested save workflow.
 
@@ -37,3 +37,17 @@ The SD binding retains its existing nine required fields and accepts optional `c
 Selected checkpoint, all three LoRAs, their weights and style trigger are captured in every portrait/sprite/CG recipe, cache key and material identity signature. Changing a recipe schedules new materials. Built-in WebUI and ComfyUI renderers apply every selected LoRA even without an identity LoRA. WebUI uses request-scoped checkpoint overrides and restore-afterwards. Native ComfyUI requires additional `style_lora`/`style_weight` bindings; missing style bindings block at preflight before any job starts. Optional unused clothing/style weights are set to zero when their bindings exist, preserving the native node topology. Original workflow snapshots and unsaved native UI forms remain untouched.
 
 Verification adds nine model/style cases (30 pipeline tests total): independent saved recipes across all four kinds, persistence, legacy cache equivalence, recipe-change invalidation, malformed resources/weights without mutation, architecture mismatch, actual mocked WebUI payload and native ComfyUI mapping/preflight, and cleared native style weights. No real SD render or paid request was made.
+
+## Multiple styles and quality options
+
+Optional `style_loras` is an ordered array of up to seven additional `{lora, weight, trigger, enabled}` entries after the legacy first style. Weights are 0–1.5; active style IDs must be unique. Disabled entries remain editable and do not reach the render chain. Native ComfyUI needs numbered style_lora_2/style_weight_2 through _8 bindings; unused mapped weights are zeroed. Built-in ComfyUI and WebUI apply the whole selected stack.
+
+Optional `render_options` contains refiner/hires/adetailer objects. Each has `mode` inherit/on/off and `targets` chosen from portrait/pixel/cg. Default options and empty extra arrays canonicalise away to preserve old bindings/cache keys. Refiner chooses local checkpoint and switch (.01–.99). Hires chooses local upscaler, scale (1–2), steps (1–80), denoise (0–1), CFG (1–20) and sampler. ADetailer has up to four passes bounded by script-info capacity, individual detector, confidence, mask, sampler, prompts, follow-identity and validated supplemental parameters. Native template inheritance and explicit-off override are intentional; original template files/native UI are never rewritten.
+
+`refresh_sd_capabilities` with only command re-probes the connected service without changing saved config. WebUI reads installed detector names, script argument capacity, samplers, local upscalers and actual OpenAPI fields. Unavailable or incompatible choices block at preflight before enqueueing. Neural upscalers are checked again against local weight paths before extras; no model download is requested.
+
+For text-to-image, Hires.fix uses native WebUI fields. For references, WebUI img2img has no native Hires.fix pass: first render identity/pose at base resolution, resize with built-in/local upscaler, then a second img2img diffusion at the requested scale/steps/denoise/CFG. ADetailer runs in the final stage, not twice. Unused ADetailer slots are explicitly disabled so installed script defaults cannot add unselected passes. Pixel use is opt-in; output cap 2048px. Native advanced settings and reference identity/control remain in both copied requests.
+
+These quality controls are WebUI/Forge-specific. Explicit on/off requests for them on ComfyUI block with an explanation; its quality workflow must remain native, not silently ignored. Multiple LoRAs work on both renderers.
+
+Sixteen new isolated request-level tests cover stack ordering, scopes, inheritance, off, actual emitted fields, second pass, final-only ADetailer, validation without world writes, model/plugin/capacity/size checks, persistence and native bindings. An anonymous local SFW acceptance test returned 384px PNGs for txt2img Hires and img2img second-pass Hires, using two style LoRAs, same-checkpoint Refiner and ADetailer. This confirms API acceptance/output, not successful face detection, alternate Refiner quality or long-term identity consistency. Real SD outputs remain private and outside release assets.

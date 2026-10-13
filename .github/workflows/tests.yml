@@ -17,6 +17,7 @@ jobs:
       - run: python -m unittest discover -s tests
         working-directory: prototype
       - run: python tools/test_character_pipeline.py
+      - run: python tools/test_sd_character_options.py
       - run: python tools/test_character_studio.py
       - run: python tools/test_native_sd.py
       - run: python tools/test_sd_atelier.py

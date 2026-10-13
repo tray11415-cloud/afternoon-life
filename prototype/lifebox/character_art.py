@@ -9,7 +9,7 @@ from collections import deque
 from pathlib import Path
 from urllib import request, parse
 from .policies import _NoRedirect
-from . import sd_templates
+from . import sd_templates,sd_options
 
 ACTORS = [f'member-{i:02d}' for i in range(1,11)] + ['player']
 EXPRESSIONS = {'neutral':'relaxed neutral expression', 'happy':'gentle happy smile',
@@ -35,10 +35,16 @@ TEMPLATES = {
   'negative':NEGATIVE+', white border, empty white margins, blank background, picture frame, rectangular frame, pillars, split panels','width':768,'height':512,'steps':24,'cfg':6.0,'denoise':.92}}
 
 PROFILE_FIELDS={'identity','trigger','lora','weight','clothes_lora','clothes_weight','seed','auto','expression'}
-STYLE_FIELDS={'checkpoint','style_lora','style_weight','style_trigger'}
+STYLE_FIELDS={'checkpoint','style_lora','style_weight','style_trigger','style_loras','render_options'}
 def validate_binding(value):
  if not isinstance(value,dict) or not PROFILE_FIELDS.issubset(value) or set(value)-PROFILE_FIELDS-STYLE_FIELDS:raise ValueError('角色設定欄位不完整')
  p=copy.deepcopy(value)
+ if 'style_loras' in p:
+  p['style_loras']=sd_options.validate_styles(p['style_loras'],BLOCKED)
+  if not p['style_loras']:p.pop('style_loras')
+ if 'render_options' in p:
+  p['render_options']=sd_options.validate_options(p['render_options'],BLOCKED)
+  if not p['render_options']:p.pop('render_options')
  for k in ('identity','trigger','style_trigger'):
   text=p.get(k,'')
   if not isinstance(text,str) or len(text)>1600 or '<' in text or '>' in text or BLOCKED.search(text):raise ValueError('角色描述／觸發詞需為成年日常 SFW 內容')
@@ -52,6 +58,8 @@ def validate_binding(value):
   if not p.get(k):p.pop(k,None)
  if p.get('style_lora'):p.setdefault('style_weight',.8)
  else:p.pop('style_weight',None)
+ ids=[e['lora'] for e in sd_options.styles(p) if e['enabled'] and e['lora']]
+ if len(ids)!=len(set(ids)):raise ValueError('同一畫風 LoRA 請只放一個欄位，以權重調整')
  return p
 
 def key(value):
@@ -249,7 +257,16 @@ class CharacterStudio:
     except Exception:controls=[];modules=[]
     try:scripts=api(url,'/sdapi/v1/scripts')
     except Exception:scripts={}
-    service={'ready':True,'models':models,'loras':loras,'samplers':[s['name'] for s in samplers],'vaes':vaes,'control_models':controls,'control_modules':modules,'scripts':scripts,'message':'本機 WebUI API 已連線'}
+    try:
+     schema=api(url,'/openapi.json');fields=list(schema.get('components',{}).get('schemas',{}).get('StableDiffusionProcessingTxt2Img',{}).get('properties',{}))
+    except Exception:fields=[]
+    try:ad_models=api(url,'/adetailer/v1/ad_model').get('ad_model',[])
+    except Exception:ad_models=[]
+    try:ad_slots=min([len(i.get('args',[]))-2 for i in api(url,'/sdapi/v1/script-info') if i.get('name','').lower()=='adetailer'] or [0])
+    except Exception:ad_slots=0
+    try:upscalers=[u['name'] for u in api(url,'/sdapi/v1/upscalers') if u['name'] in ('None','Lanczos','Nearest') or Path(u.get('model_path') or '').is_file()]
+    except Exception:upscalers=[]
+    service={'adetailer_slots':ad_slots,'advanced_fields':fields,'adetailer_models':ad_models,'upscalers':upscalers,'ready':True,'models':models,'loras':loras,'samplers':[s['name'] for s in samplers],'vaes':vaes,'control_models':controls,'control_modules':modules,'scripts':scripts,'message':'本機 WebUI API 已連線'}
    else:
     info=api(url,'/object_info');needed={'CheckpointLoaderSimple','LoraLoader','CLIPTextEncode','KSampler','VAEDecode','SaveImage','EmptyLatentImage','LoadImage','VAEEncode'}
     if not needed.issubset(info):raise ValueError('ComfyUI 缺少基本工作流節點')
@@ -446,6 +463,10 @@ class CharacterStudio:
      if p.get('checkpoint'):self._resource(p['checkpoint'],'checkpoint')
      for k in ('lora','clothes_lora','style_lora'):
       if p.get(k):self._resource(p[k],'lora')
+     for entry in p.get('style_loras',[]):
+      if entry['lora']:self._resource(entry['lora'],'lora')
+     ref=p.get('render_options',{}).get('refiner',{}).get('checkpoint')
+     if ref:self._resource(ref,'checkpoint')
     for p in new['outfit_loras'].values():
      if p['lora']:self._resource(p['lora'],'lora')
    except Exception:self.config=old;raise
@@ -477,6 +498,20 @@ class CharacterStudio:
   loras=[]
   for field,weight in (('lora','weight'),('clothes_lora','clothes_weight'),('style_lora','style_weight')):
    if p.get(field):loras.append({**self._resource(p[field],'lora'),'weight':p.get(weight,.8)})
+  for entry in p.get('style_loras',[]):
+   if entry['enabled'] and entry['lora']:
+    loras.append({**self._resource(entry['lora'],'lora'),'weight':entry['weight']})
+    if entry['trigger']:p['identity']+=', '+entry['trigger']
+  used={'portrait','cg'} if kind=='cg' else {'portrait'} if kind=='portrait' else {'portrait','pixel'}
+  sd_options.preflight(self,p,used)
+  advanced={}
+  ref=p.get('render_options',{}).get('refiner',{})
+  if ref.get('mode')=='on' and set(ref.get('targets',[]))&used:
+   resource=self._resource(ref['checkpoint'],'checkpoint')
+   a,b=family(checkpoint['base']),family(resource['base'])
+   if a and b and a!=b:raise ValueError('Refiner 與底模架構不相容')
+   advanced['advanced_refiner']=copy.deepcopy(resource)
+  if p.get('render_options'):advanced['adetailer_slots']=min(16,self.services[c['url']].get('adetailer_slots',0));advanced['adetailer_available']=bool(self.services[c['url']].get('adetailer_models'));advanced['adetailer_script']=next((n for n in self.services[c['url']].get('scripts',{}).get('txt2img',[]) if n.lower()=='adetailer'),'ADetailer')
   # Catch known incompatible training families before a costly render.
   for l in loras:
    a,b=family(checkpoint['base']),family(l['base'])
@@ -492,7 +527,8 @@ class CharacterStudio:
   api_loras=self.services[c['url']].get('loras',[])
   if c['backend']=='a1111':
    api_loras=[l for l in api_loras if isinstance(l,dict) and str(l.get('path','')).replace('\\','/').lower() in wanted_loras]
-   model_list=[m for m in model_list if isinstance(m,dict) and str(m.get('filename','')).replace('\\','/').lower()==checkpoint['path'].replace('\\','/').lower()]
+   wanted_models={r['path'].replace('\\','/').lower() for r in [checkpoint,*([advanced['advanced_refiner']] if advanced.get('advanced_refiner') else [])]}
+   model_list=[m for m in model_list if isinstance(m,dict) and str(m.get('filename','')).replace('\\','/').lower() in wanted_models]
   control=None
   if kind in ('pixel','both') and c['pixel_guide']=='controlnet':
    control=self._resource(c['control_model'],'controlnet')
@@ -514,8 +550,11 @@ class CharacterStudio:
     if not native or native['installation']!=c['installation'] or native['backend']!=c['backend']:raise ValueError('使用中的原生模板與 SD 安裝不相同，請重新選擇')
     if native['backend']=='comfyui' and not p['lora']:raise ValueError('這個原生 ComfyUI 模板包含角色 LoRA 節點；請選 LoRA，或在進階 SD 將用途切回內建模板。')
     if native['backend']=='comfyui' and p.get('style_lora') and not {'style_lora','style_weight'}.issubset(native['bindings']):raise ValueError('原生 ComfyUI 模板缺少畫風 LoRA／權重綁定；請加入綁定，或將用途切回內建模板。')
+    if native['backend']=='comfyui':
+     for i,entry in enumerate(p.get('style_loras',[]),2):
+      if entry['enabled'] and entry['lora'] and not {f'style_lora_{i}',f'style_weight_{i}'}.issubset(native['bindings']):raise ValueError(f'原生 ComfyUI 模板缺少第 {i} 個畫風 LoRA 與權重綁定')
     scoped['native_templates'][purpose]=copy.deepcopy(native)
-  return {**({'follow_identity':True} if follow_identity else {}),'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
+  return {**advanced,**({'follow_identity':True} if follow_identity else {}),'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
    'profile':p,'config':scoped,**({'look':copy.deepcopy(authored['look'])} if authored.get('look',{}).get('enabled') else {}),
    'checkpoint':checkpoint,'vae':self._resource(c['vae'],'vae') if c['vae'] else None,'loras':loras,
    'api_models':copy.deepcopy(model_list),'api_loras':copy.deepcopy(api_loras),
@@ -561,7 +600,7 @@ class CharacterStudio:
    if not j or j['status']!='ready' or expression not in EXPRESSIONS:raise ValueError('只能套用已完成的素材')
    if 'portraits' in j['files'] and expression not in j['files']['portraits']:raise ValueError('此差分尚未生成')
    scope=j['actor']+':'+j['outfit']['render_key'];active=copy.deepcopy(self.config['active'].get(scope,{}))
-   def identity_signature(recipe):return key({k:recipe.get(k) for k in ('profile','age','gender','look','checkpoint','loras')})
+   def identity_signature(recipe):return key({**{k:recipe.get(k) for k in ('profile','age','gender','look','checkpoint','loras')},**({'advanced_refiner':recipe['advanced_refiner']} if recipe.get('advanced_refiner') else {})})
    signature=identity_signature(j.get('recipe',{}))
    if active:
     previous=self.jobs.get(active.get('job'),{}).get('recipe')
@@ -667,8 +706,25 @@ class CharacterStudio:
     if native and 'control' in native['bindings']:
      for path in native['bindings']['control']:sd_templates.pointer(payload,path,base64.b64encode(control).decode(),True)
     else:scripts.setdefault(cn,{'args':[]})['args'].append({'enabled':True,'module':'None','model':matches[0],'image':base64.b64encode(control).decode(),'weight':c['control_weight'],'guidance_start':0,'guidance_end':1,'resize_mode':0,'pixel_perfect':False})
-   result=api(url,'/sdapi/v1/img2img' if reference else '/sdapi/v1/txt2img',payload,timeout=300)
+   payload=sd_options.webui_payload(payload,recipe,t,prompt,negative,lambda resource:self._a1111_name(resource,recipe['api_models'],'title'))
+   hr=sd_options.active(recipe,t,'hires');high_reference=bool(reference and hr.get('mode')=='on')
+   first=sd_options.disable_adetailer(payload) if high_reference else payload
+   if high_reference:first['enable_hr']=False;first['denoising_strength']=t['denoise']
+   result=api(url,'/sdapi/v1/img2img' if reference else '/sdapi/v1/txt2img',first,timeout=300)
    image=base64.b64decode(result['images'][0].split(',')[-1],validate=True)
+   if high_reference:
+    from PIL import Image
+    base_width,base_height=Image.open(io.BytesIO(image)).size
+    width=max(64,round(base_width*hr['scale']/8)*8);height=max(64,round(base_height*hr['scale']/8)*8)
+    if max(width,height)>2048:raise ValueError('高解析輸出上限 2048px')
+    from PIL import Image
+    if hr['upscaler'] in ('None','Lanczos','Nearest'):
+     buffer=io.BytesIO();Image.open(io.BytesIO(image)).convert('RGB').resize((width,height),Image.Resampling.NEAREST if hr['upscaler']=='Nearest' else Image.Resampling.LANCZOS).save(buffer,format='PNG');large=buffer.getvalue()
+    else:
+     upscalers=api(url,'/sdapi/v1/upscalers');index=next((i for i,u in enumerate(upscalers) if u['name']==hr['upscaler'] and Path(u.get('model_path') or '').is_file()),None)
+     if index is None:raise ValueError('所選放大器權重尚未在本機，不會自動下載')
+     enlarged=api(url,'/sdapi/v1/extra-single-image',{'image':base64.b64encode(image).decode(),'upscaling_resize':hr['scale'],'upscaler_1':index,'show_extras_results':False},timeout=300);large=base64.b64decode(enlarged['image'].split(',')[-1],validate=True)
+    final=copy.deepcopy(payload);final.update(enable_hr=False,init_images=[base64.b64encode(large).decode()],width=width,height=height,steps=hr['steps'],cfg_scale=hr['cfg'],sampler_name=hr['sampler'] or c['sampler'],denoising_strength=hr['denoise']);result=api(url,'/sdapi/v1/img2img',final,timeout=300);image=base64.b64decode(result['images'][0].split(',')[-1],validate=True)
   else:
    if t.get('_native'):return self._render_native_comfy(recipe,t,prompt,negative,seed,reference,control)
    model=self._comfy_name(recipe['checkpoint'],recipe['api_models']);g={}
@@ -735,6 +791,14 @@ class CharacterStudio:
     if not {field,weight}.issubset(bindings):raise ValueError('原生模板缺少 '+field+' 與權重綁定')
     values.update({field:self._comfy_name(selected,recipe['api_loras']),weight:recipe['profile'].get(weight,.8)})
    elif weight in bindings:values[weight]=0.0
+  for i,entry in enumerate(recipe['profile'].get('style_loras',[]),2):
+   field=f'style_lora_{i}';weight=f'style_weight_{i}'
+   if entry['enabled'] and entry['lora']:
+    if not {field,weight}.issubset(bindings):raise ValueError(f'原生模板缺少第 {i} 個畫風綁定')
+    selected=next(l for l in recipe['loras'] if l['id']==entry['lora']);values.update({field:self._comfy_name(selected,recipe['api_loras']),weight:entry['weight']})
+  for i in range(2,9):
+   weight=f'style_weight_{i}'
+   if weight in bindings and weight not in values:values[weight]=0.0
   graph=sd_templates.mapped_payload(native,values)
   # Check the current running installation again, not just the import snapshot.
   sd_templates.validate({k:v for k,v in native.items() if k!='installation'},'comfyui',BLOCKED,api(url,'/object_info',timeout=15))
@@ -838,12 +902,13 @@ class CharacterStudio:
    if r.get('swim'):
     prompt=prompt.replace('fully clothed','wearing opaque athletic swimwear')
     for phrase in ('bare shoulders','backless outfit','exposed back','open back clothes'):t['negative']=t['negative'].replace(phrase,'')
+   if p.get('render_options'):t['_kind']=kind
    if kind in c.get('native_templates',{}):t['_native']=c['native_templates'][kind]
    if r.get('follow_identity'):t.update(_follow_identity=True,_expression=expression or 'natural expression')
    if denoise is not None:t['denoise']=denoise
    cache=sources/(kind+'-'+variation+'.png')
    if kind=='portrait':
-    signature=key({'actor':r['actor'],'outfit':r['outfit']['render_key'],'profile':{k:v for k,v in p.items() if k not in {'auto','expression'}},'gender':r.get('gender'),'checkpoint':r['checkpoint'],'vae':r['vae'],'loras':r['loras'],'template':t,'prompt':prompt,'reference_hash':hashlib.sha256(reference).hexdigest() if reference else None,'seed':seed,'variation':variation,'sampler':c['sampler'],'scheduler':c['scheduler'],'pipeline':6})
+    signature=key({'actor':r['actor'],'outfit':r['outfit']['render_key'],'profile':{k:v for k,v in p.items() if k not in {'auto','expression'}},'gender':r.get('gender'),'checkpoint':r['checkpoint'],'vae':r['vae'],'loras':r['loras'],**({'advanced_refiner':r['advanced_refiner']} if r.get('advanced_refiner') else {}),'template':t,'prompt':prompt,'reference_hash':hashlib.sha256(reference).hexdigest() if reference else None,'seed':seed,'variation':variation,'sampler':c['sampler'],'scheduler':c['scheduler'],'pipeline':6})
     portrait_signatures[variation]=signature;stored=self.portrait_library.get(signature)
     if stored:
      path=(self.root/stored['source']).resolve()

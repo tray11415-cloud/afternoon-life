@@ -4,16 +4,26 @@
 
 俯視角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持續運作的小鎮。每位 AI 只取得自己的觀察、目標與記憶；可以共用模型服務，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.23.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
+**目前是可玩的 alpha：v0.24.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
 
 [![中文操作導覽](docs/media/guide.zh-TW.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4)
 
-[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.23.0)
+[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
 上述繁中與英文影片記錄 v0.19；影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
+
+## 多畫風 LoRA 與精修設定（v0.24）
+
+人物工坊支援八個畫風欄位，各自保存權重、觸發詞、開關；額外畫風可調整順序。**Refiner／ADetailer／Hires.fix** 放在可折疊的進階區，跟同一份人物配方保存。每項功能可「沿用原生模板」「使用此人物設定」或「明確關閉」，並各選立繪、行走圖、CG 用途。
+
+WebUI／Forge 可選 Refiner 模型與切換比例；ADetailer 最多四個修補順序（依本機實際容量），支援偵測器、正負提示、遮罩、採樣器及其他參數 JSON。Hires.fix 的文字生圖用原生流程，圖生圖差分與 CG 會放大後二次重繪。放大器必須已在本機，輸出上限 2048px。ComfyUI 支援多 LoRA，原生模板需編號綁定；三項 WebUI 專用面板須沿用 ComfyUI 原生工作流。
+
+![精修與高解析設定](prototype/web/assets/guide-v24-refiner.png)
+
+截圖是明示模擬 SD 的隔離世界，使用已署名 LPC 素材。新增16項請求測試通過；本機 reForge 另成功產出兩張小尺寸匿名成年 SFW 圖，使用雙畫風、ADetailer、同一底模作 Refiner 及兩種高解析流程。此實測確認 API 接受設定與回傳 PNG，未評估臉部偵測成功或長期身份品質。真實本機 SD 圖片、模型清單及私人存檔不公開。
 
 ## 角色底模與畫風 LoRA（v0.23）
 

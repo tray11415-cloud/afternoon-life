@@ -211,3 +211,21 @@ TTS 語言控制聲線與發音。遊戲設定可選繁中、簡中、日文與�
 ![每人獨立的底模和畫風](../prototype/web/assets/guide-v23-character-style.png)
 
 此截圖為隔離介面測試，圖片是已署名 LPC 模擬成果。選單只列目前安裝內可用的資源；已知架構不相容會阻擋生成。原生 ComfyUI 模板需另綁畫風節點的 style_lora/style_weight，否則使用內建模板。
+
+## 多畫風、Refiner、ADetailer、Hires.fix（v0.24）
+
+1. 人物工坊選人物。第一個畫風在上方選單；展開「多重畫風 LoRA」新增其餘畫風，可調整權重、觸發詞、開關與順序，最多八個。相同畫風勿重複，改權重即可。
+2. 展開「精修與高解析」。先按「更新本機功能清單」查看已連線服務的偵測器、採樣器及本機放大器。
+3. 每項功能選「沿用原生模板」「使用此人物設定」或「明確關閉」，再勾用途。Refiner 選模型與切換比例；ADetailer 新增修補順序並選偵測器，正向可跟隨人物與表情；其他原生修補參數可填 JSON。
+4. Hires.fix 選本機放大器、倍率、步數、重繪幅度、CFG、採樣器。文字生圖使用原生 Hires.fix；差分／CG 圖生圖採放大後二次重繪，ADetailer 放在最後一階段。預設用途不含行走圖，若需要可勾选。
+5. 最後只按一次「保存並完成這位人物」。全部跟同一份配方保存；生成用途分別生效，舊檔與原生模板保留。
+
+輸出最多 2048px；未在本機的放大器不會自動下載。ComfyUI 的多畫風需 native template 綁定 style_lora_2/style_weight_2…style_lora_8/style_weight_8；Refiner／ADetailer／Hires.fix 面板屬 WebUI／Forge，ComfyUI 必須選沿用原生模板，自行在其工作流配置。
+
+![設定介面](../prototype/web/assets/guide-v24-loras.png)
+
+![設定介面](../prototype/web/assets/guide-v24-refiner.png)
+
+![設定介面](../prototype/web/assets/guide-v24-adetailer.png)
+
+![設定介面](../prototype/web/assets/guide-v24-hires.png)

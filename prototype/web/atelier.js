@@ -1,6 +1,6 @@
 /* SD-first character art workflow; explicit generation and display application. */
 (() => {
- const el=id=>document.getElementById(id),sdTabs=['sd-art','sd-portrait','sd-cg'];let data=null,tabName='sd-art',version=0,working=false,actor=null;
+ const el=id=>document.getElementById(id),sdTabs=['sd-art','sd-portrait','sd-cg'];let data=null,tabName='sd-art',version=0,working=false,actor=null,bindingBefore=null;
  const context=()=>window.CharacterBridge.read(),active=()=>sdTabs.includes(tabName),status=text=>el('atelier-status').textContent=text;
  async function request(params){const r=await fetch('/api/art',{method:'POST',headers:{'Content-Type':'application/json','X-Play-Token':token},body:JSON.stringify({operation:'atelier',params})}),d=await r.json();if(!r.ok)throw Error(d.message||'美術操作無法完成。');return d;}
  function option(select,value,text){const o=document.createElement('option');o.value=value;o.textContent=text;select.append(o);}
@@ -9,7 +9,7 @@
   if(url&&kind==='pixel')window.CharacterMaker.generated(url,frames);else if(url)image.src=url;else image.removeAttribute('src');
  }
  function configureView(){
-  const c=data.config,p=c.profiles[actor],outfit=data.atelier.outfits[actor],folder=data.folders.find(f=>f.id===c.installation),model=data.resources.find(r=>r.id===c.checkpoint);
+  bindingBefore=data.atelier.bindings[actor];const c=data.config,p=c.profiles[actor],outfit=data.atelier.outfits[actor],folder=data.folders.find(f=>f.id===c.installation),model=data.resources.find(r=>r.id===c.checkpoint);
   el('atelier-connection').textContent=(folder?.label||'未選 SD 安裝')+' · '+(model?.name||'未選底模')+' · '+(data.service.ready?'SD 已連線':'SD 尚未連線');
   el('atelier-outfit').textContent='當下穿著：'+outfit.title;
   const select=el('atelier-lora');select.replaceChildren();option(select,'','選擇角色 LoRA（尚未綁定）');for(const r of data.resources.filter(r=>r.selectable&&r.category==='lora'&&r.installations.includes(c.installation)))option(select,r.id,r.name);select.value=p.lora;
@@ -39,7 +39,7 @@
  async function load(forms=true){const turn=++version,who=context().actor;try{const d=await request({command:'state'});if(turn!==version||context().actor!==who)return;data=d;actor=who;if(forms)configureView();jobs();}catch(e){if(turn===version)status(e.message);}}
  async function run(action){if(working)return;working=true;updateControls();try{await action();}catch(e){status(e.message);}finally{working=false;updateControls();}}
  async function generate(kind){const who=context().actor;await run(async()=>{data=await request({command:'generate',actor:who,kind,scene:kind==='cg'?el('atelier-scene').value:null,description:kind==='cg'?el('atelier-description').value:''});jobs();status('已排入本機 SD 生成，完成後請預覽並套用。');});}
- el('atelier-binding').onclick=()=>run(async()=>{if(!data)return;const who=context().actor,p={...data.config.profiles[who]};for(const field of ['lora','trigger','identity'])p[field]=el('atelier-'+field).value;p.weight=Number(el('atelier-weight').value);p.seed=Number(el('atelier-seed').value);data=await request({command:'binding',actor:who,profile:p,before:data.atelier.bindings[who]});configureView();jobs();status('這位人物的 SD 配方已保存。');});
+ el('atelier-binding').onclick=()=>run(async()=>{if(!data)return;const who=context().actor,p={...data.config.profiles[who]};for(const field of ['lora','trigger','identity'])p[field]=el('atelier-'+field).value;p.weight=Number(el('atelier-weight').value);p.seed=Number(el('atelier-seed').value);data=await request({command:'binding',actor:who,profile:p,before:bindingBefore});configureView();jobs();status('這位人物的 SD 配方已保存。');});
  el('atelier-refresh').onclick=()=>load();for(const [id,kind] of [['atelier-pixel','pixel'],['atelier-both','both'],['atelier-portrait','portrait'],['atelier-cg','cg']])el(id).onclick=()=>generate(kind);
  el('atelier-restore').onclick=()=>run(async()=>{data=await request({command:'restore',actor:context().actor});configureView();jobs();await send('ui_hold',{},true);status('已恢復備援美術，SD 生成檔仍保留。');});
  el('atelier-settings').onclick=()=>{window.CharacterBridge.read();window.characterArtIntent=context().actor;el('creation-modal').close();el('art-modal').addEventListener('close',()=>window.resumeCharacterMaker(),{once:true});el('art-open').click();};

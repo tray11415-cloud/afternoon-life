@@ -1,6 +1,6 @@
 # 午後共居 · Afternoon Life
 
-**繁體中文** · [简体中文](README.zh-CN.md) · [English](README.md)
+**繁體中文** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [English](README.md)
 
 俯視角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持續運作的小鎮。每位 AI 只取得自己的觀察、目標與記憶；可以共用模型服務，但不共用全知人格。
 
@@ -10,7 +10,7 @@
 
 [中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
-上述繁中與英文影片記錄 v0.19；影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
+上述繁中與英文影片記錄 v0.19；影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.zh-TW.md)。
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
@@ -41,7 +41,7 @@ WebUI／Forge 可選 Refiner 模型與切換比例；ADetailer 最多四個修�
 
 髮型、身形、配色、個性、目標、可選背景、AI 草擬與人物卡都在同一個編輯器。LoRA 可選；支援明確的本機 `<lora:檔名:0.8>` 標籤，不猜綁定。進階／原生 SD 配置保留；新遊戲模板在建立新存檔後製作素材。舊影片展示較早版本。
 
-[附截圖的玩法百科（10章）](docs/PLAYER_GUIDE.zh-TW.md) · [人物流程與接口](docs/CHARACTER_ATELIER.md)。遊戲內百科：`http://127.0.0.1:8765/guide.html`。
+[附截圖的玩法百科（10章）](docs/PLAYER_GUIDE.zh-TW.md) · [人物流程與接口](docs/CHARACTER_ATELIER.zh-TW.md)。遊戲內百科：`http://127.0.0.1:8765/guide.html`。
 
 ## 開始玩
 
@@ -71,7 +71,7 @@ python -m lifebox.play --demo
 
 目前人物先預覽再套用；新遊戲模板另存。AI 草擬只在手動點擊時處理選定人物，使用既有行動模型與共用帳本上限，不傳整個世界。離線模式提供明示本機範例。JSON 人物卡只含設定，不含世界記憶、金鑰、LoRA 或圖片；匯入後仍需预覽套用。SD 可由服装分類進入，需另外逐人綁定模型。
 
-遊戲設定分為畫面、操作、聲音、AI、語言與存檔。可保存視野縮放、人物名稱、小地圖、較大文字、減少動畫及設定時暫停。主選單一律暫停這個遊戲頁的心跳；多開另一個頁面仍可推進同一個世界。TTS 聲線與朗讀語言獨立選擇。[人物卡與預覽接口](docs/CHARACTER_ATELIER.md)。
+遊戲設定分為畫面、操作、聲音、AI、語言與存檔。可保存視野縮放、人物名稱、小地圖、較大文字、減少動畫及設定時暫停。主選單一律暫停這個遊戲頁的心跳；多開另一個頁面仍可推進同一個世界。TTS 聲線與朗讀語言獨立選擇。[人物卡與預覽接口](docs/CHARACTER_ATELIER.zh-TW.md)。
 
 ## 可以做什麼
 
@@ -123,7 +123,7 @@ python tools/test_character_customization.py
 python tools/test_components.py ComponentsTests
 ```
 
-測試使用隔離世界、假模型或本機測試服務，不需要真實金鑰。詳細檢查見 [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.md)。
+測試使用隔離世界、假模型或本機測試服務，不需要真實金鑰。詳細檢查見 [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.zh-TW.md)。
 
 `prototype/lifebox` 管理世界事件、權限、生活規則與接口；`prototype/web` 是 Canvas 介面；`prototype/data` 是目錄與素材清單。`tools` 提供建置與驗證工具。存檔、金鑰、生成快取與本機設定都放在不發布的 `work/`。
 

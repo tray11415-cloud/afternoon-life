@@ -1,6 +1,6 @@
 # Afternoon Life
 
-[繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md) · **English**
+[繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · **English**
 
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
@@ -10,7 +10,7 @@ A top-down pixel life sandbox with ten adult residents, a human-controlled playe
 
 [English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
-The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
+The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.en.md).
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
@@ -41,7 +41,7 @@ Select a character, enter a custom name and one character prompt, then **Save an
 
 Hair, body, colours, personality, goal, optional background, AI drafts and cards are now in one editor. LoRA is optional for prompt-only generation; explicit local `<lora:filename:0.8>` tags are resolved without guessing. Advanced/native SD configuration is retained. Templates are built after creating their new save. The existing videos show earlier versions.
 
-[Illustrated player encyclopedia (Traditional Chinese, 10 chapters)](docs/PLAYER_GUIDE.zh-TW.md) · [Character workflow and API](docs/CHARACTER_ATELIER.md). In-game guide: `http://127.0.0.1:8765/guide.html`.
+[Illustrated player encyclopedia (four languages, 14 chapters)](docs/PLAYER_GUIDE.en.md) · [Character workflow and API](docs/CHARACTER_ATELIER.en.md). In-game guide: `http://127.0.0.1:8765/guide.html`.
 
 ## Play
 
@@ -59,7 +59,7 @@ Open **http://127.0.0.1:8765/**. On Windows, you can also double-click `prototyp
 
 Move with **WASD / arrows**, click the ground to walk, and press **E** near people or objects. Walk through doors to enter buildings. Place buttons plan a route rather than teleporting you.
 
-Open **Game settings** for **繁體中文 / 日本語 / English**. The choice is saved and guides future AI dialogue. Character names, authored profiles, historical speech, source articles and native SD interfaces keep their original text. TTS voices and speech language are selected separately.
+Open **Game settings** for **繁體中文 / 简体中文 / 日本語 / English**. The choice is saved and guides future AI dialogue. Character names, authored profiles, historical speech, source articles and native SD interfaces keep their original text. TTS voices and speech language are selected separately.
 
 The offline demo is visibly labelled. It uses local schedules and fixed sample dialogue, **not an LLM**. It makes no paid model calls.
 
@@ -71,7 +71,7 @@ Edit the player and ten residents separately through identity, face/build, hair,
 
 Preview current-character changes before applying; new-game templates are separate. Manual AI drafting sends only the selected profile and brief, uses the existing action model and shared budget, and does not apply automatically. Offline mode gives an explicitly labelled local example. Portable JSON cards contain profile settings, without world memories, keys, LoRA weights or images. Import still requires preview and apply. The clothing category links to SD, where each character needs an explicit model binding.
 
-Settings group display, controls, speech, AI, language and saves. Persist zoom, names, minimap, larger text, reduced animation and pause while settings are open. The main menu always suspends this page's heartbeat; another open game page can still advance the shared world. TTS voices and reading language are separate. [Character cards and preview API](docs/CHARACTER_ATELIER.md).
+Settings group display, controls, speech, AI, language and saves. Persist zoom, names, minimap, larger text, reduced animation and pause while settings are open. The main menu always suspends this page's heartbeat; another open game page can still advance the shared world. TTS voices and reading language are separate. [Character cards and preview API](docs/CHARACTER_ATELIER.en.md).
 
 ## What you can do
 
@@ -85,7 +85,7 @@ Settings group display, controls, speech, AI, language and saves. Persist zoom, 
 
 ## Real AI and local services
 
-Configure your xAI key and local SD installation from **Game settings → AI and generation → API key and SD paths**. Saving applies immediately; connection tests are separate buttons. See [connection setup instructions](docs/CONNECTION_SETTINGS.zh-TW.md). The environment-variable method below remains available.
+Configure your xAI key and local SD installation from **Game settings → AI and generation → API key and SD paths**. Saving applies immediately; connection tests are separate buttons. See [connection setup instructions](docs/CONNECTION_SETTINGS.en.md). The environment-variable method below remains available.
 
 Set `XAI_API_KEY` in the process environment, then run without `--demo`:
 
@@ -123,7 +123,7 @@ python tools/test_character_customization.py
 python tools/test_components.py ComponentsTests
 ```
 
-Tests use isolated worlds and fake/local services. They do not require a real API key. Detailed release checks are in [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.md).
+Tests use isolated worlds and fake/local services. They do not require a real API key. Detailed release checks are in [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.en.md).
 
 `prototype/lifebox` owns events, permissions, life rules and adapters; `prototype/web` owns the Canvas interface; `prototype/data` contains catalogues and manifests. `tools` contains asset builders and validation helpers. Saves, credentials, generated media caches and machine-specific settings live under ignored `work/`.
 

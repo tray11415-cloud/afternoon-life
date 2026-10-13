@@ -1,6 +1,6 @@
 # 午后共居 · Afternoon Life
 
-**简体中文** · [繁體中文](README.zh-TW.md) · [English](README.md)
+[繁體中文](README.zh-TW.md) · **简体中文** · [日本語](README.ja.md) · [English](README.md)
 
 俯视角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持续运作的小镇。每位 AI 只取得自己的观察、目标与记忆；可以共用模型服务，但不共用全知人格。
 
@@ -10,7 +10,7 @@
 
 [简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.24.0)
 
-简体影片展示 v0.20 开始菜单、设置、人物工坊和实际游戏操作；使用独立离线世界、合成配音与字幕，没有现场付费模型请求或 SD 生图。[其他语言及拍摄说明](docs/WALKTHROUGH.md)。
+简体影片展示 v0.20 开始菜单、设置、人物工坊和实际游戏操作；使用独立离线世界、合成配音与字幕，没有现场付费模型请求或 SD 生图。[其他语言及拍摄说明](docs/WALKTHROUGH.zh-CN.md)。
 
 ## 多画风 LoRA 与精修设置（v0.24）
 
@@ -38,7 +38,7 @@ WebUI／Forge 可选 Refiner 模型与切换比例；ADetailer 最多四个修�
 
 发型、体形、配色、个性、目标、可选背景、AI 草拟与人物卡都在同一个编辑器。LoRA 可选；支持明确的本地 `<lora:文件名:0.8>` 标签，不猜绑定。高级／原生 SD 配置保留；新游戏模板在建立新存档后制作素材。旧影片展示较早版本。
 
-[附截图的玩法百科（繁中，10章）](docs/PLAYER_GUIDE.zh-TW.md) · [人物流程与接口](docs/CHARACTER_ATELIER.md)。游戏内百科：`http://127.0.0.1:8765/guide.html`。
+[附截图的玩法百科（繁中，10章）](docs/PLAYER_GUIDE.zh-CN.md) · [人物流程与接口](docs/CHARACTER_ATELIER.zh-CN.md)。游戏内百科：`http://127.0.0.1:8765/guide.html`。
 
 ## 开始玩
 
@@ -68,7 +68,7 @@ python -m lifebox.play --demo
 
 目前人物先预览再套用；新游戏模板另存。AI 草拟只在手动点击时处理选定人物，使用既有行动模型与共用帐本上限，不传整个世界。离线模式提供明示本机范例。JSON 人物卡只含设置，不含世界记忆、金钥、LoRA 或图片；汇入后仍需预览套用。SD 可由服装分类进入，需另外逐人绑定模型。
 
-游戏设置分为画面、操作、声音、AI、语言与存档。可保存视野缩放、人物名称、小地图、较大文字、减少动画及设置时暂停。主选单一律暂停这个游戏页的心跳；多开另一个页面仍可推进同一个世界。TTS 声线与朗读语言独立选择。[人物卡与预览接口](docs/CHARACTER_ATELIER.md)。
+游戏设置分为画面、操作、声音、AI、语言与存档。可保存视野缩放、人物名称、小地图、较大文字、减少动画及设置时暂停。主选单一律暂停这个游戏页的心跳；多开另一个页面仍可推进同一个世界。TTS 声线与朗读语言独立选择。[人物卡与预览接口](docs/CHARACTER_ATELIER.zh-CN.md)。
 
 ## 可以做什麽
 
@@ -82,7 +82,7 @@ python -m lifebox.play --demo
 
 ## 真实 AI 与本机服务
 
-可直接在 **游戏设置 → AI 与生成 → API 密钥与 SD 路径设置** 填入 xAI 密钥、选择模型及挂载本机 SD。保存立即生效，测试连接另有按钮；详见[连接设置说明（繁体中文）](docs/CONNECTION_SETTINGS.zh-TW.md)。以下环境变量方式仍可使用。
+可直接在 **游戏设置 → AI 与生成 → API 密钥与 SD 路径设置** 填入 xAI 密钥、选择模型及挂载本机 SD。保存立即生效，测试连接另有按钮；详见[连接设置说明](docs/CONNECTION_SETTINGS.zh-CN.md)。以下环境变量方式仍可使用。
 
 在程序环境设置 `XAI_API_KEY`，不加 `--demo` 启动：
 
@@ -120,7 +120,7 @@ python tools/test_character_customization.py
 python tools/test_components.py ComponentsTests
 ```
 
-测试使用隔离世界、假模型或本机测试服务，不需要真实金钥。详细检查见 [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.md)。
+测试使用隔离世界、假模型或本机测试服务，不需要真实金钥。详细检查见 [docs/RELEASE_REVIEW.md](docs/RELEASE_REVIEW.zh-CN.md)。
 
 `prototype/lifebox` 管理世界事件、权限、生活规则与接口；`prototype/web` 是 Canvas 界面；`prototype/data` 是目录与素材清单。`tools` 提供建置与验证工具。存档、金钥、生成快取与本机设置都放在不发布的 `work/`。
 

@@ -1,69 +1,54 @@
-# New Simplified Chinese guide / 新版简体导览
+# Recorded walkthroughs
 
-[![简体导览](media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
+[繁體中文](WALKTHROUGH.zh-TW.md) · [简体中文](WALKTHROUGH.zh-CN.md) · [日本語](WALKTHROUGH.ja.md) · **English**
 
-[影片 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [字幕](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.srt) · [解说稿](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.script.md)
+## Simplified Chinese · v0.20
 
-The v0.20 video shows the title menu, settings, pixel customisation, manual offline character drafting, physical travel, inventory purchase, shared invitations, local SD configuration, and component preview/apply/undo. It uses 1,023 timestamped actual browser screenshots, approximately 4 fps capture, encoded at 25 fps; some static end frames are held for narration. UI and subtitles are Simplified Chinese. Local Microsoft Hanhan synthetic Chinese narration; no paid model calls or live SD render. Captions are aligned within measured narration segments, with sentence timing estimated by length. Complete video decode and non-silent audio checks passed. Eight main chapters plus opening.
+[![Simplified Chinese walkthrough](media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-繁中：新版簡體影片以隔離離線世界實拍，附合成解說、字幕、美編與章節。像素預覽是真實圖層合成，AI 草擬為明示的本機範例，SD 章節只展示配置。約 4fps 截圖取樣、25fps 編碼，部分畫面延長停留供解說。
+[Video · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [Subtitles](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.srt) · [Narration script](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.script.md)
 
-简中：新版展示开始菜单、分类设置、人物工坊、背包与公共活动。没有现场付费模型请求或 SD 出图。人物卡导出成功；当前自动化浏览器的本地文件上传权限受限，因此卡片导入仅完成后端验证，未完成该浏览器的文件选择实测。普通手动文件选择功能保留，无需游戏另加插件。
+The recording shows the title menu, grouped settings, pixel customisation, manual offline character drafting, physical travel, inventory purchase, shared invitations, local SD configuration and component preview/apply/undo. It uses 1,023 timestamped browser screenshots captured at approximately 4fps and encoded at 25fps, with some end frames held for narration. UI/subtitles are Simplified Chinese and local Microsoft Hanhan provides synthetic narration. There are eight main chapters plus an opening. No paid model call or live SD render is shown. Full decode and non-silent audio checks passed when this video was produced; they were not rerun for document translation.
 
-| 章节 | 开始 |
+Pixel previews use real layer composition; AI drafts are labelled local examples. Character-card export succeeded. Automated file upload was blocked by the browser extension's local-file permission, so that browser's card-file selection was not tested, although backend validation and ordinary manual selection remain available. Extension permissions were not expanded.
+
+| Chapter | Start |
 |---|---:|
-| 开场 | 0:00 |
-| 从开始选单出发 | 0:19 |
-| 按自己的步调设置 | 1:09 |
-| 看见自己的像素人物 | 2:00 |
-| 让 AI 草拟一位人物 | 2:51 |
-| 走到咖啡厅，带走一份日常 | 3:43 |
-| 一起出门，每人自己回应 | 4:42 |
-| 把像素与立绘接到本机生图 | 5:32 |
-| 替换部件，保留世界 | 6:26 |
+| Opening | 0:00 |
+| Start menu | 0:19 |
+| Your own settings | 1:09 |
+| Your pixel character | 2:00 |
+| Offline character draft | 2:51 |
+| Café and inventory | 3:43 |
+| Shared invitation | 4:42 |
+| Local SD connection | 5:32 |
+| Components and world preservation | 6:26 |
 
----
+## Traditional Chinese and English · v0.19
 
-# Narrated walkthroughs / 中英解說導覽
+[Traditional Chinese · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[中文影片 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English video · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
+Each was recorded separately in its own interface language. They contain eight chapters, synthetic narration, burned-in subtitles, chapter metadata, title cards and field notes. These are recordings of earlier versions, not current-feature proof.
 
-Both versions were recorded separately in their respective interface language. They include eight chapters, synthetic narration, burned-in subtitles, chapter metadata, title cards and field notes. These two earlier videos show v0.19.
-
-兩版分別以中文及英文介面重新錄製，附八個章節、合成解說、內嵌字幕、章節標記、封面與重點提示。這兩版影片展示 v0.19；新的簡體影片展示 v0.20。
-
-## Chapters / 章節
-
-| Chapter / 章節 | 中文時間 | English time |
+| Chapter | Traditional Chinese | English |
 |---|---:|---:|
-| 小鎮行走 / Town movement | 0:00 | 0:00 |
-| 咖啡與背包 / Coffee and inventory | 0:47 | 0:45 |
-| 共同活動 / Shared activities | 1:28 | 1:36 |
-| 人物設定 / Character settings | 2:06 | 2:15 |
-| 部件替換與還原 / Components and undo | 2:40 | 2:48 |
-| 美術替換 / Artwork replacement | 3:15 | 3:24 |
-| SD 與 CG 配置 / SD and CG setup | 3:49 | 3:58 |
-| 語言與語音 / Language and voice | 4:28 | 4:37 |
+| Town movement | 0:00 | 0:00 |
+| Coffee and inventory | 0:47 | 0:45 |
+| Shared activities | 1:28 | 1:36 |
+| Character settings | 2:06 | 2:15 |
+| Components and undo | 2:40 | 2:48 |
+| Artwork replacement | 3:15 | 3:24 |
+| SD and CG setup | 3:49 | 3:58 |
+| Language and voice | 4:28 | 4:37 |
 
-## Captions and scripts / 字幕與解說稿
+[Traditional Chinese captions](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.srt) · [Traditional Chinese script](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.script.md) · [English captions](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.srt) · [English script](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.script.md)
 
-- [繁體中文字幕](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.srt) · [中文解說稿](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.script.md)
-- [English subtitles](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.srt) · [English narration script](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.script.md)
+## What the recordings demonstrate
 
-## What is actually shown / 展示範圍
+Real operated actions include travel, a game-coin takeaway purchase, inventory consumption, group invitations, character-edit previews and component description preview/application/undo. Artwork import and SD/CG sections show configuration controls without fresh generation. Shared activities are local multi-character events, not online multiplayer.
 
-Physical travel, a paid game-coin takeaway purchase, inventory consumption, group invitations, character-edit previews, and a component description preview/application/undo were operated in the game. Art import and SD/CG panels demonstrate available controls; no new image render is claimed in these recordings. Shared activities are local multi-character events, not online multiplayer.
+The isolated worlds use local schedules and fixed sample dialogue, not an LLM. Character generation models were not bound. Microsoft Hanhan Desktop and Microsoft Zira Desktop provide synthetic voices locally. No paid model calls, private saves, credentials or personal generation configurations appear in the recordings.
 
-影片實際操作了步行、遊戲代幣外帶購買、背包消耗、多人邀約、人物修改預覽，以及部件說明的預覽／套用／還原。美術匯入與 SD／CG 片段展示配置入口，沒有宣稱現場生成圖片。共同活動是本機多人角色事件，不是連線多人遊戲。
+Gameplay uses timestamped browser captures with cards and occasional end holds. The 1920×1080, 25fps export describes encoded output, not capture rate. Captions follow measured narration segments; sentence timing is estimated from length. Image models did not fabricate gameplay frames.
 
-The recording worlds use local schedules and fixed sample dialogue, **not an LLM**. Character models were not bound. The voices are **synthetic**, generated locally with Microsoft Hanhan Desktop (Traditional Chinese) and Microsoft Zira Desktop (English). No new paid model requests, private saves, credentials or selected personal model configurations are used in the footage.
-
-錄影採用獨立離線世界、本機作息與固定示範台詞，**不是 LLM 回應**。角色未綁定生成模型。中英解說分別使用本機 Microsoft Hanhan Desktop 及 Microsoft Zira Desktop **合成聲線**。拍攝沒有使用付費模型、私人存檔、金鑰或正式世界的人物模型配置。
-
-Gameplay frames are timestamped browser captures, edited with cards and occasional end holds. The 1920×1080, 25 fps export describes the encoded video, not the source capture frame rate. Captions follow measured narration segments; sentence boundaries are estimated. No gameplay frames were generated with an image model.
-
-遊戲畫面來自附時間的瀏覽器截圖錄製，剪入章節卡，部分片段末尾停留供閱讀。1920×1080、25fps 是成片規格，不代表原始擷取幀率。字幕依各段實際配音長度排定，句子邊界為估算；沒有使用生圖模型偽造遊戲畫面。
-
-Artwork attribution: see [ASSET_LICENSES.md](../ASSET_LICENSES.md). LPC adaptations use CC BY-SA 4.0; Kenney assets use CC0. Preserve attribution when sharing the video. The previous short silent showcase remains in the release as an earlier recording.
-
-分享影片時保留 [美術署名與授權](../ASSET_LICENSES.md)。LPC 改作為 CC BY-SA 4.0，Kenney 為 CC0。舊的無聲短版保留為早期錄影。
+Preserve [artwork credits](../ASSET_LICENSES.md) when sharing: LPC adaptations use CC BY-SA 4.0; Kenney uses CC0. The old silent showcase remains an earlier recording. This page has four language editions; the original videos and voice tracks retain the languages identified above.

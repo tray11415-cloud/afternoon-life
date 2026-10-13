@@ -1,5 +1,7 @@
 # v0.19.0 release review
 
+[繁體中文](RELEASE_REVIEW.zh-TW.md) · [简体中文](RELEASE_REVIEW.zh-CN.md) · [日本語](RELEASE_REVIEW.ja.md) · **English**
+
 The review found no blocker requiring a core rewrite. This release fixes first-run dependency/key handling, adds persistent Traditional Chinese/Japanese/English settings and dialogue guidance, corrects male-character model guidance, localises the primary interface and static settings help, adds English/Japanese workshop commands, and wraps the toolbar for longer labels. Public asset credits are now served by the local game.
 
 ## Evidence

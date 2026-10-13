@@ -1,5 +1,7 @@
 # API 與 Stable Diffusion 設定
 
+**繁體中文** · [简体中文](CONNECTION_SETTINGS.zh-CN.md) · [日本語](CONNECTION_SETTINGS.ja.md) · [English](CONNECTION_SETTINGS.en.md)
+
 入口：**遊戲設定 → AI 與生成 → API 金鑰與 SD 路徑設定**。
 
 ## AI API

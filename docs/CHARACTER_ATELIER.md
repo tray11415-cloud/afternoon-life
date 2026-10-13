@@ -1,5 +1,7 @@
 # Unified character atelier · v0.24
 
+[繁體中文](CHARACTER_ATELIER.zh-TW.md) · [简体中文](CHARACTER_ATELIER.zh-CN.md) · [日本語](CHARACTER_ATELIER.ja.md) · **English**
+
 One form combines name, adult age/gender, one art prompt, optional LoRA, trigger, seed, appearance controls, personality, goals, optional background, manual AI drafts and cards. A character save validates and commits that actor's profile, then schedules portrait expressions + sprites and one CG with the same applied identity/outfit snapshot. Matching ready outputs are auto-applied. Internal component validation/history supports undo; no separate Apply click is required for this explicitly requested save workflow.
 
 Prompt-only manual generation is supported. `<lora:filename:0.8>` tags resolve exact local resources within the selected installation (first character, second clothing; at most two). The normalised identity is stored once in the character profile and SD binding. Local SD configuration, native templates, all other profiles and the human player role are retained. No models are guessed/downloaded.
@@ -28,7 +30,7 @@ AI drafts are manual and actor-scoped, with normal usage limits and an explicit 
 
 21 pipeline tests cover rename/state preservation, pure prompt generation, local tag resolution, profile isolation, stale edits, automatic application, queue waiting, retry, cancellation, new-save templates, compatible art reuse and fallback restoration. SD/native/UI tests use isolated or mocked services. Guide screenshots use packaged credited LPC assets with explicit mock labels, never claim fresh SD render quality.
 
-See [illustrated player guide](PLAYER_GUIDE.zh-TW.md) and [artwork licences](../ASSET_LICENSES.md). Interface organisation references [AI＊少女's manual](https://aisteam.illusion.rip/manual/readme_jp.html); the code/interface are original and no AI Shoujo assets are included.
+See [illustrated player guide](PLAYER_GUIDE.en.md) and [artwork licences](../ASSET_LICENSES.md). Interface organisation references [AI＊少女's manual](https://aisteam.illusion.rip/manual/readme_jp.html); the code/interface are original and no AI Shoujo assets are included.
 
 ## Per-character model and style overrides
 

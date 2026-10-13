@@ -56,6 +56,12 @@ class SDAtelierTests(unittest.TestCase):
   self.s.studio.folders=[{'id':'fixture','backend':'a1111','path':str(self.root)}];self.s.studio.config.update(installation='fixture',backend='a1111')
   path=self.root/'local-lora.safetensors';path.write_bytes(b'fixture');self.s.studio.resources={'local':{'id':'local','category':'lora','name':path.name,'path':str(path),'selectable':True,'installations':['fixture'],'base':'sdxl'}}
   state=self.call('state');p=copy.deepcopy(state['config']['profiles']['player']);p['lora']='local';self.call('binding',actor='player',profile=p,before=state['atelier']['bindings']['player']);self.assertEqual(set(self.s.studio.config['profiles']),{'player'});self.assertFalse(self.s.studio.config['profiles']['player']['auto']);self.assertEqual(self.s.studio.jobs,{})
+ def test_partial_new_identity_does_not_reactivate_old_sprite(self):
+  pixel=self.job('pixel');self.s.studio.jobs.pop(pixel['id']);pixel['id']='4'*64;pixel['recipe']['profile']={'identity':'old identity'};self.s.studio.jobs[pixel['id']]=pixel;self.call('apply',actor='player',id=pixel['id'],expression='neutral')
+  portrait=self.job('portrait');portrait['recipe']['profile']={'identity':'new identity'};self.call('apply',actor='player',id=portrait['id'],expression='neutral');active=self.s.studio.config['active'][self.s.art_atelier.scope('player')];self.assertNotIn('sprite',active);self.assertIn('portraits',active);self.assertTrue((self.s.studio.assets/pixel['files']['sprite']).is_file())
+ def test_partial_matching_identity_keeps_sprite_and_portrait(self):
+  pixel=self.job('pixel');self.s.studio.jobs.pop(pixel['id']);pixel['id']='5'*64;self.s.studio.jobs[pixel['id']]=pixel;self.call('apply',actor='player',id=pixel['id'],expression='neutral')
+  portrait=self.job('portrait');self.call('apply',actor='player',id=portrait['id'],expression='neutral');active=self.s.studio.config['active'][self.s.art_atelier.scope('player')];self.assertEqual(active['sprite'],pixel['files']['sprite']);self.assertEqual(active['portraits'],portrait['files']['portraits'])
  def test_http_guard_and_new_script(self):
   server=make_server(self.s,0);threading.Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
   def req(path,body=None,token='',origin=None):

@@ -540,11 +540,17 @@ class CharacterStudio:
    if not j or j['status']!='ready' or expression not in EXPRESSIONS:raise ValueError('只能套用已完成的素材')
    if 'portraits' in j['files'] and expression not in j['files']['portraits']:raise ValueError('此差分尚未生成')
    scope=j['actor']+':'+j['outfit']['render_key'];active=copy.deepcopy(self.config['active'].get(scope,{}))
+   def identity_signature(recipe):return key({k:recipe.get(k) for k in ('profile','age','gender','look','checkpoint','loras')})
+   signature=identity_signature(j.get('recipe',{}))
+   if active:
+    previous=self.jobs.get(active.get('job'),{}).get('recipe')
+    old_signature=active.get('identity_signature') or (identity_signature(previous) if previous is not None else None)
+    if signature!=old_signature:active={}
    if 'sprite' in j['files']:active['sprite']=j['files']['sprite'];active['frames']=3
    if 'portraits' in j['files']:active['portraits']=j['files']['portraits'];active['expression']=expression
    if j.get('recipe',{}).get('look'):active['look_signature']=key(j['recipe']['look'])
    else:active.pop('look_signature',None)
-   active['job']=jid;self.config['active'][scope]=active;atomic(self.config_path,self.config)
+   active['job']=jid;active['identity_signature']=signature;self.config['active'][scope]=active;atomic(self.config_path,self.config)
   return self.state()
 
  def appearance(self,actor,outfit):

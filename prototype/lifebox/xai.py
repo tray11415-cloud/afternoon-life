@@ -28,8 +28,8 @@ class AIError(RuntimeError):
     pass
 
 
-def read_key(path: Path) -> str:
-    if os.environ.get("XAI_API_KEY"):
+def read_key(path: Path, prefer_environment: bool = True) -> str:
+    if prefer_environment and os.environ.get("XAI_API_KEY"):
         return os.environ["XAI_API_KEY"]
     if os.name != "nt":
         raise AIError("unauthorized")

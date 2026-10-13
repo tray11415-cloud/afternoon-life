@@ -220,6 +220,8 @@ class PlaySession:
 
 
 def make_server(session, port=8765):
+    from .service_settings import ServiceSettings
+    connections = ServiceSettings(session, Path(__file__).resolve().parents[2])
     token = secrets.token_urlsafe(32)
     static = Path(__file__).resolve().parent.parent / 'web'
     class Handler(BaseHTTPRequestHandler):
@@ -246,6 +248,9 @@ def make_server(session, port=8765):
             if not self._host_ok():
                 return self._send(403, {'error': 'local_only'})
             path = urlsplit(self.path).path
+            if path == '/api/connections':
+                if not secrets.compare_digest(self.headers.get('X-Play-Token',''), token):return self._send(403,{'error':'local_only'})
+                return self._send(200,connections.state())
             if path == '/api/state':
                 return self._send(200, {**session.screen(), 'token': token})
             if path in {'/api/components','/api/components/schema'} and hasattr(session,'components'):
@@ -293,7 +298,7 @@ def make_server(session, port=8765):
                      '/style.css': ('style.css', 'text/css; charset=utf-8'),
                      '/art-settings.js': ('art-settings.js','text/javascript; charset=utf-8'),
                      '/social-settings.js': ('social-settings.js','text/javascript; charset=utf-8'),
-                     '/speech-settings.js': ('speech-settings.js','text/javascript; charset=utf-8'),'/life-settings.js':('life-settings.js','text/javascript; charset=utf-8'),'/component-settings.js':('component-settings.js','text/javascript; charset=utf-8'),'/i18n.js':('i18n.js','text/javascript; charset=utf-8'),'/locales.json':('locales.json','application/json; charset=utf-8'),'/simplified.json':('simplified.json','application/json; charset=utf-8'),'/menu.js':('menu.js','text/javascript; charset=utf-8'),'/maker.js':('maker.js','text/javascript; charset=utf-8'),'/atelier.js':('atelier.js','text/javascript; charset=utf-8'),'/atelier-options.js':('atelier-options.js','text/javascript; charset=utf-8'),'/studio.css':('studio.css','text/css; charset=utf-8')}
+                     '/speech-settings.js': ('speech-settings.js','text/javascript; charset=utf-8'),'/life-settings.js':('life-settings.js','text/javascript; charset=utf-8'),'/component-settings.js':('component-settings.js','text/javascript; charset=utf-8'),'/i18n.js':('i18n.js','text/javascript; charset=utf-8'),'/locales.json':('locales.json','application/json; charset=utf-8'),'/simplified.json':('simplified.json','application/json; charset=utf-8'),'/menu.js':('menu.js','text/javascript; charset=utf-8'),'/maker.js':('maker.js','text/javascript; charset=utf-8'),'/atelier.js':('atelier.js','text/javascript; charset=utf-8'),'/atelier-options.js':('atelier-options.js','text/javascript; charset=utf-8'),'/connection-settings.js':('connection-settings.js','text/javascript; charset=utf-8'),'/studio.css':('studio.css','text/css; charset=utf-8')}
             files.update({'/guide.html':('guide.html','text/html; charset=utf-8'),'/guide.css':('guide.css','text/css; charset=utf-8'),'/guide.js':('guide.js','text/javascript; charset=utf-8')})
             # Public packaged art only. No arbitrary paths, private saves or keys.
             for asset in (static / 'assets').glob('*'):
@@ -315,13 +320,14 @@ def make_server(session, port=8765):
             if not self._host_ok() or self.headers.get('Origin') != origin or not secrets.compare_digest(self.headers.get('X-Play-Token', ''), token):
                 return self._send(403, {'error': 'local_only'})
             route=urlsplit(self.path).path
-            if route not in {'/api/action','/api/art','/api/characters','/api/speech','/api/components','/api/preferences'}:
+            if route not in {'/api/action','/api/art','/api/characters','/api/speech','/api/components','/api/preferences','/api/connections'}:
                 return self._send(404, {'error': 'not_found'})
             try:
                 size = int(self.headers.get('Content-Length', '0'))
-                if not 0 < size <= (6291456 if route in {'/api/art','/api/components'} else 131072 if route=='/api/characters' else 65536 if route=='/api/speech' else 8192) or self.headers.get('Content-Type') != 'application/json':
+                if not 0 < size <= (6291456 if route in {'/api/art','/api/components'} else 131072 if route=='/api/characters' else 65536 if route=='/api/speech' else 16384 if route=='/api/connections' else 8192) or self.headers.get('Content-Type') != 'application/json':
                     raise ValueError('invalid body')
                 body = json.loads(self.rfile.read(size))
+                if route=='/api/connections':return self._send(200,connections.operation(body))
                 if route=='/api/preferences':
                     with session.lock:return self._send(200,session.preferences.configure(body))
                 if route=='/api/components':return self._send(200,session.components.operation(body))
@@ -353,7 +359,7 @@ def make_server(session, port=8765):
             except AIError as exc:
                 return self._send(400,{'error':str(exc),'message':ERRORS.get(str(exc),'AI 草稿暫時無法生成。')})
             except (ValueError, TypeError, KeyError, UnicodeError) as exc:
-                return self._send(400, {'error':'invalid_request','message':str(exc)[:250] if route in {'/api/art','/api/characters','/api/speech','/api/components'} else '請檢查這次行動的內容。'})
+                return self._send(400, {'error':'invalid_request','message':str(exc)[:250] if route in {'/api/art','/api/characters','/api/speech','/api/components','/api/connections'} else '請檢查這次行動的內容。'})
             except Exception:
                 return self._send(500, {'error': 'internal', 'message': '行動暫時無法完成，請重新整理。'})
     class LocalServer(ThreadingHTTPServer):
@@ -372,15 +378,23 @@ def main():
     parser.add_argument('--data-dir',type=Path,help='Separate save directory')
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[2]
-    demo=args.demo or not (os.environ.get('XAI_API_KEY') or (project/'work/private/xai.dpapi').is_file())
+    from .service_settings import load_settings, stored_key
+    connection_config = load_settings(project)
+    key_path = stored_key(project)
+    demo=args.demo or (connection_config is not None and not connection_config['enabled']) or not (os.environ.get('XAI_API_KEY') or key_path.is_file())
     if demo:
         from .demo_backend import DemoBackend
         backend=DemoBackend()
     else:
-        backend = XAIBackend(read_key(project / 'work/private/xai.dpapi'), project / 'work/play-usage.json',dialogue_model='grok-4.3')
-        backend.select_model()
+        try:
+            backend = XAIBackend(read_key(key_path, prefer_environment=key_path.name!='ui-xai.dpapi'), project / 'work/play-usage.json', model=(connection_config or {}).get('model','grok-build-0.1'), dialogue_model=(connection_config or {}).get('dialogue_model','grok-4.3'))
+            if connection_config is None:backend.select_model()
+        except AIError:
+            if connection_config is None:raise
+            from .demo_backend import DemoBackend
+            backend=DemoBackend();demo=True
     from .pixel import PixelSession
-    session = PixelSession(args.data_dir or project / 'work'/('demo-play' if demo else 'play'), backend)
+    session = PixelSession(args.data_dir or (Path(connection_config['save_dir']) if connection_config and not args.demo else project / 'work'/('demo-play' if demo else 'play')), backend)
     server = make_server(session, args.port)
     print(json.dumps({'url': f'http://127.0.0.1:{server.server_port}', 'model': backend.model,
                       'dialogue_model': backend.dialogue_model, 'adult_enabled': False}), flush=True)

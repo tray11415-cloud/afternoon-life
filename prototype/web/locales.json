@@ -5198,5 +5198,157 @@
     "en": "Add native parameters for inpaint dimensions, checkpoint, VAE, scheduler or ControlNet. Do not repeat fields managed by the form.",
     "ja": "部分修正サイズ、モデル、VAE、スケジューラー、ControlNet 等を追加できます。フォームの項目は重複指定できません。",
     "zh-CN": "可补充局部尺寸、模型、VAE、排程器、ControlNet 等原生参数；表单已管理的栏位不可重复。"
+  },
+  "API 金鑰與 SD 路徑設定": {
+    "en": "API key and SD paths",
+    "ja": "APIキー・SDパス設定"
+  },
+  "API 與 SD 連線": {
+    "en": "API and SD connections",
+    "ja": "API・SD接続"
+  },
+  "在這裡填入自己的 API，掛載本機 Stable Diffusion。": {
+    "en": "Enter your API key and connect your local Stable Diffusion installation.",
+    "ja": "APIキーを入力し、ローカルのStable Diffusionを接続します。"
+  },
+  "關閉連線設定": {
+    "en": "Close connection settings",
+    "ja": "接続設定を閉じる"
+  },
+  "AI API · xAI / Grok": {
+    "en": "AI API · xAI / Grok",
+    "ja": "AI API · xAI / Grok"
+  },
+  "啟用真實 AI（取消則使用離線示範）": {
+    "en": "Enable live AI (uncheck for offline demo)",
+    "ja": "実際のAIを有効化（オフでオフラインデモ）"
+  },
+  "API 服務網址": {
+    "en": "API service URL",
+    "ja": "APIサービスURL"
+  },
+  "API 金鑰": {
+    "en": "API key",
+    "ja": "APIキー"
+  },
+  "貼上自己的 xAI API 金鑰；留空保留原金鑰": {
+    "en": "Paste your xAI API key; leave blank to keep the current key",
+    "ja": "xAI APIキーを入力。空欄なら現在のキーを保持"
+  },
+  "顯示輸入的金鑰": {
+    "en": "Show entered key",
+    "ja": "入力したキーを表示"
+  },
+  "記住金鑰（Windows 使用者加密）": {
+    "en": "Remember key (Windows user encryption)",
+    "ja": "キーを保存（Windowsユーザー暗号化）"
+  },
+  "角色對話模型": {
+    "en": "Character dialogue model",
+    "ja": "キャラクター会話モデル"
+  },
+  "行動決策模型": {
+    "en": "Action decision model",
+    "ja": "行動判断モデル"
+  },
+  "保存 API 設定": {
+    "en": "Save API settings",
+    "ja": "API設定を保存"
+  },
+  "測試已保存的 API 連線": {
+    "en": "Test saved API connection",
+    "ja": "保存済みAPI接続をテスト"
+  },
+  "Stable Diffusion · 本機安裝": {
+    "en": "Stable Diffusion · local installation",
+    "ja": "Stable Diffusion · ローカル環境"
+  },
+  "已偵測的 SD 安裝": {
+    "en": "Detected SD installations",
+    "ja": "検出されたSD環境"
+  },
+  "SD 安裝資料夾路徑": {
+    "en": "SD installation folder path",
+    "ja": "SDインストールフォルダーのパス"
+  },
+  "選擇資料夾…": {
+    "en": "Choose folder…",
+    "ja": "フォルダーを選択…"
+  },
+  "重新偵測安裝": {
+    "en": "Detect installations again",
+    "ja": "インストール環境を再検出"
+  },
+  "SD API 服務網址": {
+    "en": "SD API service URL",
+    "ja": "SD APIサービスURL"
+  },
+  "全局底模": {
+    "en": "Global checkpoint",
+    "ja": "共通のチェックポイント"
+  },
+  "目前掛載路徑": {
+    "en": "Connected folder path",
+    "ja": "現在接続中のフォルダー"
+  },
+  "保存並掛載 SD": {
+    "en": "Save and connect SD",
+    "ja": "保存してSDを接続"
+  },
+  "測試已保存的 SD 連線": {
+    "en": "Test saved SD connection",
+    "ja": "保存済みSD接続をテスト"
+  },
+  "啟動 SD／LoRA 與完整生圖設定": {
+    "en": "SD launcher, LoRAs and full generation settings",
+    "ja": "SD起動・LoRA・生成詳細設定"
+  },
+  "先掛載，稍後選擇底模": {
+    "en": "Connect first, then choose a checkpoint",
+    "ja": "先に接続してからチェックポイントを選択"
+  },
+  "選擇已偵測的 SD 安裝": {
+    "en": "Choose a detected SD installation",
+    "ja": "検出されたSD環境を選択"
+  },
+  "尚未掛載 SD 安裝。": {
+    "en": "No SD installation connected.",
+    "ja": "SD環境は未接続です。"
+  },
+  "尚未填入 API 金鑰。": {
+    "en": "No API key entered yet.",
+    "ja": "APIキーは未入力です。"
+  },
+  "這台電腦已加密保存金鑰；留空會保留原金鑰。": {
+    "en": "An encrypted key is saved on this computer; leave blank to keep it.",
+    "ja": "このPCに暗号化されたキーがあります。空欄なら保持します。"
+  },
+  "已有可用的本機金鑰；留空會保留。": {
+    "en": "A local key is already configured; leave blank to keep it.",
+    "ja": "ローカルキーが設定されています。空欄なら保持します。"
+  },
+  "金鑰不放入存檔、人物卡或匯出設定。保存立即生效，不會生成台詞；用量沿用原帳本。": {
+    "en": "Keys are excluded from saves, character cards and exports. Saving applies immediately without generating dialogue; the usage ledger is retained.",
+    "ja": "キーはセーブ・人物カード・設定出力に含みません。保存は即時反映し、会話は生成しません。使用量の記録は保持します。"
+  },
+  "WebUI／Forge 常見埠號 7860，ComfyUI 為 8188；填實際啟動網址。本機 SD 不需 API 金鑰。資料夾需包含 webui.py，或 main.py 與 comfy 子資料夾。": {
+    "en": "WebUI/Forge commonly uses port 7860; ComfyUI uses 8188. Enter your actual URL. Local SD needs no API key. Select the folder containing webui.py, or main.py and the comfy subfolder.",
+    "ja": "WebUI/Forgeは通常7860、ComfyUIは8188です。実際のURLを入力してください。ローカルSDにAPIキーは不要です。webui.py、またはmain.pyとcomfyを含むフォルダーを選択します。"
+  },
+  "掛載直接使用原資料夾的模型，不複製或下載權重。首次加入路徑後可從底模選單選擇模型，再保存掛載。": {
+    "en": "Connecting uses models in their original folder without copying or downloading weights. After adding a new folder, choose a checkpoint and save again.",
+    "ja": "接続は元のフォルダーのモデルを使い、コピーやダウンロードはしません。新規パス接続後、チェックポイントを選んで再度保存できます。"
+  },
+  "填入後按保存；連線測試與啟動 SD 需另按按鈕。": {
+    "en": "Save after entering settings. Connection tests and starting SD use separate buttons.",
+    "ja": "入力後に保存してください。接続テストとSD起動は別のボタンで実行します。"
+  },
+  "AI 設定已保存並立即生效；尚未驗證金鑰，不會自動呼叫模型。": {
+    "en": "AI settings saved and applied; the key has not been verified. No automatic model request was made.",
+    "ja": "AI設定を保存し反映しました。キーは未確認です。モデルは自動呼び出ししません。"
+  },
+  "SD 路徑與網址已掛載，模型留在原資料夾；請測試連線。": {
+    "en": "SD folder and URL connected. Models stay in their original folder; test the connection next.",
+    "ja": "SDパスとURLを接続しました。モデルは元のフォルダーにあります。接続テストを実行してください。"
   }
 }

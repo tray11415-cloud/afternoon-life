@@ -85,6 +85,8 @@ python -m lifebox.play --demo
 
 ## 真實 AI 與本機服務
 
+可直接在 **遊戲設定 → AI 與生成 → API 金鑰與 SD 路徑設定** 填入 xAI 金鑰、選擇模型及掛載本機 SD。保存立即生效，測試連線另有按鈕；詳見[連線設定說明](docs/CONNECTION_SETTINGS.zh-TW.md)。以下環境變數方式仍可使用。
+
 在程序環境設定 `XAI_API_KEY`，不加 `--demo` 啟動：
 
 ```powershell

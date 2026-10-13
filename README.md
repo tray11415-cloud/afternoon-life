@@ -85,6 +85,8 @@ Settings group display, controls, speech, AI, language and saves. Persist zoom, 
 
 ## Real AI and local services
 
+Configure your xAI key and local SD installation from **Game settings → AI and generation → API key and SD paths**. Saving applies immediately; connection tests are separate buttons. See [connection setup instructions](docs/CONNECTION_SETTINGS.zh-TW.md). The environment-variable method below remains available.
+
 Set `XAI_API_KEY` in the process environment, then run without `--demo`:
 
 ```powershell

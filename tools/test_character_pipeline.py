@@ -91,4 +91,62 @@ class CharacterPipelineTests(unittest.TestCase):
   with patch.object(module,'api',respond):self.s.studio._render(recipe,t,'full body portrait',123)
   arg=captured[0]['alwayson_scripts']['ADetailer']['args'][1];self.assertIn('dark hair',arg['ad_prompt']);self.assertIn('happy face',arg['ad_prompt']);self.assertNotIn('old person',arg['ad_prompt']);self.assertEqual(arg['ad_mask_blur'],6);self.assertEqual(captured[0]['steps'],7);self.assertEqual(native,original)
 
+ def resource(self,rid,category='lora',base='sdxl'):
+  path=self.root/(rid+'.safetensors');path.write_bytes(b'test only');self.s.studio.resources[rid]={'id':rid,'name':path.name,'path':str(path),'category':category,'selectable':True,'installations':['fixture'],'base':base};return self.s.studio.resources[rid]
+ def styled(self):
+  self.resource('alternate','checkpoint');self.resource('style');self.resource('clothes');p=self.params();p['sd'].update(checkpoint='alternate',style_lora='style',style_weight=.55,style_trigger='watercolor texture',lora='hero',clothes_lora='clothes');return p
+ def test_character_checkpoint_style_reach_all_recipes_and_reload(self):
+  p=self.styled();pack=self.save(p);self.assertEqual(self.s.studio.config['checkpoint'],'base');self.assertNotIn('member-02',self.s.studio.config['profiles'])
+  for kind in ('portrait','pixel','both','cg'):
+   r=self.s.studio.recipe('member-01',self.s.wardrobe.appearance('member-01'),'daily clothes',kind,{'scene':'cafe','place_name':'cafe','description':'quiet afternoon'} if kind=='cg' else None);self.assertEqual(r['checkpoint']['id'],'alternate');self.assertEqual([l['id'] for l in r['loras']],['hero','clothes','style']);self.assertEqual(r['loras'][2]['weight'],.55);self.assertIn('watercolor texture',r['profile']['identity'])
+  with patch.object(CharacterStudio,'discover',lambda s,extra=None:s.state()),patch.object(CharacterStudio,'probe',lambda s:s.state()):restored=CharacterStudio(self.s.studio.root,self.s.studio.project)
+  restored.closed=True;restored.thread.join(2);self.assertEqual(restored.config['profiles']['member-01']['style_lora'],'style');self.assertEqual(restored.config['profiles']['member-01']['checkpoint'],'alternate')
+ def test_empty_overrides_preserve_legacy_recipe_and_binding(self):
+  from lifebox.character_art import validate_binding
+  self.save();old=copy.deepcopy(self.s.studio.config['profiles']['member-01']);new=validate_binding({**old,'checkpoint':'','style_lora':'','style_weight':.8,'style_trigger':''});self.assertEqual(new,old);r=self.s.studio.recipe('member-01',self.s.wardrobe.appearance('member-01'),'clothes','both');self.s.studio.config['profiles']['member-01']=new;self.assertEqual(r,self.s.studio.recipe('member-01',self.s.wardrobe.appearance('member-01'),'clothes','both'))
+ def test_changed_model_or_style_does_not_reuse_old_pack(self):
+  p=self.styled();pack=self.save(p);self.ready(pack,'both');self.ready(pack,'cg');self.s.art_atelier.pipeline.reconcile();p=self.params();p['sd']['style_weight']=.9;new=self.save(p);self.assertNotEqual(new['jobs']['both'],pack['jobs']['both']);self.assertNotEqual(new['jobs']['cg'],pack['jobs']['cg'])
+ def test_bad_model_style_or_weight_rejected_without_mutation(self):
+  for field,value in [('checkpoint','hero'),('style_lora','base'),('style_weight',True),('style_weight',float('nan')),('style_weight',1.6),('style_trigger','<lora:bad:1>'),('checkpoint','missing')]:
+   p=self.params();p['sd'][field]=value;old=copy.deepcopy(self.s.studio.config);world=self.s.engine.journal()
+   with self.assertRaises(ValueError):self.save(p)
+   self.assertEqual(old,self.s.studio.config);self.assertEqual(world,self.s.engine.journal())
+ def test_style_family_mismatch_blocks_render_but_saves_choice(self):
+  p=self.styled();self.s.studio.resources['style']['base']='sd1.5';pack=self.save(p);self.assertEqual(pack['status'],'blocked');self.assertEqual(pack['jobs'],{});self.assertIn('不相容',pack['message']);self.assertEqual(self.s.studio.config['profiles']['member-01']['style_lora'],'style')
+ def test_webui_request_uses_actor_model_and_three_separate_loras(self):
+  import base64,io
+  import lifebox.character_art as module
+  pack=self.save(self.styled());r=self.s.studio.jobs[pack['jobs']['both']]['recipe'];r['api_models']=[{'filename':r['checkpoint']['path'],'title':'alternate model'}];r['api_loras']=[{'path':l['path'],'name':l['id']} for l in r['loras']];buf=io.BytesIO();Image.new('RGB',(16,16),'white').save(buf,format='PNG');captured=[]
+  def reply(url,path,payload,**kw):captured.append(payload);return {'images':[base64.b64encode(buf.getvalue()).decode()]}
+  with patch.object(module,'api',reply):self.s.studio._render(r,r['config']['templates']['portrait'],'watercolor portrait',1)
+  out=captured[0];self.assertEqual(out['override_settings']['sd_model_checkpoint'],'alternate model');self.assertTrue(out['override_settings_restore_afterwards']);self.assertIn('<lora:hero:0.8>',out['prompt']);self.assertIn('<lora:clothes:0.6>',out['prompt']);self.assertIn('<lora:style:0.55>',out['prompt'])
+ def test_native_comfy_missing_style_binding_blocks_preflight(self):
+  p=self.styled();self.s.studio.config['backend']='comfyui';self.s.studio.config['native_selected']['portrait']='native';self.s.studio.native_templates['native']={'title':'mock native','output':'1','installation':'fixture','backend':'comfyui','bindings':{'lora':[], 'lora_weight':[]}}
+  pack=self.save(p);self.assertEqual(pack['status'],'blocked');self.assertIn('畫風',pack['message']);self.assertEqual(pack['jobs'],{})
+ def test_native_comfy_style_mapping_keeps_clothing_separate(self):
+  import io
+  import lifebox.character_art as module
+  pack=self.save(self.styled());r=self.s.studio.jobs[pack['jobs']['both']]['recipe'];r['config']['backend']='comfyui';r['api_models']=['alternate.safetensors'];r['api_loras']=['hero.safetensors','clothes.safetensors','style.safetensors'];buf=io.BytesIO();Image.new('RGB',(16,16),'white').save(buf,format='PNG')
+  t=copy.deepcopy(r['config']['templates']['portrait']);t['_native']={'backend':'comfyui','payload':{'1':{'inputs':{'role':'old','role_weight':0,'clothes':'old','clothes_weight':0,'style':'old','style_weight':0,'reference':'old','denoise':0}}},'bindings':{k:['/1/inputs/'+v] for k,v in {'lora':'role','lora_weight':'role_weight','clothes_lora':'clothes','clothes_weight':'clothes_weight','style_lora':'style','style_weight':'style_weight','reference':'reference','denoise':'denoise'}.items()},'output':'1'};captured=[]
+  def reply(url,path,payload=None,**kw):
+   if path=='/upload/image':return {'name':'reference.png'}
+   if path=='/object_info':return {}
+   if path=='/prompt':captured.append(payload['prompt']);return {'prompt_id':'mock'}
+   return {'mock':{'outputs':{'1':{'images':[{'filename':'mock.png','subfolder':'','type':'output'}]}}}}
+  class Response:
+   def __enter__(self):return self
+   def __exit__(self,*args):pass
+   def read(self,*args):return buf.getvalue()
+  with patch.object(module,'api',reply),patch.object(module.sd_templates,'validate'),patch.object(module.request,'build_opener') as opener:
+   opener.return_value.open.return_value=Response();self.s.studio._render_native_comfy(r,t,'prompt','negative',1,None,None)
+  i=captured[0]['1']['inputs'];self.assertEqual((i['role'],i['clothes'],i['style']),('hero.safetensors','clothes.safetensors','style.safetensors'));self.assertEqual((i['role_weight'],i['clothes_weight'],i['style_weight']),(.8,.6,.55));self.assertEqual(t['_native']['payload']['1']['inputs']['style'],'old')
+
+ def test_cleared_style_zeros_native_webui_binding(self):
+  import base64,io
+  import lifebox.character_art as module
+  pack=self.save();r=self.s.studio.jobs[pack['jobs']['both']]['recipe'];r['api_models']=[{'filename':r['checkpoint']['path'],'title':'base model'}];t=copy.deepcopy(r['config']['templates']['portrait']);t['_native']={'payload':{'alwayson_scripts':{'Style':{'args':[.9]}}},'bindings':{'style_weight':['/alwayson_scripts/Style/args/0']}};original=copy.deepcopy(t['_native']);buf=io.BytesIO();Image.new('RGB',(16,16),'white').save(buf,format='PNG');captured=[]
+  def reply(url,path,payload,**kw):captured.append(payload);return {'images':[base64.b64encode(buf.getvalue()).decode()]}
+  with patch.object(module,'api',reply):self.s.studio._render(r,t,'portrait',1)
+  self.assertEqual(captured[0]['alwayson_scripts']['Style']['args'][0],0.0);self.assertEqual(t['_native'],original)
+
 if __name__=='__main__':unittest.main()

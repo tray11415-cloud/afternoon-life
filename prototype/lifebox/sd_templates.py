@@ -2,7 +2,7 @@
 from __future__ import annotations
 import copy, json, re
 
-VARIABLES={'prompt','negative','seed','checkpoint','lora','lora_weight','clothes_lora','clothes_weight','reference','control','denoise','width','height'}
+VARIABLES={'prompt','negative','seed','checkpoint','lora','lora_weight','clothes_lora','clothes_weight','style_lora','style_weight','reference','control','denoise','width','height'}
 SECRET=re.compile(r'api.?key|access.?token|authorization|password|secret',re.I)
 REMOTE=re.compile(r'https?://(?!127\.0\.0\.1(?::|/)|localhost(?::|/)|\[::1\](?::|/))',re.I)
 
@@ -79,7 +79,7 @@ def validate(data,backend,blocked,node_info=None,api_fields=None):
   if not output or output not in payload:raise ValueError('請選擇輸出圖片的節點 ID')
   # Exclude mapped negative conditioning strings from the SFW positive check.
   check=copy.deepcopy(payload)
-  for var in ('negative','checkpoint','lora','clothes_lora'):
+  for var in ('negative','checkpoint','lora','clothes_lora','style_lora'):
    for p in bindings.get(var,[]):pointer(check,p,'',True)
   inspect_values(check,blocked)
   if node_info is not None:

@@ -12,3 +12,9 @@
 
 - The explicit Save and complete character action validates and auto-applies its own matching outputs; do not add redundant approval steps. Preserve all existing character controls/cards and native SD workflows.
 
+
+## v0.23 Per-character SD checkpoint and style
+
+- Optional checkpoint/style_lora/style_weight/style_trigger in the existing per-actor SD binding; unified and advanced editors share them. Blank overrides retain legacy binding and cache hashes. Do not guess assignments or download weights.
+- All portrait/sprite/CG recipes use actor overrides and three separate LoRA categories. Native ComfyUI needs explicit style bindings; preflight blocks missing bindings. Clearing mapped style weights uses zero in copied requests. Never rewrite native templates or unsaved SD UI.
+- 30 pipeline tests include nine model/style cases; 26 character studio and 18 native template tests join Windows CI. Tests use mock rendering; no fresh SD output or paid model call was made for this update.

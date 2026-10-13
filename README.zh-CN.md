@@ -4,13 +4,23 @@
 
 俯视角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持续运作的小镇。每位 AI 只取得自己的观察、目标与记忆；可以共用模型服务，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.22.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
+**目前是可玩的 alpha：v0.23.0。** 这是生活模拟实验，尚非完成的商业 galgame，也尚未验证成熟的长期故事品质。露骨内容入口关闭。
 
 [![简体中文操作导览](docs/media/guide.zh-CN.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.22.0)
+[简体解说导览](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4) · [下载版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.23.0)
 
 简体影片展示 v0.20 开始菜单、设置、人物工坊和实际游戏操作；使用独立离线世界、合成配音与字幕，没有现场付费模型请求或 SD 生图。[其他语言及拍摄说明](docs/WALKTHROUGH.md)。
+
+## 角色底模与画风 LoRA（v0.23）
+
+人物工坊的角色 prompt 下方新增 **此角色底模**、**画风 LoRA**、**权重（0–1.5）**及**画风触发词**。每人独立保存；选择“沿用全局底模”即可保持原本默认。人物与服装 LoRA 仍分开。按 **保存并完成这位人物**，立绘、行走图与 CG 都使用此配方，旧文件保留。
+
+选单列出已连接 SD 安装内的本机可选资源。已知底模与 LoRA 架构不符会显示原因并阻挡生成；未知训练信息需自行确认。WebUI／Forge 生图后恢复原服务底模；ComfyUI 内置模板依序叠加三类 LoRA。原生 ComfyUI 模板须把 `style_lora`、`style_weight` 绑定到画风节点，或改回该用途的内置模板。
+
+![角色画风设置](prototype/web/assets/guide-v23-character-style.png)
+
+图为隔离界面测试；成果使用已署名 LPC 模拟素材，并非本次 SD 实际出图。
 
 ## 统一人物工坊（v0.22）
 

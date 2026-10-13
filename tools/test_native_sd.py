@@ -73,18 +73,18 @@ class NativeTests(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,'reference'):self.s.native_select({'kind':'portrait','id':'x'})
  def test_render_preserves_scripts_and_injects_current_identity(self):
   t={**copy.deepcopy(m.TEMPLATES['portrait']),'_native':n.validate(self.template(),'a1111',m.BLOCKED)}
-  r={'config':{'backend':'a1111','url':'http://127.0.0.1:7861','sampler':'Euler','scheduler':'Automatic'},'profile':{},'checkpoint':{'path':'base'},'loras':[{'path':'hero','weight':.8}],'api_models':[{'filename':'base','title':'base'}],'api_loras':[{'path':'hero','name':'hero'}],'vae':None}
+  r={'config':{'backend':'a1111','url':'http://127.0.0.1:7861','sampler':'Euler','scheduler':'Automatic'},'profile':{'lora':'hero','weight':.8},'checkpoint':{'path':'base'},'loras':[{'id':'hero','path':'hero','weight':.8}],'api_models':[{'filename':'base','title':'base'}],'api_loras':[{'path':'hero','name':'hero'}],'vae':None}
   captured=[]
   def api(url,path,payload=None,**kwargs):captured.append(payload);return {'images':[base64.b64encode(png()).decode()]}
   with patch.object(m,'api',api):self.s._render(r,t,'current adult woman, coat',10)
   payload=captured[0];self.assertTrue(payload['enable_hr']);self.assertEqual(payload['width'],256);self.assertIn('current adult woman',payload['prompt']);self.assertIn('<lora:hero:0.8>',payload['prompt']);self.assertTrue(payload['alwayson_scripts']['FreeU Integrated']['args'][0]);self.assertFalse(payload['save_images'])
  def test_infotext_native_steps_not_overwritten(self):
   data=self.template();data['payload']={'infotext':'adult woman\nNegative prompt: nsfw\nSteps: 2, Size: 256x320, CFG scale: 5'};t={**copy.deepcopy(m.TEMPLATES['portrait']),'_native':n.validate(data,'a1111',m.BLOCKED)}
-  r={'config':{'backend':'a1111','url':'http://127.0.0.1:7861','sampler':'Euler','scheduler':'Automatic'},'profile':{},'checkpoint':{'path':'base'},'loras':[{'path':'hero','weight':.8}],'api_models':[{'filename':'base','title':'base'}],'api_loras':[{'path':'hero','name':'hero'}],'vae':None};captured=[]
+  r={'config':{'backend':'a1111','url':'http://127.0.0.1:7861','sampler':'Euler','scheduler':'Automatic'},'profile':{'lora':'hero','weight':.8},'checkpoint':{'path':'base'},'loras':[{'id':'hero','path':'hero','weight':.8}],'api_models':[{'filename':'base','title':'base'}],'api_loras':[{'path':'hero','name':'hero'}],'vae':None};captured=[]
   with patch.object(m,'api',lambda url,path,payload,**kw:(captured.append(payload) or {'images':[base64.b64encode(png()).decode()]})):self.s._render(r,t,'clothed adult',1)
   self.assertNotIn('steps',captured[0]);self.assertNotIn('width',captured[0]);self.assertIn('infotext',captured[0])
  def test_comfy_native_execution_reference_and_custom_output(self):
-  native=n.validate(self.template('comfyui'),'comfyui',m.BLOCKED);t={**m.TEMPLATES['portrait'],'_native':native};r={'config':{'url':'http://127.0.0.1:8188'},'checkpoint':{'name':'base.safetensors'},'loras':[{'name':'hero.safetensors','weight':.5}],'api_models':['base.safetensors'],'api_loras':['hero.safetensors']};sent=[]
+  native=n.validate(self.template('comfyui'),'comfyui',m.BLOCKED);t={**m.TEMPLATES['portrait'],'_native':native};r={'config':{'url':'http://127.0.0.1:8188'},'profile':{'lora':'hero','weight':.5},'checkpoint':{'name':'base.safetensors'},'loras':[{'id':'hero','name':'hero.safetensors','weight':.5}],'api_models':['base.safetensors'],'api_loras':['hero.safetensors']};sent=[]
   info={v['class_type']:{'output_node':v['class_type']=='SaveImage'} for v in graph().values()}
   def api(url,path,payload=None,**kw):
    if path=='/upload/image':return {'name':'ref.png','subfolder':''}

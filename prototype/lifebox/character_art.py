@@ -34,6 +34,26 @@ TEMPLATES = {
  'cg':{'prompt':'high quality anime scene illustration, {identity}, {outfit}, {scene}, (detailed environment fills entire canvas:1.4), wide scenic background, relaxed everyday moment, single adult woman, fully clothed, consistent face and hair, natural lighting, no text',
   'negative':NEGATIVE+', white border, empty white margins, blank background, picture frame, rectangular frame, pillars, split panels','width':768,'height':512,'steps':24,'cfg':6.0,'denoise':.92}}
 
+PROFILE_FIELDS={'identity','trigger','lora','weight','clothes_lora','clothes_weight','seed','auto','expression'}
+STYLE_FIELDS={'checkpoint','style_lora','style_weight','style_trigger'}
+def validate_binding(value):
+ if not isinstance(value,dict) or not PROFILE_FIELDS.issubset(value) or set(value)-PROFILE_FIELDS-STYLE_FIELDS:raise ValueError('角色設定欄位不完整')
+ p=copy.deepcopy(value)
+ for k in ('identity','trigger','style_trigger'):
+  text=p.get(k,'')
+  if not isinstance(text,str) or len(text)>1600 or '<' in text or '>' in text or BLOCKED.search(text):raise ValueError('角色描述／觸發詞需為成年日常 SFW 內容')
+ for k in ('lora','clothes_lora','checkpoint','style_lora'):
+  if not isinstance(p.get(k,''),str):raise ValueError('無效的模型或 LoRA ID')
+ if type(p['seed']) is not int or not 0<=p['seed']<=4294967295 or type(p['auto']) is not bool or p['expression'] not in EXPRESSIONS:raise ValueError('角色 Seed／差分無效')
+ for k in ('weight','clothes_weight','style_weight'):
+  if type(p.get(k,.8)) not in (int,float) or not 0<=p.get(k,.8)<=1.5:raise ValueError('LoRA 權重需為 0–1.5')
+ # Empty overrides keep legacy fingerprints and caches unchanged.
+ for k in ('checkpoint','style_lora','style_trigger'):
+  if not p.get(k):p.pop(k,None)
+ if p.get('style_lora'):p.setdefault('style_weight',.8)
+ else:p.pop('style_weight',None)
+ return p
+
 def key(value):
  return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
@@ -411,9 +431,7 @@ class CharacterStudio:
   for p in new['outfit_loras'].values():
    if set(p)!={'lora','weight','trigger'} or not isinstance(p['lora'],str) or type(p['weight']) not in (int,float) or not 0<p['weight']<=1.5 or not isinstance(p['trigger'],str) or len(p['trigger'])>300 or BLOCKED.search(p['trigger']) or '<' in p['trigger']:raise ValueError('無效泳裝 LoRA 設定')
   for actor,p in new['profiles'].items():
-   if set(p)!={'identity','trigger','lora','weight','clothes_lora','clothes_weight','seed','auto','expression'}:raise ValueError('角色設定欄位不完整')
-   if any(not isinstance(p[k],str) or len(p[k])>1600 or '<' in p[k] or BLOCKED.search(p[k]) for k in ('identity','trigger')):raise ValueError('角色描述／觸發詞需為成年日常 SFW 內容')
-   if type(p['seed']) is not int or not 0<=p['seed']<=4294967295 or type(p['auto']) is not bool or not 0<=p['weight']<=1.5 or not 0<=p['clothes_weight']<=1.5 or p['expression'] not in EXPRESSIONS:raise ValueError('角色 Seed／LoRA 權重／差分無效')
+   new['profiles'][actor]=validate_binding(p)
   if not isinstance(new['sampler'],str) or not 0<len(new['sampler'])<=80 or not isinstance(new['scheduler'],str) or len(new['scheduler'])>80:raise ValueError('無效採樣器')
   with self.lock:
    old=self.config;self.config=new
@@ -425,8 +443,9 @@ class CharacterStudio:
      r=self.resources.get(new['background_model'])
      if not r or r['category']!='background' or not (Path(r['path']).parent/'birefnet.py').is_file():raise ValueError('需選本機完整 RMBG-2.0 模型')
     for p in new['profiles'].values():
-     for k in ('lora','clothes_lora'):
-      if p[k]:self._resource(p[k],'lora')
+     if p.get('checkpoint'):self._resource(p['checkpoint'],'checkpoint')
+     for k in ('lora','clothes_lora','style_lora'):
+      if p.get(k):self._resource(p[k],'lora')
     for p in new['outfit_loras'].values():
      if p['lora']:self._resource(p['lora'],'lora')
    except Exception:self.config=old;raise
@@ -451,12 +470,13 @@ class CharacterStudio:
    binding=c['outfit_loras'].get(outfit['id'],{})
    if not binding.get('lora'):raise ValueError('泳池生圖必須先在生圖設定綁定這套泳装的本機服裝 LoRA')
    p['clothes_lora']=binding['lora'];p['clothes_weight']=binding['weight'];outfit_prompt+=', '+binding.get('trigger','')
-  checkpoint=self._resource(c['checkpoint'],'checkpoint')
+  checkpoint=self._resource(p.get('checkpoint') or c['checkpoint'],'checkpoint')
+  if p.get('style_trigger'):p['identity']+=', '+p['style_trigger']
   model_list=self.services.get(c['url'],{}).get('models',[])
   if not self.services.get(c['url'],{}).get('ready'):raise ValueError('請先測試並連接本機 SD API')
   loras=[]
-  for field,weight in (('lora','weight'),('clothes_lora','clothes_weight')):
-   if p[field]:loras.append({**self._resource(p[field],'lora'),'weight':p[weight]})
+  for field,weight in (('lora','weight'),('clothes_lora','clothes_weight'),('style_lora','style_weight')):
+   if p.get(field):loras.append({**self._resource(p[field],'lora'),'weight':p.get(weight,.8)})
   # Catch known incompatible training families before a costly render.
   for l in loras:
    a,b=family(checkpoint['base']),family(l['base'])
@@ -493,6 +513,7 @@ class CharacterStudio:
     native=self.native_templates.get(tid)
     if not native or native['installation']!=c['installation'] or native['backend']!=c['backend']:raise ValueError('使用中的原生模板與 SD 安裝不相同，請重新選擇')
     if native['backend']=='comfyui' and not p['lora']:raise ValueError('這個原生 ComfyUI 模板包含角色 LoRA 節點；請選 LoRA，或在進階 SD 將用途切回內建模板。')
+    if native['backend']=='comfyui' and p.get('style_lora') and not {'style_lora','style_weight'}.issubset(native['bindings']):raise ValueError('原生 ComfyUI 模板缺少畫風 LoRA／權重綁定；請加入綁定，或將用途切回內建模板。')
     scoped['native_templates'][purpose]=copy.deepcopy(native)
   return {**({'follow_identity':True} if follow_identity else {}),'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
    'profile':p,'config':scoped,**({'look':copy.deepcopy(authored['look'])} if authored.get('look',{}).get('enabled') else {}),
@@ -621,7 +642,10 @@ class CharacterStudio:
    native=t.get('_native')
    if native:
     variables={'prompt':prompt,'negative':negative,'seed':seed,'checkpoint':model}
-    if recipe['loras']:variables.update(lora=self._a1111_name(recipe['loras'][0],recipe['api_loras'],'name'),lora_weight=recipe['loras'][0]['weight'])
+    for field,weight in (('lora','lora_weight'),('clothes_lora','clothes_weight'),('style_lora','style_weight')):
+     selected=next((l for l in recipe['loras'] if l['id']==p.get(field)),None)
+     if selected:variables.update({field:self._a1111_name(selected,recipe['api_loras'],'name'),weight:p.get({'lora':'weight','clothes_lora':'clothes_weight','style_lora':'style_weight'}[field],.8)})
+     elif field in ('clothes_lora','style_lora') and weight in native['bindings']:variables[weight]=0.0
     imported=sd_templates.mapped_payload(native,variables)
     # Infotext is parsed by the installed WebUI, including its plugin fields.
     # Do not overwrite those native values with our basic defaults.
@@ -702,13 +726,15 @@ class CharacterStudio:
    buf=io.BytesIO();Image.new('RGB',(t['width'],t['height']),'white').save(buf,format='PNG');reference_name=upload(buf.getvalue())
   else:reference_name=upload(reference)
   values={'prompt':prompt,'negative':negative,'seed':seed,'checkpoint':self._comfy_name(recipe['checkpoint'],recipe['api_models']),
-   'lora':self._comfy_name(recipe['loras'][0],recipe['api_loras']),'lora_weight':recipe['loras'][0]['weight'],
+   'lora':self._comfy_name(next(l for l in recipe['loras'] if l['id']==recipe['profile']['lora']),recipe['api_loras']),'lora_weight':recipe['profile']['weight'],
    'reference':reference_name,'denoise':t['denoise'] if reference else 1.0,'width':t['width'],'height':t['height']}
   if control:values['control']=upload(control)
-  if len(recipe['loras'])>1:
-   if not {'clothes_lora','clothes_weight'}.issubset(bindings):raise ValueError('角色使用服裝 LoRA，但原生模板沒有服裝 LoRA 與權重綁定')
-   values.update(clothes_lora=self._comfy_name(recipe['loras'][1],recipe['api_loras']),clothes_weight=recipe['loras'][1]['weight'])
-  elif 'clothes_weight' in bindings:values['clothes_weight']=0.0
+  for field,weight in (('clothes_lora','clothes_weight'),('style_lora','style_weight')):
+   selected=next((l for l in recipe['loras'] if l['id']==recipe['profile'].get(field)),None)
+   if selected:
+    if not {field,weight}.issubset(bindings):raise ValueError('原生模板缺少 '+field+' 與權重綁定')
+    values.update({field:self._comfy_name(selected,recipe['api_loras']),weight:recipe['profile'].get(weight,.8)})
+   elif weight in bindings:values[weight]=0.0
   graph=sd_templates.mapped_payload(native,values)
   # Check the current running installation again, not just the import snapshot.
   sd_templates.validate({k:v for k,v in native.items() if k!='installation'},'comfyui',BLOCKED,api(url,'/object_info',timeout=15))

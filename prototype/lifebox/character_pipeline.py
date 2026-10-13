@@ -1,7 +1,7 @@
 """One character save owns a resumable local art pipeline, never another actor's job."""
 import copy,json,re,secrets,threading,time
 from pathlib import Path
-from .character_art import atomic,BLOCKED,EXPRESSIONS
+from .character_art import atomic,BLOCKED,EXPRESSIONS,validate_binding
 from .characters import validate_profile
 from .model import digest
 
@@ -39,19 +39,16 @@ class CharacterPipeline:
   from .looks import look_prompt
   identity=prompt or (look_prompt(p.get('look')) if p.get('look',{}).get('enabled') else '') or ('adult person' if binding.get('lora') else '')
   p['appearance']=prompt;binding.update(identity=identity,auto=False)
-  required={'identity','trigger','lora','weight','clothes_lora','clothes_weight','seed','auto','expression'}
-  if set(binding)!=required:raise ValueError('SD 人物配方欄位不完整。')
-  if any(not isinstance(binding[k],str) or len(binding[k])>1600 or '<' in binding[k] or BLOCKED.search(binding[k]) for k in ('identity','trigger')):raise ValueError('無效的身份或觸發詞。')
-  if type(binding['seed']) is not int or not 0<=binding['seed']<=4294967295 or binding['expression'] not in EXPRESSIONS or any(type(binding[k]) not in (int,float) or not 0<=binding[k]<=1.5 for k in ('weight','clothes_weight')):raise ValueError('無效的 Seed、權重或表情。')
+  binding=validate_binding(binding)
   previous=self.s.studio.config['profiles'].get(actor,{})
-  for field in ('lora','clothes_lora'):
-   rid=binding[field]
+  for field in ('lora','clothes_lora','style_lora','checkpoint'):
+   rid=binding.get(field,'')
    if not isinstance(rid,str):raise ValueError('無效 LoRA ID。')
    if rid:
     resource=self.s.studio.resources.get(rid)
     if not resource:
      if rid!=previous.get(field):raise ValueError('LoRA 已不存在，請重新選擇。')
-    elif resource['category']!='lora' or not resource['selectable'] or self.s.studio.config['installation'] not in resource['installations']:raise ValueError('請選此安裝內可用的 LoRA。')
+    elif resource['category']!=('checkpoint' if field=='checkpoint' else 'lora') or not resource['selectable'] or self.s.studio.config['installation'] not in resource['installations']:raise ValueError('請選此安裝內可用的底模或 LoRA。')
   return p,binding
  def _matches(self,pack):
   return digest(self.s.character_setup.current(self.s,pack['actor']))==pack['profile_fingerprint'] and digest(self.s.studio.config['profiles'].get(pack['actor']))==pack['binding_fingerprint'] and self.a.scope(pack['actor'])==pack['scope']

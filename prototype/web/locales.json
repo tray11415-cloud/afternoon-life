@@ -4873,5 +4873,65 @@
     "zh-CN": "先前选定的 LoRA（目前未找到）",
     "ja": "以前選んだLoRA（現在見つかりません）",
     "en": "Previously selected LoRA (currently unavailable)"
+  },
+  "此角色底模": {
+    "en": "Character checkpoint",
+    "ja": "このキャラクターのモデル",
+    "zh-CN": "此角色底模"
+  },
+  "畫風 LoRA（可選）": {
+    "en": "Style LoRA (optional)",
+    "ja": "画風 LoRA（任意）",
+    "zh-CN": "画风 LoRA（可选）"
+  },
+  "畫風 LoRA 權重": {
+    "en": "Style LoRA weight",
+    "ja": "画風 LoRA の強度",
+    "zh-CN": "画风 LoRA 权重"
+  },
+  "畫風觸發詞": {
+    "en": "Style trigger words",
+    "ja": "画風のトリガーワード",
+    "zh-CN": "画风触发词"
+  },
+  "沿用全局底模": {
+    "en": "Use global checkpoint",
+    "ja": "全体設定のモデルを使用",
+    "zh-CN": "沿用全局底模"
+  },
+  "不使用畫風 LoRA": {
+    "en": "No style LoRA",
+    "ja": "画風 LoRA を使わない",
+    "zh-CN": "不使用画风 LoRA"
+  },
+  "先前選定的資源（目前未找到）": {
+    "en": "Previously selected resource (missing)",
+    "ja": "選択済みのリソース（見つかりません）",
+    "zh-CN": "先前选定的资源（目前未找到）"
+  },
+  "填寫畫風 LoRA 作者提供的觸發詞": {
+    "en": "Enter trigger words from the style LoRA author",
+    "ja": "画風 LoRA 作者のトリガーワードを入力",
+    "zh-CN": "填写画风 LoRA 作者提供的触发词"
+  },
+  "立繪、行走圖與 CG 使用：": {
+    "en": "Portraits, sprites and CG use: ",
+    "ja": "立ち絵・歩行画像・CG：",
+    "zh-CN": "立绘、行走图与 CG 使用："
+  },
+  "尚未選底模": {
+    "en": "No checkpoint selected",
+    "ja": "モデル未選択",
+    "zh-CN": "尚未选底模"
+  },
+  "未知架構": {
+    "en": "Unknown architecture",
+    "ja": "不明なモデル形式",
+    "zh-CN": "未知架构"
+  },
+  "角色、服裝與畫風 LoRA 分開保存；同一底模與畫風套用立繪、行走圖及 CG。": {
+    "en": "Identity, clothing and style LoRAs are saved separately. Portraits, sprites and CG use the same checkpoint and style.",
+    "ja": "キャラクター・服装・画風 LoRA を個別に保存。立ち絵・歩行画像・CG は同じモデルと画風を使用します。",
+    "zh-CN": "角色、服装与画风 LoRA 分开保存；同一底模与画风套用立绘、行走图及 CG。"
   }
 }

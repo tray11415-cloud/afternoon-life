@@ -4,16 +4,26 @@
 
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
-**Status: playable alpha, v0.22.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
+**Status: playable alpha, v0.23.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
 
 [![Guided walkthrough](docs/media/guide.en.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.22.0)
+[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.23.0)
 
 The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
+
+## Character checkpoint and style LoRA (v0.23)
+
+The atelier now has **Character checkpoint**, **Style LoRA**, its weight (0–1.5) and trigger words next to the art prompt. Each actor saves these independently. Keep **Use global checkpoint** to inherit the existing default. Character identity and clothing LoRAs remain separate. **Save and finish this character** makes portraits, walking sprites and CG with this recipe; previous files remain available.
+
+Selectors list local selectable resources in the connected SD installation. Known architecture mismatches block generation with a visible reason. WebUI/Forge requests restore the service's checkpoint after rendering; built-in ComfyUI chains all selected LoRAs. Native ComfyUI templates require explicit `style_lora` and `style_weight` bindings to their style loader; otherwise switch that purpose to the built-in template. Unknown training metadata does not guarantee compatibility.
+
+![Character style controls](prototype/web/assets/guide-v23-character-style.png)
+
+Screenshot: isolated UI test; outputs are licensed LPC mock assets, not fresh SD renders.
 
 ## Unified character studio (v0.22)
 

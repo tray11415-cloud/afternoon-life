@@ -1,4 +1,4 @@
-# Unified character atelier · v0.22
+# Unified character atelier · v0.23
 
 One form combines name, adult age/gender, one art prompt, optional LoRA, trigger, seed, appearance controls, personality, goals, optional background, manual AI drafts and cards. A character save validates and commits that actor's profile, then schedules portrait expressions + sprites and one CG with the same applied identity/outfit snapshot. Matching ready outputs are auto-applied. Internal component validation/history supports undo; no separate Apply click is required for this explicitly requested save workflow.
 
@@ -29,3 +29,11 @@ AI drafts are manual and actor-scoped, with normal usage limits and an explicit 
 21 pipeline tests cover rename/state preservation, pure prompt generation, local tag resolution, profile isolation, stale edits, automatic application, queue waiting, retry, cancellation, new-save templates, compatible art reuse and fallback restoration. SD/native/UI tests use isolated or mocked services. Guide screenshots use packaged credited LPC assets with explicit mock labels, never claim fresh SD render quality.
 
 See [illustrated player guide](PLAYER_GUIDE.zh-TW.md) and [artwork licences](../ASSET_LICENSES.md). Interface organisation references [AI＊少女's manual](https://aisteam.illusion.rip/manual/readme_jp.html); the code/interface are original and no AI Shoujo assets are included.
+
+## Per-character model and style overrides
+
+The SD binding retains its existing nine required fields and accepts optional `checkpoint`, `style_lora`, `style_weight` (0–1.5, default 0.8), and `style_trigger` (SFW text, at most 1600 characters). IDs must reference selectable local resources from the current installation. Blank checkpoint inherits the global default; blank style LoRA disables the style loader. Empty overrides are removed during validation to retain old saved-binding fingerprints and render cache keys. Saving another actor does not change these choices. Both unified and advanced SD editors use this same binding.
+
+Selected checkpoint, all three LoRAs, their weights and style trigger are captured in every portrait/sprite/CG recipe, cache key and material identity signature. Changing a recipe schedules new materials. Built-in WebUI and ComfyUI renderers apply every selected LoRA even without an identity LoRA. WebUI uses request-scoped checkpoint overrides and restore-afterwards. Native ComfyUI requires additional `style_lora`/`style_weight` bindings; missing style bindings block at preflight before any job starts. Optional unused clothing/style weights are set to zero when their bindings exist, preserving the native node topology. Original workflow snapshots and unsaved native UI forms remain untouched.
+
+Verification adds nine model/style cases (30 pipeline tests total): independent saved recipes across all four kinds, persistence, legacy cache equivalence, recipe-change invalidation, malformed resources/weights without mutation, architecture mismatch, actual mocked WebUI payload and native ComfyUI mapping/preflight, and cleared native style weights. No real SD render or paid request was made.

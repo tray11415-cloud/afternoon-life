@@ -1,6 +1,6 @@
 /* Interface localisation never changes game state, authored profiles or speech history. */
 (() => {
- let simpleMap={},reservedNames=[],dictionary={},phrases=[],language='zh-TW',pending=false,ready=false,setting=false;
+ let simpleMap={},reservedNames=[],dictionary={},phrases=[],language='en',pending=false,ready=false,setting=false;
  const originalNodes=new WeakMap(),originalAttributes=new WeakMap();
  const protectedSelector='script,style,textarea,pre,code,[data-user-content],.from-player,.from-agent,.outfit-description,.group-messages,.social-log';
  const supported=['zh-TW','zh-CN','ja','en'];
@@ -71,7 +71,7 @@
  }
  function schedule(){if(pending)return;pending=true;queueMicrotask(()=>{pending=false;paint();});}
  function use(value){if(!supported.includes(value))return;language=value;try{localStorage.setItem('lifebox.language',value);}catch{};schedule();}
- window.LifeI18n={t,get language(){return language;},sync(s){reservedNames=[...s.roster.map(p=>p.name),s.player?.name].filter(n=>n&&n!=='玩家');const note=document.getElementById('demo-note');if(note)note.hidden=!s.usage?.demo;if(!setting)use(s.preferences?.config.language||'zh-TW');}};
+ window.LifeI18n={t,get language(){return language;},sync(s){reservedNames=[...s.roster.map(p=>p.name),s.player?.name].filter(n=>n&&n!=='玩家');const note=document.getElementById('demo-note');if(note)note.hidden=!s.usage?.demo;if(!setting)use(s.preferences?.config.language||'en');}};
  async function init(){
   try{const sc=await fetch('/simplified.json');if(sc.ok)simpleMap=await sc.json();const r=await fetch('/locales.json');if(!r.ok)throw Error();dictionary=await r.json();phrases=Object.entries(dictionary).sort((a,b)=>b[0].length-a[0].length);ready=true;paint();}catch{console.error('Interface translations could not be loaded.');}
   const observer=new MutationObserver(schedule);observer.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','alt']});

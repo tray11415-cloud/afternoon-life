@@ -4,7 +4,7 @@ from pathlib import Path
 from .character_art import atomic
 
 LANGUAGES={'zh-TW':'繁體中文','zh-CN':'简体中文','ja':'日本語','en':'English'}
-DEFAULT={'language':'zh-TW','camera_zoom':1.0,'show_names':True,'show_minimap':True,'reduce_motion':False,'large_text':False,'pause_in_settings':True}
+DEFAULT={'language':'en','camera_zoom':1.0,'show_names':True,'show_minimap':True,'reduce_motion':False,'large_text':False,'pause_in_settings':True}
 class Preferences:
  def __init__(self,root):
   self.path=Path(root)/'preferences.json';self.config=copy.deepcopy(DEFAULT)

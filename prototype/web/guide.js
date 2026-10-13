@@ -5,6 +5,6 @@
  const target=lang=>location.protocol==='file:'?'afternoon-life-player-guide.'+lang+'.html':'/guide.'+lang+'.html';
  select.value=current;select.onchange=()=>{location.href=target(select.value)+location.hash;};
  const requested=new URLSearchParams(location.search).get('lang');let preferred=requested;
- if(!preferred&&location.pathname==='/guide.html'){try{preferred=localStorage.getItem('lifebox.language');}catch{}}
+ if(!preferred&&location.pathname==='/guide.html'){try{preferred=localStorage.getItem('lifebox.language')||'en';}catch{preferred='en';}}
  if(langs.includes(preferred)&&preferred!==current)location.replace(target(preferred)+location.hash);
 })();

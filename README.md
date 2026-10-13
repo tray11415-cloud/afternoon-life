@@ -2,6 +2,8 @@
 
 [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · **English**
 
+First launch defaults to **English**. An existing saved language choice is retained.
+
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
 **Status: playable alpha, v0.24.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.

@@ -24,7 +24,7 @@ class SDAtelierTests(unittest.TestCase):
   old=self.s.engine.journal();config=copy.deepcopy(self.s.studio.config);data=self.call('state');self.assertIn('player',data['atelier']['bindings']);self.assertNotIn('room-01',data['atelier']['public_scenes']);self.assertEqual(old,self.s.engine.journal());self.assertEqual(config,self.s.studio.config)
  def test_cg_creation_uses_actor_worn_snapshot_not_events(self):
   old=self.s.engine.journal();outfit=self.s.wardrobe.appearance('member-03');seen=[]
-  def submit(actor,worn,prompt,kind,scene):
+  def submit(actor,worn,prompt,kind,scene,**kwargs):
    seen.append((actor,worn,kind,scene));j=self.job('cg',actor);return j
   with patch.object(self.s.studio,'submit',submit):self.call('generate',actor='member-03',kind='cg',scene='park',description='quiet afternoon')
   self.assertEqual(seen[0][0],'member-03');self.assertEqual(seen[0][1],outfit);self.assertEqual(seen[0][3]['scene'],'park');self.assertEqual(self.s.engine.journal(),old);self.assertEqual(self.s.backend.stats()['calls'],0)

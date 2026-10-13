@@ -113,3 +113,25 @@ def mapped_payload(template,values):
   if var in values:
    for path in paths:pointer(payload,path,values[var],True)
  return payload
+
+def follow_adetailer(payload,prompt):
+ """Override only positive identity text in a copied request, not its workflow."""
+ result=copy.deepcopy(payload)
+ for name,script in (result.get('alwayson_scripts') or {}).items():
+  if 'adetailer' in name.lower() and isinstance(script,dict):
+   for arg in script.get('args',[]):
+    if isinstance(arg,dict) and 'ad_prompt' in arg:arg['ad_prompt']=prompt
+ info=result.get('infotext')
+ if isinstance(info,str) and info:
+  head,sep,line=info.rpartition('\n');fields=[];start=0;quoted=False;escaped=False
+  for index,char in enumerate(line):
+   if escaped:escaped=False;continue
+   if char=='\\' and quoted:escaped=True;continue
+   if char=='"':quoted=not quoted
+   if char==',' and not quoted:fields.append(line[start:index]);start=index+1
+  fields.append(line[start:])
+  for index,field in enumerate(fields):
+   match=re.match(r'(\s*ADetailer prompt(?:\s*[1-4])?:\s*)',field,re.I)
+   if match:fields[index]=match.group(1)+json.dumps(prompt,ensure_ascii=False)
+  result['infotext']=head+sep+','.join(fields)
+ return result

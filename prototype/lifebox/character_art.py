@@ -433,16 +433,16 @@ class CharacterStudio:
    atomic(self.config_path,self.config);self.auto_seen.clear()
   return self.state()
 
- def recipe(self,actor,outfit,outfit_prompt,kind,scene=None):
+ def recipe(self,actor,outfit,outfit_prompt,kind,scene=None,follow_identity=False):
   if actor not in ACTORS or kind not in ('portrait','pixel','both','cg'):raise ValueError('未知角色／生成類型')
   if kind=='cg' and (not isinstance(scene,dict) or set(scene)!={'scene','place_name','description'} or any(not isinstance(x,str) or not 1<=len(x)<=1200 or BLOCKED.search(x) for x in scene.values())):raise ValueError('一般 CG 需要當下公開場景')
   c=copy.deepcopy(self.config);p=c['profiles'].get(actor)
   if not p:raise ValueError('請先保存此角色的身份與 LoRA 設定')
-  if not p.get('lora'):raise ValueError('請先選擇角色 LoRA；服裝 LoRA 不能代替角色身份')
+  if not p.get('identity','').strip():raise ValueError('請先填寫角色 prompt 或身份描述')
   p.pop('auto',None);p.pop('expression',None)
   authored=getattr(self,'actor_identities',{}).get(actor,{})
   if BLOCKED.search(authored.get('appearance','')):raise ValueError('外觀描述目前只支援成年 SFW 生圖')
-  if authored.get('appearance'):p['identity']+=', '+authored['appearance']
+  if authored.get('appearance') and authored['appearance'].strip()!=p['identity'].strip():p['identity']+=', '+authored['appearance']
   from .looks import look_prompt
   look_notes=look_prompt(authored.get('look'))
   if look_notes:p['identity']+=', '+look_notes
@@ -457,7 +457,6 @@ class CharacterStudio:
   loras=[]
   for field,weight in (('lora','weight'),('clothes_lora','clothes_weight')):
    if p[field]:loras.append({**self._resource(p[field],'lora'),'weight':p[weight]})
-  if not loras:raise ValueError('請先選擇角色 LoRA；未綁定的角色不會自動生成')
   # Catch known incompatible training families before a costly render.
   for l in loras:
    a,b=family(checkpoint['base']),family(l['base'])
@@ -493,17 +492,18 @@ class CharacterStudio:
    if tid:
     native=self.native_templates.get(tid)
     if not native or native['installation']!=c['installation'] or native['backend']!=c['backend']:raise ValueError('使用中的原生模板與 SD 安裝不相同，請重新選擇')
+    if native['backend']=='comfyui' and not p['lora']:raise ValueError('這個原生 ComfyUI 模板包含角色 LoRA 節點；請選 LoRA，或在進階 SD 將用途切回內建模板。')
     scoped['native_templates'][purpose]=copy.deepcopy(native)
-  return {'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
+  return {**({'follow_identity':True} if follow_identity else {}),'pipeline_version':6,'age':authored.get('age',25),'gender':getattr(self,'actor_genders',{}).get(actor,'male' if actor=='player' else 'female'),'swim':swim,'actor':actor,'outfit':copy.deepcopy(outfit),'outfit_prompt':outfit_prompt,'kind':kind,'scene':copy.deepcopy(scene),'pose_reference':pose_reference,'control':control,'background':background,
    'profile':p,'config':scoped,**({'look':copy.deepcopy(authored['look'])} if authored.get('look',{}).get('enabled') else {}),
    'checkpoint':checkpoint,'vae':self._resource(c['vae'],'vae') if c['vae'] else None,'loras':loras,
    'api_models':copy.deepcopy(model_list),'api_loras':copy.deepcopy(api_loras),
    'api_vaes':copy.deepcopy(self.services[c['url']].get('vaes',[])),
    'api_control_models':copy.deepcopy(self.services[c['url']].get('control_models',[]))}
 
- def submit(self,actor,outfit,outfit_prompt,kind='both',scene=None):
+ def submit(self,actor,outfit,outfit_prompt,kind='both',scene=None,follow_identity=False):
   with self.lock:
-   recipe=self.recipe(actor,outfit,outfit_prompt,kind,scene)
+   recipe=self.recipe(actor,outfit,outfit_prompt,kind,scene,follow_identity)
    if kind=='cg':recipe['scene_nonce']=secrets.token_hex(4)
    jid=key(recipe)
    previous=self.jobs.get(jid)
@@ -620,7 +620,9 @@ class CharacterStudio:
     'batch_size':1,'n_iter':1,'override_settings':overrides,'override_settings_restore_afterwards':True,'send_images':True,'save_images':False}
    native=t.get('_native')
    if native:
-    imported=sd_templates.mapped_payload(native,{'prompt':prompt,'negative':negative,'seed':seed,'checkpoint':model,'lora':self._a1111_name(recipe['loras'][0],recipe['api_loras'],'name'),'lora_weight':recipe['loras'][0]['weight']})
+    variables={'prompt':prompt,'negative':negative,'seed':seed,'checkpoint':model}
+    if recipe['loras']:variables.update(lora=self._a1111_name(recipe['loras'][0],recipe['api_loras'],'name'),lora_weight=recipe['loras'][0]['weight'])
+    imported=sd_templates.mapped_payload(native,variables)
     # Infotext is parsed by the installed WebUI, including its plugin fields.
     # Do not overwrite those native values with our basic defaults.
     if imported.get('infotext'):
@@ -629,6 +631,11 @@ class CharacterStudio:
     payload.update(prompt=prompt,negative_prompt=negative,seed=seed,batch_size=1,n_iter=1,send_images=True,save_images=False,override_settings_restore_afterwards=True)
     payload['override_settings']={**(imported.get('override_settings') or {}),**overrides}
    if reference:payload.update(init_images=[base64.b64encode(reference).decode()],denoising_strength=t['denoise'])
+   if recipe.get('follow_identity'):
+    identity=('adult man' if recipe.get('gender')=='male' else 'adult woman')+', '+recipe['profile']['identity']+', '+recipe['profile']['trigger']+', '+t.get('_expression','natural expression')
+    if recipe.get('gender')=='male':identity=identity.replace('adult woman','adult man')
+    identity+=' '+ ' '.join(re.findall(r'<lora:[^<>]+>',prompt))
+    payload=sd_templates.follow_adetailer(payload,identity)
    if control:
     matches=[n for n in recipe['api_control_models'] if n.split(' [')[0].lower()==Path(recipe['control']['path']).stem.lower()]
     if len(matches)!=1:raise ValueError('API 未載入所選姿勢 ControlNet，請重新測試連線')
@@ -806,6 +813,7 @@ class CharacterStudio:
     prompt=prompt.replace('fully clothed','wearing opaque athletic swimwear')
     for phrase in ('bare shoulders','backless outfit','exposed back','open back clothes'):t['negative']=t['negative'].replace(phrase,'')
    if kind in c.get('native_templates',{}):t['_native']=c['native_templates'][kind]
+   if r.get('follow_identity'):t.update(_follow_identity=True,_expression=expression or 'natural expression')
    if denoise is not None:t['denoise']=denoise
    cache=sources/(kind+'-'+variation+'.png')
    if kind=='portrait':

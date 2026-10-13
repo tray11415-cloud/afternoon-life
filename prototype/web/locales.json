@@ -67,7 +67,7 @@
   "人物設定": {
     "en": "Character settings",
     "ja": "人物設定",
-    "zh-CN": "人物设置"
+    "zh-CN": "人物设定"
   },
   "美術素材": {
     "en": "Art assets",
@@ -2045,7 +2045,7 @@
     "zh-CN": "角色立绘差分"
   },
   "四方向行走圖": {
-    "en": "Four-direction sprite sheet",
+    "en": "Four-direction sprites",
     "ja": "四方向の歩行画像",
     "zh-CN": "四方向行走图"
   },
@@ -2420,7 +2420,7 @@
     "zh-CN": "立绘差分"
   },
   "行走圖": {
-    "en": "Sprite sheet",
+    "en": "Walking sprites",
     "ja": "歩行画像",
     "zh-CN": "行走图"
   },
@@ -4628,5 +4628,250 @@
     "en": "Save SD recipe changes before generating.",
     "ja": "SDレシピの変更を保存してから生成してください。",
     "zh-CN": "SD 配方改动请先保存，再生成。"
+  },
+  "一份人物設定，一次保存，完成你的角色。": {
+    "en": "One character setup. One save. Your character, ready.",
+    "ja": "ひとつの人物設定、一度の保存でキャラクターを完成。",
+    "zh-CN": "一份人物设定，一次保存，完成你的角色。"
+  },
+  "人物名單": {
+    "en": "Characters",
+    "ja": "人物一覧",
+    "zh-CN": "人物名单"
+  },
+  "人物即時預覽": {
+    "en": "Character preview",
+    "ja": "人物プレビュー",
+    "zh-CN": "人物即时预览"
+  },
+  "玩法百科": {
+    "en": "Player guide",
+    "ja": "遊び方ガイド",
+    "zh-CN": "玩法百科"
+  },
+  "人物資料": {
+    "en": "Character details",
+    "ja": "人物情報",
+    "zh-CN": "人物资料"
+  },
+  "角色 prompt": {
+    "en": "Character prompt",
+    "ja": "キャラクタープロンプト",
+    "zh-CN": "角色 prompt"
+  },
+  "角色 LoRA（可選）": {
+    "en": "Character LoRA (optional)",
+    "ja": "キャラクターLoRA（任意）",
+    "zh-CN": "角色 LoRA（可选）"
+  },
+  "素材成果": {
+    "en": "Artwork results",
+    "ja": "素材の結果",
+    "zh-CN": "素材成果"
+  },
+  "進階 SD／原生模板": {
+    "en": "Advanced SD / native templates",
+    "ja": "詳細SD／ネイティブテンプレート",
+    "zh-CN": "进阶 SD／原生模板"
+  },
+  "生成細節與 CG 情境": {
+    "en": "Generation details and CG scene",
+    "ja": "生成の詳細とCGシーン",
+    "zh-CN": "生成细节与 CG 情境"
+  },
+  "使用角色 prompt（不選 LoRA）": {
+    "en": "Use the character prompt (no LoRA)",
+    "ja": "人物プロンプトを使用（LoRAなし）",
+    "zh-CN": "使用角色 prompt（不选 LoRA）"
+  },
+  "本機 SD 已連線": {
+    "en": "Local SD connected",
+    "ja": "ローカルSD接続済み",
+    "zh-CN": "本机 SD 已连线"
+  },
+  "本機 SD 尚未連線": {
+    "en": "Local SD not connected",
+    "ja": "ローカルSD未接続",
+    "zh-CN": "本机 SD 尚未连线"
+  },
+  "保存並完成這位人物": {
+    "en": "Save and complete character",
+    "ja": "保存して人物を完成",
+    "zh-CN": "保存并完成这位人物"
+  },
+  "保存人物模板": {
+    "en": "Save character template",
+    "ja": "人物テンプレートを保存",
+    "zh-CN": "保存人物模板"
+  },
+  "保存後自動製作並套用立繪差分、行走圖與一張 CG。": {
+    "en": "Saving creates and applies portrait expressions, walking sprites and one CG.",
+    "ja": "保存後、表情差分・歩行画像・CG一枚を自動生成して適用します。",
+    "zh-CN": "保存后自动制作并套用立绘差分、行走图与一张 CG。"
+  },
+  "保存模板不改現有世界；建立新存檔後製作人物素材。": {
+    "en": "Templates preserve the current world; artwork is built after starting a new save.",
+    "ja": "テンプレートは現在の世界を変更せず、新しいセーブを作成した後に素材を生成します。",
+    "zh-CN": "保存模板不改现有世界；建立新存档后制作人物素材。"
+  },
+  "這份 prompt 同時用於立繪、表情、行走圖與 CG。可加入本機 <lora:檔名:0.8> 標籤；不選 LoRA 也能用底模生成。": {
+    "en": "One prompt drives portraits, expressions, sprites and CG. Local <lora:filename:0.8> tags are supported; LoRA is optional.",
+    "ja": "このプロンプトで立ち絵・表情・歩行画像・CGを生成。ローカルの <lora:ファイル名:0.8> タグに対応し、LoRAは任意です。",
+    "zh-CN": "这份 prompt 同时用於立绘、表情、行走图与 CG。可加入本机 <lora:档名:0.8> 标签；不选 LoRA 也能用底模生成。"
+  },
+  "使用下方的髮型、身形與便服配色": {
+    "en": "Use the hair, body and everyday clothing controls below",
+    "ja": "下の髪型・体型・普段着の配色を使用",
+    "zh-CN": "使用下方的发型、身形与便服配色"
+  },
+  "未啟用時，以角色 prompt 描述外觀；啟用後也會更新原生像素備援。": {
+    "en": "When disabled, the character prompt defines the appearance. Enabling these controls also updates native pixel fallback art.",
+    "ja": "無効時は人物プロンプトで外観を指定。有効時は標準ピクセル素材も更新します。",
+    "zh-CN": "未启用时，以角色 prompt 描述外观；启用后也会更新原生像素备援。"
+  },
+  "人物素材與進度": {
+    "en": "Character artwork and progress",
+    "ja": "人物素材と進捗",
+    "zh-CN": "人物素材与进度"
+  },
+  "保存會自動完成整套素材；也可單獨重做其中一種。": {
+    "en": "Saving builds the complete set. Individual outputs can also be regenerated.",
+    "ja": "保存で素材一式を生成。必要な種類だけ再生成することもできます。",
+    "zh-CN": "保存会自动完成整套素材；也可单独重做其中一种。"
+  },
+  "重做立繪＋行走圖": {
+    "en": "Regenerate portraits + sprites",
+    "ja": "立ち絵＋歩行画像を再生成",
+    "zh-CN": "重做立绘＋行走图"
+  },
+  "重做立繪差分": {
+    "en": "Regenerate expressions",
+    "ja": "表情差分を再生成",
+    "zh-CN": "重做立绘差分"
+  },
+  "重做行走圖": {
+    "en": "Regenerate sprites",
+    "ja": "歩行画像を再生成",
+    "zh-CN": "重做行走图"
+  },
+  "重做 CG": {
+    "en": "Regenerate CG",
+    "ja": "CGを再生成",
+    "zh-CN": "重做 CG"
+  },
+  "恢復原生／匯入美術": {
+    "en": "Restore native / imported art",
+    "ja": "標準／インポート素材に戻す",
+    "zh-CN": "恢复原生／汇入美术"
+  },
+  "保存後，自動完成這位人物。": {
+    "en": "Save to complete this character automatically.",
+    "ja": "保存するとこの人物を自動で完成させます。",
+    "zh-CN": "保存后，自动完成这位人物。"
+  },
+  "人物已完成：立繪差分、行走圖與 CG 已套用。": {
+    "en": "Character complete: portraits, sprites and CG applied.",
+    "ja": "人物完成：表情差分・歩行画像・CGを適用しました。",
+    "zh-CN": "人物已完成：立绘差分、行走图与 CG 已套用。"
+  },
+  "正在製作人物；完成的素材會自動套用。": {
+    "en": "Building character; completed artwork is applied automatically.",
+    "ja": "人物を作成中。完成した素材は自動適用されます。",
+    "zh-CN": "正在制作人物；完成的素材会自动套用。"
+  },
+  "立繪差分與行走圖": {
+    "en": "Portrait expressions and sprites",
+    "ja": "表情差分と歩行画像",
+    "zh-CN": "立绘差分与行走图"
+  },
+  "已完成並套用": {
+    "en": "Completed and applied",
+    "ja": "完成・適用済み",
+    "zh-CN": "已完成并套用"
+  },
+  "尚未開始": {
+    "en": "Not started",
+    "ja": "未開始",
+    "zh-CN": "尚未开始"
+  },
+  "重試未完成項目": {
+    "en": "Retry unfinished outputs",
+    "ja": "未完成の項目を再試行",
+    "zh-CN": "重试未完成项目"
+  },
+  "停止這次生成": {
+    "en": "Stop this generation",
+    "ja": "今回の生成を停止",
+    "zh-CN": "停止这次生成"
+  },
+  "人物素材預覽": {
+    "en": "Character artwork preview",
+    "ja": "人物素材プレビュー",
+    "zh-CN": "人物素材预览"
+  },
+  "選用這張 CG": {
+    "en": "Use this CG",
+    "ja": "このCGを使用",
+    "zh-CN": "选用这张 CG"
+  },
+  "選用這套素材": {
+    "en": "Use this artwork set",
+    "ja": "この素材を使用",
+    "zh-CN": "选用这套素材"
+  },
+  "立繪＋行走圖": {
+    "en": "Portraits + sprites",
+    "ja": "立ち絵＋歩行画像",
+    "zh-CN": "立绘＋行走图"
+  },
+  "保存人物後，這裡會列出立繪差分、行走圖與 CG。": {
+    "en": "After saving, portraits, sprites and CG appear here.",
+    "ja": "保存後、表情差分・歩行画像・CGがここに表示されます。",
+    "zh-CN": "保存人物后，这里会列出立绘差分、行走图与 CG。"
+  },
+  "人物已保存；請看左側的完整製作進度。": {
+    "en": "Character saved. See the complete build progress on the left.",
+    "ja": "人物を保存しました。左側で作成の進捗を確認できます。",
+    "zh-CN": "人物已保存；请看左侧的完整制作进度。"
+  },
+  "人物模板已保存。": {
+    "en": "Character template saved.",
+    "ja": "人物テンプレートを保存しました。",
+    "zh-CN": "人物模板已保存。"
+  },
+  "配方會和人物一起保存。": {
+    "en": "The recipe is saved with the character.",
+    "ja": "生成設定は人物と一緒に保存されます。",
+    "zh-CN": "配方会和人物一起保存。"
+  },
+  "正在保存人物並安排整套素材…": {
+    "en": "Saving character and scheduling artwork…",
+    "ja": "人物を保存し素材を生成する準備中…",
+    "zh-CN": "正在保存人物并安排整套素材…"
+  },
+  "人物、配方或穿著已改變，請用目前設定重新保存生成。": {
+    "en": "Character, recipe or outfit changed. Save the current setup to rebuild.",
+    "ja": "人物・生成設定・服装が変更されています。現在の設定を保存して再生成してください。",
+    "zh-CN": "人物、配方或穿着已改变，请用目前设定重新保存生成。"
+  },
+  "人物或穿著已改變；舊素材保留，沒有套用到新人物。": {
+    "en": "Character or outfit changed. Old artwork is retained and was not applied to the new setup.",
+    "ja": "人物または服装が変更されました。以前の素材は保持し、新しい人物には適用していません。",
+    "zh-CN": "人物或穿着已改变；旧素材保留，没有套用到新人物。"
+  },
+  "等待其他 SD 任務完成；人物已保存，會自動接續。": {
+    "en": "Waiting for other SD jobs. Character saved; generation will resume automatically.",
+    "ja": "他のSDタスクを待機中。人物は保存済みで、生成は自動的に再開します。",
+    "zh-CN": "等待其他 SD 任务完成；人物已保存，会自动接续。"
+  },
+  "原本的日常服裝": {
+    "zh-CN": "原本的日常服装",
+    "ja": "元の普段着",
+    "en": "Original everyday outfit"
+  },
+  "先前選定的 LoRA（目前未找到）": {
+    "zh-CN": "先前选定的 LoRA（目前未找到）",
+    "ja": "以前選んだLoRA（現在見つかりません）",
+    "en": "Previously selected LoRA (currently unavailable)"
   }
 }

@@ -4,20 +4,24 @@
 
 A top-down pixel life sandbox with ten adult residents, a human-controlled player, and a town that keeps moving. Each AI resident receives their own observations, goals and memories. A shared model service is allowed; a shared omniscient character context is not.
 
-**Status: playable alpha, v0.21.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
+**Status: playable alpha, v0.22.0.** This is an experimental life simulation, not a finished commercial galgame or a proven long-term story engine. Explicit content is disabled.
 
 [![Guided walkthrough](docs/media/guide.en.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4)
 
-[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.21.0)
+[English narrated walkthrough · 5:28](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [中文解說版](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [Download the release](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.22.0)
 
 The Traditional Chinese and English tours show v0.19, with synthetic narration, captions, eight chapters and actual gameplay in isolated offline worlds. No live model dialogue or SD generation is claimed. [Chapters, subtitles and recording notes](docs/WALKTHROUGH.md).
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-## SD-first character atelier (v0.21)
+## Unified character studio (v0.22)
 
-The atelier opens with SD artwork, portrait expressions and CG illustrations. Choose and save a character LoRA, generate with the existing local SD/native templates, inspect results and apply. Ready character art takes priority over imported/native art for its matching outfit; Restore fallback keeps generated files available. CGs can be composed in a public setting and selected as the current gallery illustration without moving characters or creating memories. Character/pixel fallback editing is folded into a secondary section. New bindings default to manual generation. The existing videos show earlier versions.
+Select a character, enter a custom name and one character prompt, then **Save and complete character**. The same save commits private character settings and schedules portrait expressions, four-direction walking art and one CG. Matching ready outputs are applied automatically; unfinished stages show their error and can be retried. Existing art files, world progress, inventories and other characters are retained.
+
+Hair, body, colours, personality, goal, optional background, AI drafts and cards are now in one editor. LoRA is optional for prompt-only generation; explicit local `<lora:filename:0.8>` tags are resolved without guessing. Advanced/native SD configuration is retained. Templates are built after creating their new save. The existing videos show earlier versions.
+
+[Illustrated player encyclopedia (Traditional Chinese, 10 chapters)](docs/PLAYER_GUIDE.zh-TW.md) · [Character workflow and API](docs/CHARACTER_ATELIER.md). In-game guide: `http://127.0.0.1:8765/guide.html`.
 
 ## Play
 

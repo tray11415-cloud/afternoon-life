@@ -12,6 +12,8 @@ class ArtAtelier:
    v=json.loads(self.path.read_text(encoding='utf-8'))
    if isinstance(v,dict) and set(v)==set(self.config) and isinstance(v['prefer_sd'],dict):self.config=v
   except (OSError,ValueError):pass
+  from .character_pipeline import CharacterPipeline
+  self.pipeline=CharacterPipeline(self)
  def scope(self,actor):return actor+':'+self.s.wardrobe.appearance(actor)['render_key']
  def prefers(self,actor,outfit):return self.config['prefer_sd'].get(actor+':'+outfit['render_key'],False)
  def selected_cg(self):
@@ -24,10 +26,12 @@ class ArtAtelier:
    for a in self.s.character_setup.profiles:
     data['config']['profiles'].setdefault(a,{'identity':self.s.character_setup.current(self.s,a)['appearance'] or 'adult person, everyday appearance','trigger':'','lora':'','weight':.8,'clothes_lora':'','clothes_weight':.6,'seed':4100+(10 if a=='player' else int(a[-2:])-1),'auto':False,'expression':'neutral'})
    data['atelier']={'bindings':bindings,'outfits':{a:self.s.wardrobe.appearance(a) for a in self.s.character_setup.profiles},'prefer_sd':copy.deepcopy(self.config['prefer_sd']),'cg':self.selected_cg(),'public_scenes':{k:v['name'] for k,v in self.s.map_spec['maps'].items() if not k.startswith('room-')},'default_scene':self.s.space.entities['player']['scene']}
+   data['atelier']['pipeline']=self.pipeline.state()
    return data
  def operation(self,p):
   if not isinstance(p,dict) or not isinstance(p.get('command'),str):raise ValueError('無效美術工坊操作')
   command=p['command']
+  if command in ('save_character','retry_character','cancel_character','build_saved_character'):return self.pipeline.operation(p)
   if command=='state' and set(p)=={'command'}:return self.state()
   actor=p.get('actor')
   if actor not in self.s.character_setup.profiles:raise ValueError('請選玩家或共居角色')
@@ -47,7 +51,7 @@ class ArtAtelier:
    with self.s.lock:
     outfit=self.s.wardrobe.appearance(actor);prompt=self.s.art_outfit_prompt(actor)
     with self.s.studio.lock:
-     job=self.s.studio.submit(actor,outfit,prompt,p['kind'],scene)
+     job=self.s.studio.submit(actor,outfit,prompt,p['kind'],scene,follow_identity=True)
      self.s.studio.jobs[job['id']]['source']='atelier';self.s.studio._persist()
   elif command=='apply' and set(p)=={'command','actor','id','expression'}:
    with self.s.lock,self.s.studio.lock:
@@ -66,6 +70,11 @@ class ArtAtelier:
     atomic(self.path,self.config)
   elif command=='restore' and set(p)=={'command','actor'}:
    with self.s.lock,self.s.studio.lock:
+    pack=self.pipeline.packs.get(actor)
+    if pack:
+     for jid in pack['jobs'].values():
+      if self.s.studio.jobs.get(jid,{}).get('status') in ('queued','running'):self.s.studio.cancel(jid)
+     pack.update(status='restored',applied=[k for k in pack['applied'] if k!='both'],message='已恢復原生／匯入美術；人物生成檔仍保留。');self.pipeline.persist()
     scope=self.scope(actor);self.s.studio.config['active'].pop(scope,None);self.config['prefer_sd'].pop(scope,None)
     atomic(self.s.studio.config_path,self.s.studio.config);atomic(self.path,self.config)
   else:raise ValueError('無效美術工坊欄位')

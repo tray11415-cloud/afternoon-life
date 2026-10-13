@@ -40,7 +40,7 @@
  };
  for(const [id,target] of [['settings-speech-link','speech-open'],['settings-ai-link','components-open'],['settings-sd-link','art-open'],['settings-town-link','town-open']])el(id).onclick=()=>{el('preferences-modal').close();el(target).click();};
  el('settings-save-link').onclick=async()=>{const result=await send('save');el('preferences-status').textContent=result.notice||'目前進度已保存。';};
- for(const dialog of document.querySelectorAll('dialog:not(#start-menu)'))dialog.addEventListener('close',()=>{holdPending=true;queueMicrotask(()=>{if(active&&!document.querySelector('dialog[open]'))title.showModal();hold();if(state)render(state);});});
+ for(const dialog of document.querySelectorAll('dialog:not(#start-menu)'))dialog.addEventListener('close',()=>{holdPending=true;setTimeout(()=>{if(active&&!document.querySelector('dialog[open]'))title.showModal();hold();if(state)render(state);},0);});
  const observer=new MutationObserver(()=>{const next=blocked();if(next!==lastBlocked){lastBlocked=next;hold();if(state)render(state);}});for(const d of document.querySelectorAll('dialog'))observer.observe(d,{attributes:true,attributeFilter:['open']});
  open();
 })();

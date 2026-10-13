@@ -4,20 +4,24 @@
 
 俯視角像素生活沙箱：十位成年共居角色、一位由你控制的玩家，以及持續運作的小鎮。每位 AI 只取得自己的觀察、目標與記憶；可以共用模型服務，但不共用全知人格。
 
-**目前是可玩的 alpha：v0.21.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
+**目前是可玩的 alpha：v0.22.0。** 這是生活模擬實驗，尚非完成的商業 galgame，也尚未驗證成熟的長期故事品質。露骨內容入口關閉。
 
 [![中文操作導覽](docs/media/guide.zh-TW.png)](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4)
 
-[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.21.0)
+[中文解說導覽 · 5:20](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.zh-TW.mp4) · [English walkthrough](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.19.0/afternoon-life-guide.en.mp4) · [下載版本](https://github.com/tray11415-cloud/afternoon-life/releases/tag/v0.22.0)
 
 上述繁中與英文影片記錄 v0.19；影片包含合成配音、字幕、八個章節及獨立離線世界的實際遊戲操作。沒有宣稱現場模型對話或 SD 生圖。[章節、字幕與拍攝說明](docs/WALKTHROUGH.md)。
 
 
 [简体新版导览 · v0.20 · 7:37](https://github.com/tray11415-cloud/afternoon-life/releases/download/v0.20.0/afternoon-life-guide.zh-CN.mp4)
 
-## SD 人物工坊（v0.21）
+## 統一人物工坊（v0.22）
 
-工坊主頁改為 SD 美術、立繪與差分、CG 插圖。先為選定人物保存 LoRA 與身份配方，再用既有本機 SD／原生固定模板生成，預覽後直接套用。角色圖片依人物與穿著優先顯示 SD，原生／匯入美術保留，可恢復。CG 可選公共場景與構圖，套用為目前插圖，不移動角色或新增事件記憶。人物設定與像素備援收在折疊區，新綁定預設手動生成。既有影片展示較早版本。
+選人物、輸入自訂名字與一份角色 prompt，按 **保存並完成這位人物**。一次保存人物設定，自動排程立繪差分、四方向行走圖與一張 CG；相符的完成素材自動套用，失敗項目可重試。原美術、角色記憶、物品與其他人物保留。
+
+髮型、身形、配色、個性、目標、可選背景、AI 草擬與人物卡都在同一個編輯器。LoRA 可選；支援明確的本機 `<lora:檔名:0.8>` 標籤，不猜綁定。進階／原生 SD 配置保留；新遊戲模板在建立新存檔後製作素材。舊影片展示較早版本。
+
+[附截圖的玩法百科（10章）](docs/PLAYER_GUIDE.zh-TW.md) · [人物流程與接口](docs/CHARACTER_ATELIER.md)。遊戲內百科：`http://127.0.0.1:8765/guide.html`。
 
 ## 開始玩
 

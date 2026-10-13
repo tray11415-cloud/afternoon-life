@@ -1,7 +1,7 @@
 /* Local character art studio. Polling only changes job cards, never form drafts. */
 (() => {
  const el=id=>document.getElementById(id);let studio=null,actor='member-01',timer=null,working=false;
- const names=()=>Object.fromEntries([...(state?.roster||[]).filter(p=>!p.scripted).map(p=>[p.id,p.name]),['player','玩家']]);
+ const names=()=>Object.fromEntries([...(state?.roster||[]).filter(p=>!p.scripted).map(p=>[p.id,p.name]),['player',state?.player?.name||'玩家']]);
  const categories={checkpoint:'底模',lora:'LoRA',vae:'VAE',controlnet:'ControlNet',embedding:'Embedding',text_encoder:'文字編碼器',diffusion:'Diffusion / UNet',upscaler:'放大模型',background:'去背模型',ipadapter:'IP-Adapter',extension:'擴充節點',workflow:'既有工作流',other:'其他資源',vision:'視覺編碼器'};
  function option(select,value,label,disabled=false){const o=document.createElement('option');o.value=value;o.textContent=label;o.disabled=disabled;select.append(o);}
  function report(text,error=false){el('art-status').textContent=text;el('art-status').classList.toggle('error',error);}

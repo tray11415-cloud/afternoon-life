@@ -1,6 +1,6 @@
 /* Interface localisation never changes game state, authored profiles or speech history. */
 (() => {
- let simpleMap={},reservedNames=[],dictionary={},language='zh-TW',pending=false,ready=false,setting=false;
+ let simpleMap={},reservedNames=[],dictionary={},phrases=[],language='zh-TW',pending=false,ready=false,setting=false;
  const originalNodes=new WeakMap(),originalAttributes=new WeakMap();
  const protectedSelector='script,style,textarea,pre,code,[data-user-content],.from-player,.from-agent,.outfit-description,.group-messages,.social-log';
  const supported=['zh-TW','zh-CN','ja','en'];
@@ -40,10 +40,10 @@
   for(const [pattern,replace] of patterns)if(pattern.test(source))return source.replace(pattern,replace);
   let result=source;
   for(const [zh,en,ja] of fragments)result=result.split(zh).join(language==='en'?en:ja);
-  for(const [zh,translations] of Object.entries(dictionary))if(zh.length>=3&&result.includes(zh))result=result.split(zh).join(translations[language]);
+  for(const [zh,translations] of phrases)if(zh.length>=3&&result.includes(zh))result=result.split(zh).join(translations[language]);
   return result;
  }
- function skip(element){if(!element)return true;if(element.closest('button')&&!element.closest('pre,code'))return false;return !!element.closest(protectedSelector);}
+ function skip(element){if(!element)return true;if(element.closest('[data-user-content]'))return true;if(element.closest('button')&&!element.closest('pre,code'))return false;return !!element.closest(protectedSelector);}
  function translateNode(node){
   if(skip(node.parentElement)||!node.nodeValue.trim())return;
   const last=originalNodes.get(node),current=node.nodeValue;
@@ -73,7 +73,7 @@
  function use(value){if(!supported.includes(value))return;language=value;try{localStorage.setItem('lifebox.language',value);}catch{};schedule();}
  window.LifeI18n={t,get language(){return language;},sync(s){reservedNames=[...s.roster.map(p=>p.name),s.player?.name].filter(n=>n&&n!=='玩家');const note=document.getElementById('demo-note');if(note)note.hidden=!s.usage?.demo;if(!setting)use(s.preferences?.config.language||'zh-TW');}};
  async function init(){
-  try{const sc=await fetch('/simplified.json');if(sc.ok)simpleMap=await sc.json();const r=await fetch('/locales.json');if(!r.ok)throw Error();dictionary=await r.json();ready=true;paint();}catch{console.error('Interface translations could not be loaded.');}
+  try{const sc=await fetch('/simplified.json');if(sc.ok)simpleMap=await sc.json();const r=await fetch('/locales.json');if(!r.ok)throw Error();dictionary=await r.json();phrases=Object.entries(dictionary).sort((a,b)=>b[0].length-a[0].length);ready=true;paint();}catch{console.error('Interface translations could not be loaded.');}
   const observer=new MutationObserver(schedule);observer.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','alt']});
   const modal=document.getElementById('preferences-modal'),select=document.getElementById('preferences-language'),status=document.getElementById('preferences-status');
   document.getElementById('preferences-open').onclick=()=>{game.keys.clear();select.value=language;modal.showModal();schedule();};

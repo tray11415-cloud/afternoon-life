@@ -40,9 +40,9 @@ class StudioTests(unittest.TestCase):
   self.s.maybe_auto([('member-01',self.outfit,'fully clothed cardigan')]);self.assertEqual(len(self.s.pending),1)
   self.s.maybe_auto([('member-01',self.outfit,'fully clothed cardigan')]);self.assertEqual(len(self.s.pending),1)
   self.outfit['render_key']='changed-worn-outfit';self.s.maybe_auto([('member-01',self.outfit,'fully clothed jacket')]);self.assertEqual(len(self.s.pending),2)
- def test_unbound_does_not_generate(self):
+ def test_prompt_only_manual_generation(self):
   self.s.config['profiles']['member-01']['lora']=''
-  with self.assertRaises(ValueError):self.submit()
+  j=self.submit();self.assertEqual(self.s.jobs[j['id']]['recipe']['loras'],[])
  def test_job_deduplication(self):self.assertEqual(self.submit()['id'],self.submit()['id']);self.assertEqual(len(self.s.pending),1)
  def test_worn_outfit_scopes_cache(self):
   first=self.submit()['id'];self.outfit['render_key']='worn2';self.assertNotEqual(first,self.submit()['id'])

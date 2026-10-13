@@ -70,6 +70,7 @@ class PixelSession(PlaySession):
         self.look_studio=LookStudio(self)
         from .art_atelier import ArtAtelier
         self.art_atelier=ArtAtelier(self)
+        self.art_atelier.pipeline.start()
         self._save()
 
     def _load_pixel(self,path):
@@ -621,5 +622,6 @@ class PixelSession(PlaySession):
             return self.screen()
 
     def close(self):
+        if hasattr(self,'art_atelier'):self.art_atelier.pipeline.close()
         if hasattr(self,'studio'):self.studio.closed=True
         if self.renderer: self.renderer.close(wait=False)
